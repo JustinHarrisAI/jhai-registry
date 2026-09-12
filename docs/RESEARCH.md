@@ -412,7 +412,7 @@ So: **do not rename v2 tokens.** Add a one-directional alias layer mapping `--in
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "jhai",
-  "homepage": "https://registry.justinharris.ai",
+  "homepage": "https://github.com/JustinHarrisAI/jhai-registry",
   "include": [
     "registry/core/registry.json",
     "registry/sections/registry.json",
@@ -491,10 +491,15 @@ Why this wins and it is not close:
 
 Verified end to end against `ephraimduncan/blocks` (which already serves `public/r/*.json` from its repo): **`add`, `search`, and `list` all work** behind a raw-file namespace. Same repo, same git tags, no build step, no domain, no Vercel, no GitHub Pages, **$0**.
 
-Two requirements follow:
+> ### ⚠️ BUILD REQUIREMENT — `r/registry.json` is not optional
+>
+> **A raw-file namespace supports `search` and `list` ONLY if `r/registry.json` sits alongside the flattened items**, because the CLI resolves the catalog by substituting `{name}` with the literal string `registry`.
+>
+> **Without it, `add` works and `search` returns nothing — silently, with no error.** That is the worst possible failure mode: the registry looks installed and correct, and the MCP server simply never surfaces a single `@jhai` item in any search. Nobody notices until someone asks Claude Code for a JHAI component and gets third-party results instead.
+>
+> This is a Phase 3 build requirement, not a note. `r/registry.json` must be a valid `registry.json` carrying `{name, homepage, items[]}`, and it must be regenerated and committed every time an item is added.
 
-1. **The repo must carry `r/registry.json`** — a valid `registry.json` with `{name, homepage, items[]}`. `search` and `list` resolve the catalog by substituting `{name}` with `registry`. Without it, `add` works and `search` silently returns nothing.
-2. **Versioning swaps the ref in the URL**, not a `#tag` suffix: `…/jhai-registry/v1.2.0/r/{name}.json`. Git tags still do the work; the address form differs from the `owner/repo/item#tag` documented in section 0.
+**Versioning swaps the ref in the URL**, not a `#tag` suffix: `…/jhai-registry/v1.2.0/r/{name}.json`. Git tags still do the work; the address form differs from the `owner/repo/item#tag` documented in section 0.
 
 **No auth variant is needed, and none should be built.** `@jhai` is public (C.5), so `raw.githubusercontent.com` serves it anonymously. **Verified 2026-09-12:** after flipping the repo public, `https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/registry/components.registries.json` returned `200` with no credential of any kind.
 
@@ -549,11 +554,16 @@ v2 vocabulary
   --ink-950 / --paper-0 / --accent / --line-light …
 ```
 
-Three moves, in order:
+**[AMENDED] Two moves, not three. Client theme items do NOT live in `@jhai`.**
 
-1. **`@jhai/theme-base`** — a `registry:base` item carrying the `--jh-*` → shadcn mapping that currently lives inline in `globals.css`, so every new project inherits it in one install instead of by copy-paste.
+1. **`@jhai/theme-base`** — a `registry:base` item carrying the `--jh-*` → shadcn mapping that currently lives inline in `globals.css`, **with JHAI's default values**, so every new project inherits it in one install instead of by copy-paste. This is the only theme item `@jhai` ever ships.
 2. **The alias layer** — `@theme inline { --color-ink-800: var(--ink-800); … }` in `globals.css`, pointing *at* the v2 names, per the contract quoted in C.1. **No v2 token is renamed.** This is what lets a `@jhai` component built from v2 source restyle through the same block as a Kibo or Tailark component.
-3. **`@jhai/theme-{client}`** — a `registry:theme` item per client, carrying only that client's `--jh-*` values. Restyling a spec site becomes `npx shadcn add jhai/registry/theme-acme`, one command, no forks.
+
+**Per-client theming is a client-repo concern.** A client project installs `theme-base` once, then overwrites the `--jh-*` block in its own `globals.css`. That is already exactly how `jhai-new-website` works today, so it is the existing mechanism rather than a new one.
+
+**Why no `theme-{client}` items:** `@jhai` is public (C.5). A public list of client names and their brand palettes is not something JHAI publishes. That constraint is what keeps the registry publishable at all, and it is worth more than the convenience of a one-command client restyle.
+
+*(This removes Task 3.6 from the implementation plan entirely. The 3.2 theming gate still runs — tested against a hand-written palette block in a throwaway project, which is a truer test anyway, since it proves a stranger's palette works rather than one we authored inside the registry.)*
 
 **This is the test of whether the registry is worth building.** If a `@jhai` section cannot land in a client project and take that client's palette without editing the component, the registry is just a slower `git clone` and should not be built. The disk evidence says it can: 56 of 79 v2 files already carry zero hardcoded color, and the semantic mapping already exists. **The work is finishing 23 files and writing one alias block, not architecting a system.**
 
@@ -567,13 +577,15 @@ Selection rule: generic in shape, zero hardcoded color, and used more than once 
 **Tier 2 — sections with clean color and obvious cross-client value:**
 `sections/Ticker.tsx` (marquee), `sections/LogoWall.tsx`, `sections/Questions.tsx` (FAQ), `sections/Compare.tsx`, `sections/Problem.tsx`, `sections/Answer.tsx`, `sections/CtaBandSection.tsx`, `sections/RecordBand.tsx`, `page/CTABand.tsx`, `page/FAQItem.tsx`, `page/ProofDeck.tsx`, `cards/CaseCard.tsx`, `cards/BlogCard.tsx`, `cards/ToolCard.tsx`.
 
-**Tier 3 — needs color work before it can ship:**
+**Tier 3 — [AMENDED] DEFERRED, do not clear the colour now:**
 `chrome/Header.tsx` (3 named + 6 hex), `cards/PricingCard.tsx`, `sections/Aesir.tsx`, `sections/IndexRail.tsx`, `sections/Close.tsx`, `chrome/Megamenu.tsx`, `page/DemoFrame.tsx`.
+
+These seven stay project code until a client actually needs one of them. Clearing 41 hex literals and 15 palette utilities speculatively is work against a demand that may never arrive, and the components would sit unused in the registry meanwhile. When a client needs one, clear that one.
 
 **Stay project code, do not registry-ize:**
 `templates/*` (14 files — they encode JHAI's own information architecture and page composition, not reusable UI), `interior/*` mostly (article and case-study furniture tied to JHAI content shapes), `motion/MotionRuntime.tsx` (an app-level runtime, not a component), `chrome/Footer.tsx` and `SiteChromeHeader.tsx` (brand-specific by nature).
 
-That is roughly **21 items to seed**, not 79. The right first registry is small and correct.
+**[AMENDED] Seed scope is settled: 21 items, Tiers 1 and 2 only.** Not 79, and not Tier 3. The right first registry is small and correct.
 
 ---
 
@@ -625,6 +637,10 @@ Time cost per new project: one skill invocation plus one MCP init. That is fast 
 ---
 
 ## E. The curation index
+
+**[BUILT 2026-09-12 — see [CURATION.json](CURATION.json) and [CURATION.md](CURATION.md).]** 13 entries, generated by `scripts/build-curation-md.mjs`. The entries below were the proposals; **the built index uses the Task 1.5 raw returns instead**, because three of these proposals turned out to be wrong.
+
+**Doctrine, settled:** the built entries are house doctrine as written, each carrying a `lastVerified` date. **Any future session that re-litigates an entry must update `CURATION.json` rather than silently picking differently.** An undocumented divergence is the failure this index exists to prevent.
 
 **Format: one JSON file, `docs/CURATION.json`, plus a generated `docs/CURATION.md` for reading.** JSON because a fresh Claude session should be able to answer "what do we use for a drag rail" without parsing prose, and because the MCP-driven flow benefits from exact install strings. Markdown because Justin should be able to skim it.
 

@@ -228,7 +228,17 @@ Where the answer is a library, record the library (Embla for drag rails). Where 
 | `registry/` | component source + per-category `registry.json` | authored by hand |
 | `r/` | flattened `{item}.json` per item, **plus `r/registry.json`** | emitted by `shadcn build`, committed |
 
-`r/registry.json` is not optional. Search and list resolve the catalog by substituting `{name}` with `registry`; without that file `add` works and `search` silently returns nothing. Run `shadcn registry validate` on `registry/` before every build.
+> ### ⚠️ BUILD REQUIREMENT — `r/registry.json` is not optional
+>
+> **A raw-file namespace supports `search` and `list` ONLY if `r/registry.json` sits alongside the flattened items**, because the CLI resolves the catalog by substituting `{name}` with the literal string `registry`.
+>
+> **Without it, `add` works and `search` returns nothing — silently, with no error.** The registry looks correctly installed while the MCP server never surfaces a single `@jhai` item in any search. Nobody notices until someone asks Claude Code for a JHAI component and gets third-party results.
+>
+> Regenerate and commit `r/registry.json` on every item addition. Verify with `shadcn search @jhai`, never with `add` alone — `add` passing proves nothing about search.
+
+Run `shadcn registry validate` on `registry/` before every build.
+
+**Homepage field:** `https://github.com/JustinHarrisAI/jhai-registry`. **No `registry.justinharris.ai` is being stood up** — `raw.githubusercontent.com` is the serving path, so a domain would be a second address to keep in sync for no gain.
 
 ### Task 3.2 — Theme base and the alias layer
 
@@ -257,13 +267,19 @@ Then add the v2 alias layer in `globals.css`:
 
 Ticker, LogoWall, Questions, Compare, Problem, Answer, CtaBandSection, RecordBand, CTABand, FAQItem, ProofDeck, CaseCard, BlogCard, ToolCard. All already carry zero hardcoded color.
 
-### Task 3.5 — Tier 3 colour cleanup, then seed
+### ~~Task 3.5 — Tier 3 colour cleanup~~ **[DEFERRED — do not do this now]**
 
-Header, PricingCard, Aesir, IndexRail, Close, Megamenu, DemoFrame — 41 hex and 15 named utilities to clear across 23 files total. **Deliberately last**, because Tiers 1 and 2 deliver value without it.
+Header, PricingCard, Aesir, IndexRail, Close, Megamenu, DemoFrame — 41 hex and 15 named utilities across 23 files.
 
-### Task 3.6 — Client theme items
+**Seed scope is 21 items, Tiers 1 and 2 only.** These seven stay project code until a client actually needs one of them, then that one gets cleared. Clearing all seven speculatively is work against demand that may never arrive, and they would sit unused in the registry meanwhile.
 
-`@jhai/theme-{client}` per active client — a `registry:theme` item carrying only that client's `--jh-*` values. This is what makes a spec site a one-command restyle.
+### ~~Task 3.6 — Client theme items~~ **[REMOVED]**
+
+**Client theme items do not live in `@jhai`.** The registry is public, and a public list of client names and their brand palettes is not something JHAI publishes.
+
+`@jhai` ships **`theme-base` only** — the `--jh-*` → shadcn semantic mapping with JHAI's default values. A client project installs it once and overwrites the `--jh-*` block in its own `globals.css`. That is already how `jhai-new-website` works, so it is the existing mechanism, not a new one.
+
+The 3.2 theming gate still runs, tested against a **hand-written palette block in a throwaway project**. That is the truer test anyway: it proves a stranger's palette works, rather than one we authored inside the registry.
 
 ### Task 3.7 — License compliance pass
 
@@ -308,9 +324,15 @@ https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/v1.0.0/r/{name}.j
 
 **The split:** the registries-merge half depends only on Phase 1 and ships now. Waiting for Phase 3 would leave every new spec site started in the meantime doing the scavenger hunt by hand, for no reason — the five third-party namespaces are already verified and live.
 
-### Phase 4a — the registries merge **[ships with Phase 1, depends on Phase 1 only]**
+### Phase 4a — the registries merge **[DONE 2026-09-12]**
 
-**Runs:** half a session. **Deliverable:** `/jhai-project-init` arms any new project with the five verified namespaces and a correctly pinned MCP server.
+**Shipped:** `~/.claude/skills/jhai-project-init/SKILL.md`, committed to `dot-claude` and pushed to `origin/main`.
+
+**Measured end to end on a fresh Next.js app: 16 seconds** — 10s `shadcn init`, under 1s registry merge, 4s `mcp init` plus the pin rewrite, 2s verify. Add ~15s when `create-next-app` also has to run. Target was under two minutes.
+
+Verification was a real cross-namespace search, not a config read: `search -q "pricing"` returned four `@tailark-oss` blocks from the throwaway project.
+
+One CLI detail the skill now records: **`init` takes `--defaults --yes`, and there is no `--base-color` flag in v4** — passing it exits `error: unknown option '--base-color'`. `--defaults` resolves to `--template=next --preset=base-nova`, matching `jhai-new-website`.
 
 **Task 4a.1 — Author the skill.** `~/.claude/skills/jhai-project-init/SKILL.md`. Three requirements:
 

@@ -1,0 +1,339 @@
+{
+  "$comment": "JHAI curation index — Layer 2. The house answer for each recurring UI need, with the reason. Built from the Task 1.5 raw registry returns on 2026-09-12, not from the original RESEARCH.md section E.1 proposals: three of those were wrong and are corrected here. docs/CURATION.md is GENERATED from this file by scripts/build-curation-md.mjs — edit this file, never the markdown.",
+  "$rules": [
+    "decision is one of: registry-item | library | primitive | build",
+    "Any future session that re-litigates an entry MUST update it here rather than silently picking differently. That is the whole point of the file.",
+    "why and rejected[] are load-bearing. A name alone gets re-argued next project; a name plus the rejected option and its reason does not.",
+    "previewStatus: verified-200 means an HTTP GET returned 200 from a host that 404s on bogus paths. soft-200 means the host is a catch-all that returns 200 for any path, so the status proves nothing — the URL is a best guess. unconfirmed means it could not be checked.",
+    "The shadcn fuzzy search is weak (see the note in CURATION.md). Grep the registry indexes before concluding something does not exist."
+  ],
+  "$meta": {
+    "lastFullPass": "2026-09-12",
+    "cli": "shadcn@4.21.0 via pnpm dlx",
+    "registriesSearched": ["@shadcn", "@tailark-oss", "@kibo-ui", "@magicui", "@blocks-so", "@fancy"],
+    "itemsIndexed": 789
+  },
+  "entries": [
+    {
+      "need": "marquee",
+      "decision": "registry-item",
+      "choice": "@kibo-ui/marquee",
+      "install": "pnpm dlx shadcn@4.21.0 add @kibo-ui/marquee",
+      "preview": "https://www.kibo-ui.com/components/marquee",
+      "previewStatus": "verified-200",
+      "why": "Behaviour-first and token-bound, and it installs clean: one file, one npm dep, no stylesheet edits. Kibo is also the library we want the rest of (kanban, gantt, dropzone, table), so standardising on it here avoids a second marquee vocabulary later. Verified by real install in Task 1.4: 1 semantic token, 0 hardcoded colour.",
+      "rejected": [
+        {
+          "what": "@magicui/marquee",
+          "because": "Genuinely good and it ships a correct cssVars block, but the Task 1.4 install rewrote src/app/globals.css: it prepended '@custom-variant dark (&:is(.dark *));' ABOVE the file header and appended keyframes into the theme block. In a 4,450-line hand-authored stylesheet that already has its own .dark handling, that is a collision risk we would take on every project for no gain over Kibo."
+        },
+        {
+          "what": "@fancy/simple-marquee",
+          "because": "Paints nothing, so it restyles perfectly, but it is a lower-level primitive. Reach for it only when the brief needs drag or easing behaviour Kibo does not expose."
+        }
+      ],
+      "restyle": "Token-bound. Paints from semantic tokens, resolves through --jh-*. No per-client edit.",
+      "license": "MIT (shadcnblocks/kibo)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "count-up stats",
+      "decision": "registry-item",
+      "choice": "@magicui/number-ticker",
+      "install": "pnpm dlx shadcn@4.21.0 add @magicui/number-ticker",
+      "preview": "https://magicui.design/docs/components/number-ticker",
+      "previewStatus": "verified-200",
+      "why": "CORRECTS the original E.1 answer, which said to build this because nothing better existed. Wrong: the fuzzy search missed it and a grep of the indexes found it immediately. Chosen over Fancy's because it demos decimal handling, which the JHAI stat tiles need. Compose it INSIDE the existing core/StatTile.tsx rather than replacing that component — the tile is the shell, the ticker is the numeral.",
+      "rejected": [
+        {
+          "what": "@fancy/basic-number-ticker",
+          "because": "Equally clean and equally free. Loses only on decimal support being less obviously covered. Swap to it without argument if Magic UI's version turns out to rewrite globals.css the way its marquee does — check that on first install."
+        },
+        {
+          "what": "Hand-rolled Motion useSpring counter",
+          "because": "This was the original plan. About 20 lines, so not expensive, but it is 20 lines to own, test and get the reduced-motion behaviour right on, against zero for an item that already exists."
+        }
+      ],
+      "restyle": "Paints nothing — it animates a number. Inherits whatever the parent sets.",
+      "license": "MIT (magicuidesign/magicui)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "drag rail",
+      "decision": "registry-item",
+      "choice": "@fancy/box-carousel",
+      "install": "pnpm dlx shadcn@4.21.0 add @fancy/box-carousel",
+      "preview": "https://www.fancycomponents.dev/docs/components/carousel/box-carousel",
+      "previewStatus": "verified-200",
+      "why": "CORRECTS the original E.1 answer, which said no component existed and to use Embla directly. Five real options came back. Box carousel wins for a marketing rail because it has autoplay and video variants already demoed, and Fancy paints nothing at all, so it restyles free. Escalate to Embla the moment the rail carries interactive content and needs real keyboard and screen-reader support.",
+      "rejected": [
+        {
+          "what": "embla-carousel-react",
+          "because": "Still the right answer for a production rail with accessibility requirements — it is what most shadcn carousels wrap anyway. Rejected as the DEFAULT only because it is a dependency plus wiring, where the registry item is one command. This is an escalation path, not a dead option."
+        },
+        {
+          "what": "@fancy/drag-elements",
+          "because": "Free-floating draggable objects with momentum, not a rail. Different need — reach for it for a playful scatter layout."
+        },
+        {
+          "what": "@fancy/simple-carousel",
+          "because": "Simpler and lighter, but no momentum or autoplay. Use when the rail is three items and the motion should be plain."
+        },
+        {
+          "what": "@kibo-ui/deck",
+          "because": "Stacked swipeable cards, Tinder-shaped. Not a horizontal rail."
+        },
+        {
+          "what": "@tailark-oss/motion-primitives-infinite-slider",
+          "because": "Auto-scrolls rather than responding to drag. That is the marquee need, already answered above."
+        }
+      ],
+      "restyle": "Zero colour of any kind. Geometry only.",
+      "license": "MIT (danielpetho/fancy)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "masonry wall",
+      "decision": "primitive",
+      "choice": "CSS columns-* utilities",
+      "install": "none — Tailwind core, e.g. columns-1 md:columns-2 lg:columns-3 gap-6, with break-inside-avoid on each child",
+      "preview": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_multicol_layout",
+      "previewStatus": "verified-200",
+      "why": "This is the one genuine gap in the wired set and it was measured, not assumed. Zero of 789 indexed items matched across four index-grep terms (masonry, mosaic, pinterest, waterfall) and three separate fuzzy-search phrasings (masonry, masonry grid, testimonial wall). Nothing exists. CSS multi-column costs nothing, adds no dependency, and restyles perfectly. Note the distinction that trips people up: testimonial CONTENT is well covered — there are 11 Tailark OSS testimonial blocks — it is the masonry LAYOUT that does not exist.",
+      "rejected": [
+        {
+          "what": "react-masonry-css",
+          "because": "The option ONLY when ordered left-to-right reflow is required. CSS columns fill top-to-bottom per column, so item order reads down then across. If the wall is chronological or ranked and reading order matters, take the dependency. If it is a decorative testimonial wall, it does not."
+        },
+        {
+          "what": "CSS grid with row spans",
+          "because": "Gives true ordered flow without a dependency, but every tile needs a known or measured height. Fine for fixed-size cards, wrong for variable-length testimonials, which is the actual use case."
+        }
+      ],
+      "restyle": "No colour. Layout utilities only.",
+      "license": "n/a (CSS) / MIT (react-masonry-css, paulcollett/react-masonry-css)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "accordion",
+      "decision": "primitive",
+      "choice": "shadcn core accordion",
+      "install": "pnpm dlx shadcn@4.21.0 add @shadcn/accordion",
+      "preview": "https://ui.shadcn.com/docs/components/accordion",
+      "previewStatus": "verified-200",
+      "why": "Core, free, perfectly tokenised, and already the base every alternative wraps. The registry options add styling we would immediately have to strip to hit a client palette.",
+      "rejected": [
+        {
+          "what": "@tailark-oss/dusk-accordion and @tailark-oss/mist-accordion",
+          "because": "Both are Tailark's own styling over the same underlying primitive. Token-clean, so no objection on restylability — they just add a layer that buys nothing when we are going to restyle anyway."
+        },
+        {
+          "what": "@retroui/accordion",
+          "because": "Measured well (9 semantic tokens, 0 hardcoded) and is the correct pick when a brief actually wants neobrutalist. Wrong as a default."
+        },
+        {
+          "what": "@seraui/accordion",
+          "because": "Hard no on measurement, not licence. 70 hardcoded palette utilities and 2 hex literals in one component. Every client restyle would be a rewrite."
+        }
+      ],
+      "restyle": "Fully token-bound out of the box.",
+      "license": "MIT (shadcn/ui)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "tabs",
+      "decision": "primitive",
+      "choice": "shadcn core tabs",
+      "install": "pnpm dlx shadcn@4.21.0 add @shadcn/tabs",
+      "preview": "https://ui.shadcn.com/docs/components/tabs",
+      "previewStatus": "verified-200",
+      "why": "IMPORTANT — record the reason precisely: the SEARCH FAILED, which is not the same as nothing existing. The query 'tabs' across all six namespaces returned an SVG logo (@tailark-oss/core-bolt) and three unrelated table blocks. That is a ranking failure in the shadcn fuzzy search, not evidence of absence. Core tabs is the right answer regardless — it is tokenised and accessible — but if a richer tabs component is ever wanted, grep the indexes rather than re-running this search and concluding nothing is there.",
+      "rejected": [
+        {
+          "what": "nothing — search returned no real candidate",
+          "because": "No tabs component surfaced from any of the five third-party namespaces. Recorded as a search failure rather than a finding: the indexes were not exhaustively grepped for this need, so absence is unproven."
+        }
+      ],
+      "restyle": "Fully token-bound out of the box.",
+      "license": "MIT (shadcn/ui)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "scroll reveal",
+      "decision": "build",
+      "choice": "@jhai/scroll-reveal — thin wrapper over Motion whileInView",
+      "install": "pending Phase 3; today, hand-write it over the existing motion dependency",
+      "preview": "https://magicui.design/docs/components/text-reveal",
+      "previewStatus": "verified-200",
+      "why": "The returns for this need were all TEXT reveals, not the generic 'fade any block in as it enters the viewport' that JHAI actually uses everywhere. Motion's whileInView plus a once flag and a reduced-motion guard is about 15 lines, and jhai-new-website already depends on motion. Owning it means the reduced-motion behaviour is consistent across every client site instead of varying per component.",
+      "rejected": [
+        {
+          "what": "@magicui/text-reveal",
+          "because": "Text-specific — it fades words in on scroll. That is the separate 'text reveal' need below, not a generic block reveal."
+        },
+        {
+          "what": "@fancy/vertical-cut-reveal-scroll-demo",
+          "because": "A demo item, not a component. Fancy publishes demos into its registry alongside real items; installing one gives you example code, not a reusable wrapper."
+        },
+        {
+          "what": "@magicui/progressive-blur",
+          "because": "A blur gradient on scrollable content. Different effect entirely."
+        },
+        {
+          "what": "@motion-primitives/in-view",
+          "because": "Would have been the closest match, and is MIT. Ineligible: the registry endpoint fails with 429 from a Vercel Security Checkpoint via the real CLI. See the skip list in RESEARCH.md section G."
+        }
+      ],
+      "restyle": "Paints nothing. Motion only.",
+      "license": "in-house / MIT (motion)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "text reveal",
+      "decision": "registry-item",
+      "choice": "@magicui/text-reveal",
+      "install": "pnpm dlx shadcn@4.21.0 add @magicui/text-reveal",
+      "preview": "https://magicui.design/docs/components/text-reveal",
+      "previewStatus": "verified-200",
+      "why": "Fades text in on scroll — the restrained version, which matches the justinharris.ai direction of one white ground and a single accent. Densest returns of any need in the pass, so this is a real choice rather than a default.",
+      "rejected": [
+        {
+          "what": "@magicui/dia-text-reveal",
+          "because": "A gradient colour band sweeping across the headline. Well built, four demo variants, but it needs a gradient to read, and the JHAI direction is explicitly no gradients. Keep it available for client brands that want more surface."
+        },
+        {
+          "what": "@magicui/hyper-text",
+          "because": "Scrambles letters before settling. Reads as a gimmick on an editorial page; fine for a dev-tool or AI client brand."
+        },
+        {
+          "what": "@fancy/vertical-cut-reveal",
+          "because": "Sharper, more art-directed cut reveal. Genuinely good and paints nothing. Rejected only because Magic UI's is the calmer default; reach for this when a brief wants the type to perform."
+        }
+      ],
+      "restyle": "Inherits type colour from the parent. No hardcoded colour.",
+      "license": "MIT (magicuidesign/magicui)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "hero with video",
+      "decision": "registry-item",
+      "choice": "@tailark-oss/dusk-hero-section-5-video",
+      "install": "pnpm dlx shadcn@4.21.0 add @tailark-oss/dusk-hero-section-5-video",
+      "preview": "https://tailark.com/blocks/dusk/hero-section",
+      "previewStatus": "soft-200",
+      "previewNote": "tailark.com returns HTTP 200 for any path including bogus ones, so the 200 here proves the host is up, not that the page exists. oss.tailark.com has no per-item preview pages — its own homepage links 404. Confirm visually before quoting this URL to a client.",
+      "why": "CORRECTS the original E.1 answer, which said to build this because nothing handled it well. Four options came back. This one is a hero SECTION with video, which is the actual need, and Tailark OSS measured best-in-class on restylability across three sampled blocks (zero hardcoded colour). The brand-specific work — poster frame, preload policy, prefers-reduced-motion fallback — is still ours to add on top, but the shell is not worth rebuilding.",
+      "rejected": [
+        {
+          "what": "@magicui/hero-video-dialog",
+          "because": "A click-to-play modal player, not a video hero. Different need — it is the right answer when the video is a demo behind a thumbnail."
+        },
+        {
+          "what": "@tailark-oss/dusk-landing-1-hero-video and dusk-landing-5-hero-video",
+          "because": "Whole landing pages rather than a hero section. Too much surface to inherit when we only want the hero."
+        }
+      ],
+      "restyle": "Token-bound. Tailark OSS measured 0 hardcoded colour across sampled blocks.",
+      "license": "MIT (tailark/blocks)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "pricing table",
+      "decision": "registry-item",
+      "choice": "@tailark-oss/veil-pricing-1",
+      "install": "pnpm dlx shadcn@4.21.0 add @tailark-oss/veil-pricing-1",
+      "preview": "https://tailark.com/blocks/veil/pricing",
+      "previewStatus": "soft-200",
+      "previewNote": "tailark.com is a catch-all that returns 200 for any path. Status is not proof the page exists.",
+      "why": "Best measured restylability of any pricing block found: 8 semantic tokens, 0 hardcoded colour, 0 hex. Verified by real install in Task 1.4 — it landed and rendered in the JHAI palette with no edit to the component. Seven Tailark OSS pricing blocks came back across three families; veil is the most restrained, which suits the editorial direction.",
+      "rejected": [
+        {
+          "what": "@tailark-oss/veil-pricing-2 and veil-pricing-3",
+          "because": "Same family, more surface — comparison columns and feature matrices. Pick these when the client actually sells tiers that need comparing."
+        },
+        {
+          "what": "@tailark-oss/dusk-pricing-1/2 and mist-pricing-1/2",
+          "because": "The Dusk and Mist families carry heavier decoration than the JHAI direction wants. Equally token-clean, so they are live options for client brands."
+        },
+        {
+          "what": "in-house cards/PricingCard.tsx",
+          "because": "Already exists, but carries 2 hardcoded palette utilities and 2 hex literals, so it is Tier 3 in the seed plan and needs colour work before it could be a registry item."
+        }
+      ],
+      "restyle": "8 semantic tokens, 0 hardcoded. Verified by install.",
+      "license": "MIT (tailark/blocks)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "FAQ",
+      "decision": "registry-item",
+      "choice": "@tailark-oss/veil-faqs-1",
+      "install": "pnpm dlx shadcn@4.21.0 add @tailark-oss/veil-faqs-1",
+      "preview": "https://tailark.com/blocks/veil/faqs",
+      "previewStatus": "soft-200",
+      "previewNote": "tailark.com is a catch-all that returns 200 for any path. Status is not proof the page exists.",
+      "why": "Measured 5 semantic tokens, 0 hardcoded colour. Nine Tailark OSS FAQ blocks came back — the densest coverage of any need after pricing — and veil-faqs-1 is the plainest. Composes over the shadcn core accordion chosen above rather than bringing its own disclosure primitive.",
+      "rejected": [
+        {
+          "what": "@tailark-oss/veil-faqs-2 through 5",
+          "because": "Same family with more layout — two-column, categorised, with a contact CTA. Live options when the FAQ carries more than six questions."
+        },
+        {
+          "what": "@tailark-oss/dusk-faqs-1 and mist-faqs-1/2/3",
+          "because": "Heavier families. Same reasoning as pricing."
+        },
+        {
+          "what": "in-house page/FAQItem.tsx",
+          "because": "Already on disk with zero hardcoded colour, so it is a Tier 2 seed candidate. Use it when the FAQ needs JHAI-specific behaviour; use the Tailark block for a standard section on a spec site."
+        }
+      ],
+      "restyle": "5 semantic tokens, 0 hardcoded.",
+      "license": "MIT (tailark/blocks)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "form inputs",
+      "decision": "primitive",
+      "choice": "shadcn core input, select, textarea, form, label",
+      "install": "pnpm dlx shadcn@4.21.0 add @shadcn/input @shadcn/select @shadcn/textarea @shadcn/form @shadcn/label",
+      "preview": "https://ui.shadcn.com/docs/components/input",
+      "previewStatus": "verified-200",
+      "why": "IMPORTANT — as with tabs, record this precisely: the SEARCH FAILED. The query 'form input' returned @kibo-ui/dialog-stack, @kibo-ui/gantt and @magicui/ripple-button. That is a ranking failure, not evidence of absence. Core primitives are the right answer anyway — they are tokenised, accessible, and every block we install already depends on them — but do not cite this pass as proof that nothing else exists.",
+      "rejected": [
+        {
+          "what": "@intentui/* form components",
+          "because": "Built on react-aria-components, so accessibility is the product rather than an afterthought. Rejected as a default only because it introduces a SECOND primitive stack alongside Radix/Base. That should be a deliberate choice on a client with a stated accessibility requirement, never a silent default."
+        },
+        {
+          "what": "@blocks-so/login-01 and the other form blocks",
+          "because": "Whole assembled forms rather than inputs. Useful as a starting layout — verified installing clean in Task 1.4 with 5 semantic tokens and 0 hardcoded colour — but they compose the core primitives rather than replacing them. Note they prompt to overwrite button, input, label and separator on install; decline."
+        }
+      ],
+      "restyle": "Fully token-bound out of the box.",
+      "license": "MIT (shadcn/ui)",
+      "lastVerified": "2026-09-12"
+    },
+    {
+      "need": "logo wall",
+      "decision": "library",
+      "choice": "svgl.app — fetch SVGs directly from the keyless public API",
+      "install": "none — GET https://api.svgl.app?search=<brand>, then fetch the returned route (and wordmark / dark variant if present)",
+      "preview": "https://svgl.app",
+      "previewStatus": "verified-200",
+      "why": "Thirteenth entry, added because the Task 0.4 pass found the source behind 21st.dev's logo search. svgl.app is MIT (pheralb/svgl) with a public API that needs no key and no account. Verified: https://svgl.app/library/vercel.svg returns raw SVG, and https://api.svgl.app?search=stripe returns JSON carrying both route and wordmark variants. Client logo walls therefore need no paid library and no 21st.dev subscription. Many brands also ship a dark-mode variant, which is what makes this better than scraping favicons.",
+      "rejected": [
+        {
+          "what": "21st.dev search_logo via MCP",
+          "because": "Free and unlimited, and convenient inside Claude Code — but it is a wrapper over exactly this source. Fine to use interactively; do not build a client site's asset pipeline on it when the upstream is MIT and keyless."
+        },
+        {
+          "what": "@tailark-oss/core-* logo items",
+          "because": "Tailark OSS ships a handful of SVG brand logos as registry items (core-figma, core-clerk, core-vercel and similar). Far narrower coverage than svgl.app, and it puts brand marks in the component tree rather than in public assets."
+        }
+      ],
+      "restyle": "SVGs carry brand colour by definition. Use currentColor variants or the mono/wordmark route where a monochrome wall is wanted.",
+      "license": "MIT (pheralb/svgl). Individual brand marks remain the property of their owners — usage is governed by each brand's own trademark policy, not by svgl's licence.",
+      "lastVerified": "2026-09-12"
+    }
+  ]
+}

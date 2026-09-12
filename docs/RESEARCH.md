@@ -40,7 +40,7 @@ Executed 2026-09-12 with `shadcn@4.21.0`. Ten findings, in order of how much the
 { "registries": { "@jhai": "https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/r/{name}.json" } }
 ```
 
-Proven against a real public registry (`ephraimduncan/blocks`, whose repo carries `public/r/*.json`): **`add`, `search`, and `list` all work** behind a raw-file namespace. Same repo, same git tags for versioning, no build step, no domain, $0.
+Proven against a real public registry (`ephraimduncan/blocks`, whose repo carries `public/r/*.json`): **`add`, `search`, and `list` all work** behind a raw-file namespace. Same repo, same git tags for versioning, no build step, no domain, $0. The repo is public (C.5), so the raw host serves it anonymously — **no token in any consuming project**, verified after the visibility flip.
 
 **2. The index mechanism.** Search and list resolve the catalog by substituting `{name}` with `registry` — i.e. `…/r/registry.json`, which must be a valid `registry.json` carrying `{name, homepage, items[]}`. **`@jhai` therefore needs both a flattened `r/{item}.json` per item and an `r/registry.json` index.** Without the index, `add` works but `search` returns nothing.
 
@@ -171,7 +171,7 @@ pnpm dlx shadcn@latest add acme/toolkit/project-conventions#c0ffee2  # full SHA
 ```
 
 - The first two path segments are owner and repo. Remaining segments are the **item name, not a file path**.
-- Private repos: `gh auth login` locally, or `GH_TOKEN` / `GITHUB_TOKEN` in CI (`GH_TOKEN` wins). Use a fine-grained PAT scoped to the repo with **Contents: Read-only**.
+- Private repos: `gh auth login` locally, or `GH_TOKEN` / `GITHUB_TOKEN` in CI (`GH_TOKEN` wins). Use a fine-grained PAT scoped to the repo with **Contents: Read-only**. *(Documented for completeness only — `@jhai` is public and JHAI uses none of this. See C.5.)*
 - Public repos are always read anonymously; credentials are only attempted when the root `registry.json` is not publicly readable.
 - Limits: 5 MiB per source file, no GitHub Enterprise hosts, avoid symlinks.
 
@@ -289,20 +289,20 @@ So client-logo walls need neither a 21st.dev account nor any paid library — hi
 
 **Theme retrieval — free, and it is a working template for `@jhai/theme-{client}`.** `get_theme` is documented *"Free."* A live call returned a **complete, drop-in token set**: a full `:root` block, a full `.dark` block, and an `@theme inline` alias block — every shadcn semantic token plus `--chart-1..5`, the full `--sidebar-*` set, `--font-sans/serif/mono`, the six `--shadow-*` primitives, `--radius`, `--letter-spacing`, and `--spacing`.
 
-That is directly load-bearing for section C.6. **The shape of a `registry:theme` item does not need designing — this is a reference implementation, free, retrievable on demand.** Note the search index is thin for anything specific (`type: "theme"` with a descriptive query returned zero results; a bare `"theme"` query sorted by popular returned results). Browse rather than search.
+**Is that usable as a `registry:theme` item, or only as reference?** Both, but the honest answer is **reference plus a mechanical conversion, not a drop-in.**
+
+- What comes back is **raw CSS text**, not registry JSON. There is no `$schema`, `name`, or `type` — so it cannot be handed to `shadcn add` as-is.
+- Converting it is trivial and scriptable: the `:root` block becomes `cssVars.light`, the `.dark` block becomes `cssVars.dark`, and the `@theme inline` block is discarded because the shadcn CLI regenerates those aliases itself. Wrap in `{"$schema": …, "name": "theme-x", "type": "registry:theme", "cssVars": {…}}` and it installs.
+- **The reason it matters more as reference:** it is a complete, correct enumeration of every token a theme item should set. That includes the ones easy to forget — all five `--chart-*`, the eight `--sidebar-*`, the six `--shadow-*` primitives, `--letter-spacing`, `--spacing`. A JHAI theme item that sets only `--background` / `--foreground` / `--primary` will look right until the first chart or sidebar appears.
+- **What it will not give us:** the JHAI values. These are community themes on someone else's palette. `@jhai/theme-{client}` still gets authored per client; this just settles the field list.
+
+Practical use in Task 3.6: pull one theme, keep it as the checklist, author JHAI's values against it.
+
+Note the theme **search** index is thin — `type: "theme"` with a descriptive query returned zero results, while a bare `"theme"` query sorted by popular returned results. Browse rather than search.
 
 **Net:** 21st.dev's free tier is worth more than section A.3 credited — but it *strengthens* the "do not extend the subscription" call rather than weakening it, and the logo capability is fully replaceable by svgl.app directly.
 
-### A.4 [AMENDED] Relume — assessed, and it is not a registry
-
-Added at review request. Relume is exposed as an MCP connector on the chat surface, which is why it was not probed in the original pass.
-
-- **Registry URL: NONE.** Four probes — `www.relume.io/r/registry.json`, `www.relume.io/r/hero-1.json`, `relume.io/registry.json`, `www.relume.ai/r/registry.json` — all returned `404` with a Webflow-served HTML page. Relume is **absent from the 344-entry community registry index**. It publishes no shadcn-compatible registry. It cannot be added to the registries block, so it is out of scope for Layer 1 regardless of its other merits.
-- **Distribution model:** copy-paste from component pages, plus two npm packages, `@relume_io/relume-ui` (v1.3.1) and `@relume_io/relume-tailwind` (v1.3.0), consumed via a Tailwind preset rather than a CLI.
-- **License: the decisive fact.** The npm registry metadata for `@relume_io/relume-ui` carries **no `license` field at all** (`license: None`). An npm package with no declared license is all-rights-reserved by default. The site carries "© 2026 Relume. All rights reserved." and links a separate Licensing Agreement. **Redistribution through `@jhai` is barred**, and unlike shadcnblocks — which at least grants unlimited client end products in writing — there is no published grant to rely on here at all. `www.relume.io/licensing-agreement` and its `.ai` redirect both returned `404`, so **the actual license text could not be retrieved. Treat the terms as UNVERIFIED and assume the most restrictive reading.**
-- **Pricing** ([relume.ai/pricing](https://www.relume.ai/pricing)): Build with Relume — Free (30 components), Pro from **$14/mo**. Site Builder — Free, Starter from **$18/mo**, Pro from **$40/mo**, Team from **$36/mo** (minimum 3 users), Enterprise custom. **No lifetime option exists.** The React library is bundled into the subscription, not sold separately.
-- **Restylability: not assessed.** The A.0 method needs a fetchable registry item, and there is none.
-- **Verdict: SKIP.** It fails on all three axes that matter here. No registry, so it cannot join Layer 1. No license grant, so it cannot enter Layer 3. Subscription-only with no lifetime, against a plan whose target is $0/year. It changes neither the starter set nor the theming design. Added to the skip list in section G.
+*(Relume was considered and dropped without further assessment — see the skip list in section G.)*
 
 ---
 
@@ -470,11 +470,11 @@ Rules specific to this registry:
 
 | Option | Cost | Versioning | Private | Verdict |
 |---|---|---|---|---|
-| **GitHub registry** (this repo) | **$0** on any GitHub plan | **Built in** — `#tag` or `#sha` per item address | **Yes** — `gh auth login` locally, `GH_TOKEN` (fine-grained PAT, Contents: Read-only) in CI | **Recommended primary** |
+| **GitHub registry** (this repo, **public**) | **$0** on any GitHub plan | **Built in** — git tag in the raw URL path | **Not used.** Public, read anonymously, zero keys — see C.5 | **Chosen** |
 | Vercel static JSON | $0 on Hobby. **But** Hobby forbids commercial use, and client work is commercial — a Pro seat is ~$20/mo | Manual: version in the path or a `params` version | Only via a custom auth route, which means owning an endpoint | Optional mirror, not the primary |
-| Private registry with auth headers | Hosting cost plus an endpoint to maintain | Manual | Yes | **Not warranted.** GitHub private repos deliver this for free |
+| Private registry with auth headers | Hosting cost plus an endpoint to maintain | Manual | Yes | **Rejected.** Every consuming project would carry a key — the exact cost B.3 identifies as the real hazard of paid registries |
 
-**Recommendation: GitHub registry as the only thing built in Phase 3. Annual cost $0.**
+**Decided: a public GitHub repo, served over `raw.githubusercontent.com`, is the only thing built in Phase 3. Annual cost $0, zero keys.**
 
 Why this wins and it is not close:
 
@@ -496,16 +496,9 @@ Two requirements follow:
 1. **The repo must carry `r/registry.json`** — a valid `registry.json` with `{name, homepage, items[]}`. `search` and `list` resolve the catalog by substituting `{name}` with `registry`. Without it, `add` works and `search` silently returns nothing.
 2. **Versioning swaps the ref in the URL**, not a `#tag` suffix: `…/jhai-registry/v1.2.0/r/{name}.json`. Git tags still do the work; the address form differs from the `owner/repo/item#tag` documented in section 0.
 
-**Private variant:** swap the host for the GitHub Contents API and add a header, which the namespace format supports:
+**No auth variant is needed, and none should be built.** `@jhai` is public (C.5), so `raw.githubusercontent.com` serves it anonymously. **Verified 2026-09-12:** after flipping the repo public, `https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/registry/components.registries.json` returned `200` with no credential of any kind.
 
-```json
-{ "registries": { "@jhai": {
-    "url": "https://api.github.com/repos/JustinHarrisAI/jhai-registry/contents/r/{name}.json",
-    "headers": { "Authorization": "Bearer ${GH_TOKEN}", "Accept": "application/vnd.github.raw" }
-} } }
-```
-
-**UNVERIFIED:** the private Contents-API variant was not tested — only the public raw form was. Test it in Phase 3 before relying on it, and if it fails, the fallback is a public `@jhai` repo rather than a hosting rebuild.
+That is the property the whole design rests on: **zero keys in any consuming project.** A private registry would put a `GH_TOKEN` in every spec site, which is precisely the operational cost that section B.3 identifies as the real hazard of paid registries. Choosing a private `@jhai` would have reintroduced that cost against our own registry, for nothing.
 
 **Also note:** Registry Health (the monitoring behind the community index) does not monitor GitHub registries consumed through `owner/repo/item` addresses. A raw-file namespace is likewise unmonitored. Neither matters for a registry we own and can probe ourselves.
 
@@ -521,16 +514,25 @@ A fix reaching past client projects is therefore deliberate, not automatic: re-r
 
 Because components are copied into the consuming project, **there is no such thing as a silent fix**. That is a feature at WebVegas volume — a bad `@jhai` release cannot break 30 live sites at once — but it means the update ritual has to be written down, not remembered.
 
-### C.5 Auth for private entries
+### C.5 Repo posture — **[AMENDED] `@jhai` is PUBLIC. Settled, do not reopen.**
 
-Only if some items stay private: keep this repo private, and
+`github.com/JustinHarrisAI/jhai-registry` is public as of 2026-09-12.
 
-- Local: `gh auth login` once. The CLI prints `✔ Using gh credentials.`
-- CI / spec-site automation: `GH_TOKEN=github_pat_xxx`, fine-grained PAT scoped to `jhai-registry`, **Contents: Read-only**. `GH_TOKEN` takes precedence over `GITHUB_TOKEN`.
+**The rationale, which is also a design constraint on every future item:**
 
-Cost: $0. No secret ever enters a client repo, because the token is JHAI's and lives in JHAI's automation.
+- **No client-specific code ever enters this registry.** Client palettes live as theme items **in the client's own repo**, not here.
+- **Structural client forks stay in the client repo.** A fork returns to `@jhai` only when a second client needs the same shape, and only as a generalized prop.
 
-**Open judgement call, not answered here:** a public `@jhai` is free marketing and simpler auth; a private one keeps client-derived patterns out of public view. This is in section H.
+So there is nothing to protect. And the payoff is the property the whole design depends on: **a public repo is read anonymously, so no consuming project ever carries a `GH_TOKEN`.** Zero keys, everywhere.
+
+**Consequences — all of this work is now deleted, not deferred:**
+
+- No `gh auth login` step.
+- No `GH_TOKEN` / `GITHUB_TOKEN` in any project, CI job, or spec site.
+- No fine-grained PAT to issue, scope, or rotate.
+- No GitHub Contents API variant. `raw.githubusercontent.com` is the only address form.
+
+Cost: **$0**, with one fewer moving part than the private design.
 
 ### C.6 Theming — one component set, many client brands
 
@@ -616,7 +618,7 @@ The `components.json` fragment the skill merges — canonical copy at [`registry
 
 **[AMENDED] The `@jhai` entry is now settled** (see C.3) — a raw-file namespace over this repo, not a GitHub item address, because namespace URLs must contain `{name}`. It is shown greyed here because the `r/` directory does not exist until Phase 3; **the five third-party entries ship now** and are already live in `jhai-new-website`.
 
-Env vars: **none required** for the five third-party registries. That is the point. The only env var in the whole design is `GH_TOKEN`, and only if `@jhai` is private.
+**Env vars: none. Not one, anywhere in the design.** The five third-party registries are unkeyed, and `@jhai` is public so it is read anonymously. There is no `GH_TOKEN`, no PAT, no `.env` entry in any project or CI job. Any future proposal that adds one is a change to the core property of this system, not a detail.
 
 Time cost per new project: one skill invocation plus one MCP init. That is fast enough for a spec site.
 
@@ -709,7 +711,7 @@ State this plainly rather than discovering it mid-build:
 | **Sera UI** | Free and MIT, so no license objection — **skipped on measurement**. 70 hardcoded palette utilities and 2 hex literals in a single accordion. Every client restyle is a rewrite. This is the concrete example of "opinionated is fine, rigid is not." |
 | **SmoothUI** | Same reasoning, less severe: 32 hardcoded utilities in one component. Nice micro-interactions, expensive to rebrand. |
 | **21st.dev paid tiers** | Free tier already covers browsing, install, and MCP code retrieval. Paid buys AI generation credits, which is not the sourcing problem. Treat the existing connection as the paid slot already spent. |
-| **Relume** | **[AMENDED] Added.** Publishes no shadcn registry at all — four endpoint probes returned `404`, and it is absent from the 344-entry community index, so it cannot join Layer 1 on any terms. Its npm package carries **no declared license**, which is all-rights-reserved by default, and the licensing-agreement page itself 404s, so the terms could not be read. Subscription-only from $14/mo with **no lifetime option**, against a plan targeting $0/year. Fails on distribution, license, and price simultaneously. |
+| **Relume** | **[AMENDED] Considered and dropped.** It is a purchased code library with **no redistribution grant**, so it can never enter `@jhai` — and its coverage overlaps the free five anyway. Two supporting facts found before the assessment was stopped: it publishes **no shadcn registry at all** (four endpoint probes returned `404`; absent from the 344-entry community index), so it cannot join Layer 1 on any terms, and its npm package `@relume_io/relume-ui` carries **no `license` field**, which is all-rights-reserved by default. Not assessed further. |
 | **Cult UI, Motion Primitives** | **[AMENDED] Now skipped, not deferred.** Both MIT and genuinely good, and both URL shapes are confirmed correct by the official community index. But Task 0.1 ran the real shadcn CLI against each and both returned `Failed to fetch from registry (429)` — the same Vercel Security Checkpoint that blocked automated fetch. The index itself flags both `observing` rather than `healthy`. **Not eligible for the registries block.** Copy from their docs in a browser if a specific component is wanted. Worth re-testing from a different network before writing them off permanently. |
 
 ---

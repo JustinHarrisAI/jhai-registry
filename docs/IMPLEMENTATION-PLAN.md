@@ -8,7 +8,7 @@
 
 **Companion document:** [RESEARCH.md](RESEARCH.md) — verified registry URLs, licensing, restylability measurements, and the disk inventory this plan depends on. Read it first; this plan assumes its findings.
 
-**Status:** **Phases 0 and 1 executed 2026-09-12.** Phases 2 and 3 are gated on open questions 1, 3, 4, 5 and 6. Phase 4a shipped with Phase 1; Phase 4b still pending.
+**Status:** **Phases 0 and 1 executed 2026-09-12 and merged to `main`.** `@jhai` is public; the auth work is deleted. Phase 4a is unblocked and next. Phases 2 and 3 are gated on open questions 3, 4, 5 and 6 — question 1 is answered.
 
 > Sections amended after execution are marked **[DONE]** or **[AMENDED]**. Execution findings live in [RESEARCH.md § 0.0](RESEARCH.md).
 
@@ -68,16 +68,26 @@ Two consequences for Phase 3, both cheap:
 1. The repo must carry **`r/registry.json`** as well as `r/{item}.json`. Search resolves the catalog by substituting `{name}` with `registry`; without that file, `add` works and `search` silently returns nothing.
 2. **Versioning swaps the ref in the URL** (`…/jhai-registry/v1.2.0/r/{name}.json`), not a `#tag` suffix.
 
-**Still UNVERIFIED:** the private variant (GitHub Contents API + `Authorization: Bearer ${GH_TOKEN}` header). Test it early in Phase 3. If it fails, the fallback is a public `@jhai` repo, not a hosting rebuild.
+No auth variant is needed — see Task 0.3.
 
-### Task 0.3 — Repo public/private posture **[OPEN — question 1]**
+### Task 0.3 — Repo posture **[DONE — PUBLIC]**
 
-Still Justin's. Blocks only the Phase 3 auth work.
+`github.com/JustinHarrisAI/jhai-registry` was flipped public on 2026-09-12 and the anonymous raw fetch verified immediately after (`200`, no credential).
 
-### Task 0.4 — Two missed sources **[DONE]**
+**This deletes work rather than deferring it.** Phase 3 no longer contains any auth task: no `gh auth login`, no `GH_TOKEN`, no fine-grained PAT, no Contents API variant. The zero-key property now holds for `@jhai` as well as for the five third-party registries.
 
-- **Relume: SKIP.** No shadcn registry exists (four probes → `404`, absent from the 344-entry community index), npm package carries **no declared license**, licensing page itself `404`s, subscription-only from $14/mo with no lifetime. Fails on distribution, license, and price at once. Changes neither the starter set nor the theming design.
-- **21st.dev: free tier is worth more than credited.** Logo search is free and unlimited, and its source is **[svgl.app](https://svgl.app), MIT, with a keyless public API** — so logo walls need no account at all. `get_theme` returns a complete `:root` + `.dark` + `@theme inline` token set, free, which is a **working reference implementation for `@jhai/theme-{client}`** (Task 3.6). Account state is `tier: paid, aiGenerationEnabled: false`. This strengthens the "do not extend the subscription" call.
+The constraint that makes it safe, and which every future item must respect: **no client-specific code enters this repo.** Client palettes are theme items in the client's own repo. A structural client fork stays in the client repo and returns only as a generalized prop, once a second client needs the same shape.
+
+### Task 0.4 — 21st.dev logo and theme retrieval **[DONE]**
+
+**Both are on the free tier.** Account state is `tier: paid, aiGenerationEnabled: false`.
+
+- **Logo search: free, explicitly unlimited.** The material finding is the source — it wraps **[svgl.app](https://svgl.app), MIT (`pheralb/svgl`), with a keyless public API**. Client logo walls need no 21st.dev account and no paid library; hit `api.svgl.app` directly. Wordmark and dark variants included.
+- **Theme retrieval: free, and usable as a `registry:theme` item after a mechanical conversion.** `get_theme` returns raw CSS, not registry JSON — no `$schema`, `name`, or `type`, so it will not install as-is. Converting is trivial: `:root` → `cssVars.light`, `.dark` → `cssVars.dark`, discard `@theme inline` (the CLI regenerates it). **Its real value is as the field checklist** — it enumerates every token a theme item should set, including the easily-forgotten five `--chart-*`, eight `--sidebar-*`, and six `--shadow-*`. A JHAI theme that sets only background/foreground/primary looks correct until the first chart or sidebar renders. The values are someone else's palette; only the field list transfers.
+
+Both strengthen the "do not extend the 21st.dev subscription" call.
+
+**Relume: dropped without further assessment.** Purchased code library with no redistribution grant, so it can never enter `@jhai`, and its coverage overlaps the free five. Recorded in RESEARCH.md section G.
 
 ---
 
@@ -283,16 +293,7 @@ Pinning swaps the ref in the URL rather than appending `#tag`:
 https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/v1.0.0/r/{name}.json
 ```
 
-**If `@jhai` is private**, raw.githubusercontent will not serve it. Switch to the Contents API form and verify it — this is the one piece of the hosting design still UNVERIFIED:
-
-```json
-{ "registries": { "@jhai": {
-    "url": "https://api.github.com/repos/JustinHarrisAI/jhai-registry/contents/r/{name}.json",
-    "headers": { "Authorization": "Bearer ${GH_TOKEN}", "Accept": "application/vnd.github.raw" }
-} } }
-```
-
-Test this **at the start of Phase 3, not the end.** If it fails, the fallback is making `@jhai` public — which is question 1, and cheap to act on early, expensive to discover late.
+**No auth step.** The repo is public, so the raw host serves it anonymously — verified. Nothing in this task issues, stores, or reads a token.
 
 **What could go wrong in Phase 3, in order of likelihood:**
 
@@ -350,11 +351,11 @@ One line added to the canonical fragment once `r/` exists and Task 3.8 passes. T
 
 | Phase | Effort | Status | Blocks |
 |---|---|---|---|
-| 0 — Decisions and spikes | ~1 session | **DONE** (0.3 open) | — |
-| 1 — Sourcing | 1–2 hours | **DONE** | Phase 2 |
-| 4a — Bootstrap, registries half | half a session | next | — |
+| 0 — Decisions and spikes | ~1 session | **DONE** | — |
+| 1 — Sourcing | 1–2 hours | **DONE, merged to `main`** | Phase 2 |
+| 4a — Bootstrap, registries half | half a session | **next, unblocked** | — |
 | 2 — Curation | 2–3 hours, then continuous | gated on Q5, Q6 | Phase 3 backlog |
-| 3 — Publication | 1–2 days | gated on Q1, Q3, Q6 | Phase 4b |
+| 3 — Publication | 1–2 days, **minus the auth work** | gated on Q3, Q6 | Phase 4b |
 | 4b — Bootstrap, `@jhai` half | minutes | gated on Phase 3 | — |
 | 5 — Operate | continuous | — | — |
 

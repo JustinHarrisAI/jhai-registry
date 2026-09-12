@@ -1,0 +1,21 @@
+{
+  "_comment": "Single source of truth for JHAI's shadcn registry namespaces. Merge this 'registries' block into any project's components.json. The shadcn MCP server reads its registry list from components.json, so this block is what arms component search in Claude Code. Every URL below was verified by fetching a real registry item on 2026-09-12; see docs/RESEARCH.md section A.",
+  "_rules": [
+    "Namespace names must start with '@' and URLs must contain '{name}' (shadcn skill spec, skills/shadcn/mcp.md). Both are enforced by the CLI.",
+    "@tailark-oss has NO .json suffix. Its endpoints are /r/{name}. Do not normalize it to match the others.",
+    "Search and list resolve the registry index by substituting {name} with 'registry'. A namespace only supports search if that path serves a valid registry.json.",
+    "Pin the CLI major in anything that runs across many sites: use 'shadcn@4', not 'shadcn@latest'. Current latest is 4.21.0."
+  ],
+  "_verified": {
+    "date": "2026-09-12",
+    "cli": "shadcn@4.21.0",
+    "communityIndex": "https://ui.shadcn.com/r/registries.json"
+  },
+  "registries": {
+    "@tailark-oss": "https://oss.tailark.com/r/{name}",
+    "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
+    "@magicui": "https://magicui.design/r/{name}.json",
+    "@blocks-so": "https://blocks.so/r/{name}.json",
+    "@fancy": "https://www.fancycomponents.dev/r/{name}.json"
+  }
+}

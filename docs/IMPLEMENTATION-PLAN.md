@@ -8,7 +8,9 @@
 
 **Companion document:** [RESEARCH.md](RESEARCH.md) — verified registry URLs, licensing, restylability measurements, and the disk inventory this plan depends on. Read it first; this plan assumes its findings.
 
-**Status:** awaiting approval. Nothing below has been executed.
+**Status:** **Phases 0 and 1 executed 2026-09-12.** Phases 2 and 3 are gated on open questions 1, 3, 4, 5 and 6. Phase 4a shipped with Phase 1; Phase 4b still pending.
+
+> Sections amended after execution are marked **[DONE]** or **[AMENDED]**. Execution findings live in [RESEARCH.md § 0.0](RESEARCH.md).
 
 ---
 
@@ -36,50 +38,56 @@ The paid path is a **narrow, optional branch at Phase 1.5**, taken only if a spe
 
 ---
 
-## Phase 0 — Decisions and spikes
+## Phase 0 — Decisions and spikes **[DONE 2026-09-12]**
 
-**Depends on:** Justin answering the open questions at the end of this document.
-**Runs:** one session, well under an hour of work once the answers exist.
-**Everything downstream is blocked on this.** Two of these are genuine unknowns, not formalities.
+Ran in one session with `shadcn@4.21.0`. Full evidence in [RESEARCH.md § 0.0](RESEARCH.md).
 
-### Task 0.1 — Verify the two blocked registries
+### Task 0.1 — Verify the two blocked registries **[DONE — both FAILED]**
 
-Motion Primitives and Cult UI sit behind a Vercel Security Checkpoint that returned `429` to every automated fetch. The shadcn CLI is a different client and will probably pass, but "probably" is not a plan.
-
-In a throwaway directory:
-
-```bash
-npx shadcn@latest init
-npx shadcn@latest add "https://motion-primitives.com/c/in-view.json"
+```
+pnpm dlx shadcn@4 add "https://motion-primitives.com/c/in-view.json"
+  → Failed to fetch from registry (429)
+pnpm dlx shadcn@4 add "https://www.cult-ui.com/r/texture-card.json"
+  → Failed to fetch from registry (429)
 ```
 
-**Expected:** the component lands in `components/ui/`.
-**If it fails:** both libraries drop to "install manually from docs" and never enter the registries block. Record the outcome in `docs/CURATION.json`.
+The real CLI hits the same Vercel Security Checkpoint that blocked automated fetch. **Neither is eligible for the registries block.** The official community index independently flags both `observing` rather than `healthy`, so its monitoring sees the same thing. Both stay MIT and copyable from their docs in a browser. Worth one retest from a different network before writing them off permanently.
 
-### Task 0.2 — Spike: does the MCP server see a GitHub registry?
+### Task 0.2 — GitHub registry hosting **[DONE — resolved, no mirror needed]**
 
-This is the one architectural unknown in the whole plan. `components.json` `registries` takes a **URL template**; GitHub registries are addressed `owner/repo/item` at the CLI. Whether MCP search enumerates a GitHub-hosted registry cleanly was **not verified**.
+The concern was real and the original plan's answer was wrong. Namespace names must start with `@` and URLs must contain `{name}`, so `"@jhai": "jhai/registry"` is invalid and the MCP server cannot sweep it. But the fix is not a GitHub Pages mirror — it is a **raw-file namespace over the same repo**:
 
-Stand up a two-item throwaway GitHub registry, wire it, restart Claude Code, and ask the MCP server to search it.
+```json
+{ "registries": { "@jhai": "https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/r/{name}.json" } }
+```
 
-- **Works:** GitHub is the whole hosting story. Phase 3 is simple.
-- **Does not work:** add a **GitHub Pages** static mirror serving `https://registry.justinharris.ai/r/{name}.json` for discovery, with GitHub remaining the versioned source of truth. GitHub Pages, not Vercel Hobby — Hobby forbids commercial use, and client work is commercial.
+Verified end to end against `ephraimduncan/blocks`: **`add`, `search`, and `list` all work.** Same repo, same git tags, no build step, no domain, **$0**.
 
-**Do not skip this.** Discovering it during Phase 3 means rebuilding the publication layer.
+Two consequences for Phase 3, both cheap:
 
-### Task 0.3 — Confirm the repo's public/private posture
+1. The repo must carry **`r/registry.json`** as well as `r/{item}.json`. Search resolves the catalog by substituting `{name}` with `registry`; without that file, `add` works and `search` silently returns nothing.
+2. **Versioning swaps the ref in the URL** (`…/jhai-registry/v1.2.0/r/{name}.json`), not a `#tag` suffix.
 
-Affects Phase 3's auth work and nothing else, but must be settled before the first commit that contains client-derived patterns.
+**Still UNVERIFIED:** the private variant (GitHub Contents API + `Authorization: Bearer ${GH_TOKEN}` header). Test it early in Phase 3. If it fails, the fallback is a public `@jhai` repo, not a hosting rebuild.
 
-**What could go wrong in Phase 0:** 0.2 comes back negative and adds a mirror to Phase 3. That is an afternoon, not a redesign. Budget for it.
+### Task 0.3 — Repo public/private posture **[OPEN — question 1]**
+
+Still Justin's. Blocks only the Phase 3 auth work.
+
+### Task 0.4 — Two missed sources **[DONE]**
+
+- **Relume: SKIP.** No shadcn registry exists (four probes → `404`, absent from the 344-entry community index), npm package carries **no declared license**, licensing page itself `404`s, subscription-only from $14/mo with no lifetime. Fails on distribution, license, and price at once. Changes neither the starter set nor the theming design.
+- **21st.dev: free tier is worth more than credited.** Logo search is free and unlimited, and its source is **[svgl.app](https://svgl.app), MIT, with a keyless public API** — so logo walls need no account at all. `get_theme` returns a complete `:root` + `.dark` + `@theme inline` token set, free, which is a **working reference implementation for `@jhai/theme-{client}`** (Task 3.6). Account state is `tier: paid, aiGenerationEnabled: false`. This strengthens the "do not extend the subscription" call.
 
 ---
 
-## Phase 1 — Sourcing (Layer 1)
+## Phase 1 — Sourcing (Layer 1) **[DONE 2026-09-12]**
 
-**Depends on:** Phase 0.
-**Runs:** one session, roughly 1–2 hours including a real test install per registry.
-**Deliverable:** any JHAI project can reach five vetted registries through the shadcn MCP server.
+**Ran in:** one session. **Delivered:** `jhai-new-website` reaches five vetted registries — **789 items** plus shadcn core — through the shadcn MCP server.
+
+Branches, both unmerged in `~/Code/jhai-new-website/`:
+- `chore/jhai-registries-phase1` — `components.json` merge and `.mcp.json`. **Mergeable now.**
+- `test/jhai-registry-installs` — the five evidence installs. **Do not merge.**
 
 ### Task 1.1 — Write the canonical registries fragment
 
@@ -103,33 +111,52 @@ Note `@tailark-oss` has **no `.json` suffix** — its endpoints are `/r/{name}`,
 
 **Modify:** `~/Code/jhai-new-website/components.json` — the `registries` key already exists and is `{}`, so this is a merge, not a restructure.
 
-### Task 1.3 — Arm the MCP server
+### Task 1.3 — Arm the MCP server **[DONE, with one fix]**
 
 ```bash
 cd ~/Code/jhai-new-website
-pnpm dlx shadcn@latest mcp init --client claude
+pnpm dlx shadcn@4.21.0 mcp init --client claude
 ```
 
-Restart Claude Code. Verify with `/mcp`.
+**[AMENDED] `mcp init` writes the wrong thing.** It emits `{"command":"npx","args":["shadcn@latest","mcp"]}` — unpinned, and `npx` on this machine cannot resolve a pinned spec at all. `.mcp.json` was rewritten to:
 
-### Task 1.4 — Prove it end to end
-
-One real install per registry, on a branch, reverted after:
-
-```bash
-npx shadcn@latest add @kibo-ui/marquee
-npx shadcn@latest add @tailark-oss/veil-pricing-1
-npx shadcn@latest add @magicui/marquee
-npx shadcn@latest add @blocks-so/login-01
+```json
+{ "mcpServers": { "shadcn": { "command": "pnpm", "args": ["dlx", "shadcn@4.21.0", "mcp"] } } }
 ```
 
-**Verify:** files land in the right aliases, dependencies install, and — the actual test — **each renders in JHAI's palette without editing the component**, because the semantic tokens already resolve through `--jh-*` (RESEARCH.md C.1).
+**Do this rewrite every time `mcp init` runs.** It is folded into Phase 4a.
 
-Then ask Claude Code, inside the project: *"find me a pricing table."* If the MCP server returns real installable options across namespaces, Layer 1 is done.
+`shadcn info` confirms all six namespaces resolve: `@shadcn`, `@tailark-oss`, `@kibo-ui`, `@magicui`, `@blocks-so`, `@fancy`. Each namespace's index was fetched directly to confirm it is searchable, not just installable: Tailark OSS 259 items, Magic UI 250, Fancy 158, Blocks.so 81, Kibo UI 41.
 
-### Task 1.5 — Commit
+### Task 1.4 — Prove it end to end **[DONE — five of five installed]**
 
-**What could go wrong:** a registry URL rotates. The mitigation is 1.1 — one file to fix. Second risk: an item installs but paints wrong because JHAI's `--jh-*` values do not cover a token the component expects. That is information, not failure; record it in the curation index.
+| Item | Landed at | npm deps pulled | tokens / named / hex |
+|---|---|---|---|
+| `@kibo-ui/marquee` | `src/components/kibo-ui/marquee/index.tsx` | `react-fast-marquee` | 1 / 0 / 0 |
+| `@tailark-oss/veil-pricing-1` | `src/components/pricing-1.tsx` + `ui/card.tsx` | — | 8 / 0 / 0 |
+| `@magicui/marquee` | `src/components/ui/marquee.tsx` | — | 0 / 0 / 0 |
+| `@blocks-so/login-01` | `src/components/login-01.tsx` | — | 5 / 0 / 0 |
+| `@fancy/marquee-along-svg-path` | `src/components/fancy/blocks/marquee-along-svg-path.tsx` | `motion` | 0 / 0 / 0 |
+
+**The palette test passed: zero hardcoded colour in all five.** Each renders in the JHAI palette with no edit to the component, because the semantic tokens resolve through `--jh-*` exactly as RESEARCH.md C.1 predicted.
+
+**Three hazards found, none fatal:**
+
+1. **`@magicui/marquee` rewrites `globals.css`** — prepends `@custom-variant dark (&:is(.dark *));` *above the file header* and appends marquee keyframes into the theme block. In a 4,450-line hand-authored stylesheet with its own `.dark` handling that is a real collision risk. **Diff `globals.css` after any Magic UI install.**
+2. **Blocks prompt to overwrite existing primitives.** `@tailark-oss/veil-pricing-1` and `@blocks-so/login-01` both asked to overwrite `button.tsx` (plus `input`, `label`, `separator`). **`--yes` does not cover this prompt** — it blocks on stdin. Decline; the block installs correctly against the existing JHAI primitives. Pipe `yes n` for non-interactive runs.
+3. **A stray `cn` npm package** was installed into a project that already has `src/lib/utils.ts`. No item declares it directly.
+
+### Task 1.5 — Search the twelve curation needs **[DONE — raw returns handed back, nothing written]**
+
+Ran as CLI `search` (the same engine the MCP tools wrap) plus a direct grep of all 789 index entries, which is more reliable than the fuzzy search. Results are in the report, not written to `CURATION.json` — those calls are Justin's with his copilot.
+
+**Three E.1 answers were wrong** and are corrected in RESEARCH.md: count-up stats, drag rail, and hero-with-video all have real registry options. **Masonry is confirmed as the only genuine gap** — zero hits for `masonry`, `mosaic`, `pinterest`, or `waterfall` across 789 items.
+
+**Also worth knowing: the fuzzy search is weak.** `"count up stats"` returned `striped-pattern`; `"tabs"` returned an SVG logo. Single-word queries work far better than phrases, and grepping the index beats both.
+
+### Task 1.6 — Commit **[DONE]**
+
+**What could go wrong:** a registry URL rotates. The mitigation is 1.1 — one file to fix. Second risk: an item installs but paints wrong because JHAI's `--jh-*` values do not cover a token the component expects. That did not happen in five of five installs.
 
 ---
 
@@ -167,15 +194,15 @@ Where the answer is a library, record the library (Embla for drag rails). Where 
 **Runs:** 1–2 days across sessions.
 **Deliverable:** `npx shadcn add jhai/registry/stat-tile` works in any project.
 
-### Task 3.1 — Scaffold
+### Task 3.1 — Scaffold **[AMENDED — two-directory layout]**
 
-`git init`, `package.json`, root `registry.json` using `include` (May 2026 feature) so each category owns its own manifest:
+`git init` is already done. Add `package.json` and the source-side root `registry.json`, using `include` (May 2026 feature) so each category owns its own manifest:
 
 ```json
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "jhai",
-  "homepage": "https://registry.justinharris.ai",
+  "homepage": "https://github.com/JustinHarrisAI/jhai-registry",
   "include": [
     "registry/core/registry.json",
     "registry/sections/registry.json",
@@ -183,6 +210,15 @@ Where the answer is a library, record the library (Embla for drag rails). Where 
   ]
 }
 ```
+
+**[AMENDED] The repo needs two directories, not one**, because the namespace is a raw-file URL (Task 0.2):
+
+| Directory | Contents | Role |
+|---|---|---|
+| `registry/` | component source + per-category `registry.json` | authored by hand |
+| `r/` | flattened `{item}.json` per item, **plus `r/registry.json`** | emitted by `shadcn build`, committed |
+
+`r/registry.json` is not optional. Search and list resolve the catalog by substituting `{name}` with `registry`; without that file `add` works and `search` silently returns nothing. Run `shadcn registry validate` on `registry/` before every build.
 
 ### Task 3.2 — Theme base and the alias layer
 
@@ -225,16 +261,38 @@ Every item derived from third-party MIT source fills `meta.upstream`, `meta.upst
 
 **Nothing derived from ReactBits or shadcnblocks may enter this registry, at any tier, ever.** ReactBits' Commons Clause bars redistribution "alone, in a bundle, or as a ported version"; shadcnblocks bars building a UI library from its components. Both stay pointer-only entries in `docs/CURATION.json`. This is a legal constraint, not a preference — see RESEARCH.md section B.2 for the quoted text.
 
-### Task 3.8 — Publish, tag, and verify from outside
+### Task 3.8 — Publish, tag, and verify from outside **[AMENDED — raw namespace, not item address]**
 
-Push. Tag `v1.0.0`. Then, from an **unrelated** project, run both:
+Push `r/`. Tag `v1.0.0`. Add the namespace to `registry/components.registries.json` and to the pilot project:
 
-```bash
-npx shadcn@latest add jhai/registry/stat-tile
-npx shadcn@latest add jhai/registry/stat-tile#v1.0.0
+```json
+{ "registries": { "@jhai": "https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/r/{name}.json" } }
 ```
 
-Unpinned must resolve to the default branch; pinned must resolve to the tag. If `@jhai` is private, also verify `gh auth login` locally and a `GH_TOKEN` fine-grained PAT (Contents: Read-only) in CI.
+Then, from an **unrelated** project, verify all three verbs — `add` alone is not proof, because search needs the index:
+
+```bash
+pnpm dlx shadcn@4.21.0 add @jhai/stat-tile
+pnpm dlx shadcn@4.21.0 search @jhai -q "stat"
+pnpm dlx shadcn@4.21.0 list @jhai
+```
+
+Pinning swaps the ref in the URL rather than appending `#tag`:
+
+```
+https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/v1.0.0/r/{name}.json
+```
+
+**If `@jhai` is private**, raw.githubusercontent will not serve it. Switch to the Contents API form and verify it — this is the one piece of the hosting design still UNVERIFIED:
+
+```json
+{ "registries": { "@jhai": {
+    "url": "https://api.github.com/repos/JustinHarrisAI/jhai-registry/contents/r/{name}.json",
+    "headers": { "Authorization": "Bearer ${GH_TOKEN}", "Accept": "application/vnd.github.raw" }
+} } }
+```
+
+Test this **at the start of Phase 3, not the end.** If it fails, the fallback is making `@jhai` public — which is question 1, and cheap to act on early, expensive to discover late.
 
 **What could go wrong in Phase 3, in order of likelihood:**
 
@@ -245,17 +303,21 @@ Unpinned must resolve to the default branch; pinned must resolve to the tag. If 
 
 ---
 
-## Phase 4 — Bootstrap (Layer 0, the ritual)
+## Phase 4 — Bootstrap (Layer 0, the ritual) **[AMENDED — split into 4a and 4b]**
 
-**Depends on:** Phases 1 and 3.
-**Runs:** half a session.
-**Deliverable:** `/jhai-project-init` — one invocation arms a new project with every registry plus `@jhai`.
+**The split:** the registries-merge half depends only on Phase 1 and ships now. Waiting for Phase 3 would leave every new spec site started in the meantime doing the scavenger hunt by hand, for no reason — the five third-party namespaces are already verified and live.
 
-### Task 4.1 — Author the skill
+### Phase 4a — the registries merge **[ships with Phase 1, depends on Phase 1 only]**
 
-`~/.claude/skills/jhai-project-init/SKILL.md`. It must **merge** into an existing `components.json` rather than overwrite — spec sites arrive in varying states of initialization. It reads the canonical fragment from Task 1.1 so registry URLs live in exactly one place.
+**Runs:** half a session. **Deliverable:** `/jhai-project-init` arms any new project with the five verified namespaces and a correctly pinned MCP server.
 
-### Task 4.2 — Commit to `dot-claude` with an explicit pathspec
+**Task 4a.1 — Author the skill.** `~/.claude/skills/jhai-project-init/SKILL.md`. Three requirements:
+
+1. **Merge, never overwrite** `components.json` — spec sites arrive in varying states of initialization.
+2. Read the canonical block from `jhai-registry/registry/components.registries.json` so registry URLs live in exactly one place.
+3. **Rewrite `.mcp.json` after `mcp init`.** The CLI emits `{"command":"npx","args":["shadcn@latest","mcp"]}`; the skill must replace it with `{"command":"pnpm","args":["dlx","shadcn@4.21.0","mcp"]}`. Unpinned is the failure mode Correction 3 exists to prevent, and `npx` cannot pin on this machine at all.
+
+**Task 4a.2 — Commit to `dot-claude` with an explicit pathspec.**
 
 ```bash
 cd ~/.claude && git add -- skills/jhai-project-init && git commit && git push
@@ -263,11 +325,13 @@ cd ~/.claude && git add -- skills/jhai-project-init && git commit && git push
 
 The explicit pathspec matters: `~/.claude` carries roughly 1,100 unrelated pending deletions, and a bare `git add -A` sweeps them in.
 
-### Task 4.3 — Time it on a throwaway
+**Task 4a.3 — Time it on a throwaway.** Target: under two minutes from empty Next.js app to working MCP-backed component search. Slower than that and it will not get used on spec sites, which is the whole constraint.
 
-Target: under two minutes from empty Next.js app to working MCP-backed component search. If it is slower than that, it will not get used on spec sites, which is the whole constraint.
+### Phase 4b — add `@jhai` **[depends on Phase 3]**
 
-**What could go wrong:** the skill overwrites a project's existing `components.json` customizations. Mitigation is 4.1's merge requirement plus a dry-run flag.
+One line added to the canonical fragment once `r/` exists and Task 3.8 passes. The skill itself does not change — that is the point of keeping the URL list in one file.
+
+**What could go wrong:** the skill clobbers a project's existing `components.json` customizations. Mitigation is 4a.1's merge requirement plus a dry-run flag. Second risk: the pinned version in the skill goes stale. Bump it deliberately, in one place, and let one spec site prove it before the rest follow.
 
 ---
 
@@ -284,15 +348,16 @@ Target: under two minutes from empty Next.js app to working MCP-backed component
 
 ## Rough timeline
 
-| Phase | Effort | Blocks |
-|---|---|---|
-| 0 — Decisions and spikes | ~1 session | everything |
-| 1 — Sourcing | 1–2 hours | Phase 2 |
-| 2 — Curation | 2–3 hours, then continuous | Phase 3 backlog |
-| 3 — Publication | 1–2 days | Phase 4 |
-| 4 — Bootstrap | half a session | — |
-| 5 — Operate | continuous | — |
+| Phase | Effort | Status | Blocks |
+|---|---|---|---|
+| 0 — Decisions and spikes | ~1 session | **DONE** (0.3 open) | — |
+| 1 — Sourcing | 1–2 hours | **DONE** | Phase 2 |
+| 4a — Bootstrap, registries half | half a session | next | — |
+| 2 — Curation | 2–3 hours, then continuous | gated on Q5, Q6 | Phase 3 backlog |
+| 3 — Publication | 1–2 days | gated on Q1, Q3, Q6 | Phase 4b |
+| 4b — Bootstrap, `@jhai` half | minutes | gated on Phase 3 | — |
+| 5 — Operate | continuous | — | — |
 
-**Layer 1 delivers value on day one.** Layers 2 and 3 compound. If time runs short, Phase 1 alone already removes the scavenger hunt.
+**Layer 1 delivered value on day one and is live.** Layers 2 and 3 compound. 4a is the only unblocked work left and should ship before the next spec site starts.
 
 **Total annual cost of the recommended path: $0.**

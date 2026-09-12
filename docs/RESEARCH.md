@@ -1,7 +1,13 @@
 # JHAI Component Sourcing — Research
 
-**Status:** Research and planning only. Nothing has been installed, configured, or built.
+**Status:** Phases 0 and 1 executed 2026-09-12. Phases 2 and 3 not started.
 **Date of research:** 2026-09-12. Every price and license claim below was fetched on that date.
+
+> **Amended 2026-09-12 after Phase 0 + 1 execution.** Findings that changed are marked
+> **[AMENDED]** inline and summarized in section 0.0 below. Where the original research was
+> wrong, the original claim is left visible with the correction beside it rather than
+> silently overwritten.
+
 **Repo:** `~/Code/jhai-registry/` — this repo becomes the `@jhai` shadcn registry in Phase 3. Research lives in `docs/`; registry JSON and component source will live in `registry/`.
 
 ## How to read this document
@@ -21,6 +27,90 @@ Three layers are in scope:
 - **UNVERIFIED** — could not be confirmed by fetch. The reason is stated. Do not treat these as working.
 
 No URL below was inferred from another library's pattern. Where a shape could not be confirmed, it is marked UNVERIFIED rather than guessed.
+
+---
+
+## 0.0 Phase 0 + 1 execution log — what changed [AMENDED]
+
+Executed 2026-09-12 with `shadcn@4.21.0`. Ten findings, in order of how much they change the plan.
+
+**1. Hosting for `@jhai` is settled, and it is not a GitHub item address.** The shadcn skill spec ([`skills/shadcn/mcp.md`](https://github.com/shadcn-ui/ui/blob/main/skills/shadcn/mcp.md)) states that in the `components.json` `registries` map, *"Names must start with `@`"* and *"URLs must contain `{name}`"*. `"@jhai": "jhai/registry"` satisfies neither. The working form, **verified end to end**, is a raw-file namespace over the same repo:
+
+```json
+{ "registries": { "@jhai": "https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/r/{name}.json" } }
+```
+
+Proven against a real public registry (`ephraimduncan/blocks`, whose repo carries `public/r/*.json`): **`add`, `search`, and `list` all work** behind a raw-file namespace. Same repo, same git tags for versioning, no build step, no domain, $0.
+
+**2. The index mechanism.** Search and list resolve the catalog by substituting `{name}` with `registry` — i.e. `…/r/registry.json`, which must be a valid `registry.json` carrying `{name, homepage, items[]}`. **`@jhai` therefore needs both a flattened `r/{item}.json` per item and an `r/registry.json` index.** Without the index, `add` works but `search` returns nothing.
+
+**3. `owner/repo` registries are not dead — just not via `components.json`.** The same spec says public GitHub repos with a root `registry.json` *"can also be used directly as `owner/repo` registry sources … they do not need `components.json` configuration"*, and the MCP `search`/`list` tools accept them in their `registries` argument. So a GitHub-address registry **is** enumerable when named explicitly, but it will never appear in the default "search everything configured" sweep, which is the behavior we actually want. The raw-file namespace is still the right call.
+
+**4. Motion Primitives and Cult UI FAIL with the real CLI.** Task 0.1 run in a throwaway project:
+
+```
+pnpm dlx shadcn@4 add "https://motion-primitives.com/c/in-view.json"
+  → Failed to fetch from registry (429): https://motion-primitives.com/c/in-view.json
+
+pnpm dlx shadcn@4 add "https://www.cult-ui.com/r/texture-card.json"
+  → Failed to fetch from registry (429): https://www.cult-ui.com/r/texture-card.json
+```
+
+The CLI hits the same Vercel Security Checkpoint as automated fetch. **Neither is eligible for the registries block.** Both remain MIT and installable by copying from their docs pages in a browser. Caveat: this is one machine on one network; a different IP may not be challenged.
+
+**5. There is an official community registry index, and the original research missed it.** [`https://ui.shadcn.com/r/registries.json`](https://ui.shadcn.com/r/registries.json) — **344 registries**, each with a canonical namespace, URL template, and a health score. Selected entries as of 2026-09-12:
+
+| Namespace | Canonical URL | Health |
+|---|---|---|
+| `@magicui` | `https://magicui.design/r/{name}` | healthy 98.1 |
+| `@ui-layouts` | `https://ui-layouts.com/r/{name}.json` | healthy 98.1 |
+| `@intentui` | `https://intentui.com/r/{name}` | healthy 98.2 |
+| `@react-bits` | `https://reactbits.dev/r/{name}.json` | healthy 98.2 |
+| `@8bitcn` | `https://www.8bitcn.com/r/{name}.json` | healthy 97.9 |
+| `@hextaui` | `https://hextaui.com/r/{name}.json` | healthy 97.9 |
+| `@smoothui` | `https://smoothui.dev/r/{name}.json` | healthy 95.5 |
+| `@kibo-ui` | `https://www.kibo-ui.com/r/{name}.json` | healthy 95.0 |
+| `@retroui` | `https://retroui.dev/r/{name}.json` | healthy 95.0 |
+| `@kokonutui` | `https://kokonutui.com/r/{name}.json` | healthy 95.0 |
+| `@blocks-so` | `https://blocks.so/r/{name}.json` | healthy 92.7 |
+| `@shadcn-studio` | `https://shadcnstudio.com/r/{style}/{name}.json` | healthy 92.5 |
+| `@aceternity` | `https://ui.aceternity.com/registry/{name}.json` | **degraded** 88.9 |
+| `@shadcn-space` | `https://shadcnspace.com/r/{name}.json` | **degraded** 87.7 |
+| `@cult-ui` | `https://cult-ui.com/r/{name}.json` | **observing** 84.8 |
+| `@motion-primitives` | `https://motion-primitives.com/c/{name}.json` | **observing** 84.8 |
+| `@tailark` | `https://tailark.com/r/{name}.json` | **degraded** 84.7 |
+| `@shadcnblocks` | `https://shadcnblocks.com/r/{name}.json` | **degraded** 81.1 |
+
+Two things this confirms independently: the Motion Primitives and Cult UI URL shapes in section A.2 were right (both are listed), and both are flagged `observing` rather than `healthy` — the index's own monitoring is seeing the same failures. **Absent from the index: `@tailark-oss`, `@fancy`, `@seraui`, `@relume`, `@21st`.** Absence is not a quality signal; `@tailark-oss` and `@fancy` are both verified working.
+
+**6. Three curation answers in section E.1 were wrong.** Grepping all 789 items across the five wired indexes:
+
+| Need | E.1 said | Reality |
+|---|---|---|
+| Count-up stats | "build it, nothing better exists" | **Wrong.** `@magicui/number-ticker` and `@fancy/basic-number-ticker` both exist |
+| Drag rail | "Embla directly, no component" | **Wrong.** `@fancy/drag-elements`, `@fancy/box-carousel`, `@fancy/simple-carousel`, `@kibo-ui/deck`, `@tailark-oss/motion-primitives-infinite-slider` |
+| Hero with video | "build it, nothing handles it well" | **Wrong.** `@tailark-oss/dusk-hero-section-5-video`, `@tailark-oss/dusk-landing-1-hero-video`, `@tailark-oss/dusk-landing-5-hero-video`, `@magicui/hero-video-dialog` |
+
+**7. Masonry is confirmed as the one real gap.** Zero hits for `masonry`, `mosaic`, `pinterest`, or `waterfall` across all 789 items, and three separate fuzzy-search phrasings returned nothing relevant. Testimonial *content* is well covered (11 Tailark OSS blocks) — it is the masonry *layout* that does not exist. CSS `columns-*` or `react-masonry-css` stands.
+
+**8. The CLI must be pinned through `pnpm dlx`, not `npx`.** Current latest is **4.21.0**. On this machine `npx` cannot resolve a pinned spec at all:
+
+```
+npx -y shadcn@4.21.0 info   → Unknown command: "shadcn@4.21.0"
+npx shadcn@4 info           → npm error Missing script: "shadcn@4"
+npx shadcn@latest info      → works (installs 4.21.0)
+pnpm dlx shadcn@4.21.0 info → works
+```
+
+Only `@latest` works under `npx` here, which is exactly the unpinned behavior Correction 3 exists to prevent. **Every JHAI invocation uses `pnpm dlx shadcn@4.21.0`**, including `.mcp.json`, which `shadcn mcp init` otherwise writes as `npx shadcn@latest mcp`.
+
+**9. Install-time hazards found in Task 1.4.** All five test installs landed with **zero hardcoded colour**, so the palette test passed — each renders in the JHAI palette with no edit to the component. But:
+
+- **`@magicui/marquee` rewrites `globals.css`.** It prepends `@custom-variant dark (&:is(.dark *));` *above the file header* and appends marquee keyframes into the theme block. In a 4,450-line hand-authored stylesheet that already has its own `.dark` handling, that is a real collision risk. Diff `globals.css` after any Magic UI install.
+- **Blocks prompt to overwrite existing primitives.** `@tailark-oss/veil-pricing-1` and `@blocks-so/login-01` both asked to overwrite `button.tsx` (and `input`, `label`, `separator`). `--yes` does **not** cover this prompt. Decline — the block installs correctly against the existing JHAI primitives.
+- **A stray `cn` npm package** was installed into a project that already has `src/lib/utils.ts`. No item declares it directly.
+
+**10. 21st.dev's logo and theme retrieval are free, and the logo source is upstream-free.** See A.3.
 
 ---
 
@@ -62,6 +152,12 @@ which writes to `.mcp.json`:
 { "mcpServers": { "shadcn": { "command": "npx", "args": ["shadcn@latest", "mcp"] } } }
 ```
 
+**[AMENDED] Do not ship that file as written.** `shadcn mcp init` emits the unpinned `npx` form above. On this machine `npx` cannot resolve a pinned spec at all (see 0.0 finding 8), so the only pinnable invocation is `pnpm dlx`. Every JHAI project uses:
+
+```json
+{ "mcpServers": { "shadcn": { "command": "pnpm", "args": ["dlx", "shadcn@4.21.0", "mcp"] } } }
+```
+
 The MCP server **reads its registry list from `components.json`**. It does not hold its own config. That is the single most important fact in this document: **wiring registries into `components.json` is what arms the MCP server**, so there is exactly one file to get right per project, and the bootstrap in section D is really just "put the right `components.json` in place."
 
 The server exposes browse, search, install, and multi-registry access across namespaces.
@@ -80,6 +176,8 @@ pnpm dlx shadcn@latest add acme/toolkit/project-conventions#c0ffee2  # full SHA
 - Limits: 5 MiB per source file, no GitHub Enterprise hosts, avoid symlinks.
 
 This is the fact that decides section C. **Version pinning and private hosting are both free and built in, via GitHub, with no server to run.**
+
+**[AMENDED] — but `owner/repo/item` is a CLI address, not a `components.json` entry.** Namespace URLs must contain `{name}` and names must start with `@`, so `"@jhai": "jhai/registry"` is invalid and the MCP server will not sweep it. `@jhai` uses a **raw-file namespace over the same repo** instead, which keeps every benefit above and works with search. See 0.0 findings 1–3 and section C.3.
 
 **Schema** — `registry.json` ([docs](https://ui.shadcn.com/docs/registry/registry-json)) requires `$schema`, `name`, `homepage`, and at least one of `items` or `include`. `registry-item.json` ([docs](https://ui.shadcn.com/docs/registry/registry-item-json)) requires `$schema`, `name`, `type`. Type enum: `registry:base`, `registry:block`, `registry:component`, `registry:font`, `registry:lib`, `registry:hook`, `registry:ui`, `registry:page`, `registry:file`, `registry:style`, `registry:theme`, `registry:item`. Full field list is in section C.
 
@@ -153,13 +251,13 @@ The counter-intuitive result, and the one that answers the explicit question abo
 |---|---|---|---|---|---|---|
 | **Aceternity UI** | `https://ui.aceternity.com/registry/{name}.json` | **VERIFIED (free tier)** — `bento-grid`, `infinite-moving-cards`, `text-generate-effect`, `sparkles`. **GATED (pro)** — non-free names return `401 {"error":"Unauthorized - Please provide a valid API token or sign in"}` | Free tier free. Annual **$169/yr** (list $249), Lifetime **$199** one-time (list $299), both **1 seat**; Team **$1,590** one-time for 10 ([pricing](https://ui.aceternity.com/pricing)) | Free no; Pro yes | Component-level, decorative/motion-heavy | **Poor.** 8 hardcoded palette utilities plus 4 hex literals across two free components |
 | **Magic UI** | `https://magicui.design/r/{name}.json` | **VERIFIED** — `marquee`, `animated-beam` | **Free**, MIT (`magicuidesign/magicui`), 150+ components. Magic UI **Pro $199 one-time** for sections/templates; single template $49 | No (free) | Component-level, motion and text effects | **Good.** `marquee` ships a `cssVars` block, which is the correct pattern. `animated-beam` carries 2 hex (gradient stops — legitimate, but check per client) |
-| **Motion Primitives** | `https://motion-primitives.com/c/{name}.json` | **UNVERIFIED BY FETCH.** Every attempt (curl and server-side fetch, with and without a browser UA) returned `429` with `<title>Vercel Security Checkpoint</title>` — bot protection, not a missing endpoint. The shape is documented on their own docs pages (e.g. `npx shadcn add "https://motion-primitives.com/c/in-view.json"`) and appears in their [issue #112](https://github.com/ibelick/motion-primitives/issues/112). **The shadcn CLI will very likely pass where automation did not — confirm by running one install before trusting it.** | **Free**, MIT (`ibelick/motion-primitives`) | No | Component-level, motion primitives | Not measured (blocked) |
+| **Motion Primitives** | `https://motion-primitives.com/c/{name}.json` | **[AMENDED] FAILED — URL shape correct, endpoint unreachable.** The shape is confirmed twice over: their own docs, and the official community index, which lists `@motion-primitives` at exactly this template. But Task 0.1 ran the real CLI and it failed the same way automation did: `Failed to fetch from registry (429)`. The index flags it `observing`, not `healthy`, so the monitoring sees it too. **Not eligible for the registries block.** Still MIT and copyable from their docs in a browser. | **Free**, MIT (`ibelick/motion-primitives`) | No | Component-level, motion primitives | Not measured (blocked) |
 | **UI-Layouts** | see A.1 | | | | | |
 | **Fancy Components** | `https://www.fancycomponents.dev/r/{name}.json` | **VERIFIED** — `marquee-along-svg-path` | **Free**, MIT (`danielpetho/fancy`) | No | Component-level, physics and text experiments | **Excellent for its class.** Zero color of any kind — it manipulates geometry and type, not paint |
 | **Align UI** | **None found.** `alignui.com/r/*` and `www.alignui.com/r/*` return `404` HTML; no docs route found at `/docs/getting-started/installation` (`404`) | **UNVERIFIED — likely no public shadcn registry.** Distributed as a purchased code library, not a CLI registry | Base components **MIT and free**; AlignUI Code Library **$299.99–$399.99** seat-tiered, Figma file **$119.99–$349.99**, bundle **$339.99–$599.99** (Lemon Squeezy listings) | Yes, purchase | Design-system-first, dashboard/SaaS | Not assessable without access |
 | **ReactBits** | `https://reactbits.dev/r/{Name}-{TS\|JS}-{CSS\|TW}.json` — e.g. `SplitText-TS-CSS` | **VERIFIED** — `SplitText-TS-CSS`. Note the unusual naming: PascalCase component, language suffix, styling suffix. `Marquee-TS-CSS` does **not** exist (returns the SPA shell at `200`, which is a trap — always parse the body, never trust the status code here) | Free to use | No | Component-level, animation showcase | Clean source, but see section B — **the license, not the styling, is the problem** |
 | **Kibo UI** | see A.1 | | | | | |
-| **Cult UI** | `https://www.cult-ui.com/r/{name}.json` — **UNVERIFIED**. Same Vercel Security Checkpoint `429` as Motion Primitives. What *is* confirmed: the repo is `nolly-studio/cult-ui`, **MIT**, and `apps/www/registry.json` exists with items named `text-animate` and similar, homepage `https://cult-ui.com` | **UNVERIFIED shape** | **Free**, MIT | No | Component-level, texture/depth-heavy | Not measured (blocked) |
+| **Cult UI** | `https://cult-ui.com/r/{name}.json` | **[AMENDED] FAILED — same as Motion Primitives.** Shape now confirmed by the official community index (`@cult-ui`, flagged `observing`), and the repo `nolly-studio/cult-ui` is MIT with `apps/www/registry.json` carrying `text-animate` and similar. But the real CLI returned `Failed to fetch from registry (429)`. **Not eligible for the registries block.** | **Free**, MIT | No | Component-level, texture/depth-heavy | Not measured (blocked) |
 | **Sera UI** | `https://seraui.com/registry/{name}.json` — note `/registry/`, **not** `/r/` | **VERIFIED** — `marquee`, `accordion` | **Free**, MIT (`seraui/seraui`) | No | Component-level | **Worst in the set.** 70 hardcoded palette utilities plus 2 hex in a single accordion. Every client restyle is a rewrite |
 | **8bitcn UI** | `https://www.8bitcn.com/r/{name}.json` | **VERIFIED** — `button`, `dialog` | **Free**, MIT | No | Full retro theme over shadcn primitives; 121 registry items | **Excellent.** See A.0 |
 | **Retro UI** | `https://retroui.dev/r/{name}.json` | **VERIFIED** — `accordion`. (`button.json` returned `301`; item names vary — read their docs rather than guessing) | **Free**, **BSD-3-Clause** (`Dksie09/retroui`) — not MIT; the 3-clause notice must be preserved on redistribution | No | Neobrutalist theme | **Good.** 9 semantic tokens, zero hardcoded color, 1 `var()` |
@@ -171,6 +269,40 @@ The counter-intuitive result, and the one that answers the explicit question abo
 - **Registry URL:** `https://21st.dev/r/{author}/{component}.json` — **GATED**. `21st.dev/r/serafim/marquee.json` returned `403 {"error":"Authentication required","reason":"authentication_required"}`. Note the two-segment `{author}/{name}` shape, which differs from every other library here.
 - **Cost** ([pricing](https://21st.dev/pricing)): Free tier includes unlimited marketplace browsing, component installation, template downloads, SVG logo search, and **component code retrieval via MCP**, with no AI credits. Builder **$6/mo billed yearly**. Builder + AI **$15/mo billed yearly** (500–2,000 monthly AI credits, +100 for $5). Team **$7.50/seat/mo billed yearly**, 2–50 seats.
 - **Assessment:** the existing connection already covers the discovery job. The paid tiers buy AI generation, not access. Treat the current connection as the paid slot already spent and do not extend it.
+
+#### A.3.1 [AMENDED] Logo search and theme retrieval — both free, and better than credited
+
+The original assessment credited 21st.dev only for browse and install. Two capabilities were missed, both verified by calling the tools directly on 2026-09-12.
+
+**Account state.** `get_usage` returns `{"tier":"paid","aiGenerationEnabled":false}`. So the connection carries **paid component access but no AI generation**. That is the correct shape — it means nothing further needs buying.
+
+**Logo search — free, unlimited, and upstream-free.** The tool's own description states: *"FREE, no retrieval limit."* A live call for `vercel` returned title, category, `svgUrl`, `darkSvgUrl` (a separate dark-mode variant), and `websiteUrl`.
+
+**The material finding is where those SVGs come from: [svgl.app](https://svgl.app), which is MIT-licensed** (`pheralb/svgl`) **and has a public keyless API.** Verified:
+
+```
+https://svgl.app/library/vercel.svg        → 200, raw SVG
+https://api.svgl.app?search=stripe         → 200, JSON with route + wordmark variants
+```
+
+So client-logo walls need neither a 21st.dev account nor any paid library — hit svgl.app directly, under MIT, with wordmark and dark variants included. 21st.dev is a convenience wrapper over a free source.
+
+**Theme retrieval — free, and it is a working template for `@jhai/theme-{client}`.** `get_theme` is documented *"Free."* A live call returned a **complete, drop-in token set**: a full `:root` block, a full `.dark` block, and an `@theme inline` alias block — every shadcn semantic token plus `--chart-1..5`, the full `--sidebar-*` set, `--font-sans/serif/mono`, the six `--shadow-*` primitives, `--radius`, `--letter-spacing`, and `--spacing`.
+
+That is directly load-bearing for section C.6. **The shape of a `registry:theme` item does not need designing — this is a reference implementation, free, retrievable on demand.** Note the search index is thin for anything specific (`type: "theme"` with a descriptive query returned zero results; a bare `"theme"` query sorted by popular returned results). Browse rather than search.
+
+**Net:** 21st.dev's free tier is worth more than section A.3 credited — but it *strengthens* the "do not extend the subscription" call rather than weakening it, and the logo capability is fully replaceable by svgl.app directly.
+
+### A.4 [AMENDED] Relume — assessed, and it is not a registry
+
+Added at review request. Relume is exposed as an MCP connector on the chat surface, which is why it was not probed in the original pass.
+
+- **Registry URL: NONE.** Four probes — `www.relume.io/r/registry.json`, `www.relume.io/r/hero-1.json`, `relume.io/registry.json`, `www.relume.ai/r/registry.json` — all returned `404` with a Webflow-served HTML page. Relume is **absent from the 344-entry community registry index**. It publishes no shadcn-compatible registry. It cannot be added to the registries block, so it is out of scope for Layer 1 regardless of its other merits.
+- **Distribution model:** copy-paste from component pages, plus two npm packages, `@relume_io/relume-ui` (v1.3.1) and `@relume_io/relume-tailwind` (v1.3.0), consumed via a Tailwind preset rather than a CLI.
+- **License: the decisive fact.** The npm registry metadata for `@relume_io/relume-ui` carries **no `license` field at all** (`license: None`). An npm package with no declared license is all-rights-reserved by default. The site carries "© 2026 Relume. All rights reserved." and links a separate Licensing Agreement. **Redistribution through `@jhai` is barred**, and unlike shadcnblocks — which at least grants unlimited client end products in writing — there is no published grant to rely on here at all. `www.relume.io/licensing-agreement` and its `.ai` redirect both returned `404`, so **the actual license text could not be retrieved. Treat the terms as UNVERIFIED and assume the most restrictive reading.**
+- **Pricing** ([relume.ai/pricing](https://www.relume.ai/pricing)): Build with Relume — Free (30 components), Pro from **$14/mo**. Site Builder — Free, Starter from **$18/mo**, Pro from **$40/mo**, Team from **$36/mo** (minimum 3 users), Enterprise custom. **No lifetime option exists.** The React library is bundled into the subscription, not sold separately.
+- **Restylability: not assessed.** The A.0 method needs a fetchable registry item, and there is none.
+- **Verdict: SKIP.** It fails on all three axes that matter here. No registry, so it cannot join Layer 1. No license grant, so it cannot enter Layer 3. Subscription-only with no lifetime, against a plan whose target is $0/year. It changes neither the starter set nor the theming design. Added to the skip list in section G.
 
 ---
 
@@ -224,6 +356,8 @@ The real volume hazards are two, and neither is price:
 ### C.1 What was found on disk
 
 Before designing anything: the current state of the JHAI codebase was inspected on 2026-09-12.
+
+> **[AMENDED] Seed target confirmed — this is settled, do not reopen.** `@jhai` seeds from **`~/Code/jhai-new-website/src/components/v2/`**. The accent is **`#87a6a6` (Bjarmi)** with **Schibsted Grotesk**. The `DESIGN-SYSTEM.md` in `~/Code/justinharris-ai-website/` — `#7F9590`, Helvetica Now, IBM Plex Sans — is **stale** and should not be used as a palette or type reference for any registry work.
 
 **`~/Code/jhai-new-website/`** — 79 `.tsx` files under `src/components/v2/`, ~493 KB, organized as `core/`, `cards/`, `sections/`, `page/`, `interior/`, `chrome/`, `motion/`, `templates/`. (The working figure of 87 likely includes files outside that tree; the v2 tree itself is 79.)
 
@@ -349,7 +483,31 @@ Why this wins and it is not close:
 - The public/private decision becomes per-repo rather than per-architecture, and can be changed later without touching a single consuming project's `components.json` — the address stays `owner/repo/item`.
 - It removes the Vercel Hobby licensing question entirely. Hobby is non-commercial; client sites are commercial; a registry serving client work on Hobby is the kind of quiet violation that only surfaces at a bad moment.
 
-**Caveat to check before committing:** the shadcn MCP server's discovery is documented around `components.json` `registries` entries, which take a **URL template**. GitHub item addresses (`owner/repo/item`) are a CLI address form. Whether an MCP-driven search enumerates a GitHub-hosted registry as cleanly as a URL-template one was **not verified** and is a Phase 2 spike, not an assumption. If it does not, the answer is a Vercel or GitHub Pages static mirror serving `https://registry.justinharris.ai/r/{name}.json` purely for discovery, with GitHub remaining the versioned source of truth. GitHub Pages is free and carries no commercial-use restriction, which makes it the better mirror than Vercel Hobby.
+**[AMENDED] The caveat above is resolved, and the answer is better than the mirror.** The concern was real: `components.json` namespace names must start with `@` and URLs must contain `{name}`, so `"@jhai": "jhai/registry"` is invalid and the MCP server cannot sweep a GitHub item address. But **no mirror is needed**. Serve flattened item JSON from an `r/` directory in this same repo and point the namespace at raw GitHub:
+
+```json
+{ "registries": { "@jhai": "https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/r/{name}.json" } }
+```
+
+Verified end to end against `ephraimduncan/blocks` (which already serves `public/r/*.json` from its repo): **`add`, `search`, and `list` all work** behind a raw-file namespace. Same repo, same git tags, no build step, no domain, no Vercel, no GitHub Pages, **$0**.
+
+Two requirements follow:
+
+1. **The repo must carry `r/registry.json`** — a valid `registry.json` with `{name, homepage, items[]}`. `search` and `list` resolve the catalog by substituting `{name}` with `registry`. Without it, `add` works and `search` silently returns nothing.
+2. **Versioning swaps the ref in the URL**, not a `#tag` suffix: `…/jhai-registry/v1.2.0/r/{name}.json`. Git tags still do the work; the address form differs from the `owner/repo/item#tag` documented in section 0.
+
+**Private variant:** swap the host for the GitHub Contents API and add a header, which the namespace format supports:
+
+```json
+{ "registries": { "@jhai": {
+    "url": "https://api.github.com/repos/JustinHarrisAI/jhai-registry/contents/r/{name}.json",
+    "headers": { "Authorization": "Bearer ${GH_TOKEN}", "Accept": "application/vnd.github.raw" }
+} } }
+```
+
+**UNVERIFIED:** the private Contents-API variant was not tested — only the public raw form was. Test it in Phase 3 before relying on it, and if it fails, the fallback is a public `@jhai` repo rather than a hosting rebuild.
+
+**Also note:** Registry Health (the monitoring behind the community index) does not monitor GitHub registries consumed through `owner/repo/item` addresses. A raw-file namespace is likewise unmonitored. Neither matters for a registry we own and can probe ourselves.
 
 ### C.4 Versioning
 
@@ -433,17 +591,20 @@ Why a skill and not the alternatives:
 The whole ritual, for a throwaway spec site:
 
 ```bash
-npx shadcn@latest init                          # if not already initialized
+pnpm dlx shadcn@4.21.0 init                      # if not already initialized
 # skill merges the registries block into components.json
-pnpm dlx shadcn@latest mcp init --client claude  # arms the MCP server
+pnpm dlx shadcn@4.21.0 mcp init --client claude  # arms the MCP server
+# then rewrite .mcp.json to the pinned pnpm dlx form — mcp init emits unpinned npx
 ```
 
-The `components.json` fragment the skill merges (the canonical copy lives in this repo, so there is exactly one place to update a URL):
+**[AMENDED] Pin the CLI, and use `pnpm dlx` to do it.** Current latest is **4.21.0**. `npx` on this machine cannot resolve a pinned spec (`npx -y shadcn@4.21.0` → `Unknown command`), so `pnpm dlx` is the only invocation that both works and pins. One breaking release must not be able to reach every spec site at once.
+
+The `components.json` fragment the skill merges — canonical copy at [`registry/components.registries.json`](../registry/components.registries.json), so there is exactly one place to update a URL:
 
 ```json
 {
   "registries": {
-    "@jhai":        "jhai/registry",
+    "@jhai":        "https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/r/{name}.json",
     "@tailark-oss": "https://oss.tailark.com/r/{name}",
     "@kibo-ui":     "https://www.kibo-ui.com/r/{name}.json",
     "@magicui":     "https://magicui.design/r/{name}.json",
@@ -453,9 +614,9 @@ The `components.json` fragment the skill merges (the canonical copy lives in thi
 }
 ```
 
-*(The `@jhai` entry's exact form depends on the C.3 GitHub-vs-mirror spike — a GitHub registry is addressed `owner/repo/item` at the CLI, and whether that belongs in the `registries` map as written above is one of the two things Phase 2 must confirm.)*
+**[AMENDED] The `@jhai` entry is now settled** (see C.3) — a raw-file namespace over this repo, not a GitHub item address, because namespace URLs must contain `{name}`. It is shown greyed here because the `r/` directory does not exist until Phase 3; **the five third-party entries ship now** and are already live in `jhai-new-website`.
 
-Env vars: **none required** for the recommended set. That is the point. The only env var in the whole design is `GH_TOKEN` in CI, and only if `@jhai` is private.
+Env vars: **none required** for the five third-party registries. That is the point. The only env var in the whole design is `GH_TOKEN`, and only if `@jhai` is private.
 
 Time cost per new project: one skill invocation plus one MCP init. That is fast enough for a spec site.
 
@@ -494,14 +655,14 @@ These are research findings, not decisions. Anything marked **PROPOSED** needs c
 | Need | Decision | Choice | Why |
 |---|---|---|---|
 | **Marquee** | registry-item | `@kibo-ui/marquee` | Verified, MIT, token-bound, behavior-first. Magic UI's `marquee` is the alternative and ships a proper `cssVars` block — either is defensible; Kibo wins on the rest of the library coming with it. |
-| **Count-up stats** | build → `@jhai/stat-tile` | in-house | `core/StatTile.tsx` already exists with zero hardcoded color. No third-party count-up in the assessed set is better than what is on disk. Animate with Motion's spring, not a dedicated count-up dependency. |
-| **Drag rail** | library | `embla-carousel-react` | See above. Record the library, not a component. |
-| **Masonry wall** | **PROPOSED** primitive | CSS `columns-*` for static, `react-masonry-css` only if ordered reflow is required | **No free registry item in this assessment covers a true masonry testimonial wall.** This is the largest genuine gap in the recommended set. CSS multi-column costs nothing and restyles perfectly; it just cannot do ordered left-to-right flow. |
+| **Count-up stats** | ~~build~~ **[AMENDED] registry-item** | `@magicui/number-ticker` or `@fancy/basic-number-ticker` | **The original "nothing better exists" was wrong** — both exist and were found by grepping the wired indexes. `core/StatTile.tsx` is still the shell; the ticker is the numeral inside it. Decide which, do not rebuild it. |
+| **Drag rail** | ~~library~~ **[AMENDED] registry-item or library** | `@fancy/drag-elements`, `@fancy/box-carousel`, `@fancy/simple-carousel`, `@kibo-ui/deck`, `@tailark-oss/motion-primitives-infinite-slider` — or still Embla | **The original "no component exists, use Embla" was wrong.** Five real options across three namespaces. Embla remains defensible for a production rail with a11y requirements; this is now a live choice, not a foregone one. |
+| **Masonry wall** | primitive — **[AMENDED] gap now confirmed, not just proposed** | CSS `columns-*` for static, `react-masonry-css` only if ordered reflow is required | **Confirmed by index grep across all 789 wired items:** zero hits for `masonry`, `mosaic`, `pinterest`, or `waterfall`, and three fuzzy-search phrasings returned nothing relevant. Testimonial *content* is well covered (11 Tailark OSS blocks); the masonry *layout* does not exist in the free set. CSS multi-column costs nothing and restyles perfectly; it just cannot do ordered left-to-right flow. |
 | **Accordion** | primitive | shadcn `accordion` | Core, free, perfectly tokenized. Retro UI's (9 tokens, 0 hardcoded) is the pick when a brief wants a neobrutalist look. **Do not use Sera UI's** — 70 hardcoded utilities. |
 | **Tabs** | primitive | shadcn `tabs` | Same reasoning. |
 | **Scroll reveal** | build → `@jhai/scroll-reveal` | in-house over Motion `whileInView` | A `ScrollReveal.tsx` already exists in the older site repo. This is 15 lines around a Motion primitive; a registry dependency for it is not worth the coupling. Motion Primitives' `in-view` is the alternative **if** its registry URL verifies (see A.2). |
 | **Text reveal** | registry-item | `@magicui/text-animate` family, or `@fancy/*` for the unusual ones | Magic UI for standard staggered reveals. Fancy Components for anything on a path or physics-driven — it scored zero color of any kind, so it restyles free. |
-| **Hero with video** | build | in-house | Nothing assessed handles a video hero well enough to be worth the dependency, and poster/preload/`prefers-reduced-motion` behavior is brand-specific. Compose from `@jhai/section-header` plus a plain `<video>`. |
+| **Hero with video** | ~~build~~ **[AMENDED] registry-item** | `@tailark-oss/dusk-hero-section-5-video`, `@tailark-oss/dusk-landing-1-hero-video`, `@tailark-oss/dusk-landing-5-hero-video`, `@magicui/hero-video-dialog` | **The original "nothing handles it well" was wrong** — four options, three of them in the token-pure Tailark OSS set. The brand-specific part (poster, preload, `prefers-reduced-motion`) is still ours to add, but the shell is not worth rebuilding. |
 | **Pricing table** | registry-item | `@tailark-oss/veil-pricing-1` (and siblings) | Verified, MIT, **8 semantic tokens and zero hardcoded color**. Best measured restylability of any pricing block found. |
 | **FAQ** | registry-item | `@tailark-oss/veil-faqs-1` (and siblings) | Same — 5 tokens, 0 hardcoded. `page/FAQItem.tsx` is the in-house alternative already on disk. |
 | **Form inputs** | primitive | shadcn `input`, `select`, `textarea`, `form` | Core. `@intentui/*` is the pick **only** where accessibility is a stated client requirement — it is built on `react-aria-components`, which is a second primitive stack and should be a deliberate choice, not a default. |
@@ -526,10 +687,10 @@ Plus `@shadcn` core, already present, and the existing 21st.dev MCP connection f
 
 State this plainly rather than discovering it mid-build:
 
-- **Masonry wall** — nothing free and good. CSS columns or `react-masonry-css`. The real gap.
-- **Video hero** — build it.
-- **Count-up numerals** — build it; `StatTile` is already there.
-- **Drag/swipe rails** — Embla directly, not a registry.
+- **Masonry wall** — nothing free and good. CSS columns or `react-masonry-css`. **[AMENDED] The only surviving gap**, now confirmed by grepping all 789 wired items rather than inferred.
+- ~~**Video hero** — build it.~~ **[AMENDED] covered** — four options, see E.1.
+- ~~**Count-up numerals** — build it.~~ **[AMENDED] covered** — `@magicui/number-ticker`, `@fancy/basic-number-ticker`.
+- ~~**Drag/swipe rails** — Embla directly, not a registry.~~ **[AMENDED] covered** — five options across `@fancy`, `@kibo-ui`, `@tailark-oss`. Embla is now a choice, not the only path.
 - **Dashboard and data-dense SaaS UI** — the assessed free set is marketing-first. Kibo covers tables and boards; nothing covers a full admin shell. Not currently a JHAI need; revisit if it becomes one.
 - **Anything requiring 21st.dev's generative flow** — that is the existing connection's job and stays there.
 
@@ -548,7 +709,8 @@ State this plainly rather than discovering it mid-build:
 | **Sera UI** | Free and MIT, so no license objection — **skipped on measurement**. 70 hardcoded palette utilities and 2 hex literals in a single accordion. Every client restyle is a rewrite. This is the concrete example of "opinionated is fine, rigid is not." |
 | **SmoothUI** | Same reasoning, less severe: 32 hardcoded utilities in one component. Nice micro-interactions, expensive to rebrand. |
 | **21st.dev paid tiers** | Free tier already covers browsing, install, and MCP code retrieval. Paid buys AI generation credits, which is not the sourcing problem. Treat the existing connection as the paid slot already spent. |
-| **Cult UI, Motion Primitives** | **Not skipped — deferred.** Both MIT and genuinely good. Both sit behind a Vercel Security Checkpoint that blocked every automated fetch, so their registry URLs are UNVERIFIED. Confirm with one manual `npx shadcn add` each before wiring. |
+| **Relume** | **[AMENDED] Added.** Publishes no shadcn registry at all — four endpoint probes returned `404`, and it is absent from the 344-entry community index, so it cannot join Layer 1 on any terms. Its npm package carries **no declared license**, which is all-rights-reserved by default, and the licensing-agreement page itself 404s, so the terms could not be read. Subscription-only from $14/mo with **no lifetime option**, against a plan targeting $0/year. Fails on distribution, license, and price simultaneously. |
+| **Cult UI, Motion Primitives** | **[AMENDED] Now skipped, not deferred.** Both MIT and genuinely good, and both URL shapes are confirmed correct by the official community index. But Task 0.1 ran the real shadcn CLI against each and both returned `Failed to fetch from registry (429)` — the same Vercel Security Checkpoint that blocked automated fetch. The index itself flags both `observing` rather than `healthy`. **Not eligible for the registries block.** Copy from their docs in a browser if a specific component is wanted. Worth re-testing from a different network before writing them off permanently. |
 
 ---
 
@@ -578,8 +740,11 @@ All fetched 2026-09-12.
 - [magicuidesign/magicui](https://github.com/magicuidesign/magicui) MIT · [shadcnblocks/kibo](https://github.com/shadcnblocks/kibo) MIT · [ibelick/motion-primitives](https://github.com/ibelick/motion-primitives) MIT · [nolly-studio/cult-ui](https://github.com/nolly-studio/cult-ui) MIT · [educlopez/smoothui](https://github.com/educlopez/smoothui) MIT · [ephraimduncan/blocks](https://github.com/ephraimduncan/blocks) MIT · [TheOrcDev/8bitcn-ui](https://github.com/TheOrcDev/8bitcn-ui) MIT · [kokonut-labs/kokonutui](https://github.com/kokonut-labs/kokonutui) MIT · [danielpetho/fancy](https://github.com/danielpetho/fancy) MIT · [irsyadadl/intentui](https://github.com/irsyadadl/intentui) MIT · [ui-layouts/uilayouts](https://github.com/ui-layouts/uilayouts) MIT · [seraui/seraui](https://github.com/seraui/seraui) MIT · [preetsuthar17/HextaUI](https://github.com/preetsuthar17/HextaUI) MIT · [tailark/blocks](https://github.com/tailark/blocks) MIT · [Dksie09/retroui](https://github.com/Dksie09/retroui) BSD-3-Clause · [DavidHDev/react-bits](https://github.com/DavidHDev/react-bits) MIT + Commons Clause
 - [Motion Primitives issue #112](https://github.com/ibelick/motion-primitives/issues/112) — documents the `motion-primitives.com/c/{name}.json` install form
 
-**Discovery aggregators (unverified, useful for finding more registries later)**
-- [registry.directory](https://registry.directory/) · [shadcnregistry.com](https://shadcnregistry.com/)
+**Discovery**
+- **[AMENDED] [`https://ui.shadcn.com/r/registries.json`](https://ui.shadcn.com/r/registries.json) — the official community registry index.** 344 registries with canonical namespaces, URL templates, and health scores. This is the primary discovery source and the original research missed it. Use it before assessing any new library.
+- [shadcn skill spec — MCP](https://github.com/shadcn-ui/ui/blob/main/skills/shadcn/mcp.md) — the binding rules for the `registries` map (`@` prefix, `{name}` required) and the full MCP tool list
+- [registry.directory](https://registry.directory/) · [shadcnregistry.com](https://shadcnregistry.com/) — third-party aggregators, unverified
+- **[AMENDED] [svgl.app](https://svgl.app)** — MIT brand-logo library (`pheralb/svgl`), keyless public API at `https://api.svgl.app`. The free source behind 21st.dev's logo search.
 
 **Local inspection (this machine, 2026-09-12)**
 - `~/Code/jhai-new-website/src/components/v2/` — 79 `.tsx`, token analysis in C.1

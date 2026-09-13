@@ -86,10 +86,10 @@
     "upstreamLicense": null,
     "jhaiVersion": "1.0.0"
   },
-  "docs": "Add ONE line to your globals.css, immediately after the tailwind import:\n\n    @import \"tailwindcss\";\n    @import \"../styles/jhai-theme-base.css\";\n\nAdjust the relative path to wherever the file landed. To rebrand, append a :root block AFTER that import overriding only --jh-* values — see the CLIENT REBRAND block at the foot of the file.\n\nThe shadcn semantic tokens (--background, --foreground, --primary, --border and the rest) are NOT in that CSS file. They arrive as cssVars, which the CLI merges into your project's own :root block. That is deliberate: your :root is declared later in globals.css than the @import, so a mapping inside the file would render correctly on a bare project and silently lose on a real shadcn one.\n\nDo not edit any --ink-*, --paper-*, --bjarmi-* or shadcn semantic token directly. They resolve through --jh-* and editing them breaks the chain.",
+  "docs": "Add ONE line to your globals.css, immediately after the tailwind import:\n\n    @import \"tailwindcss\";\n    @import \"../styles/jhai-theme-base.css\";\n\nAdjust the relative path to wherever the file landed. To rebrand, append a :root block AFTER that import overriding only --jh-* values — see the CLIENT REBRAND block at the foot of the file.\n\nThe shadcn semantic tokens (--background, --foreground, --primary, --border and the rest) are NOT in that CSS file. They arrive as cssVars, which the CLI merges into your project's own :root block. That is deliberate: your :root is declared later in globals.css than the @import, so a mapping inside the file would render correctly on a bare project and silently lose on a real shadcn one.\n\nDo not edit any --ink-*, --paper-*, --bjarmi-* or shadcn semantic token directly. They resolve through --jh-* and editing them breaks the chain.\n\nWHY type IS registry:theme AND NOT registry:base — measured, shadcn CLI 4.21.0. A registry:base item's cssVars block is silently ignored: the files land, the CLI reports success, and not one token reaches globals.css. registry:theme applies them correctly. There is no error and no warning, so this is only visible by diffing globals.css after an install.",
   "categories": [
     "theme",
     "tokens"
   ],
-  "type": "registry:base"
+  "type": "registry:theme"
 }

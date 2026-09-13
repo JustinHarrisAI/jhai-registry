@@ -31,7 +31,7 @@ export function StatTile({ value, label, divider = true, ground = 'light', style
   return (
     <div className={`px-8 ${divider ? `border-l ${rule}` : ''}`} style={style}>
       <div
-        className={`font-sans text-[clamp(64px,6.5vw,96px)] leading-none font-heading tracking-[-0.04em] tabular-nums ${
+        className={`font-sans text-[clamp(64px,6.5vw,96px)] leading-none [font-weight:var(--weight-heading)] tracking-[-0.04em] tabular-nums ${
           ground === 'dark' ? 'text-dark-text-1' : 'text-text-heading'
         }`}
       >

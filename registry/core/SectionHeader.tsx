@@ -58,7 +58,7 @@ export function SectionHeader({
           {label}
         </Eyebrow>
         <h2
-          className={`mt-eyebrow-gap mr-0 mb-0 ml-0 max-w-[620px] font-sans font-heading ${
+          className={`mt-eyebrow-gap mr-0 mb-0 ml-0 max-w-[620px] font-sans [font-weight:var(--weight-heading)] ${
             HEADING[scale]
           } ${ground === 'dark' ? 'text-dark-text-1' : 'text-text-heading'}`}
         >

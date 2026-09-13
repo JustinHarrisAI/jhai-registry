@@ -114,41 +114,14 @@
   --jh-radius: 12px;
 
   /* ═══════════════════════════════════════════════════════════════════════════
-     LAYER 2 — shadcn semantics. Third-party registry items paint from these.
-     ═══════════════════════════════════════════════════════════════════════════ */
+     LAYER 2 — shadcn semantics: NOT HERE, deliberately.
 
-  --background: var(--jh-bg);
-  --foreground: var(--jh-text);
-  --card: var(--jh-surface);
-  --card-foreground: var(--jh-text);
-  --popover: var(--jh-surface);
-  --popover-foreground: var(--jh-text);
-  --primary: var(--jh-accent);
-  --primary-foreground: var(--jh-accent-contrast);
-  --secondary: var(--jh-surface);
-  --secondary-foreground: var(--jh-primary-deep);
-  --muted: var(--jh-surface-strong);
-  --muted-foreground: var(--jh-text-muted);
-  --accent: var(--jh-surface-strong);
-  --accent-foreground: var(--jh-text);
-  --destructive: var(--jh-status-alert);
-  --border: var(--jh-border);
-  --input: var(--jh-border-mid);
-  --ring: var(--jh-focus-accent);
-  --chart-1: var(--jh-text);
-  --chart-2: var(--jh-text-muted);
-  --chart-3: var(--jh-text-faint);
-  --chart-4: var(--jh-ink-faint);
-  --chart-5: var(--jh-primary);
-  --radius: var(--jh-radius);
-  --sidebar: var(--jh-surface);
-  --sidebar-foreground: var(--jh-text);
-  --sidebar-primary: var(--jh-accent);
-  --sidebar-primary-foreground: var(--jh-accent-contrast);
-  --sidebar-accent: var(--jh-surface-strong);
-  --sidebar-accent-foreground: var(--jh-text);
-  --sidebar-border: var(--jh-border);
-  --sidebar-ring: var(--jh-focus-accent);
+     --background / --foreground / --primary / --border and the rest are shipped as the
+     `cssVars` block on the @jhai/theme-base registry item, not in this file. The CLI merges
+     cssVars INTO the consuming project's own :root, which is declared LATER in globals.css
+     than this @import and would otherwise win. Putting them here renders correctly on a
+     bare project and silently loses on a real shadcn project — the worst kind of wrong.
+     ═══════════════════════════════════════════════════════════════════════════ */
 
   /* ═══════════════════════════════════════════════════════════════════════════
      LAYER 3 — the v2 vocabulary. NAMES ARE FROZEN. Values resolve through --jh-*.
@@ -194,7 +167,6 @@
   /* type — not brand-variable, so these keep their literals */
   --font-sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-heading: var(--font-sans);
   --weight-heading: 500;
 
   --type-hero: clamp(56px, 6.8vw, 96px);
@@ -324,6 +296,10 @@
   --text-type-eyebrow: var(--type-eyebrow);
   --text-type-micro: var(--type-micro);
 
+  /* NOTE: no --font-heading family token, anywhere. Tailwind v4 resolves `font-heading`
+     against the FAMILY namespace first, so declaring one makes `font-heading` set a
+     font-family and silently drop the 500 weight. Components write
+     [font-weight:var(--weight-heading)] instead, which is unambiguous. */
   --font-weight-heading: var(--weight-heading);
 
   --spacing-gutter: var(--gutter);

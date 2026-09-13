@@ -45,7 +45,7 @@ export type ButtonProps = ButtonOwnProps &
 
 const BASE =
   'inline-flex shrink-0 items-center justify-center whitespace-nowrap select-none ' +
-  'rounded-(--radius-card) px-7 font-sans text-type-body font-heading no-underline ' +
+  'rounded-(--radius-card) px-7 font-sans text-type-body [font-weight:var(--weight-heading)] no-underline ' +
   'transition-[background-color,border-color,color] duration-(--dur-fast) ease-(--ease) ' +
   'outline-none focus-visible:ring-3 focus-visible:ring-ring/50 ' +
   'disabled:pointer-events-none disabled:opacity-50';

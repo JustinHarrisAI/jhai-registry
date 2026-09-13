@@ -1,6 +1,6 @@
 # JHAI Component Sourcing — Research
 
-**Status:** Phases 0 and 1 executed 2026-09-12. Phases 2 and 3 not started.
+**Status:** Phases 0, 1, 2, 3 and 4a executed 2026-09-12. `@jhai` is public, tagged **v1.0.0**, serving **24 items**. The C.6 theming gate **passed** — see the box in C.6.
 **Date of research:** 2026-09-12. Every price and license claim below was fetched on that date.
 
 > **Amended 2026-09-12 after Phase 0 + 1 execution.** Findings that changed are marked
@@ -565,7 +565,31 @@ v2 vocabulary
 
 *(This removes Task 3.6 from the implementation plan entirely. The 3.2 theming gate still runs — tested against a hand-written palette block in a throwaway project, which is a truer test anyway, since it proves a stranger's palette works rather than one we authored inside the registry.)*
 
-**This is the test of whether the registry is worth building.** If a `@jhai` section cannot land in a client project and take that client's palette without editing the component, the registry is just a slower `git clone` and should not be built. The disk evidence says it can: 56 of 79 v2 files already carry zero hardcoded color, and the semantic mapping already exists. **The work is finishing 23 files and writing one alias block, not architecting a system.**
+**This is the test of whether the registry is worth building.** If a `@jhai` section cannot land in a client project and take that client's palette without editing the component, the registry is just a slower `git clone` and should not be built.
+
+> ### ✅ [AMENDED] THE GATE PASSED — measured 2026-09-12
+>
+> A fresh Next.js project, `@jhai/theme-base` installed, then **ten `--jh-*` values hand-written** as a terracotta-on-warm-paper palette. Nothing else touched, **zero edits to any component.** Computed styles read off the rendered page:
+>
+> | Probe | Rendered | Expected from the client palette |
+> |---|---|---|
+> | page ground | `#fdfbf7` | `--jh-light-bg` ✓ |
+> | eyebrow | `#7a6a60` | `--jh-ink-eyebrow` ✓ |
+> | accent eyebrow | `#8a4a22` | `--jh-primary-deep` via `--bjarmi-ink` ✓ |
+> | heading | `#1a1614` @ weight 500 | `--jh-light-text` ✓ |
+> | side note | `#6f635c` | `--jh-light-text-faint` ✓ |
+> | primary button | `#1a1614` on `#fffdf9`, 50px | `--ink-800` / `--paper-0` / `--button-h` ✓ |
+> | check mark | `#8a4a22` | `--bjarmi-ink` ✓ |
+> | dark band | `#14100e` | `--jh-invert-bg` ✓ |
+> | dark eyebrow | `#c2703d` | `--jh-primary` via `--bjarmi-glow` ✓ |
+> | shadcn `--background` | `#fdfbf7` | third-party items inherit it too ✓ |
+> | eyebrow recipe | 9.5px / 2.28px tracking | invariant survived ✓ |
+>
+> The whole chain resolves. **The registry is worth building.**
+>
+> It also proved the `@components/` target placeholder: installed into a project whose alias was deliberately `@/widgets`, files landed in `src/widgets/jhai/`.
+
+The disk evidence predicted this: 56 of 79 v2 files already carried zero hardcoded color, and the semantic mapping already existed. **The work was finishing a handful of files and writing one token chain, not architecting a system.**
 
 ### C.7 Seed set — what goes in first
 

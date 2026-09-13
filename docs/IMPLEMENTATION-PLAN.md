@@ -8,7 +8,19 @@
 
 **Companion document:** [RESEARCH.md](RESEARCH.md) — verified registry URLs, licensing, restylability measurements, and the disk inventory this plan depends on. Read it first; this plan assumes its findings.
 
-**Status:** **Phases 0 and 1 executed 2026-09-12 and merged to `main`.** `@jhai` is public; the auth work is deleted. Phase 4a is unblocked and next. Phases 2 and 3 are gated on open questions 3, 4, 5 and 6 — question 1 is answered.
+**Status:** **Phases 0, 1, 2, 3 and 4a executed 2026-09-12.** `@jhai` is public and tagged **v1.0.0** — theme-base plus 23 components, verified installing, searching and listing from an unrelated project. The 3.2 theming gate **passed** after fixing three defects it caught. All open questions are answered. Only Phase 4b (adding `@jhai` to the bootstrap skill) and Phase 5 (operate) remain.
+
+> ### The three defects the 3.2 gate caught — read these before touching any registry item
+>
+> The gate was worth running. Each of these renders correctly on a bare project and fails on a real one.
+>
+> 1. **A `registry:base` item's `cssVars` block is silently ignored** by shadcn CLI 4.21.0. Files land, the CLI reports success, no token reaches `globals.css`, no error. **`registry:theme` applies them.** Verified by installing all three candidate types and diffing.
+> 2. **`cssVars` apply only to items named directly on the command line**, never when pulled in as a `registryDependencies`. `add @jhai/section-header` installs theme-base's *file* but not its *tokens*. **`@jhai/theme-base` must be installed explicitly, first.**
+> 3. **Do not declare a `--font-heading` token.** Tailwind v4 resolves `font-heading` against the family namespace when one exists, silently dropping the 500 weight. Components write `[font-weight:var(--weight-heading)]`.
+>
+> A fourth, found by typechecking rather than rendering: **an undeclared `registryDependencies` entry passes `validate` and `build` and only surfaces as a TS2307 in the consuming repo.** `comparison-table` shipped without `@shadcn/separator`. Typecheck an install in a real project before tagging.
+>
+> A fifth, operational: **`raw.githubusercontent.com` caches.** A pushed item took several minutes to serve its new content. Do not conclude a fix failed until the cache turns over.
 
 > Sections amended after execution are marked **[DONE]** or **[AMENDED]**. Execution findings live in [RESEARCH.md § 0.0](RESEARCH.md).
 
@@ -374,12 +386,14 @@ One line added to the canonical fragment once `r/` exists and Task 3.8 passes. T
 | Phase | Effort | Status | Blocks |
 |---|---|---|---|
 | 0 — Decisions and spikes | ~1 session | **DONE** | — |
-| 1 — Sourcing | 1–2 hours | **DONE, merged to `main`** | Phase 2 |
-| 4a — Bootstrap, registries half | half a session | **next, unblocked** | — |
-| 2 — Curation | 2–3 hours, then continuous | gated on Q5, Q6 | Phase 3 backlog |
-| 3 — Publication | 1–2 days, **minus the auth work** | gated on Q3, Q6 | Phase 4b |
-| 4b — Bootstrap, `@jhai` half | minutes | gated on Phase 3 | — |
-| 5 — Operate | continuous | — | — |
+| 1 — Sourcing | 1–2 hours | **DONE, merged to `main`** | — |
+| 4a — Bootstrap, registries half | half a session | **DONE — 16s measured** | — |
+| 2 — Curation | 2–3 hours | **DONE — 13 entries** | — |
+| 3 — Publication | 1–2 days | **DONE — v1.0.0, 24 items** | — |
+| 4b — Bootstrap, `@jhai` half | minutes | **next, unblocked** | — |
+| 5 — Operate | continuous | ongoing | — |
+
+**Phase 4b is one line:** add `"@jhai": "https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/r/{name}.json"` to `registry/components.registries.json`, and add a step to the skill that installs `@jhai/theme-base` explicitly — because of gate defect 2, a transitive install will not write the tokens.
 
 **Layer 1 delivered value on day one and is live.** Layers 2 and 3 compound. 4a is the only unblocked work left and should ship before the next spec site starts.
 

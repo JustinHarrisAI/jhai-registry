@@ -7,13 +7,9 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
-    "build": "shadcn build --output r",
-    "validate": "shadcn registry validate",
+    "build": "pnpm dlx shadcn@4.21.0 build --output r",
+    "validate": "pnpm dlx shadcn@4.21.0 registry validate",
     "curation": "node scripts/build-curation-md.mjs",
-    "curation:check": "node scripts/build-curation-md.mjs --check",
-    "check": "npm run validate && npm run curation:check && node scripts/check-registry-index.mjs"
-  },
-  "devDependencies": {
-    "shadcn": "4.21.0"
+    "preflight": "pnpm dlx shadcn@4.21.0 registry validate && node scripts/check-registry-index.mjs && node scripts/check-item-deps.mjs && node scripts/build-curation-md.mjs --check"
   }
 }

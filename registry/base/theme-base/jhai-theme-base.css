@@ -217,6 +217,40 @@
   --hover-arrow-shift: 4px;
 }
 
+/*
+ * The v2 semantic aliases under .dark.
+ *
+ * WHAT THIS FIXES, AND WHAT IT DOES NOT — measured 2026-09-12.
+ *
+ * The v2 system was authored around a `ground` prop, not a `.dark` class: a component is told
+ * which surface it sits on and picks its own side. That still works and is still the designed
+ * mechanism. But a project that toggles `.dark` at the root — which every shadcn project
+ * expects to work — used to get inverted shadcn tokens and a completely unmoved v2 layer, so
+ * every JHAI component rendered light-mode ink on a dark ground. Unreadable, and silent.
+ *
+ * This block repoints the SEMANTIC aliases so text and surfaces invert. It deliberately does
+ * NOT invert the RAMP names. `--ink-500` means "step 500 of the ink ramp", not "secondary
+ * text"; flipping it would make the name lie, and the ramp is what the `ground="dark"` path
+ * reads to paint its own dark side. Inverting both would double-invert every dark band.
+ *
+ * CONSEQUENCE, know this before relying on it: a component that reaches for a ramp utility
+ * directly (`text-ink-500`, `text-ink-400`, `text-ink-300`) still renders its light value
+ * under `.dark`. Four items do: StatTile's caption, CheckList's cross mark, ImageSlot's
+ * placeholder, ComparisonTable's muted cells. For those, pass `ground="dark"` — which is what
+ * the prop is for — or set the ramp yourself in your own `.dark` block.
+ */
+.dark {
+  --text-heading: var(--jh-invert-text);
+  --text-body: var(--jh-invert-text-muted);
+  --text-secondary: var(--jh-invert-muted);
+  --text-eyebrow: var(--jh-invert-muted);
+  --surface-page: var(--jh-invert-bg);
+  --surface-raised: var(--jh-invert-surface);
+  --accent: var(--bjarmi-glow);
+  --line-light: var(--jh-hairline-dark);
+  --line-light-soft: var(--jh-hairline-dark-soft);
+}
+
 .dark {
   --background: var(--jh-invert-bg);
   --foreground: var(--jh-invert-text);

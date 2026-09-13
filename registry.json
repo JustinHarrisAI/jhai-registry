@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "jhai",
+  "homepage": "https://github.com/JustinHarrisAI/jhai-registry",
+  "include": [
+    "registry/base/registry.json",
+    "registry/core/registry.json",
+    "registry/sections/registry.json"
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "jhai",
+  "homepage": "https://github.com/JustinHarrisAI/jhai-registry",
+  "items": [
+    {
+      "name": "theme-base",
+      "title": "JHAI Theme Base",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "The JHAI token chain in one stylesheet: the --jh-* brand layer, the shadcn semantic mapping, the v2 vocabulary, and the Tailwind projection. Install this first; every other @jhai item assumes it. Rebrand by overriding --jh-* only.",
+      "files": [
+        {
+          "path": "registry/base/theme-base/jhai-theme-base.css",
+          "type": "registry:file",
+          "target": "src/styles/jhai-theme-base.css"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      },
+      "docs": "Add ONE line to your globals.css, immediately after the tailwind import:\n\n    @import \"tailwindcss\";\n    @import \"../styles/jhai-theme-base.css\";\n\nAdjust the relative path to wherever the file landed. To rebrand, append a :root block AFTER that import overriding only --jh-* values — see the CLIENT REBRAND block at the foot of the file. Do not edit any --ink-*, --paper-*, --bjarmi-* or shadcn semantic token directly: they resolve through --jh-* and editing them breaks the chain.",
+      "categories": [
+        "theme",
+        "tokens"
+      ],
+      "type": "registry:base"
+    },
+    {
+      "name": "eyebrow",
+      "title": "Eyebrow",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "The one mono label recipe: 9.5px, 0.24em tracking, uppercase, optional NN prefix. Dark grounds render in bjarmi glow. Never restyle this recipe per section.",
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/core/Eyebrow.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Eyebrow.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      },
+      "categories": [
+        "typography"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "section-header",
+      "title": "Section Header",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "Eyebrow, heading and optional right-aligned side note. Three heading scales: section, feature, display. Heading weight is always 500 and the eyebrow gap is fixed.",
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/eyebrow"
+      ],
+      "files": [
+        {
+          "path": "registry/core/SectionHeader.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/SectionHeader.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      },
+      "categories": [
+        "typography",
+        "layout"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "button",
+      "title": "Button",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "The v2 CTA. Primary is a solid ground-inverted fill, ghost is a hairline. Sentence case, never a gradient, never a coloured fill. Renders an anchor when href is set. Self-contained: does not fork or overwrite the shadcn button.",
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/core/Button.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Button.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      },
+      "docs": "Differs from the jhai-new-website original: there, Button is an adapter over a forked src/components/ui/button.tsx. Shipping that fork would overwrite a consuming project's own button, so the four compound variants are inlined here instead. Rendered classes are identical.",
+      "categories": [
+        "controls"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "check-list",
+      "title": "Check List",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "The inclusion / pain list. Check is a bjarmi tick for answers and inclusions; cross is a grey cross for pains. Never a red cross, never a coloured fill. Marks are lucide icons, not text glyphs.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/core/CheckList.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/CheckList.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      },
+      "categories": [
+        "content"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "stat-tile",
+      "title": "Stat Tile",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "One big tabular number with a mono caption and a left hairline. Skip the divider on the first tile of a row. Pair with @magicui/number-ticker for a count-up numeral.",
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/core/StatTile.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/StatTile.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      },
+      "categories": [
+        "stats",
+        "marketing"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "image-slot",
+      "title": "Image Slot",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "The grey plate convention. Renders the image when src is set, otherwise a deliberate plate with its placeholder caption, so an empty slot reads as a hole in the layout rather than a broken image. Grayscale is the house treatment.",
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/core/ImageSlot.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/ImageSlot.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      },
+      "docs": "The plate grey resolved through --jh-surface-strong for the registry build; it was a #ECECEA literal in the source repo. Same colour on JHAI, client colour elsewhere.",
+      "categories": [
+        "media"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "icons",
+      "title": "Icons",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "The JHAI lucide icon set and its name mapping. One place that decides which lucide glyph a named concept resolves to, so an icon does not drift between sections.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/core/icons.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/icons.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      },
+      "categories": [
+        "icons"
+      ],
+      "type": "registry:component"
+    }
+  ]
+}

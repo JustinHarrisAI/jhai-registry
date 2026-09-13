@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section-header",
+  "title": "Section Header",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "Eyebrow, heading and optional right-aligned side note. Three heading scales: section, feature, display. Heading weight is always 500 and the eyebrow gap is fixed.",
+  "registryDependencies": [
+    "@jhai/theme-base",
+    "@jhai/eyebrow"
+  ],
+  "files": [
+    {
+      "path": "registry/core/SectionHeader.tsx",
+      "content": "import type { CSSProperties, ReactNode } from 'react';\nimport { Eyebrow } from './Eyebrow';\n\n/**\n * SectionHeader — eyebrow, heading, optional right-aligned side note.\n *\n * Converted from `extracted/components/core/SectionHeader.jsx`.\n * Heading weight is ALWAYS 500. One eyebrow gap, everywhere.\n * `title` may carry an <em> for the italic voice.\n *\n * Lane W1-0, 2026-08-11 (D-24): reauthored off inline styles onto utilities. The row gap is\n * a fixed 48px in the export, so it is `gap-12` and NOT `gap-gap-grid` — `--gap-grid` steps\n * down to 32px under 760px and would move this header on a phone.\n */\n\nexport type SectionHeaderScale = 'section' | 'feature' | 'display';\nexport type SectionHeaderGround = 'light' | 'dark';\n\nexport interface SectionHeaderProps {\n  /** eyebrow number, e.g. \"05\" */\n  number?: string;\n  /** eyebrow text, lowercase */\n  label: string;\n  /** heading — may include <em> for the italic voice */\n  title: ReactNode;\n  /** optional right-aligned side note (340px measure) */\n  side?: ReactNode;\n  /** heading scale: section 40-52 · feature 44-60 · display 56-96 */\n  scale?: SectionHeaderScale;\n  ground?: SectionHeaderGround;\n  style?: CSSProperties;\n}\n\n/**\n * Size, leading and tracking travel together — one scale is one typographic setting, not\n * three parallel lookups. The three former SIZES / LINE_HEIGHTS / TRACKING records are the\n * same values, now as the utilities that carry them.\n */\nconst HEADING: Record<SectionHeaderScale, string> = {\n  section: 'text-type-section leading-[1.06] tracking-[-0.035em]',\n  feature: 'text-type-feature leading-[1.02] tracking-[-0.04em]',\n  display: 'text-type-display leading-[0.98] tracking-[-0.045em]',\n};\n\nexport function SectionHeader({\n  number,\n  label,\n  title,\n  side,\n  scale = 'section',\n  ground = 'light',\n  style,\n}: SectionHeaderProps) {\n  return (\n    <div className=\"flex flex-wrap items-end justify-between gap-12\" style={style}>\n      <div>\n        <Eyebrow number={number} ground={ground}>\n          {label}\n        </Eyebrow>\n        <h2\n          className={`mt-eyebrow-gap mr-0 mb-0 ml-0 max-w-[620px] font-sans font-heading ${\n            HEADING[scale]\n          } ${ground === 'dark' ? 'text-dark-text-1' : 'text-text-heading'}`}\n        >\n          {title}\n        </h2>\n      </div>\n      {side ? (\n        <p\n          className={`m-0 max-w-measure-side font-sans text-[15px] leading-[1.6] ${\n            ground === 'dark' ? 'text-dark-text-3' : 'text-text-secondary'\n          }`}\n        >\n          {side}\n        </p>\n      ) : null}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/SectionHeader.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": null,
+    "upstreamLicense": null,
+    "jhaiVersion": "1.0.0"
+  },
+  "categories": [
+    "typography",
+    "layout"
+  ],
+  "type": "registry:component"
+}

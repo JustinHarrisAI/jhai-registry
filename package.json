@@ -1,0 +1,19 @@
+{
+  "name": "jhai-registry",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The @jhai shadcn registry. In-house React components, served as flattened registry items over raw.githubusercontent.",
+  "homepage": "https://github.com/JustinHarrisAI/jhai-registry",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "build": "shadcn build --output r",
+    "validate": "shadcn registry validate",
+    "curation": "node scripts/build-curation-md.mjs",
+    "curation:check": "node scripts/build-curation-md.mjs --check",
+    "check": "npm run validate && npm run curation:check && node scripts/check-registry-index.mjs"
+  },
+  "devDependencies": {
+    "shadcn": "4.21.0"
+  }
+}

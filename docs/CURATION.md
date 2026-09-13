@@ -34,9 +34,9 @@ A ⚠︎ on a preview link means the host returns HTTP 200 for any path, so the 
 | **tabs** | primitive | shadcn core tabs | `pnpm dlx shadcn@4.21.0 add @shadcn/tabs` | [preview](https://ui.shadcn.com/docs/components/tabs) |
 | **scroll reveal** | build in-house | @jhai/scroll-reveal — thin wrapper over Motion whileInView | pending Phase 3; today, hand-write it over the existing motion dependency | [preview](https://magicui.design/docs/components/text-reveal) |
 | **text reveal** | registry item | @magicui/text-reveal | `pnpm dlx shadcn@4.21.0 add @magicui/text-reveal` | [preview](https://magicui.design/docs/components/text-reveal) |
-| **hero with video** | registry item | @tailark-oss/dusk-hero-section-5-video | `pnpm dlx shadcn@4.21.0 add @tailark-oss/dusk-hero-section-5-video` | [preview](https://tailark.com/blocks/dusk/hero-section) ⚠︎ |
-| **pricing table** | registry item | @tailark-oss/veil-pricing-1 | `pnpm dlx shadcn@4.21.0 add @tailark-oss/veil-pricing-1` | [preview](https://tailark.com/blocks/veil/pricing) ⚠︎ |
-| **FAQ** | registry item | @tailark-oss/veil-faqs-1 | `pnpm dlx shadcn@4.21.0 add @tailark-oss/veil-faqs-1` | [preview](https://tailark.com/blocks/veil/faqs) ⚠︎ |
+| **hero with video** | registry item | @tailark-oss/dusk-hero-section-5-video | `pnpm dlx shadcn@4.21.0 add @tailark-oss/dusk-hero-section-5-video` | — |
+| **pricing table** | registry item | @tailark-oss/veil-pricing-1 | `pnpm dlx shadcn@4.21.0 add @tailark-oss/veil-pricing-1` | — |
+| **FAQ** | registry item | @tailark-oss/veil-faqs-1 | `pnpm dlx shadcn@4.21.0 add @tailark-oss/veil-faqs-1` | — |
 | **form inputs** | primitive | shadcn core input, select, textarea, form, label | `pnpm dlx shadcn@4.21.0 add @shadcn/input @shadcn/select @shadcn/textarea @shadcn/form @shadcn/label` | [preview](https://ui.shadcn.com/docs/components/input) |
 | **logo wall** | library | svgl.app — fetch SVGs directly from the keyless public API | none — GET https://api.svgl.app?search=<brand>, then fetch the returned route (and wordmark / dark variant if present) | [preview](https://svgl.app) |
 
@@ -117,13 +117,14 @@ Rejected:
 
 **primitive — shadcn core tabs** · MIT (shadcn/ui) · verified 2026-09-12
 
-IMPORTANT — record the reason precisely: the SEARCH FAILED, which is not the same as nothing existing. The query 'tabs' across all six namespaces returned an SVG logo (@tailark-oss/core-bolt) and three unrelated table blocks. That is a ranking failure in the shadcn fuzzy search, not evidence of absence. Core tabs is the right answer regardless — it is tokenised and accessible — but if a richer tabs component is ever wanted, grep the indexes rather than re-running this search and concluding nothing is there.
+GREPPED 789 ITEMS, ABSENT. The first pass recorded this as a search failure because the fuzzy query 'tabs' returned an SVG logo and three table blocks. A direct grep of all five wired indexes on terms tab, segmented, toggle-group and switcher returned 13 hits and NOT ONE is a tabs component — they are tables, theme switchers, and a segmented progress bar. No tabs component exists in the wired set. Core tabs is the answer on merit anyway: tokenised, accessible, and the base anything else would wrap.
 
 *Restyling:* Fully token-bound out of the box.
 
 Rejected:
 
-- **nothing — search returned no real candidate** — No tabs component surfaced from any of the five third-party namespaces. Recorded as a search failure rather than a finding: the indexes were not exhaustively grepped for this need, so absence is unproven.
+- **@tailark-oss/mist-toggle-group** — The nearest neighbour in the whole wired set, and it is not close. A toggle group is single-select chrome for filtering; tabs swap panels and carry the roving-tabindex and aria-controls semantics that go with that. Reach for it for a filter row, never for tabs.
+- **nothing else — 789 items grepped on tab, segmented, toggle-group, switcher** — Genuine absence, now measured rather than assumed. If a richer tabs component is wanted later, it will have to come from a registry not currently wired.
 
 ### scroll reveal
 
@@ -160,7 +161,7 @@ Rejected:
 
 CORRECTS the original E.1 answer, which said to build this because nothing handled it well. Four options came back. This one is a hero SECTION with video, which is the actual need, and Tailark OSS measured best-in-class on restylability across three sampled blocks (zero hardcoded colour). The brand-specific work — poster frame, preload policy, prefers-reduced-motion fallback — is still ours to add on top, but the shell is not worth rebuilding.
 
-*Preview caveat: tailark.com returns HTTP 200 for any path including bogus ones, so the 200 here proves the host is up, not that the page exists. oss.tailark.com has no per-item preview pages — its own homepage links 404. Confirm visually before quoting this URL to a client.*
+*Preview caveat: oss.tailark.com has no per-item preview pages — its own homepage links 404 — and tailark.com returns HTTP 200 for every path including bogus ones, so any link there proves nothing. Preview a Tailark block by installing it, or browse https://oss.tailark.com/r/registry.json for item names.*
 
 *Restyling:* Token-bound. Tailark OSS measured 0 hardcoded colour across sampled blocks.
 
@@ -175,7 +176,7 @@ Rejected:
 
 Best measured restylability of any pricing block found: 8 semantic tokens, 0 hardcoded colour, 0 hex. Verified by real install in Task 1.4 — it landed and rendered in the JHAI palette with no edit to the component. Seven Tailark OSS pricing blocks came back across three families; veil is the most restrained, which suits the editorial direction.
 
-*Preview caveat: tailark.com is a catch-all that returns 200 for any path. Status is not proof the page exists.*
+*Preview caveat: oss.tailark.com has no per-item preview pages — its own homepage links 404 — and tailark.com returns HTTP 200 for every path including bogus ones, so any link there proves nothing. Preview a Tailark block by installing it, or browse https://oss.tailark.com/r/registry.json for item names.*
 
 *Restyling:* 8 semantic tokens, 0 hardcoded. Verified by install.
 
@@ -191,7 +192,7 @@ Rejected:
 
 Measured 5 semantic tokens, 0 hardcoded colour. Nine Tailark OSS FAQ blocks came back — the densest coverage of any need after pricing — and veil-faqs-1 is the plainest. Composes over the shadcn core accordion chosen above rather than bringing its own disclosure primitive.
 
-*Preview caveat: tailark.com is a catch-all that returns 200 for any path. Status is not proof the page exists.*
+*Preview caveat: oss.tailark.com has no per-item preview pages — its own homepage links 404 — and tailark.com returns HTTP 200 for every path including bogus ones, so any link there proves nothing. Preview a Tailark block by installing it, or browse https://oss.tailark.com/r/registry.json for item names.*
 
 *Restyling:* 5 semantic tokens, 0 hardcoded.
 
@@ -205,14 +206,14 @@ Rejected:
 
 **primitive — shadcn core input, select, textarea, form, label** · MIT (shadcn/ui) · verified 2026-09-12
 
-IMPORTANT — as with tabs, record this precisely: the SEARCH FAILED. The query 'form input' returned @kibo-ui/dialog-stack, @kibo-ui/gantt and @magicui/ripple-button. That is a ranking failure, not evidence of absence. Core primitives are the right answer anyway — they are tokenised, accessible, and every block we install already depends on them — but do not cite this pass as proof that nothing else exists.
+GREPPED 789 ITEMS — and unlike tabs, this one CORRECTS the first pass. The fuzzy query 'form input' returned dialog-stack, gantt and a ripple button, so the first pass recorded a search failure. The grep (terms: input, textarea, select, checkbox, radio, combobox, form, otp, slider, switch, date-picker, dropzone) returned 37 hits and several are real. Core primitives remain the BASE — tokenised, accessible, and what every installed block already depends on — but Kibo covers the inputs shadcn core does not ship, so this is now a two-part answer rather than a fallback.
 
 *Restyling:* Fully token-bound out of the box.
 
 Rejected:
 
 - **@intentui/* form components** — Built on react-aria-components, so accessibility is the product rather than an afterthought. Rejected as a default only because it introduces a SECOND primitive stack alongside Radix/Base. That should be a deliberate choice on a client with a stated accessibility requirement, never a silent default.
-- **@blocks-so/login-01 and the other form blocks** — Whole assembled forms rather than inputs. Useful as a starting layout — verified installing clean in Task 1.4 with 5 semantic tokens and 0 hardcoded colour — but they compose the core primitives rather than replacing them. Note they prompt to overwrite button, input, label and separator on install; decline.
+- **@blocks-so/form-layout-01 through 05, login-05, login-09** — Whole assembled forms rather than inputs — workspace fields, side labels, checkbox settings, plan selection. Genuinely useful as a starting layout, and verified installing clean in Task 1.4 (5 semantic tokens, 0 hardcoded colour). They compose the core primitives rather than replacing them, so they answer 'build me a signup form', not 'what is our input'. Note they prompt to overwrite button, input, label and separator on install; decline.
 
 ### logo wall
 

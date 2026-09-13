@@ -1,0 +1,190 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "jhai-core",
+  "homepage": "https://github.com/JustinHarrisAI/jhai-registry",
+  "items": [
+    {
+      "name": "eyebrow",
+      "type": "registry:component",
+      "title": "Eyebrow",
+      "description": "The one mono label recipe: 9.5px, 0.24em tracking, uppercase, optional NN prefix. Dark grounds render in bjarmi glow. Never restyle this recipe per section.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "typography"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "Eyebrow.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Eyebrow.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "section-header",
+      "type": "registry:component",
+      "title": "Section Header",
+      "description": "Eyebrow, heading and optional right-aligned side note. Three heading scales: section, feature, display. Heading weight is always 500 and the eyebrow gap is fixed.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "typography",
+        "layout"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/eyebrow"
+      ],
+      "files": [
+        {
+          "path": "SectionHeader.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/SectionHeader.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "button",
+      "type": "registry:component",
+      "title": "Button",
+      "description": "The v2 CTA. Primary is a solid ground-inverted fill, ghost is a hairline. Sentence case, never a gradient, never a coloured fill. Renders an anchor when href is set. Self-contained: does not fork or overwrite the shadcn button.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "controls"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "Button.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Button.tsx"
+        }
+      ],
+      "docs": "Differs from the jhai-new-website original: there, Button is an adapter over a forked src/components/ui/button.tsx. Shipping that fork would overwrite a consuming project's own button, so the four compound variants are inlined here instead. Rendered classes are identical.",
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "check-list",
+      "type": "registry:component",
+      "title": "Check List",
+      "description": "The inclusion / pain list. Check is a bjarmi tick for answers and inclusions; cross is a grey cross for pains. Never a red cross, never a coloured fill. Marks are lucide icons, not text glyphs.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "content"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "CheckList.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/CheckList.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "stat-tile",
+      "type": "registry:component",
+      "title": "Stat Tile",
+      "description": "One big tabular number with a mono caption and a left hairline. Skip the divider on the first tile of a row. Pair with @magicui/number-ticker for a count-up numeral.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "stats",
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "StatTile.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/StatTile.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "image-slot",
+      "type": "registry:component",
+      "title": "Image Slot",
+      "description": "The grey plate convention. Renders the image when src is set, otherwise a deliberate plate with its placeholder caption, so an empty slot reads as a hole in the layout rather than a broken image. Grayscale is the house treatment.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "media"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "ImageSlot.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/ImageSlot.tsx"
+        }
+      ],
+      "docs": "The plate grey resolved through --jh-surface-strong for the registry build; it was a #ECECEA literal in the source repo. Same colour on JHAI, client colour elsewhere.",
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "icons",
+      "type": "registry:component",
+      "title": "Icons",
+      "description": "The JHAI lucide icon set and its name mapping. One place that decides which lucide glyph a named concept resolves to, so an icon does not drift between sections.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "icons"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "icons.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/icons.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    }
+  ]
+}

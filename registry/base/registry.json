@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "jhai-base",
+  "homepage": "https://github.com/JustinHarrisAI/jhai-registry",
+  "items": [
+    {
+      "name": "theme-base",
+      "type": "registry:base",
+      "title": "JHAI Theme Base",
+      "description": "The JHAI token chain in one stylesheet: the --jh-* brand layer, the shadcn semantic mapping, the v2 vocabulary, and the Tailwind projection. Install this first; every other @jhai item assumes it. Rebrand by overriding --jh-* only.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "theme",
+        "tokens"
+      ],
+      "files": [
+        {
+          "path": "theme-base/jhai-theme-base.css",
+          "type": "registry:file",
+          "target": "src/styles/jhai-theme-base.css"
+        }
+      ],
+      "docs": "Add ONE line to your globals.css, immediately after the tailwind import:\n\n    @import \"tailwindcss\";\n    @import \"../styles/jhai-theme-base.css\";\n\nAdjust the relative path to wherever the file landed. To rebrand, append a :root block AFTER that import overriding only --jh-* values — see the CLIENT REBRAND block at the foot of the file. Do not edit any --ink-*, --paper-*, --bjarmi-* or shadcn semantic token directly: they resolve through --jh-* and editing them breaks the chain.",
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    }
+  ]
+}

@@ -374,6 +374,24 @@ One line added to the canonical fragment once `r/` exists and Task 3.8 passes. T
 
 **Runs:** continuous.
 
+### The rituals, in order
+
+**Before any tag: `npm run preflight`.** Four gates, and nothing ships without all four green:
+
+```bash
+npm run preflight
+# shadcn registry validate            — schema and file paths
+# scripts/check-registry-index.mjs    — r/registry.json in step with r/, or search silently returns nothing
+# scripts/check-item-deps.mjs         — every import resolves to a declared dependency
+# build-curation-md.mjs --check       — CURATION.md not stale against its JSON
+```
+
+`check-item-deps.mjs` exists because the manual review that shipped 23 files still missed one. It parses imports out of the **built** item content — what a consumer actually receives — and is self-tested against deliberately broken items.
+
+**After pushing a registry change, wait before judging it.** `raw.githubusercontent.com` served stale JSON for several minutes, twice, on 2026-09-12. Confirm the file on disk with `git show HEAD:r/<item>.json`, wait, re-fetch with curl, and only then re-run the install. **A session that skips this pushes a second speculative fix on top of a first one that already worked.**
+
+**Installing into a project: `@jhai/theme-base` is always an explicit step.** `cssVars` apply only to items named directly on the command line, never through `registryDependencies`. Skip it and every component installs with no tokens and renders in the wrong colours, with no error.
+
 - **Registry URL drift.** Quarterly: re-fetch one item per registry and confirm `200` plus a valid item body. Update `lastVerified` in the curation index. RESEARCH.md documents the exact probe method.
 - **`@jhai` updates reaching past client projects.** Deliberate, never automatic — components are copied, not linked. Use CLI v4's `--diff` to find drift, then re-add the pinned item in a branch and review. **This is a feature at spec-site volume:** a bad `@jhai` release cannot break 30 live sites at once.
 - **New registries.** Assess against the same bar: verified URL, permissive license, and measured restylability (the token-vs-hardcoded method in RESEARCH.md A.0). Do not add on aesthetics.

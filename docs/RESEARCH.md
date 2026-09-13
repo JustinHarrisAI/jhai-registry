@@ -501,6 +501,18 @@ Verified end to end against `ephraimduncan/blocks` (which already serves `public
 
 **Versioning swaps the ref in the URL**, not a `#tag` suffix: `…/jhai-registry/v1.2.0/r/{name}.json`. Git tags still do the work; the address form differs from the `owner/repo/item#tag` documented in section 0.
 
+> ### ⏱ `raw.githubusercontent.com` CACHES — measured, and it will fool you
+>
+> A pushed registry fix continued serving the **old** JSON for several minutes. Observed twice on 2026-09-12: `comparison-table.json` served its pre-fix `registryDependencies` well after the push landed, and a `theme-base` change needed a ~45-second wait before an install picked it up.
+>
+> **The ritual after pushing any registry change:**
+>
+> 1. Confirm the built file on disk is right — `git show HEAD:r/<item>.json`.
+> 2. **Wait, then re-fetch** before concluding anything: `curl -sL .../r/<item>.json`.
+> 3. Only then re-run the install and judge the result.
+>
+> **Do not "fix" a fix that already worked.** The failure mode is a session pushing a correct change, seeing stale content, assuming it failed, and pushing a second speculative change on top of it. A pinned tag URL has the same behaviour on first fetch.
+
 **No auth variant is needed, and none should be built.** `@jhai` is public (C.5), so `raw.githubusercontent.com` serves it anonymously. **Verified 2026-09-12:** after flipping the repo public, `https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/registry/components.registries.json` returned `200` with no credential of any kind.
 
 That is the property the whole design rests on: **zero keys in any consuming project.** A private registry would put a `GH_TOKEN` in every spec site, which is precisely the operational cost that section B.3 identifies as the real hazard of paid registries. Choosing a private `@jhai` would have reintroduced that cost against our own registry, for nothing.

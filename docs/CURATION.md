@@ -61,13 +61,13 @@ Rejected:
 
 **registry item — @magicui/number-ticker** · MIT (magicuidesign/magicui) · verified 2026-09-12
 
-CORRECTS the original E.1 answer, which said to build this because nothing better existed. Wrong: the fuzzy search missed it and a grep of the indexes found it immediately. Chosen over Fancy's because it demos decimal handling, which the JHAI stat tiles need. Compose it INSIDE the existing core/StatTile.tsx rather than replacing that component — the tile is the shell, the ticker is the numeral.
+CORRECTS the original E.1 answer, which said to build this because nothing better existed. Wrong: the fuzzy search missed it and a grep of the indexes found it immediately. Chosen over Fancy's because it demos decimal handling, which the JHAI stat tiles need. Compose it INSIDE @jhai/stat-tile rather than replacing it — the tile is the shell, the ticker is the numeral. VERIFIED 2026-09-12: unlike @magicui/marquee, number-ticker does NOT touch globals.css. It installs one file and nothing else. The marquee hazard is specific to items carrying a css block of keyframes; this is not one.
 
 *Restyling:* Paints nothing — it animates a number. Inherits whatever the parent sets.
 
 Rejected:
 
-- **@fancy/basic-number-ticker** — Equally clean and equally free. Loses only on decimal support being less obviously covered. Swap to it without argument if Magic UI's version turns out to rewrite globals.css the way its marquee does — check that on first install.
+- **@fancy/basic-number-ticker** — Equally clean and equally free. Loses only on decimal support being less obviously covered. The globals.css concern that used to sit here is resolved: Magic UI's version was checked and leaves the stylesheet alone.
 - **Hand-rolled Motion useSpring counter** — This was the original plan. About 20 lines, so not expensive, but it is 20 lines to own, test and get the reduced-motion behaviour right on, against zero for an item that already exists.
 
 ### drag rail

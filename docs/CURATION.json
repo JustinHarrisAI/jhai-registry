@@ -50,11 +50,11 @@
       "install": "pnpm dlx shadcn@4.21.0 add @magicui/number-ticker",
       "preview": "https://magicui.design/docs/components/number-ticker",
       "previewStatus": "verified-200",
-      "why": "CORRECTS the original E.1 answer, which said to build this because nothing better existed. Wrong: the fuzzy search missed it and a grep of the indexes found it immediately. Chosen over Fancy's because it demos decimal handling, which the JHAI stat tiles need. Compose it INSIDE the existing core/StatTile.tsx rather than replacing that component — the tile is the shell, the ticker is the numeral.",
+      "why": "CORRECTS the original E.1 answer, which said to build this because nothing better existed. Wrong: the fuzzy search missed it and a grep of the indexes found it immediately. Chosen over Fancy's because it demos decimal handling, which the JHAI stat tiles need. Compose it INSIDE @jhai/stat-tile rather than replacing it — the tile is the shell, the ticker is the numeral. VERIFIED 2026-09-12: unlike @magicui/marquee, number-ticker does NOT touch globals.css. It installs one file and nothing else. The marquee hazard is specific to items carrying a css block of keyframes; this is not one.",
       "rejected": [
         {
           "what": "@fancy/basic-number-ticker",
-          "because": "Equally clean and equally free. Loses only on decimal support being less obviously covered. Swap to it without argument if Magic UI's version turns out to rewrite globals.css the way its marquee does — check that on first install."
+          "because": "Equally clean and equally free. Loses only on decimal support being less obviously covered. The globals.css concern that used to sit here is resolved: Magic UI's version was checked and leaves the stylesheet alone."
         },
         {
           "what": "Hand-rolled Motion useSpring counter",

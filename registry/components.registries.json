@@ -4,7 +4,8 @@
     "Namespace names must start with '@' and URLs must contain '{name}' (shadcn skill spec, skills/shadcn/mcp.md). Both are enforced by the CLI.",
     "@tailark-oss has NO .json suffix. Its endpoints are /r/{name}. Do not normalize it to match the others.",
     "Search and list resolve the registry index by substituting {name} with 'registry'. A namespace only supports search if that path serves a valid registry.json.",
-    "Pin the CLI major in anything that runs across many sites: use 'shadcn@4', not 'shadcn@latest'. Current latest is 4.21.0."
+    "Pin the CLI major in anything that runs across many sites: use 'shadcn@4', not 'shadcn@latest'. Current latest is 4.21.0.",
+    "@jhai/theme-base MUST be installed as its own explicit step. cssVars are applied only to items named directly on the command line, never to items pulled in through registryDependencies. Skip it and every component installs with no tokens and renders in the wrong colours, with no error."
   ],
   "_verified": {
     "date": "2026-09-12",
@@ -12,6 +13,7 @@
     "communityIndex": "https://ui.shadcn.com/r/registries.json"
   },
   "registries": {
+    "@jhai": "https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/r/{name}.json",
     "@tailark-oss": "https://oss.tailark.com/r/{name}",
     "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
     "@magicui": "https://magicui.design/r/{name}.json",

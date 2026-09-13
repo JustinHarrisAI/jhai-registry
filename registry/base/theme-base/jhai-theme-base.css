@@ -106,6 +106,10 @@
   --jh-ink-eyebrow: #6e6e6b;
   --jh-ink-disabled: #b0b0ad;
   --jh-hairline: rgba(0, 0, 0, 0.12);
+  /* the three control edges the components used to bake in as black/20, white/35, black/8 */
+  --jh-edge-light: rgba(0, 0, 0, 0.2);
+  --jh-edge-dark: rgba(255, 255, 255, 0.35);
+  --jh-rule-light: rgba(0, 0, 0, 0.08);
   --jh-hairline-soft: rgba(0, 0, 0, 0.06);
   --jh-hairline-dark: rgba(255, 255, 255, 0.12);
   --jh-hairline-dark-soft: rgba(255, 255, 255, 0.08);
@@ -147,6 +151,9 @@
   --bjarmi-glow: var(--jh-primary);
   --bjarmi-tint: color-mix(in srgb, var(--jh-primary-deep) 6%, transparent);
 
+  --edge-light: var(--jh-edge-light);
+  --edge-dark: var(--jh-edge-dark);
+  --rule-light: var(--jh-rule-light);
   --line-light: var(--jh-hairline);
   --line-light-soft: var(--jh-hairline-soft);
   --line-dark: var(--jh-hairline-dark);
@@ -305,6 +312,9 @@
   --color-bjarmi-ink: var(--bjarmi-ink);
   --color-bjarmi-glow: var(--bjarmi-glow);
   --color-bjarmi-tint: var(--bjarmi-tint);
+  --color-edge-light: var(--edge-light);
+  --color-edge-dark: var(--edge-dark);
+  --color-rule-light: var(--rule-light);
   --color-line-light: var(--line-light);
   --color-line-light-soft: var(--line-light-soft);
   --color-line-dark: var(--line-dark);

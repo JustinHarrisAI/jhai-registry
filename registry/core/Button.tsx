@@ -60,8 +60,8 @@ const SIZE: Record<ButtonSize, string> = {
 const TONE: Record<`${ButtonVariant}-${ButtonGround}`, string> = {
   'primary-light': 'bg-ink-800 text-paper-0',
   'primary-dark': 'bg-paper-50 text-ink-950',
-  'ghost-light': 'border border-black/20 bg-transparent text-ink-800',
-  'ghost-dark': 'border border-white/35 bg-transparent text-dark-text-1',
+  'ghost-light': 'border border-edge-light bg-transparent text-ink-800',
+  'ghost-dark': 'border border-edge-dark bg-transparent text-dark-text-1',
 };
 
 export function Button({

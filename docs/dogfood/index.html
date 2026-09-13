@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@jhai registry — dogfood result</title>
+<style>
+  :root{
+    --bg:#f5f5f5; --paper:#fff; --ink:#222; --ink-2:#4a4a48; --ink-3:#6b6b68;
+    --line:rgba(0,0,0,.12); --line-soft:rgba(0,0,0,.06);
+    --bjarmi:#547070; --bjarmi-glow:#87a6a6;
+    --good:#2f6b4f; --bad:#9c3b32;
+    --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:400 16px/1.6 ui-sans-serif,system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{background:#0a0b0b;color:#e8e8e8;padding:72px 0 64px}
+  header .wrap{max-width:1080px}
+  .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--bjarmi-glow);margin:0 0 18px}
+  h1{font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-.035em;
+    font-weight:500;margin:0 0 20px;max-width:20ch}
+  .lede{font-size:17px;line-height:1.6;color:#b8b8b6;max-width:62ch;margin:0}
+  section{padding:64px 0;border-bottom:1px solid var(--line-soft)}
+  h2{font-size:clamp(24px,2.6vw,34px);line-height:1.1;letter-spacing:-.03em;
+    font-weight:500;margin:0 0 8px}
+  h2 + .sub{color:var(--ink-3);margin:0 0 32px;font-size:15px;max-width:70ch}
+  h3{font-size:19px;font-weight:500;letter-spacing:-.015em;margin:36px 0 12px}
+
+  .headline{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--line-soft);border:1px solid var(--line-soft);margin:0 0 8px}
+  .headline div{background:var(--paper);padding:22px 20px}
+  .headline .n{font-size:clamp(26px,3.4vw,40px);font-weight:500;letter-spacing:-.04em;
+    line-height:1;font-variant-numeric:tabular-nums}
+  .headline .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--ink-3);margin-top:10px}
+  .win{color:var(--good)} .lose{color:var(--bad)}
+
+  table{width:100%;border-collapse:collapse;background:var(--paper);
+    border:1px solid var(--line-soft);font-size:14.5px}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line-soft);
+    vertical-align:top}
+  thead th{font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-3);font-weight:500;
+    background:#fafafa;white-space:nowrap}
+  tbody tr:last-child td{border-bottom:0}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .a-col{background:#fdfcfa} .b-col{background:#f7faf9}
+  code{font-family:var(--mono);font-size:12.5px;background:#efefef;
+    padding:1px 5px;border-radius:3px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10px;
+    letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:3px}
+  .tag.hand{background:#fbeae8;color:var(--bad)}
+  .tag.inst{background:#e6efea;color:var(--good)}
+
+  .callout{border-left:2px solid var(--bjarmi);padding:2px 0 2px 20px;margin:28px 0;
+    max-width:76ch}
+  .callout strong{font-weight:500}
+  .warn{border-left-color:var(--bad)}
+
+  ul{max-width:76ch;padding-left:20px} li{margin:9px 0}
+  footer{padding:48px 0 72px;color:var(--ink-3);font-size:13.5px}
+  a{color:var(--bjarmi);text-decoration:underline;text-underline-offset:.25em}
+  @media(max-width:820px){
+    .headline{grid-template-columns:repeat(2,1fr)}
+    table{font-size:13px} th,td{padding:10px 11px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">jhai-registry · dogfood · 12 sep 2026</p>
+    <h1>Same brief, two projects, one of them wired.</h1>
+    <p class="lede">Two throwaway Next.js apps got the identical brief with no hint that a
+    component registry existed. Repo A was a bare <code>shadcn init</code>. Repo B had the
+    six registries and <code>@jhai/theme-base</code>. Two isolated sessions, neither able to
+    see the other's work.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">the brief, verbatim to both</p>
+    <p style="font-size:19px;max-width:60ch;margin:0 0 34px">“Build a pricing page with a hero,
+    a three-tier pricing table, an FAQ section, a logo wall, and a stats band.”</p>
+
+    <div class="headline">
+      <div><div class="n lose">320</div><div class="k">A · hand-written lines</div></div>
+      <div><div class="n win">159</div><div class="k">B · hand-written lines</div></div>
+      <div><div class="n lose">58</div><div class="k">A · hardcoded colours</div></div>
+      <div><div class="n win">0</div><div class="k">B · hardcoded colours</div></div>
+    </div>
+    <p style="font-size:13px;color:var(--ink-3);margin:12px 0 0">Both pass
+    <code>tsc --noEmit</code> and <code>next build</code>. Colour counts are hand-written code
+    only, measured the same way in both repos.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The number that matters is not the line count</h2>
+    <p class="sub">B wrote half as much code. That is the smaller half of the result.</p>
+
+    <div class="callout">
+      <strong>Repo A cannot be rebranded.</strong> Its 320 lines contain
+      <strong>58 hardcoded palette utilities and zero semantic tokens</strong> —
+      <code>bg-white</code>, <code>text-slate-900</code>, <code>bg-blue-600</code>. Changing a
+      CSS variable moves nothing. Every client would be a find-and-replace through five
+      component files.
+    </div>
+
+    <div class="callout">
+      <strong>Repo B restyles from the token block.</strong> Zero palette utilities in the
+      hand-written code, 13 semantic tokens, and every installed component reads through
+      <code>--jh-*</code>. The whole page follows a client's palette without a component edit.
+    </div>
+
+    <div class="callout warn">
+      <strong>Repo A's own report claimed it was rebrandable.</strong> It said the page
+      “reskins via CSS variables alone — no component edits needed.” That is false, and it was
+      caught by measuring rather than by asking. Worth knowing: an agent's self-assessment of
+      its own restylability is not evidence.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Section by section</h2>
+    <p class="sub">Where each of the five pieces actually came from.</p>
+    <table>
+      <thead><tr><th>Section</th><th class="a-col">Repo A — bare</th><th class="b-col">Repo B — wired</th></tr></thead>
+      <tbody>
+        <tr><td>Hero</td>
+          <td class="a-col"><span class="tag hand">hand</span> 17 lines</td>
+          <td class="b-col"><span class="tag inst">installed</span> <code>@tailark-oss/mist-hero-section-1</code></td></tr>
+        <tr><td>Pricing table, 3-tier</td>
+          <td class="a-col"><span class="tag hand">hand</span> 116 lines</td>
+          <td class="b-col"><span class="tag hand">hand</span> — installed <code>mist-pricing-1</code> was single-tier, so it composed Card instead</td></tr>
+        <tr><td>FAQ</td>
+          <td class="a-col"><span class="tag hand">hand</span> 84 lines</td>
+          <td class="b-col"><span class="tag inst">installed</span> <code>@tailark-oss/mist-faqs-1</code></td></tr>
+        <tr><td>Logo wall</td>
+          <td class="a-col"><span class="tag hand">hand</span> 37 lines</td>
+          <td class="b-col"><span class="tag inst">installed</span> <code>@jhai/logo-wall</code></td></tr>
+        <tr><td>Stats band</td>
+          <td class="a-col"><span class="tag hand">hand</span> 49 lines</td>
+          <td class="b-col"><span class="tag inst">installed</span> <code>@jhai/record-band</code></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--ink-3);margin:14px 0 0">Four of five installed in B.
+    Two of those four came from <code>@jhai</code> — the house set paying for itself on the
+    project after the one that built it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Full measurements</h2>
+    <table>
+      <thead><tr><th>Measure</th><th class="a-col">Repo A</th><th class="b-col">Repo B</th></tr></thead>
+      <tbody>
+        <tr><td>Wall clock</td><td class="a-col num">2.5 min</td><td class="b-col num">12 min</td></tr>
+        <tr><td>Lines written by hand</td><td class="a-col num">320</td><td class="b-col num">159</td></tr>
+        <tr><td>Lines installed</td><td class="a-col num">0</td><td class="b-col num">1,427</td></tr>
+        <tr><td>Sections installed</td><td class="a-col num">0 / 5</td><td class="b-col num">4 / 5</td></tr>
+        <tr><td>Hardcoded palette utilities <em>(hand-written code)</em></td>
+            <td class="a-col num lose">58</td><td class="b-col num win">0</td></tr>
+        <tr><td>Semantic tokens <em>(hand-written code)</em></td>
+            <td class="a-col num lose">0</td><td class="b-col num win">13</td></tr>
+        <tr><td>Hex literals</td><td class="a-col num">0</td>
+            <td class="b-col num">11 — all inside brand logo SVGs, which are meant to be coloured</td></tr>
+        <tr><td>Registry searches run</td><td class="a-col num">0</td><td class="b-col num">5</td></tr>
+        <tr><td><code>tsc --noEmit</code></td><td class="a-col">pass</td><td class="b-col">pass</td></tr>
+        <tr><td><code>next build</code></td><td class="a-col">pass</td><td class="b-col">pass</td></tr>
+        <tr><td>Rebrandable by CSS variables alone</td>
+            <td class="a-col lose">No — needs edits across 5 files</td>
+            <td class="b-col win">Yes</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What went against the registry</h2>
+    <p class="sub">Reported because it is the honest half of the result.</p>
+    <ul>
+      <li><strong>B took 12 minutes to A's 2.5.</strong> Searching, installing and reconciling
+      four blocks costs more wall-clock on the first page than typing 320 lines of throwaway
+      JSX. The trade is real: B is slower to first render and cheaper for the rest of the
+      component's life. On a genuinely one-off page, A wins on time.</li>
+      <li><strong>The pricing table — the centre of the brief — still had to be hand-written.</strong>
+      The installed <code>mist-pricing-1</code> turned out to be single-tier enterprise, not
+      three-tier. Seven Tailark pricing blocks were indexed and none matched the most common
+      shape a pricing page needs. That is a curation gap worth fixing.</li>
+      <li><strong>B hit three friction points</strong> that cost minutes: SVG components missing
+      a <code>&lt;SVGSVGElement&gt;</code> type argument, a hero block expecting a separate
+      header module that had to be shimmed with a one-line re-export, and the overwrite prompts
+      on <code>button.tsx</code> that <code>--yes</code> does not cover.</li>
+      <li><strong>Two hairline literals were still baked into JHAI's own components</strong> —
+      <code>border-black/20</code> in Button and <code>border-black/8</code> in StatTile. Found
+      by measuring B's output, not by review. Now tokenised as <code>--jh-edge-*</code> and
+      <code>--jh-rule-light</code>.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The call</h2>
+    <div class="callout">
+      <strong>The registry earns its place on rebrandability, not on speed.</strong> A page that
+      cannot take a client's palette without editing five files is not reusable at spec-site
+      volume, and that is exactly what the unwired baseline produced — while reporting the
+      opposite. B is slower on the first page and cheaper on every one after it.
+    </div>
+    <p style="max-width:76ch">Next: fix the three-tier pricing gap, since the brief's centre
+    piece is the one thing 789 indexed items did not cover.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Method: two throwaway Next.js 15 + React 19 + Tailwind v4 apps, identical brief, isolated
+    sessions. Colour counts measured independently of each agent's self-report, with the same
+    grep in both repos. Registry <code>v1.0.1</code>, shadcn CLI <code>4.21.0</code>.
+    <a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a> ·
+    <a href="https://github.com/JustinHarrisAI/jhai-registry/blob/main/docs/CURATION.md">curation index</a>
+  </div>
+</footer>
+
+</body>
+</html>

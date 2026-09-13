@@ -8,8 +8,9 @@ import type { CSSProperties } from 'react';
  *
  * Lane W1-0, 2026-08-11 (D-24): reauthored off inline styles onto utilities. The caption is
  * the mono eyebrow recipe, so its 9.5px reads through `text-type-eyebrow` rather than as a
- * literal. The light-ground rule is `rgba(0,0,0,0.08)` in the export and has no token; it
- * becomes its exact Tailwind equivalent, `black/8`.
+ * literal. The light-ground rule was `rgba(0,0,0,0.08)` with no token of its own. For the registry it
+ * became `--jh-rule-light`, same value, so it follows a client's palette instead of staying
+ * literal black on every site.
  */
 
 export type StatTileGround = 'light' | 'dark';
@@ -26,7 +27,7 @@ export interface StatTileProps {
 }
 
 export function StatTile({ value, label, divider = true, ground = 'light', style }: StatTileProps) {
-  const rule = ground === 'dark' ? 'border-line-dark-soft' : 'border-black/8';
+  const rule = ground === 'dark' ? 'border-line-dark-soft' : 'border-rule-light';
 
   return (
     <div className={`px-8 ${divider ? `border-l ${rule}` : ''}`} style={style}>

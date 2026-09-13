@@ -8,7 +8,8 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "@jhai/theme-base"
+    "@jhai/theme-base",
+    "@shadcn/separator"
   ],
   "files": [
     {

@@ -2,5 +2,447 @@
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "jhai-sections",
   "homepage": "https://github.com/JustinHarrisAI/jhai-registry",
-  "items": []
+  "items": [
+    {
+      "name": "content-types",
+      "type": "registry:lib",
+      "title": "Content Types",
+      "description": "The prop shapes the JHAI section components take. Types only, no data. In jhai-new-website these live in src/lib/v2/home.ts beside the site's content; here the types travel with the components and the data stays in whatever project renders them.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "types"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "content-types.ts",
+          "type": "registry:lib",
+          "target": "@components/jhai/content-types.ts"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "shell",
+      "type": "registry:component",
+      "title": "Section Shell",
+      "description": "Container, Section, Grain and the one stylesheet the page's marquees and responsive collapses read from. Every section item depends on this: it owns the 1280 container, the three grounds, the marquee keyframes and the reduced-motion stop that Tailwind cannot express.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "layout"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "shell.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/shell.tsx"
+        }
+      ],
+      "docs": "Grain reads its texture from --jh-grain, which this file does not define because the SVG is a project asset. Set it beside your palette: :root { --jh-grain: url('/assets/grain.svg'); }. Unset, Grain renders nothing.",
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "ticker",
+      "type": "registry:component",
+      "title": "Ticker",
+      "description": "The outlined capability marquee. Type as texture: stroked, not filled, so it reads as a rule between sections rather than another headline.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "marketing",
+        "motion"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell"
+      ],
+      "files": [
+        {
+          "path": "Ticker.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Ticker.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "logo-wall",
+      "type": "registry:component",
+      "title": "Logo Wall",
+      "description": "The client logo strip. Pair with svgl.app for the marks themselves — see docs/CURATION.md, logo wall.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "LogoWall.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/LogoWall.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "faq-item",
+      "type": "registry:component",
+      "title": "FAQ Item",
+      "description": "One disclosure row with a plus that rotates. The unit the Questions section composes.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "content"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "FAQItem.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/FAQItem.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "questions",
+      "type": "registry:component",
+      "title": "Questions",
+      "description": "The FAQ section: eyebrow, heading, lede and a column of disclosure rows.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "content",
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/eyebrow",
+        "@jhai/faq-item",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "Questions.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Questions.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "comparison-table",
+      "type": "registry:component",
+      "title": "Comparison Table",
+      "description": "The us-versus-them table. One highlighted column, check and cross marks, hairline rows.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "content"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "ComparisonTable.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/ComparisonTable.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "compare",
+      "type": "registry:component",
+      "title": "Compare",
+      "description": "The comparison section wrapping the table with its eyebrow and side note.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "content",
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/eyebrow",
+        "@jhai/comparison-table",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "Compare.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Compare.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "problem",
+      "type": "registry:component",
+      "title": "Problem",
+      "description": "The display-scale problem statement: a three-part heading with an italic middle, a lede and a bullet list.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/eyebrow",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "Problem.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Problem.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "answer",
+      "type": "registry:component",
+      "title": "Answer",
+      "description": "The feature-scale answer to the problem: split heading, lede with an italic clause, image and pillars.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/eyebrow",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "Answer.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Answer.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "cta-band",
+      "type": "registry:component",
+      "title": "CTA Band",
+      "description": "The dark close. Statement left, capture slot right. The slot is a render prop, not an import, because a capture form belongs to the project's funnel.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "marketing",
+        "cta"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/button"
+      ],
+      "files": [
+        {
+          "path": "CTABand.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/CTABand.tsx"
+        }
+      ],
+      "docs": "Differs from the jhai-new-website original, where the right slot renders GraderField, JHAI's audit-email capture. That form is a funnel, not reusable UI, so it stays project code. Pass your own component as `field`, pass `link` for a click ask instead, or pass neither for the statement-only shape.",
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "cta-band-section",
+      "type": "registry:component",
+      "title": "CTA Band Section",
+      "description": "The mid-page CTA band, wrapped in its section and container so it reads as a stop rather than a section.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "marketing",
+        "cta"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/cta-band",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "CtaBandSection.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/CtaBandSection.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "record-band",
+      "type": "registry:component",
+      "title": "Record Band",
+      "description": "A row of stat tiles on either ground. Pair the numerals with @magicui/number-ticker for a count-up.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "stats",
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/stat-tile",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "RecordBand.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/RecordBand.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "case-card",
+      "type": "registry:component",
+      "title": "Case Card",
+      "description": "The case-study card: grayscale plate, badge, title and result line.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "cards"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/image-slot",
+        "@shadcn/badge"
+      ],
+      "files": [
+        {
+          "path": "CaseCard.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/CaseCard.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "blog-card",
+      "type": "registry:component",
+      "title": "Blog Card",
+      "description": "The writing card: grayscale plate, kicker, title and date.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "cards"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/image-slot"
+      ],
+      "files": [
+        {
+          "path": "BlogCard.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/BlogCard.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "tool-card",
+      "type": "registry:component",
+      "title": "Tool Card",
+      "description": "The tool card: title, body and an arrow that slides on hover.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "cards"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "ToolCard.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/ToolCard.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    }
+  ]
 }

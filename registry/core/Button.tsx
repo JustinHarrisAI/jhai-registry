@@ -58,7 +58,7 @@ const SIZE: Record<ButtonSize, string> = {
 
 /** The four combinations the v2 button actually has. One control whose fill side flips. */
 const TONE: Record<`${ButtonVariant}-${ButtonGround}`, string> = {
-  'primary-light': 'bg-ink-800 text-white',
+  'primary-light': 'bg-ink-800 text-paper-0',
   'primary-dark': 'bg-paper-50 text-ink-950',
   'ghost-light': 'border border-black/20 bg-transparent text-ink-800',
   'ghost-dark': 'border border-white/35 bg-transparent text-dark-text-1',

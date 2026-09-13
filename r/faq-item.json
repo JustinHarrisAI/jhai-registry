@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-item",
+  "title": "FAQ Item",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "One disclosure row with a plus that rotates. The unit the Questions section composes.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@jhai/theme-base"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/FAQItem.tsx",
+      "content": "import { Plus } from 'lucide-react';\nimport type { CSSProperties, ReactNode } from 'react';\n\n/**\n * FAQItem — a native <details> disclosure on a top hairline.\n *\n * Converted from `extracted/components/page/FAQItem.jsx`.\n * Native <details> on purpose: it opens with JavaScript disabled, it is\n * keyboard operable for free, and its content is findable by in-page search.\n * No client component, no state.\n *\n * THE ONE DOCUMENTED EXCEPTION TO \"no interactive component is hand-rolled\"\n * (D-24, roster section 5). This is NOT a candidate for `@/components/ui/accordion`\n * and never will be. A shadcn accordion would have to re-earn all three of the\n * properties above, and on a marketing page read by a stranger and by a crawler\n * that is a straight downgrade. If you came here to \"fix\" this, the reason you\n * were looking for is this paragraph.\n *\n * Lane W1-0, 2026-08-11: inline styles became Tailwind utilities. The mechanics —\n * <details>, <summary>, the `open` attribute — are untouched.\n *\n * PRIOR RESEARCH ON FILE, OPENED AND SCOPED OUT. The research gate matches this file on\n * \"disabled\", which occurs here only in the sentence \"it opens with JavaScript disabled\". It\n * names `builds/valhalla/docs/specs/CRON-DISABLED-AUDIT-2026-05-30.md`, an audit of DISABLED\n * CRON ROUTINES in Valhalla, a different build with no relationship to a disclosure widget on\n * the marketing site. The cross-client WebVegas match is excluded outright as a source by\n * D-02.\n */\n\nexport interface FAQItemProps {\n  question: string;\n  /** the plain-English answer */\n  children: ReactNode;\n  open?: boolean;\n  style?: CSSProperties;\n}\n\nexport function FAQItem({ question, children, open = false, style }: FAQItemProps) {\n  return (\n    /* `style` is the caller's own override and is computed at their call site, not here —\n       Questions.tsx closes the last row of the stack with a bottom hairline through it. */\n    <details open={open} className=\"border-t border-line-light\" style={style}>\n      {/* `[&::-webkit-details-marker]:hidden` kills Safari's own disclosure triangle, which\n          `list-none` alone does not reach. */}\n      <summary className=\"group/faq flex list-none cursor-pointer items-center justify-between gap-6 py-[22px] font-sans text-type-lede [font-weight:var(--weight-heading)] tracking-[-0.01em] text-text-heading [&::-webkit-details-marker]:hidden\">\n        {question}\n        {/* The marker was a mono \"+\" glyph. It is lucide's Plus now, rotated 45 degrees into a\n            close cross when the row is open: the same affordance, drawn properly, at the same\n            stroke weight as every other glyph on the page. The rotate transitions under\n            `motion-safe` only, so reduced motion still gets the state change without the\n            movement. Part of the 2026-08-13 iconography pass. */}\n        <Plus\n          size={18}\n          strokeWidth={1.5}\n          aria-hidden=\"true\"\n          className=\"flex-none text-ink-400 motion-safe:transition-transform motion-safe:duration-200 group-open/faq:rotate-45\"\n        />\n      </summary>\n      <div className=\"max-w-[640px] pb-6 font-sans text-type-body leading-[1.65] text-text-body\">\n        {children}\n      </div>\n    </details>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/FAQItem.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": null,
+    "upstreamLicense": null,
+    "jhaiVersion": "1.0.0"
+  },
+  "categories": [
+    "content"
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-band-section",
+  "title": "CTA Band Section",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "The mid-page CTA band, wrapped in its section and container so it reads as a stop rather than a section.",
+  "registryDependencies": [
+    "@jhai/theme-base",
+    "@jhai/shell",
+    "@jhai/cta-band",
+    "@jhai/content-types"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/CtaBandSection.tsx",
+      "content": "/**\n * The mid-page CTA band. The dark card is the only ink surface between the case strip and\n * the testimonials, so it reads as a stop rather than a section.\n *\n * The export lays a grain overlay inside this card. `CTABand` (wave 1) does not take\n * children, and widening its API for one page would push a homepage detail into a\n * primitive every template shares, so the grain is skipped here rather than forked. Logged\n * to GAP-LEDGER.md.\n */\n\nimport type { ReactNode } from 'react';\nimport { CTABand } from './CTABand';\nimport { Container, Section } from './shell';\nimport type { CtaBandContent } from './content-types';\n\nexport function CtaBandSection({\n  content,\n  field,\n}: {\n  content: CtaBandContent;\n  /** the capture slot — see CTABand. Omit for the statement-only shape. */\n  field?: ReactNode;\n}) {\n  return (\n    /* `!` because HomeStyles is unlayered and `.v2-section { padding: var(--section-y) 0 }`\n       outranks any @layer utility. `pb-section-y` reads the same token the inline value did. */\n    <Section label=\"CTA band\" ground=\"paper\" className=\"pt-0! pb-section-y!\">\n      <Container>\n        <div data-rv=\"\">\n          <CTABand\n            title={content.title}\n            subline={content.subline}\n            field={field}\n            link={content.link}\n          />\n        </div>\n      </Container>\n    </Section>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/CtaBandSection.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": null,
+    "upstreamLicense": null,
+    "jhaiVersion": "1.0.0"
+  },
+  "categories": [
+    "marketing",
+    "cta"
+  ],
+  "type": "registry:component"
+}

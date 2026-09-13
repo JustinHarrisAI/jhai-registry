@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ticker",
+  "title": "Ticker",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "The outlined capability marquee. Type as texture: stroked, not filled, so it reads as a rule between sections rather than another headline.",
+  "registryDependencies": [
+    "@jhai/theme-base",
+    "@jhai/shell"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/Ticker.tsx",
+      "content": "/**\n * The outlined capability ticker. Type as texture: stroked, not filled, so it reads as a\n * rule between the answer and the services grid rather than as another headline.\n */\n\nexport function Ticker({ text }: { text: string }) {\n  /* The stroke alpha is a literal the export carries and no token names. It is written\n     exactly rather than mixed from --ink-800, because a color-mix() that an older engine\n     cannot parse would drop the stroke and leave a transparent, invisible ticker. */\n  const item = (\n    <span className=\"flex-none pr-16 font-sans text-[clamp(72px,8vw,116px)] leading-none [font-weight:var(--weight-heading)] tracking-[-0.04em] whitespace-nowrap text-transparent [-webkit-text-stroke:1px_color-mix(in_srgb,var(--ink-800)_22%,transparent)]\">\n      {`${text} `}\n    </span>\n  );\n\n  return (\n    /* The marquee stays a CSS marquee, never a carousel: it moves on its own forever and\n       carries its own duration and reduced-motion stop in HomeStyles. */\n    <section\n      data-screen-label=\"Ticker\"\n      aria-hidden=\"true\"\n      className=\"overflow-hidden bg-paper-50 pt-[72px] pb-0\"\n    >\n      <div className=\"v2-marquee v2-marquee--ticker\">\n        {item}\n        {item}\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/Ticker.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": null,
+    "upstreamLicense": null,
+    "jhaiVersion": "1.0.0"
+  },
+  "categories": [
+    "marketing",
+    "motion"
+  ],
+  "type": "registry:component"
+}

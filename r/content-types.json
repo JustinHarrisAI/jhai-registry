@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "content-types",
+  "title": "Content Types",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "The prop shapes the JHAI section components take. Types only, no data. In jhai-new-website these live in src/lib/v2/home.ts beside the site's content; here the types travel with the components and the data stays in whatever project renders them.",
+  "registryDependencies": [
+    "@jhai/theme-base"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/content-types.ts",
+      "content": "/**\n * content-types — the prop shapes the JHAI section components take.\n *\n * In jhai-new-website these live in `src/lib/v2/home.ts` alongside the site's own content\n * data. A registry item cannot import from a consuming project's lib, so the TYPES travel\n * with the components and the DATA stays in whatever project renders them. That split is\n * the point: the section knows what shape it needs, and the project decides what goes in.\n *\n * Types only. No values, no content, nothing client-specific.\n */\n\nexport type LogoEntry = { src: string; alt: string };\n\nexport type StatEntry = { value: string; label: string };\n\nexport type ProblemContent = {\n  number: string;\n  label: string;\n  titleLead: string;\n  titleEm: string;\n  titleTail: string;\n  lede: string;\n  bullets: string[];\n};\n\nexport type AnswerContent = {\n  number: string;\n  label: string;\n  titleLead: string;\n  titleEm: string;\n  ledeLead: string;\n  ledeEm: string;\n  image: string;\n  imageAlt: string;\n  pillars: { title: string; body: string }[];\n};\n\nexport type QuestionsContent = {\n  number: string;\n  label: string;\n  title: string;\n  lede: string;\n  faq: { q: string; a: string }[];\n};\n\nexport type CompareCell = { mark?: 'check' | 'cross'; text: string; strong?: boolean };\n\nexport type CompareContent = {\n  number: string;\n  label: string;\n  title: string;\n  side: string;\n  columns: { label: string; icon: string; highlight?: boolean }[];\n  rows: { label: string; cells: CompareCell[] }[];\n};\n\nexport type CtaBandContent = {\n  title: string;\n  subline: string;\n  /** kept for projects whose own capture form reads them; CTABand itself takes a `field` slot */\n  cta?: string;\n  action?: string;\n  /** Present only where the ask is a call rather than a form. */\n  link?: { label: string; href: string };\n};\n",
+      "type": "registry:lib",
+      "target": "@components/jhai/content-types.ts"
+    }
+  ],
+  "meta": {
+    "upstream": null,
+    "upstreamLicense": null,
+    "jhaiVersion": "1.0.0"
+  },
+  "categories": [
+    "types"
+  ],
+  "type": "registry:lib"
+}

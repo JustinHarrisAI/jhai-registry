@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "record-band",
+  "title": "Record Band",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "A row of stat tiles on either ground. Pair the numerals with @magicui/number-ticker for a count-up.",
+  "registryDependencies": [
+    "@jhai/theme-base",
+    "@jhai/shell",
+    "@jhai/stat-tile",
+    "@jhai/content-types"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/RecordBand.tsx",
+      "content": "/**\n * The record: four figures, hairline-divided, on the same paper ground as the logo wall\n * above it so the fold reads as one block of evidence rather than two sections.\n *\n * The export counts these up from zero on scroll. That is a script behaviour and the end\n * state is the number, so the number is what renders.\n */\n\nimport { StatTile } from './StatTile';\nimport { Container, Section } from './shell';\nimport type { Ground } from './shell';\nimport type { StatEntry } from './content-types';\n\nexport function RecordBand({\n  stats,\n  /* BOTH ADDED 2026-08-14, both optional, both defaulting to what this band has always done,\n     so the approved homepage and the four interior page types render byte-identically.\n\n     WHY. The two hubs are four bands total and one of them is the proof band (DECISIONS.md\n     D9: the homepage's four figures, sitewide, unchanged). This band has always assumed a\n     `LogoWall` directly above it on the same paper — the one same-ground adjacency design.md\n     sanctions, and the reason its top padding is zero. Mounted alone it needs its own ground\n     and its own air, or it reads as a band that lost the thing above it.\n\n     `standalone` governs the padding only and `ground` governs the ground only. Neither\n     infers the other, because a later caller could want either without the other. */\n  ground = 'paper',\n  standalone = false,\n}: {\n  stats: StatEntry[];\n  ground?: Ground;\n  standalone?: boolean;\n}) {\n  return (\n    /* `!` on the padding because HomeStyles is unlayered CSS and its `.v2-section` padding\n       therefore outranks any @layer utility. `pb-section-y` reads the same token the inline\n       value read, so the band still steps down under 760px. */\n    <Section\n      id=\"record\"\n      label=\"Result band\"\n      ground={ground}\n      className={standalone ? 'py-section-y!' : 'pt-0! pb-section-y!'}\n    >\n      <Container>\n        {/* The 104px is the gap up to the logo wall this band hangs off. Standing alone there\n            is nothing above it inside the section, so the row starts on the section padding. */}\n        <div className={`v2-grid-4 gap-x-0 gap-y-8 ${standalone ? '' : 'pt-[104px]'}`}>\n          {stats.map((stat, i) => {\n            /* The figure counts up on entry, which is the export's behaviour. StatTile is a\n               shared primitive this lane does not own, so the count attributes ride on a\n               wrapper and `data-count-in` names the descendant the runtime writes into. The\n               target number is parsed off the authored value, never typed here. */\n            const parts = /^(\\D*)(\\d+(?:\\.\\d+)?)(.*)$/.exec(stat.value);\n            /* The first tile loses its left padding so the row starts on the container edge.\n               StatTile takes no className and paints its own padding inline, so the override\n               is a child selector and has to carry `!` to outrank that inline style. */\n            return (\n              <div\n                key={stat.label}\n                data-rv={i}\n                className={i === 0 ? '[&>div]:pl-0!' : undefined}\n                {...(parts\n                  ? {\n                      'data-count': parts[2],\n                      'data-count-prefix': parts[1],\n                      'data-count-suffix': parts[3],\n                      'data-count-in': ':scope > div > div:first-child',\n                    }\n                  : null)}\n              >\n                <StatTile value={stat.value} label={stat.label} divider={i > 0} />\n              </div>\n            );\n          })}\n        </div>\n      </Container>\n    </Section>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/RecordBand.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": null,
+    "upstreamLicense": null,
+    "jhaiVersion": "1.0.0"
+  },
+  "categories": [
+    "stats",
+    "marketing"
+  ],
+  "type": "registry:component"
+}

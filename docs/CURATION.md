@@ -2,7 +2,7 @@
 
 > **GENERATED FILE — do not edit.** Source of truth is [CURATION.json](CURATION.json). Regenerate with `node scripts/build-curation-md.mjs`.
 
-Last full pass **2026-09-12** · 789 items indexed across `@shadcn`, `@tailark-oss`, `@kibo-ui`, `@magicui`, `@blocks-so`, `@fancy` · shadcn@4.21.0 via pnpm dlx
+Last full pass **2026-09-14** · 4585 items indexed across `@shadcn`, `@jhai`, `@tailark-oss`, `@kibo-ui`, `@magicui`, `@blocks-so`, `@fancy`, `@hirael`, `@bundui`, `@flx`, `@ilinxa`, `@8bitcn`, `@cnippet`, `@ns-ui`, `@pulld`, `@vllnt-ui`, `@shadcnui-blocks`, `@nusaiba` · shadcn@4.21.0 via pnpm dlx
 
 ## Read this before you search
 
@@ -29,13 +29,13 @@ A ⚠︎ on a preview link means the host returns HTTP 200 for any path, so the 
 | **marquee** | registry item | @kibo-ui/marquee | `pnpm dlx shadcn@4.21.0 add @kibo-ui/marquee` | [preview](https://www.kibo-ui.com/components/marquee) |
 | **count-up stats** | registry item | @magicui/number-ticker | `pnpm dlx shadcn@4.21.0 add @magicui/number-ticker` | [preview](https://magicui.design/docs/components/number-ticker) |
 | **drag rail** | registry item | @fancy/box-carousel | `pnpm dlx shadcn@4.21.0 add @fancy/box-carousel` | [preview](https://www.fancycomponents.dev/docs/components/carousel/box-carousel) |
-| **masonry wall** | primitive | CSS columns-* utilities | none — Tailwind core, e.g. columns-1 md:columns-2 lg:columns-3 gap-6, with break-inside-avoid on each child | [preview](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_multicol_layout) |
+| **masonry wall** | registry item | @hirael/masonry | `pnpm dlx shadcn@4.21.0 add @hirael/masonry` | [preview](https://hirael.com) |
 | **accordion** | primitive | shadcn core accordion | `pnpm dlx shadcn@4.21.0 add @shadcn/accordion` | [preview](https://ui.shadcn.com/docs/components/accordion) |
 | **tabs** | primitive | shadcn core tabs | `pnpm dlx shadcn@4.21.0 add @shadcn/tabs` | [preview](https://ui.shadcn.com/docs/components/tabs) |
 | **scroll reveal** | build in-house | @jhai/scroll-reveal — thin wrapper over Motion whileInView | pending Phase 3; today, hand-write it over the existing motion dependency | [preview](https://magicui.design/docs/components/text-reveal) |
 | **text reveal** | registry item | @magicui/text-reveal | `pnpm dlx shadcn@4.21.0 add @magicui/text-reveal` | [preview](https://magicui.design/docs/components/text-reveal) |
 | **hero with video** | registry item | @tailark-oss/dusk-hero-section-5-video | `pnpm dlx shadcn@4.21.0 add @tailark-oss/dusk-hero-section-5-video` | — |
-| **pricing table** | registry item | @tailark-oss/veil-pricing-1 | `pnpm dlx shadcn@4.21.0 add @tailark-oss/veil-pricing-1` | — |
+| **pricing table** | registry item | @bundui/pricing-sections-01 | `pnpm dlx shadcn@4.21.0 add @bundui/pricing-sections-01` | [preview](https://bundui.io) |
 | **FAQ** | registry item | @tailark-oss/veil-faqs-1 | `pnpm dlx shadcn@4.21.0 add @tailark-oss/veil-faqs-1` | — |
 | **form inputs** | primitive | shadcn core input, select, textarea, form, label | `pnpm dlx shadcn@4.21.0 add @shadcn/input @shadcn/select @shadcn/textarea @shadcn/form @shadcn/label` | [preview](https://ui.shadcn.com/docs/components/input) |
 | **logo wall** | library | svgl.app — fetch SVGs directly from the keyless public API | none — GET https://api.svgl.app?search=<brand>, then fetch the returned route (and wordmark / dark variant if present) | [preview](https://svgl.app) |
@@ -88,16 +88,18 @@ Rejected:
 
 ### masonry wall
 
-**primitive — CSS columns-* utilities** · n/a (CSS) / MIT (react-masonry-css, paulcollett/react-masonry-css) · verified 2026-09-12
+**registry item — @hirael/masonry** · MIT (ASSET) · verified 2026-09-14
 
-This is the one genuine gap in the wired set and it was measured, not assumed. Zero of 789 indexed items matched across four index-grep terms (masonry, mosaic, pinterest, waterfall) and three separate fuzzy-search phrasings (masonry, masonry grid, testimonial wall). Nothing exists. CSS multi-column costs nothing, adds no dependency, and restyles perfectly. Note the distinction that trips people up: testimonial CONTENT is well covered — there are 11 Tailark OSS testimonial blocks — it is the masonry LAYOUT that does not exist.
+GAP CLOSED 2026-09-14. The old answer was CSS columns-*, because zero of 789 wired items matched masonry across four grep terms. Widening to the full 344-entry community index found 23 registries carrying a masonry item. @hirael/masonry wins on being real and self-contained: responsive column counts, round-robin assignment, one file, no external dependency, cn from local utils, and it installed clean with zero palette utilities. It does ordered left-to-right reflow, which CSS multi-column cannot do — the exact reason the primitive was a compromise.
 
 *Restyling:* No colour. Layout utilities only.
 
 Rejected:
 
-- **react-masonry-css** — The option ONLY when ordered left-to-right reflow is required. CSS columns fill top-to-bottom per column, so item order reads down then across. If the wall is chronological or ranked and reading order matters, take the dependency. If it is a decorative testimonial wall, it does not.
-- **CSS grid with row spans** — Gives true ordered flow without a dependency, but every tile needs a known or measured height. Fine for fixed-size cards, wrong for variable-length testimonials, which is the actual use case.
+- **CSS columns-* utilities** — Still correct for a purely decorative wall where order does not matter, and it costs nothing. Loses because it cannot do ordered left-to-right reflow, which is what a testimonial wall usually wants.
+- **@diceui/masonry** — The best-looking option on paper — a proper headless primitive from sadmann7, MIT, 2k stars. UNWIRED because it does not install: its registry item declares an npm dependency '@diceui/masonry' that returns 404 on npm. The scope is real (@diceui/mention publishes fine), that package is not. Retest later.
+- **@react-bits/Masonry-TS-TW** — Real and free, but ReactBits carries MIT + Commons Clause, which bars redistributing components. Usable in client work, never copyable into @jhai. Pointer-only, so it loses to an MIT equivalent.
+- **react-masonry-css** — A dependency where a component will do, now that a component exists.
 
 ### accordion
 
@@ -172,9 +174,9 @@ Rejected:
 
 ### pricing table
 
-**registry item — @tailark-oss/veil-pricing-1** · MIT (tailark/blocks) · verified 2026-09-12
+**registry item — @bundui/pricing-sections-01** · MIT (ASSET) · verified 2026-09-14
 
-Best measured restylability of any pricing block found: 8 semantic tokens, 0 hardcoded colour, 0 hex. Verified by real install in Task 1.4 — it landed and rendered in the JHAI palette with no edit to the component. Seven Tailark OSS pricing blocks came back across three families; veil is the most restrained, which suits the editorial direction.
+GAP CLOSED 2026-09-14. The dogfood exposed this: every Tailark pricing block indexed was single-tier, so the three-tier table at the centre of a pricing brief had to be hand-written. 26 registries in the community index carry an explicitly multi-tier pricing item. bundui installed clean — 4 files, zero palette utilities, zero hex — and ships three pricing-sections variants so there is a fallback shape without leaving the namespace.
 
 *Preview caveat: oss.tailark.com has no per-item preview pages — its own homepage links 404 — and tailark.com returns HTTP 200 for every path including bogus ones, so any link there proves nothing. Preview a Tailark block by installing it, or browse https://oss.tailark.com/r/registry.json for item names.*
 
@@ -182,9 +184,10 @@ Best measured restylability of any pricing block found: 8 semantic tokens, 0 har
 
 Rejected:
 
-- **@tailark-oss/veil-pricing-2 and veil-pricing-3** — Same family, more surface — comparison columns and feature matrices. Pick these when the client actually sells tiers that need comparing.
-- **@tailark-oss/dusk-pricing-1/2 and mist-pricing-1/2** — The Dusk and Mist families carry heavier decoration than the JHAI direction wants. Equally token-clean, so they are live options for client brands.
-- **in-house cards/PricingCard.tsx** — Already exists, but carries 2 hardcoded palette utilities and 2 hex literals, so it is Tier 3 in the seed plan and needs colour work before it could be a registry item.
+- **@tailark-oss/veil-pricing-1 (the old pick)** — Kept for single-tier and enterprise shapes, where it is still good. Demoted because it is single-tier: the dogfood installed it against a three-tier brief and the block had to be discarded.
+- **@hirael/pricing-01..04** — Four variants, MIT, clean measurements. A close second and the right escalation if bundui's shapes do not fit. Loses only on bundui's sections being more obviously marketing-page furniture.
+- **@nusaiba/pricing-1..8** — Eight variants, the widest single set found. Loses on measurement: 65 semantic against 16 palette utilities, so it needs per-client edits the others do not.
+- **@ilinxa/pricing-table** — The most capable — comparison rows, tier features, tooltips, 12 files. Overkill for a marketing page and it pulls a tooltip dependency. Reach for it when the brief is a real feature-comparison matrix.
 
 ### FAQ
 

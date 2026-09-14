@@ -2,15 +2,20 @@
   "_comment": "Single source of truth for JHAI's shadcn registry namespaces. Merge this 'registries' block into any project's components.json. The shadcn MCP server reads its registry list from components.json, so this block is what arms component search in Claude Code. Every URL below was verified by fetching a real registry item on 2026-09-12; see docs/RESEARCH.md section A.",
   "_rules": [
     "Namespace names must start with '@' and URLs must contain '{name}' (shadcn skill spec, skills/shadcn/mcp.md). Both are enforced by the CLI.",
-    "@tailark-oss has NO .json suffix. Its endpoints are /r/{name}. Do not normalize it to match the others.",
+    "Suffixes are NOT uniform. @tailark-oss and @intentui have no .json; @diceui and @nusaiba carry a {style} or a fixed style segment. Each was verified by fetching a real item. Do not normalize them to match the others.",
     "Search and list resolve the registry index by substituting {name} with 'registry'. A namespace only supports search if that path serves a valid registry.json.",
-    "Pin the CLI major in anything that runs across many sites: use 'shadcn@4', not 'shadcn@latest'. Current latest is 4.21.0.",
-    "@jhai/theme-base MUST be installed as its own explicit step. cssVars are applied only to items named directly on the command line, never to items pulled in through registryDependencies. Skip it and every component installs with no tokens and renders in the wrong colours, with no error."
+    "A public index does NOT mean public items. @reui serves a 1728-item index anonymously and 401s on every item with 'Provide your license key'. Probe a real ITEM before wiring, never just the index.",
+    "Pin the CLI major in anything that runs across many sites: use 'shadcn@4.21.0' via pnpm dlx, not 'shadcn@latest'.",
+    "A registry can be VERIFIED and still not INSTALL. Four of the fifteen wired in the 2026-09-14 breadth pass failed only at install: @diceui declared an npm package that 404s, @payload-components needs a Payload CMS project, @7ovr and @intentui assume a different primitive base (Base UI / react-aria) than shadcn's Radix. Always install-test before adding a namespace here."
   ],
   "_verified": {
-    "date": "2026-09-12",
+    "date": "2026-09-14",
     "cli": "shadcn@4.21.0",
-    "communityIndex": "https://ui.shadcn.com/r/registries.json"
+    "communityIndex": "https://ui.shadcn.com/r/registries.json",
+    "method": "index fetched; a real item fetched and parsed; restylability measured (semantic vs palette utilities vs hex); LICENSE read from source repo; one real install per registry into a throwaway on a non-JHAI palette, typechecked and built",
+    "registries": 17,
+    "approxItems": 4585,
+    "candidatePool": "344 in the community index, 271 healthy and unwired, 263 verified, 262 free (34,969 items). Only @reui is key-gated."
   },
   "registries": {
     "@jhai": "https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/r/{name}.json",
@@ -18,6 +23,17 @@
     "@kibo-ui": "https://www.kibo-ui.com/r/{name}.json",
     "@magicui": "https://magicui.design/r/{name}.json",
     "@blocks-so": "https://blocks.so/r/{name}.json",
-    "@fancy": "https://www.fancycomponents.dev/r/{name}.json"
+    "@fancy": "https://www.fancycomponents.dev/r/{name}.json",
+    "@hirael": "https://hirael.com/r/{name}.json",
+    "@bundui": "https://bundui.io/r/{name}.json",
+    "@flx": "https://ui.flexnative.com/r/{name}.json",
+    "@ilinxa": "https://ui.ilinxa.com/r/{name}.json",
+    "@8bitcn": "https://www.8bitcn.com/r/{name}.json",
+    "@cnippet": "https://ui.cnippet.dev/r/{name}.json",
+    "@ns-ui": "https://design.helpmarq.com/r/{name}.json",
+    "@pulld": "https://pulld.pages.dev/r/{name}.json",
+    "@vllnt-ui": "https://ui.vllnt.com/r/{name}.json",
+    "@shadcnui-blocks": "https://shadcnui-blocks.com/r/{name}.json",
+    "@nusaiba": "https://nusaiba.dev/r/base-nova/{name}.json"
   }
 }

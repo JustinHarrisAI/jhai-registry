@@ -39,6 +39,11 @@ A ⚠︎ on a preview link means the host returns HTTP 200 for any path, so the 
 | **FAQ** | registry item | @tailark-oss/veil-faqs-1 | `pnpm dlx shadcn@4.21.0 add @tailark-oss/veil-faqs-1` | — |
 | **form inputs** | primitive | shadcn core input, select, textarea, form, label | `pnpm dlx shadcn@4.21.0 add @shadcn/input @shadcn/select @shadcn/textarea @shadcn/form @shadcn/label` | [preview](https://ui.shadcn.com/docs/components/input) |
 | **logo wall** | library | svgl.app — fetch SVGs directly from the keyless public API | none — GET https://api.svgl.app?search=<brand>, then fetch the returned route (and wordmark / dark variant if present) | [preview](https://svgl.app) |
+| **site header** | registry item | @jhai/site-header | `pnpm dlx shadcn@4.21.0 add @jhai/site-header` | — |
+| **testimonials** | registry item | @jhai/testimonials | `pnpm dlx shadcn@4.21.0 add @jhai/testimonials` | — |
+| **site footer** | registry item | @jhai/site-footer | `pnpm dlx shadcn@4.21.0 add @jhai/site-footer` | — |
+| **hero** | registry item | @jhai/hero | `pnpm dlx shadcn@4.21.0 add @jhai/hero` | — |
+| **pricing section** | registry item | @jhai/pricing | `pnpm dlx shadcn@4.21.0 add @jhai/pricing` | — |
 
 ## Why, and what was rejected
 
@@ -230,4 +235,67 @@ Rejected:
 
 - **21st.dev search_logo via MCP** — Free and unlimited, and convenient inside Claude Code — but it is a wrapper over exactly this source. Fine to use interactively; do not build a client site's asset pipeline on it when the upstream is MIT and keyless.
 - **@tailark-oss/core-* logo items** — Tailark OSS ships a handful of SVG brand logos as registry items (core-figma, core-clerk, core-vercel and similar). Far narrower coverage than svgl.app, and it puts brand marks in the component tree rather than in public assets.
+
+### site header
+
+**registry item — @jhai/site-header** · UNLICENSED (in-house) · verified 2026-09-14
+
+Built in-house 2026-09-14 because nothing prop-driven existed anywhere. Eighteen @tailark-oss *-header items came back and every one hardcodes its nav array. @jhai/section-header is a heading block inside a band, not a page header, and was repeatedly mistaken for one. Mobile disclosure is a native <details>, so it needs no runtime.
+
+*Restyling:* Token-only. No colour literals; renders correctly with every semantic token grayscale and radius zero.
+
+Rejected:
+
+- **@tailark-oss/mist-hero-section-1-header** — content-locked — hardcoded nav array, zero props, and 17 siblings identical in shape
+- **@jhai/section-header** — a heading block inside a band; different component, confusingly similar name
+
+### testimonials
+
+**registry item — @jhai/testimonials** · UNLICENSED (in-house) · verified 2026-09-14
+
+Built in-house 2026-09-14. The largest single hole the composer found: social proof is on every service-business page and @jhai had nothing at all. Eleven @tailark-oss testimonial blocks, every one content-locked. Ships with @jhai/rating-mark, since the registry had no rating or review mark either.
+
+*Restyling:* Token-only. No colour literals; renders correctly with every semantic token grayscale and radius zero.
+
+Rejected:
+
+- **@tailark-oss/veil-testimonials-1** — content-locked, and so are the other ten
+
+### site footer
+
+**registry item — @jhai/site-footer** · UNLICENSED (in-house) · verified 2026-09-14
+
+Built in-house 2026-09-14. Sixteen @tailark-oss footers, all content-locked, and @jhai had none. Two to four columns from the authored array; `minimal` is a real variant rather than passing an empty columns list.
+
+*Restyling:* Token-only. No colour literals; renders correctly with every semantic token grayscale and radius zero.
+
+Rejected:
+
+- **@tailark-oss/veil-footer-1** — content-locked, and so are the other fifteen
+
+### hero
+
+**registry item — @jhai/hero** · UNLICENSED (in-house) · verified 2026-09-14
+
+Built in-house 2026-09-14. Distinct from the 'hero with video' entry, which is a content-locked block for hand-installing. This one takes content through props and, critically, treats MISSING MEDIA as a first-class state: omit media.src and it draws a correctly proportioned empty plate. A section that hard-requires a live URL cannot be placed in a wireframe, which is what forced jhai-composer to fork @jhai/answer's layout locally.
+
+*Restyling:* Token-only. No colour literals; renders correctly with every semantic token grayscale and radius zero.
+
+Rejected:
+
+- **@tailark-oss/dusk-hero-section-1** — content-locked; excellent structure, unusable as a slot target
+- **composer-local hero assembled from atoms** — worked, but every consumer rebuilding the same hero out of Eyebrow/Button/ImageSlot is the duplication the registry exists to stop
+
+### pricing section
+
+**registry item — @jhai/pricing** · UNLICENSED (in-house) · verified 2026-09-14
+
+Built in-house 2026-09-14. @jhai/comparison-table is a feature grid with no slot for a price, a billing period or a per-plan CTA, so every consumer rendered those three as local markup above it. `cards-with-comparison` reuses ComparisonTable for the grid half rather than growing a second table, so the two halves cannot drift.
+
+*Restyling:* Token-only. No colour literals; renders correctly with every semantic token grayscale and radius zero.
+
+Rejected:
+
+- **@jhai/comparison-table** — the comparison half only; carries no price, note or CTA
+- **@bundui/pricing-sections-01** — content-locked — the right shape for a hand-install, not a composition target
 

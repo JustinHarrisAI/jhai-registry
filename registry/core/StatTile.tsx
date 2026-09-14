@@ -26,7 +26,17 @@ export interface StatTileProps {
   style?: CSSProperties;
 }
 
-export function StatTile({ value, label, divider = true, ground = 'light', style }: StatTileProps) {
+/*
+ * `ground` is in the props type and is deliberately NOT destructured here.
+ *
+ * It used to select a hairline colour. `border-border` now follows the consuming project's
+ * own palette and inverts inside a `.dark` scope on its own, so there is nothing left for the
+ * prop to switch. It stays in the public signature for source compatibility — the same call
+ * that worked before still type-checks — and Eyebrow carries the identical dead prop for the
+ * identical reason. Reported by jhai-composer as an unused destructure; removing the binding
+ * is the fix, removing the prop would be a breaking change for no gain.
+ */
+export function StatTile({ value, label, divider = true, style }: StatTileProps) {
   const rule = 'border-border';
 
   return (

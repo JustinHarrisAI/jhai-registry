@@ -85,7 +85,7 @@
       "name": "logo-wall",
       "type": "registry:component",
       "title": "Logo Wall",
-      "description": "The client logo strip. Pair with svgl.app for the marks themselves — see docs/CURATION.md, logo wall.",
+      "description": "The client logo strip. Pair with svgl.app for the marks themselves \u2014 see docs/CURATION.md, logo wall.",
       "author": "Justin Harris <justin@justinharris.ai>",
       "categories": [
         "marketing"
@@ -443,6 +443,157 @@
         "upstream": null,
         "upstreamLicense": null,
         "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "site-header",
+      "type": "registry:component",
+      "title": "Site Header",
+      "description": "The page header: brand, nav, one optional ask. Mobile disclosure is a native <details>, so it works with no runtime. Variants: simple, centered.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "layout",
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/button",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "SiteHeader.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/SiteHeader.tsx"
+        }
+      ],
+      "docs": "Not @jhai/section-header, which is a heading block inside a band. This is the page's own header. The mobile menu is a <details> because the registry ships no runtime and a server component cannot hydrate one; the native element brings keyboard handling and the open/closed announcement with it.",
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
+      }
+    },
+    {
+      "name": "testimonials",
+      "type": "registry:component",
+      "title": "Testimonials",
+      "description": "The social proof band. One to six quotes, each with an optional real rating drawn by RatingMark. Variants: grid, single.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/eyebrow",
+        "@jhai/rating-mark",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "Testimonials.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Testimonials.tsx"
+        }
+      ],
+      "docs": "`rating` is optional and is never defaulted. A default of 5 would invent a five-star review every time a caller omitted the field. Omit it and no mark is drawn.",
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
+      }
+    },
+    {
+      "name": "site-footer",
+      "type": "registry:component",
+      "title": "Site Footer",
+      "description": "Brand, standfirst, two to four link columns, legal line. Variants: columns, minimal.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "layout",
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "SiteFooter.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/SiteFooter.tsx"
+        }
+      ],
+      "docs": "Deliberately not a Section: a footer sits outside the band rhythm and takes its own padding. `minimal` is a real variant rather than `columns: []`, so an empty grid is never the way to ask for the short shape.",
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
+      }
+    },
+    {
+      "name": "hero",
+      "type": "registry:component",
+      "title": "Hero",
+      "description": "Eyebrow, headline, subhead, actions and optional media. Media accepts a placeholder state and renders a correctly proportioned empty plate rather than requiring a live src. Variants: centered, split.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/eyebrow",
+        "@jhai/button",
+        "@jhai/image-slot",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "Hero.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Hero.tsx"
+        }
+      ],
+      "docs": "`media.src` is optional on purpose. A section that hard-requires a URL cannot be placed in a wireframe, and the consumer then forks the layout locally to show an empty plate. The first entry in `actions` renders primary and the rest ghost; that is a rendering rule, not content.",
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
+      }
+    },
+    {
+      "name": "pricing",
+      "type": "registry:component",
+      "title": "Pricing",
+      "description": "Plan cards carrying price, billing note and per-plan CTA, optionally over a feature comparison. Variants: cards, cards-with-comparison.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "marketing"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/eyebrow",
+        "@jhai/button",
+        "@jhai/comparison-table",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "Pricing.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Pricing.tsx"
+        }
+      ],
+      "docs": "`price` is a string and is never computed: \"$95/mo\", \"From $1,200\", \"Free\" and \"Let's talk\" are all legitimate. The highlighted card opens a nested .dark scope rather than painting a literal, which is the fix for the bug that made ComparisonTable's highlighted column invisible.",
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
       }
     }
   ]

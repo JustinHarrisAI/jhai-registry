@@ -185,6 +185,33 @@
         "upstreamLicense": null,
         "jhaiVersion": "1.0.0"
       }
+    },
+    {
+      "name": "rating-mark",
+      "type": "registry:component",
+      "title": "Rating Mark",
+      "description": "The one star recipe. Draws a 0-5 rating as characters so it inherits colour and size from its caption, and announces itself to a screen reader as a number rather than as five shapes. Halves round to the nearest half star.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "marketing",
+        "typography"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "RatingMark.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/RatingMark.tsx"
+        }
+      ],
+      "docs": "Never default `value`. A star mark is a factual claim about a real review; a component that defaults to 5 invents evidence every time a caller omits it. Omit the rating and draw nothing.",
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
+      }
     }
   ]
 }

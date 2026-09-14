@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating-mark",
+  "title": "Rating Mark",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "The one star recipe. Draws a 0-5 rating as characters so it inherits colour and size from its caption, and announces itself to a screen reader as a number rather than as five shapes. Halves round to the nearest half star.",
+  "registryDependencies": [
+    "@jhai/theme-base"
+  ],
+  "files": [
+    {
+      "path": "registry/core/RatingMark.tsx",
+      "content": "import type { CSSProperties } from 'react';\n\n/**\n * RatingMark — the one star recipe.\n *\n * The registry had no rating or review mark at all, which is how a testimonial's `rating`\n * field ended up declared and never drawn in jhai-composer. This is that mark, built as an\n * atom rather than inside Testimonials, because a rating belongs beside a product card and a\n * review row too, and a second copy is how two of them drift.\n *\n * TWO RULES, both load-bearing.\n *\n * 1. It draws with CHARACTERS, not an icon font or an SVG sprite. A star glyph inherits the\n *    current text colour and the current font size, so the mark grays out with the page under\n *    a wireframe theme and scales with its caption. An SVG would need its own fill token and a\n *    size prop, which is two more things to keep in step for no gain at this size.\n *\n * 2. It is accessible as a NUMBER, not as five shapes. The glyphs are aria-hidden and a single\n *    visually-hidden string carries \"4.5 out of 5\". A screen reader that announced five\n *    separate stars would be reading decoration aloud.\n *\n * Halves round to the nearest half star, which is what every review platform shows and what a\n * scraped Google rating actually contains.\n */\n\nexport interface RatingMarkProps {\n  /** 0 to `outOf`. Rounded to the nearest half. */\n  value: number;\n  /** the scale, almost always 5 */\n  outOf?: number;\n  /** appended after the numeric label, e.g. \"Google\" */\n  source?: string;\n  /** show the number beside the stars */\n  showValue?: boolean;\n  style?: CSSProperties;\n}\n\nconst FULL = '★';\nconst EMPTY = '☆';\n/* A half star has no reliable single glyph across fonts, so it is a full star at half opacity\n   layered over an empty one. Opacity carries no colour of its own, so this stays token-clean. */\n\nexport function RatingMark({\n  value,\n  outOf = 5,\n  source,\n  showValue = false,\n  style,\n}: RatingMarkProps) {\n  const clamped = Math.max(0, Math.min(outOf, value));\n  const halves = Math.round(clamped * 2);\n  const full = Math.floor(halves / 2);\n  const half = halves % 2 === 1;\n  const empty = outOf - full - (half ? 1 : 0);\n\n  /* One decimal, and only when there is one: 5 reads better than 5.0 on a card. */\n  const label = Number.isInteger(clamped) ? String(clamped) : clamped.toFixed(1);\n\n  return (\n    <span className=\"inline-flex items-center gap-2\" style={style}>\n      <span aria-hidden=\"true\" className=\"font-mono text-ui-caption leading-none text-primary\">\n        {FULL.repeat(full)}\n        {half ? (\n          <span className=\"relative inline-block\">\n            <span className=\"opacity-40\">{FULL}</span>\n          </span>\n        ) : null}\n        <span className=\"text-muted-foreground\">{EMPTY.repeat(Math.max(0, empty))}</span>\n      </span>\n      {showValue ? (\n        <span className=\"font-mono text-ui-caption leading-none text-muted-foreground\">\n          {label}\n          {source ? ` · ${source}` : ''}\n        </span>\n      ) : null}\n      <span className=\"sr-only\">\n        {label} out of {outOf}\n        {source ? `, ${source}` : ''}\n      </span>\n    </span>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/RatingMark.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": null,
+    "upstreamLicense": null,
+    "jhaiVersion": "2.1.0"
+  },
+  "docs": "Never default `value`. A star mark is a factual claim about a real review; a component that defaults to 5 invents evidence every time a caller omits it. Omit the rating and draw nothing.",
+  "categories": [
+    "marketing",
+    "typography"
+  ],
+  "type": "registry:component"
+}

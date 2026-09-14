@@ -75,9 +75,17 @@ const CELL = 'px-6 py-[18px] font-sans leading-[1.5] border-t';
  * project picking a low-contrast --muted-foreground owns that outcome, as it does everywhere
  * else on its page.
  */
-export function comparisonMarkClass(value: boolean, dark: boolean): string {
-  if (value) return dark ? 'text-primary' : 'text-primary';
-  return dark ? 'text-muted-foreground' : 'text-muted-foreground';
+/**
+ * `dark` no longer selects a colour, and that is the fix rather than an oversight.
+ *
+ * The highlighted column now opens a nested `.dark` scope (see the header and body cells
+ * below), so `text-primary` and `text-muted-foreground` already resolve to their dark-side
+ * values inside one. Both branches collapsing to the same token is the point: one recipe,
+ * and the scope inverts it. The parameter is kept because `Compare.tsx` calls this with the
+ * column's highlight flag and the signature is public.
+ */
+export function comparisonMarkClass(value: boolean, _dark: boolean): string {
+  return value ? 'text-primary' : 'text-muted-foreground';
 }
 
 export function ComparisonTable({
@@ -128,7 +136,19 @@ export function ComparisonTable({
                    * instead of inside its box, so the highlighted column takes 20px of top
                    * padding to give that 2px back. Row height is unchanged either way.
                    */
-                  col.highlight ? 'relative bg-background pt-5' : 'bg-primary/10 pt-[18px]'
+                  /*
+                   * `dark` opens a nested dark scope on the cell, which is the same device
+                   * shell.tsx uses for an ink Section. Before v2.0.0 the highlight column was
+                   * an explicit --ui-ink-950 ground; the rename pointed it at `bg-background`
+                   * with `text-card` on the label, and on any light palette that is white text
+                   * on a white cell. Found by rendering, not by review: jhai-composer's visual
+                   * QA caught the column label invisible. Opening the scope restores the
+                   * documented dark column without reintroducing a private token, and it
+                   * follows the consuming project's own dark palette.
+                   */
+                  col.highlight
+                    ? 'dark relative bg-background pt-5'
+                    : 'bg-primary/10 pt-[18px]'
                 )}
               >
                 {col.highlight ? (
@@ -140,7 +160,9 @@ export function ComparisonTable({
                 <span
                   className={cn(
                     'block font-sans text-[15px] [font-weight:var(--ui-weight-heading)] tracking-[-0.01em]',
-                    col.highlight ? 'text-card' : 'text-foreground'
+                    /* Inside the dark scope above, `text-foreground` IS the light ink. One
+                       token for both columns; the scope does the inverting. */
+                    'text-foreground'
                   )}
                 >
                   {col.label}
@@ -150,7 +172,8 @@ export function ComparisonTable({
                     className={cn(
                       MONO_LABEL,
                       'mt-2 block font-normal',
-                      col.highlight ? 'text-primary' : 'text-muted-foreground'
+                      /* Same story: muted resolves against whichever scope the cell is in. */
+                      'text-muted-foreground'
                     )}
                   >
                     {col.note}
@@ -178,8 +201,10 @@ export function ComparisonTable({
                 const cell = cn(
                   CELL,
                   'text-[14px]',
+                  /* The body cells of the highlighted column open the same dark scope as its
+                     header, so the column reads as one dark band top to bottom. */
                   dark
-                    ? 'border-border/60 bg-background text-foreground'
+                    ? 'dark border-border/60 bg-background text-foreground'
                     : 'border-border/60 bg-transparent text-muted-foreground'
                 );
 

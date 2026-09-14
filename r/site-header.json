@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "site-header",
+  "title": "Site Header",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "The page header: brand, nav, one optional ask. Mobile disclosure is a native <details>, so it works with no runtime. Variants: simple, centered.",
+  "registryDependencies": [
+    "@jhai/theme-base",
+    "@jhai/shell",
+    "@jhai/button",
+    "@jhai/content-types"
+  ],
+  "files": [
+    {
+      "path": "registry/sections/SiteHeader.tsx",
+      "content": "/**\n * SiteHeader — the page header. Brand left, nav centre-right, one optional ask.\n *\n * WHY THE MOBILE MENU IS A <details>. This is a server component and the registry ships no\n * runtime, so the disclosure has to work without JavaScript or not exist. `FAQItem` already\n * set that precedent for the same reason, and a native disclosure gets keyboard handling,\n * focus order and the open/closed announcement for free. The cost is that it cannot animate\n * its own height, which is a fair trade for a menu.\n *\n * `SectionHeader` is a heading block INSIDE a band and is a different thing entirely. This is\n * the page's own header, which is why the name is `site-header` and not `header`.\n *\n * Token-only, no colour literals, and it survives a grayscale theme with radius zero: the\n * only shapes are a bottom hairline and the button's own radius token.\n */\n\nimport { Button } from './Button';\nimport { Container } from './shell';\nimport type { SiteHeaderContent } from './content-types';\n\nexport type SiteHeaderVariant = 'simple' | 'centered';\n\nexport function SiteHeader({\n  content,\n  variant = 'simple',\n  sticky = false,\n}: {\n  content: SiteHeaderContent;\n  /** simple: brand left, nav right · centered: brand left, nav centred, ask right */\n  variant?: SiteHeaderVariant;\n  /** pins the header to the top of the viewport */\n  sticky?: boolean;\n}) {\n  const { brand, nav, action } = content;\n  const centered = variant === 'centered';\n\n  const navLinks = (\n    <>\n      {nav.map((item) => (\n        <a\n          key={item.href + item.label}\n          href={item.href}\n          className=\"v2-link font-sans text-ui-small text-muted-foreground hover:text-foreground\"\n        >\n          {item.label}\n        </a>\n      ))}\n    </>\n  );\n\n  return (\n    <header\n      data-screen-label=\"Site header\"\n      className={[\n        /* `relative` is the positioning context the mobile panel below anchors to. */\n        'relative w-full border-b border-border bg-background',\n        sticky ? 'sticky top-0 z-50' : '',\n      ]\n        .filter(Boolean)\n        .join(' ')}\n    >\n      <Container>\n        <div className=\"flex h-ui-header-offset items-center gap-ui-gap-inline\">\n          <a\n            href=\"/\"\n            className=\"v2-link font-sans text-ui-card-title-lg [font-weight:var(--ui-weight-heading)] tracking-[-0.02em] text-foreground\"\n          >\n            {brand}\n          </a>\n\n          {/* The nav is hidden below 1024, where the disclosure below takes over. Two separate\n              renderings of the same array rather than one that reflows, because a centred row\n              and a stacked panel are different layouts, not one layout at two widths. */}\n          <nav\n            aria-label=\"Primary\"\n            className={[\n              'hidden items-center gap-8 lg:flex',\n              centered ? 'flex-1 justify-center' : 'ml-auto',\n            ].join(' ')}\n          >\n            {navLinks}\n          </nav>\n\n          <div className={['hidden items-center lg:flex', centered ? '' : 'ml-8'].join(' ')}>\n            {action ? (\n              <Button href={action.href} size=\"nav\">\n                {action.label}\n              </Button>\n            ) : null}\n          </div>\n\n          {/* Mobile. `ml-auto` so it sits right regardless of which variant is in play. */}\n          <details className=\"group ml-auto lg:hidden\">\n            <summary\n              className=\"flex h-ui-button-h-nav cursor-pointer list-none items-center gap-2 font-mono text-ui-eyebrow tracking-[0.24em] text-muted-foreground uppercase [&::-webkit-details-marker]:hidden\"\n              aria-label=\"Menu\"\n            >\n              <span aria-hidden=\"true\" className=\"group-open:hidden\">\n                Menu\n              </span>\n              <span aria-hidden=\"true\" className=\"hidden group-open:inline\">\n                Close\n              </span>\n            </summary>\n            {/* Absolutely positioned against the header so opening the menu overlays the page\n                instead of pushing it down. `top-full` hangs it off the bottom hairline. */}\n            <div className=\"absolute inset-x-0 top-full z-40 border-b border-border bg-background\">\n              <Container>\n                <nav aria-label=\"Primary\" className=\"flex flex-col gap-5 py-8\">\n                  {navLinks}\n                  {action ? (\n                    <div className=\"pt-2\">\n                      <Button href={action.href} size=\"nav\">\n                        {action.label}\n                      </Button>\n                    </div>\n                  ) : null}\n                </nav>\n              </Container>\n            </div>\n          </details>\n        </div>\n      </Container>\n    </header>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/SiteHeader.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": null,
+    "upstreamLicense": null,
+    "jhaiVersion": "2.1.0"
+  },
+  "docs": "Not @jhai/section-header, which is a heading block inside a band. This is the page's own header. The mobile menu is a <details> because the registry ships no runtime and a server component cannot hydrate one; the native element brings keyboard handling and the open/closed announcement with it.",
+  "categories": [
+    "layout",
+    "marketing"
+  ],
+  "type": "registry:component"
+}

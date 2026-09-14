@@ -53,7 +53,17 @@ export function CTABand({
   return (
     /* `style` is the caller's own override, computed at their call site rather than here. */
     <div
-      className="relative overflow-hidden rounded-(--ui-radius-card) bg-background p-[clamp(40px,5vw,64px)]"
+      /*
+       * `dark` makes the dark close actually dark, and that ground IS part of this component's
+       * contract — the file header calls it "the dark close" and the system's grammar gives
+       * exactly one ink moment between hero and footer. Before v2.0.0 that was an explicit
+       * ink token; the rename left `bg-background` alone, which renders a light card on a
+       * light palette and quietly dropped the only dark band on the page. Reported by
+       * jhai-composer. `dark` opens a nested scope, the same device shell.tsx uses for an ink
+       * Section, so the card follows the consuming project's own dark palette rather than
+       * pinning a grey here.
+       */
+      className="dark relative overflow-hidden rounded-(--ui-radius-card) bg-background p-[clamp(40px,5vw,64px)] text-foreground"
       style={style}
     >
       {/*
@@ -68,9 +78,15 @@ export function CTABand({
         <div className="min-w-0 flex-[1_1_320px]">
           {link ? (
             <div>
-              <Button ground="dark" href={link.href}>
-                {link.label}
-              </Button>
+              {/*
+                * `ground="light"` (the default) INSIDE the dark scope, which is not a typo.
+                * Button's ground prop names the surface it sits on in the CURRENT scope's
+                * vocabulary: primary-light is `bg-foreground text-card`, and inside a dark
+                * scope that resolves to a light fill with dark text — the correct button on a
+                * dark card. It read `ground="dark"` while this card was light; leaving it
+                * would now paint a dark button on a dark ground.
+                */}
+              <Button href={link.href}>{link.label}</Button>
               {subline ? (
                 <p className="mt-3.5 m-0 font-sans text-ui-caption leading-[1.5] text-muted-foreground">
                   {subline}

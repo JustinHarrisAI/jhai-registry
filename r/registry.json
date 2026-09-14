@@ -280,6 +280,33 @@
       "type": "registry:component"
     },
     {
+      "name": "rating-mark",
+      "title": "Rating Mark",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "The one star recipe. Draws a 0-5 rating as characters so it inherits colour and size from its caption, and announces itself to a screen reader as a number rather than as five shapes. Halves round to the nearest half star.",
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/core/RatingMark.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/RatingMark.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
+      },
+      "docs": "Never default `value`. A star mark is a factual claim about a real review; a component that defaults to 5 invents evidence every time a caller omits it. Omit the rating and draw nothing.",
+      "categories": [
+        "marketing",
+        "typography"
+      ],
+      "type": "registry:component"
+    },
+    {
       "name": "content-types",
       "title": "Content Types",
       "author": "Justin Harris <justin@justinharris.ai>",
@@ -718,6 +745,157 @@
       },
       "categories": [
         "cards"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "site-header",
+      "title": "Site Header",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "The page header: brand, nav, one optional ask. Mobile disclosure is a native <details>, so it works with no runtime. Variants: simple, centered.",
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/button",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/SiteHeader.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/SiteHeader.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
+      },
+      "docs": "Not @jhai/section-header, which is a heading block inside a band. This is the page's own header. The mobile menu is a <details> because the registry ships no runtime and a server component cannot hydrate one; the native element brings keyboard handling and the open/closed announcement with it.",
+      "categories": [
+        "layout",
+        "marketing"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "testimonials",
+      "title": "Testimonials",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "The social proof band. One to six quotes, each with an optional real rating drawn by RatingMark. Variants: grid, single.",
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/eyebrow",
+        "@jhai/rating-mark",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/Testimonials.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Testimonials.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
+      },
+      "docs": "`rating` is optional and is never defaulted. A default of 5 would invent a five-star review every time a caller omitted the field. Omit it and no mark is drawn.",
+      "categories": [
+        "marketing"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "site-footer",
+      "title": "Site Footer",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "Brand, standfirst, two to four link columns, legal line. Variants: columns, minimal.",
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/SiteFooter.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/SiteFooter.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
+      },
+      "docs": "Deliberately not a Section: a footer sits outside the band rhythm and takes its own padding. `minimal` is a real variant rather than `columns: []`, so an empty grid is never the way to ask for the short shape.",
+      "categories": [
+        "layout",
+        "marketing"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "hero",
+      "title": "Hero",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "Eyebrow, headline, subhead, actions and optional media. Media accepts a placeholder state and renders a correctly proportioned empty plate rather than requiring a live src. Variants: centered, split.",
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/eyebrow",
+        "@jhai/button",
+        "@jhai/image-slot",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/Hero.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Hero.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
+      },
+      "docs": "`media.src` is optional on purpose. A section that hard-requires a URL cannot be placed in a wireframe, and the consumer then forks the layout locally to show an empty plate. The first entry in `actions` renders primary and the rest ghost; that is a rendering rule, not content.",
+      "categories": [
+        "marketing"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "pricing",
+      "title": "Pricing",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "Plan cards carrying price, billing note and per-plan CTA, optionally over a feature comparison. Variants: cards, cards-with-comparison.",
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/shell",
+        "@jhai/eyebrow",
+        "@jhai/button",
+        "@jhai/comparison-table",
+        "@jhai/content-types"
+      ],
+      "files": [
+        {
+          "path": "registry/sections/Pricing.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Pricing.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "2.1.0"
+      },
+      "docs": "`price` is a string and is never computed: \"$95/mo\", \"From $1,200\", \"Free\" and \"Let's talk\" are all legitimate. The highlighted card opens a nested .dark scope rather than painting a literal, which is the fix for the bug that made ComparisonTable's highlighted column invisible.",
+      "categories": [
+        "marketing"
       ],
       "type": "registry:component"
     }

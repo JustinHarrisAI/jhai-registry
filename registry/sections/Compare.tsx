@@ -25,7 +25,13 @@ export function Compare({ content }: { content: CompareContent }) {
            This file used to hard-code `text-primary` / `text-muted-foreground` for every column,
            which put the teal tick on the dark column at 3.69:1 and the cross on white at
            2.17:1 — 19 WCAG 2.2 AA failures from one copied recipe missing its ground branch. */
-        <span className="inline-flex items-baseline gap-2.5">
+        /*
+         * `key` on both branches. These elements go into `values`, which ComparisonTable
+         * renders as an array inside a row, so React reconciles them positionally and warns
+         * without one. Found by jhai-composer: `react/jsx-key` made `pnpm lint` exit non-zero
+         * in every repo that installed this item.
+         */
+        <span key={i} className="inline-flex items-baseline gap-2.5">
           <span
             aria-hidden="true"
             className={`flex-none font-mono text-ui-caption ${comparisonMarkClass(
@@ -38,7 +44,9 @@ export function Compare({ content }: { content: CompareContent }) {
           <span className={cell.strong ? '[font-weight:var(--ui-weight-heading)]' : undefined}>{cell.text}</span>
         </span>
       ) : (
-        <span className={cell.strong ? '[font-weight:var(--ui-weight-heading)]' : undefined}>{cell.text}</span>
+        <span key={i} className={cell.strong ? '[font-weight:var(--ui-weight-heading)]' : undefined}>
+          {cell.text}
+        </span>
       )
     ),
   }));

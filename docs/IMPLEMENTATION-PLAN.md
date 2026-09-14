@@ -8,7 +8,7 @@
 
 **Companion document:** [RESEARCH.md](RESEARCH.md) — verified registry URLs, licensing, restylability measurements, and the disk inventory this plan depends on. Read it first; this plan assumes its findings.
 
-**Status:** **Phases 0, 1, 2, 3 and 4a executed 2026-09-12.** `@jhai` is public and tagged **v1.0.0** — theme-base plus 23 components, verified installing, searching and listing from an unrelated project. The 3.2 theming gate **passed** after fixing three defects it caught. All open questions are answered. Only Phase 4b (adding `@jhai` to the bootstrap skill) and Phase 5 (operate) remain.
+**Status:** **Phases 0-4 complete.** `@jhai` is public and tagged **v2.0.0** — theme-base plus 23 components, 24 items, five preflight gates green, published from `raw.githubusercontent` at $0/year. Verified installing, searching and listing from an unrelated project on both the unpinned and pinned URLs. All open questions are answered. Only Phase 5 (operate) remains.
 
 > ### The three defects the 3.2 gate caught — read these before touching any registry item
 >
@@ -21,6 +21,8 @@
 > A fourth, found by typechecking rather than rendering: **an undeclared `registryDependencies` entry passes `validate` and `build` and only surfaces as a TS2307 in the consuming repo.** `comparison-table` shipped without `@shadcn/separator`. Typecheck an install in a real project before tagging.
 >
 > A fifth, operational: **`raw.githubusercontent.com` caches.** A pushed item took several minutes to serve its new content. Do not conclude a fix failed until the cache turns over.
+>
+> A sixth, found by the **v2.0.0** gate: **never alias one custom property to another across a theme boundary.** A property whose value is a `var()` substitutes where it is DECLARED, not where it is used, so `--ui-surface-strong: var(--muted)` in `:root` froze the light value and carried it into a nested `.dark` scope — a cream image plate on a dark band. Point at the semantic directly, or redeclare the alias in `.dark`.
 
 > Sections amended after execution are marked **[DONE]** or **[AMENDED]**. Execution findings live in [RESEARCH.md § 0.0](RESEARCH.md).
 
@@ -416,3 +418,41 @@ npm run preflight
 **Layer 1 delivered value on day one and is live.** Layers 2 and 3 compound. 4a is the only unblocked work left and should ship before the next spec site starts.
 
 **Total annual cost of the recommended path: $0.**
+
+
+---
+
+## v2.0.0 — the token rename
+
+Run after Phase 4b, before any client project installed from the registry. That timing was the
+whole point: the rename cost nothing then and gets more expensive with every project.
+
+**What changed.** Registry components painted in a JHAI-private vocabulary inherited from
+`jhai-new-website`. They now paint in shadcn semantics for colour and `--ui-*` for structure, so
+a client dev reading installed source never meets a brand name. Mapping and the four judgment
+calls: [TOKEN-MAP-v2.md](TOKEN-MAP-v2.md).
+
+**The gate found a real bug, which is why it is run rather than assumed.** A cream image plate
+rendered on a dark band: `ImageSlot` painted `bg-[var(--ui-surface-strong)]` where `theme-base`
+declared `--ui-surface-strong: var(--muted)` in `:root` alone. **A custom property whose value is
+a `var()` substitutes where it is DECLARED, not where it is used**, so the alias froze the light
+value and carried it into the nested `.dark` scope. Fixed by pointing at `bg-muted` directly, and
+the identical latent defect removed from the `--ui-ink-*` ramp before it could ship.
+
+**Rule that follows: never alias one custom property to another across a theme boundary.** If a
+`--ui-*` token must reference a shadcn token, it is redeclared in `.dark` or it is a bug waiting
+for the first client who uses a dark band.
+
+### Preflight is five gates now
+
+```bash
+pnpm run preflight
+```
+
+1. `shadcn registry validate` — schema
+2. `check-registry-index.mjs` — `r/registry.json` in step with `r/`, so `search` cannot silently return nothing
+3. `check-item-deps.mjs` — every import accounted for, because an undeclared `registryDependency` passes validate and build and only surfaces as TS2307 in the consuming repo
+4. `check-no-private-names.mjs` — no JHAI-private name in any item
+5. `build-curation-md.mjs --check` — `CURATION.md` in step with `CURATION.json`
+
+Nothing gets tagged without all five.

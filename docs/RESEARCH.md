@@ -1,6 +1,6 @@
 # JHAI Component Sourcing — Research
 
-**Status:** Phases 0, 1, 2, 3 and 4a executed 2026-09-12. `@jhai` is public, tagged **v1.0.0**, serving **24 items**. The C.6 theming gate **passed** — see the box in C.6.
+**Status:** Phases 0-4 complete. `@jhai` is public, tagged **v2.0.0**, serving **24 items** under an unbranded vocabulary — shadcn semantics for colour, `--ui-*` for structure. The C.6 theming gate **passed** at v2.0.0: 13 of 13 probes rendered in a foreign brand with zero component edits. See C.6 and [TOKEN-MAP-v2.md](TOKEN-MAP-v2.md).
 **Date of research:** 2026-09-12. Every price and license claim below was fetched on that date.
 
 > **Amended 2026-09-12 after Phase 0 + 1 execution.** Findings that changed are marked
@@ -347,7 +347,18 @@ The real volume hazards are two, and neither is price:
 1. **Key distribution.** Any paid registry requires its key present at install time in every project that pulls from it. Across dozens of throwaway spec sites that is dozens of `.env` files carrying a credential with no rotation story. Free unkeyed registries have none of this cost. This alone justifies weighting free options heavily.
 2. **The redistribution bar.** Because shadcnblocks, ReactBits, and every paid library are pointer-only, none of them can ever become part of the `@jhai` asset. Money spent there buys per-project convenience, not a reusable asset. Money spent on time spent tokenizing MIT source *does* compound.
 
-**Unusable at WebVegas volume:** nothing outright, but **ReactBits and shadcnblocks are permanently excluded from `@jhai` itself** and must stay pointer-only.
+**Unusable at spec-site volume:** nothing outright, but **ReactBits and shadcnblocks are permanently excluded from `@jhai` itself** and must stay pointer-only.
+
+**[ADDED AT v2.0.0] The second publication constraint: what may not be NAMED.** The bar above
+says what may not be *served*. Its twin says what may not be *named*: **no JHAI-private name
+enters a registry item, ever** — not a brand word, not a client name, not an internal lane code,
+path or decision reference. A registry item is published source read by people who do not work
+here.
+
+This exists because review did not catch it. Two components shipped publicly with doc comments
+naming three real clients, and 34 more carried internal lane codes; the leak was found by
+diffing an installed file against its registry item. Both constraints are now enforced
+mechanically by `pnpm run preflight`, which fails on either.
 
 ---
 
@@ -551,57 +562,36 @@ So there is nothing to protect. And the payoff is the property the whole design 
 
 Cost: **$0**, with one fewer moving part than the private design.
 
-### C.6 Theming — one component set, many client brands
+### C.6 The theming layer [REWRITTEN AT v2.0.0]
 
-The architecture is already 80% present (C.1). The full shape:
+**This is the answer to "is the registry worth building at all", and v2.0.0 changed it.**
 
-```
-Client brand palette                 →  registry:theme item, one per client
-  --jh-bg / --jh-text / --jh-accent …
-        ↓ (already exists in globals.css, 22 mappings)
-shadcn semantic tokens
-  --background / --foreground / --primary / --border …
-        ↓ (to be built — the alias layer)
-v2 vocabulary
-  --ink-950 / --paper-0 / --accent / --line-light …
-```
+Through v1 the chain was `--jh-*` -> shadcn semantics -> a JHAI v2 vocabulary -> Tailwind. It
+worked, and it was wrong for a published registry: components painted with `--ink-800`,
+`--paper-0`, `--bjarmi-ink`, so a client dev reading installed source met a brand vocabulary
+they had to learn before they could change a colour.
 
-**[AMENDED] Two moves, not three. Client theme items do NOT live in `@jhai`.**
+**v2.0.0 removes the private layer entirely.**
 
-1. **`@jhai/theme-base`** — a `registry:base` item carrying the `--jh-*` → shadcn mapping that currently lives inline in `globals.css`, **with JHAI's default values**, so every new project inherits it in one install instead of by copy-paste. This is the only theme item `@jhai` ever ships.
-2. **The alias layer** — `@theme inline { --color-ink-800: var(--ink-800); … }` in `globals.css`, pointing *at* the v2 names, per the contract quoted in C.1. **No v2 token is renamed.** This is what lets a `@jhai` component built from v2 source restyle through the same block as a Kibo or Tailark component.
+- **Colour is shadcn semantics only.** `--background`, `--foreground`, `--primary`, `--muted-foreground`,
+  `--card`, `--border`, `--ring`. Every third-party registry already speaks these, so a consuming
+  project learns nothing and its existing palette is already the palette.
+- **Structure is `--ui-*`.** Type scale, rhythm, control heights, durations, easings, measure
+  caps. Descriptive, unbranded, namespaced against collision.
+- **`theme-base` ships shadcn defaults plus `--ui-*` and nothing JHAI-specific.** JHAI is now
+  just another consumer of its own registry, and `jhai-new-website` declares local aliases to
+  consume `@jhai` exactly as a client would.
+- **Dark bands are a nested `.dark` scope, not a second palette.** `ground="dark"` emits
+  `className="dark"`, so a client's own dark block drives JHAI's dark bands for free.
 
-**Per-client theming is a client-repo concern.** A client project installs `theme-base` once, then overwrites the `--jh-*` block in its own `globals.css`. That is already exactly how `jhai-new-website` works today, so it is the existing mechanism rather than a new one.
+Rebranding is now: edit your own shadcn tokens. There is no second step.
 
-**Why no `theme-{client}` items:** `@jhai` is public (C.5). A public list of client names and their brand palettes is not something JHAI publishes. That constraint is what keeps the registry publishable at all, and it is worth more than the convenience of a one-command client restyle.
-
-*(This removes Task 3.6 from the implementation plan entirely. The 3.2 theming gate still runs — tested against a hand-written palette block in a throwaway project, which is a truer test anyway, since it proves a stranger's palette works rather than one we authored inside the registry.)*
-
-**This is the test of whether the registry is worth building.** If a `@jhai` section cannot land in a client project and take that client's palette without editing the component, the registry is just a slower `git clone` and should not be built.
-
-> ### ✅ [AMENDED] THE GATE PASSED — measured 2026-09-12
->
-> A fresh Next.js project, `@jhai/theme-base` installed, then **ten `--jh-*` values hand-written** as a terracotta-on-warm-paper palette. Nothing else touched, **zero edits to any component.** Computed styles read off the rendered page:
->
-> | Probe | Rendered | Expected from the client palette |
-> |---|---|---|
-> | page ground | `#fdfbf7` | `--jh-light-bg` ✓ |
-> | eyebrow | `#7a6a60` | `--jh-ink-eyebrow` ✓ |
-> | accent eyebrow | `#8a4a22` | `--jh-primary-deep` via `--bjarmi-ink` ✓ |
-> | heading | `#1a1614` @ weight 500 | `--jh-light-text` ✓ |
-> | side note | `#6f635c` | `--jh-light-text-faint` ✓ |
-> | primary button | `#1a1614` on `#fffdf9`, 50px | `--ink-800` / `--paper-0` / `--button-h` ✓ |
-> | check mark | `#8a4a22` | `--bjarmi-ink` ✓ |
-> | dark band | `#14100e` | `--jh-invert-bg` ✓ |
-> | dark eyebrow | `#c2703d` | `--jh-primary` via `--bjarmi-glow` ✓ |
-> | shadcn `--background` | `#fdfbf7` | third-party items inherit it too ✓ |
-> | eyebrow recipe | 9.5px / 2.28px tracking | invariant survived ✓ |
->
-> The whole chain resolves. **The registry is worth building.**
->
-> It also proved the `@components/` target placeholder: installed into a project whose alias was deliberately `@/widgets`, files landed in `src/widgets/jhai/`.
-
-The disk evidence predicted this: 56 of 79 v2 files already carried zero hardcoded color, and the semantic mapping already existed. **The work was finishing a handful of files and writing one token chain, not architecting a system.**
+**Measured, not asserted.** The v2.0.0 gate installed `theme-base` plus six components into a
+fresh project carrying ten hand-written values in a terracotta brand sharing nothing with JHAI,
+made zero edits to any component, and read computed styles off the rendered page: 13 of 13
+probes rendered in the client brand, and **no JHAI colour survived anywhere on the page**. The
+`.dark` root toggle inverted the seven light-ground probes while the six ink-ground probes
+correctly stayed dark. Full mapping and the four judgment calls: [TOKEN-MAP-v2.md](TOKEN-MAP-v2.md).
 
 ### C.7 Seed set — what goes in first
 

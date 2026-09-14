@@ -1,0 +1,61 @@
+{
+  "$comment": "Which files a registry put here, and which a human (agent) typed. measure.mjs reads this to split hand-written from installed. If a path is not listed it counts as hand-written, which is the conservative direction: it can only make this repo look worse, never better.",
+  "repo": "repo-b",
+  "condition": "wired — six registries in components.json, shadcn MCP armed, @jhai/theme-base installed",
+  "handWritten": [
+    "src/app/pricing/page.tsx",
+    "src/components/hero-section-1-header.tsx"
+  ],
+  "handWrittenNote": "hero-section-1-header.tsx is a 1-line re-export shim. The installed @tailark-oss/mist-hero-section-1 imports a header module it does not ship, so the build failed until this was created. Counted as hand-written because it was typed, but it is friction, not design work.",
+  "installed": [
+    "src/components/hero-section-1.tsx",
+    "src/components/header.tsx",
+    "src/components/logo.tsx",
+    "src/components/faqs-1.tsx",
+    "src/components/pricing-1.tsx",
+    "src/components/ui/accordion.tsx",
+    "src/components/ui/button.tsx",
+    "src/components/ui/card.tsx",
+    "src/components/ui/svgs/spotify.tsx",
+    "src/components/ui/svgs/supabase.tsx",
+    "src/components/ui/svgs/vercel.tsx",
+    "src/components/jhai/Button.tsx",
+    "src/components/jhai/Eyebrow.tsx",
+    "src/components/jhai/FAQItem.tsx",
+    "src/components/jhai/LogoWall.tsx",
+    "src/components/jhai/RecordBand.tsx",
+    "src/components/jhai/SectionHeader.tsx",
+    "src/components/jhai/StatTile.tsx",
+    "src/components/jhai/content-types.ts",
+    "src/components/jhai/shell.tsx"
+  ],
+  "sources": {
+    "@tailark-oss/mist-hero-section-1": [
+      "src/components/hero-section-1.tsx",
+      "src/components/header.tsx",
+      "src/components/logo.tsx",
+      "src/components/ui/svgs/spotify.tsx",
+      "src/components/ui/svgs/supabase.tsx",
+      "src/components/ui/svgs/vercel.tsx"
+    ],
+    "@tailark-oss/mist-faqs-1": ["src/components/faqs-1.tsx", "src/components/ui/accordion.tsx"],
+    "@tailark-oss/mist-pricing-1": ["src/components/pricing-1.tsx", "src/components/ui/card.tsx"],
+    "@jhai/logo-wall": [
+      "src/components/jhai/LogoWall.tsx",
+      "src/components/jhai/shell.tsx",
+      "src/components/jhai/content-types.ts"
+    ],
+    "@jhai/record-band": [
+      "src/components/jhai/RecordBand.tsx",
+      "src/components/jhai/StatTile.tsx",
+      "src/components/jhai/SectionHeader.tsx",
+      "src/components/jhai/Eyebrow.tsx",
+      "src/components/jhai/Button.tsx",
+      "src/components/jhai/FAQItem.tsx"
+    ],
+    "@shadcn/button": ["src/components/ui/button.tsx"]
+  },
+  "unusedInstalls": {
+    "src/components/pricing-1.tsx": "Installed, then NOT used. @tailark-oss/mist-pricing-1 turned out to be a single-tier enterprise block; the brief asked for three tiers, so the pricing table was hand-written instead. This is the clearest miss in the whole exercise and it is left in the tree on purpose."
+  }
+}

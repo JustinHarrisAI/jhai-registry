@@ -1,7 +1,7 @@
 /**
  * The homepage icon set, keyed by the `icon` string in content/home.json.
  *
- * Lane W1-0, 2026-08-11 (D-24). The 19 hand-drawn paths are gone: roster section 1 makes
+ * The 19 hand-drawn paths are gone: the house convention makes
  * `lucide-react` the icon set, and no component file draws its own iconography. Every key
  * below resolves to the lucide component whose geometry the export had traced by hand, so
  * the drawing on the page is the drawing that was approved, now maintained upstream.
@@ -13,20 +13,11 @@
  * is what the reader sees. Logged in qa/w1-0/deltas/sections-b.md.
  *
  * `SocialIcon` and `Sparkline` stay hand-drawn. Social marks are brand artwork and the
- * sparkline is a data drawing, and roster section 1 exempts both from the icon-set rule.
+ * sparkline is a data drawing, and the house convention exempts both from the icon-set rule.
  *
  * Stroke colour defaults to the brand accent and is overridable for the dark grounds.
  * Content names an icon; it never carries one.
- *
- * PRIOR RESEARCH ON FILE, OPENED AND SCOPED OUT. The research gate matches this file on
- * "search" and on "1.5", both of which occur here only as a lucide import name (`Search`)
- * and a stroke width (`strokeWidth={1.5}`). It names
- * `builds/website-process/source-hunts/1.5-competitor-teardown.md`, a teardown of competitor
- * BUILD PROCESSES and repo metadata, and `builds/website/content/case-studies/
- * seo-audits-platform.md`, a published case study about an SEO audit product. Neither has
- * any bearing on which lucide glyph a list row renders. `brand/voc-swipe.md` governs copy,
- * and this file contains none.
- */
+ * */
 
 import {
   BookOpen,
@@ -50,7 +41,7 @@ import {
   Wrench,
   /* Added 2026-08-13 for the interior page types. The 19 above were the homepage's set and
      nothing more, so every interior list row, deliverable row and method step had one thing
-     to say and no drawing saying it. CEO, verbatim: "for some reason you refuse to use
+     to say and no drawing saying it. The standing note, verbatim: "for some reason you refuse to use
      iconography or imagery through the site perhaps because it is hard?" This map is a
      floor, not a ceiling. Extend it again when a row needs a glyph that is not here, and
      never draw one. */
@@ -190,7 +181,7 @@ export function Icon({
 
 /**
  * The hairline trend mark that sits beside a case stat. Three variants, as in the export.
- * Hand-drawn on purpose: this is a data drawing, not an icon, and roster section 1 exempts
+ * Hand-drawn on purpose: this is a data drawing, not an icon, and the house convention exempts
  * it from the lucide rule.
  */
 const SPARKS = [
@@ -227,7 +218,7 @@ export function Sparkline({
 
 /**
  * The social marks. Hand-drawn on purpose: these are third-party BRAND marks, not
- * iconography, and roster section 1 exempts brand marks from the lucide rule. lucide
+ * iconography, and the house convention exempts brand marks from the lucide rule. lucide
  * dropped its brand set for exactly this reason.
  */
 const SOCIAL_PATHS: Record<string, ReactElement> = {

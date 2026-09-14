@@ -6,7 +6,7 @@ import type { CSSProperties, ReactNode } from 'react';
  * Converted from the Claude Design export, `extracted/components/core/Eyebrow.jsx`.
  * Dark grounds render in bjarmi glow. Never restyle this recipe per section.
  *
- * Lane W1-0, 2026-08-11 (D-24): reauthored off inline styles onto utilities. The recipe is
+ * Reauthored off inline styles onto utilities. The recipe is
  * unchanged — `text-type-eyebrow` IS `--type-eyebrow`, projected. The accent is reached by
  * the name it actually has (`text-bjarmi-glow` / `text-bjarmi-ink`) rather than through the
  * `--accent` alias, which shadcn already owns a colliding `--color-accent` for.

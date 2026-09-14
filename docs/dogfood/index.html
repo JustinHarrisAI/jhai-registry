@@ -225,6 +225,38 @@
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <h2>Audit it yourself</h2>
+    <p class="sub">Every number on this page came out of one script, run against source that
+    ships with it. Nothing here rests on either agent's self-report — one of them was wrong.</p>
+
+    <p style="margin:0 0 26px">
+      <a href="jhai-dogfood-bundle.tar.gz" style="display:inline-block;background:#0a0b0b;
+        color:#e8e8e8;padding:14px 26px;border-radius:12px;text-decoration:none;
+        font-size:14.5px">Download the evidence bundle · 244&nbsp;KB</a>
+      &nbsp;&nbsp;<a href="bundle/README.md">read it in the repo</a>
+    </p>
+
+    <table>
+      <thead><tr><th>File</th><th>What it is</th></tr></thead>
+      <tbody>
+        <tr><td><code>README.md</code></td><td>Self-contained. Brief, method, results, and what went against the registry.</td></tr>
+        <tr><td><code>ANALYSIS-BRIEF.md</code></td><td>What to check if you are auditing this, including the strongest arguments against the conclusion.</td></tr>
+        <tr><td><code>measure.mjs</code></td><td>The measurement, re-runnable. Node 18+, no dependencies, no network.</td></tr>
+        <tr><td><code>repo-a/</code> · <code>repo-b/</code></td><td>Both source trees, with a <code>PROVENANCE.json</code> naming which files were typed and which a registry installed.</td></tr>
+        <tr><td><code>reports/</code></td><td>Each agent's own self-report, verbatim, beside what the measurement found.</td></tr>
+      </tbody>
+    </table>
+
+    <p style="margin:22px 0 0"><code>node measure.mjs</code> reproduces the table above.
+    <code>--all</code> includes the <code>create-next-app</code> boilerplate that the default
+    scope excludes; that file is byte-identical in both repos, so
+    <code>diff repo-a/src/app/page.tsx repo-b/src/app/page.tsx</code> checks the exclusion is
+    fair.</p>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     Method: two throwaway Next.js 15 + React 19 + Tailwind v4 apps, identical brief, isolated

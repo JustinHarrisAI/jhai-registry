@@ -6,7 +6,7 @@ import type { CSSProperties } from 'react';
  * Converted from `extracted/components/core/StatTile.jsx`.
  * Skip the divider on the first tile of a row.
  *
- * Lane W1-0, 2026-08-11 (D-24): reauthored off inline styles onto utilities. The caption is
+ * Reauthored off inline styles onto utilities. The caption is
  * the mono eyebrow recipe, so its 9.5px reads through `text-type-eyebrow` rather than as a
  * literal. The light-ground rule was `rgba(0,0,0,0.08)` with no token of its own. For the registry it
  * became `--jh-rule-light`, same value, so it follows a client's palette instead of staying

@@ -13,7 +13,7 @@ import type { CSSProperties } from 'react';
  *
  * Source convention: `extracted/image-slot.js` + `Homepage v2.dc.html`.
  *
- * Lane W1-0, 2026-08-11 (D-24): reauthored off inline styles onto utilities. `aspectRatio`
+ * Reauthored off inline styles onto utilities. `aspectRatio`
  * and `width` are the two survivors and they are caller DATA, not design values — see the
  * comment at the style prop. The filter stays an arbitrary property so the two functions
  * keep the export's own order rather than Tailwind's fixed one.

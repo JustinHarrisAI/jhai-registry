@@ -12,7 +12,7 @@ import { Button } from './Button';
  * the same 48px gap so the band stacks on narrow viewports instead of crushing
  * the field. Desktop rendering is identical.
  *
- * Lane W1-0, 2026-08-11: inline styles became Tailwind utilities.
+ * Inline styles became Tailwind utilities.
  *
  * REGISTRY NOTE — this differs from the jhai-new-website original. There, the right-hand
  * slot renders GraderField, the JHAI audit-email capture. That form is JHAI's own funnel, not
@@ -35,7 +35,7 @@ export interface CTABandProps {
    * address, and the `field` slot is not rendered at all.
    *
    * Why it exists: the house rule at the top of this file is "every page ends with the grader
-   * ask", and the CEO carved out exactly one page type from it. A reader who has just finished a
+   * ask", and exactly one page type is carved out of it. A reader who has just finished a
    * whole case study is ready for the conversation, not for a free tool, so the case study's
    * mid-page band asks for the call. Every other caller passes nothing and is unchanged.
    */

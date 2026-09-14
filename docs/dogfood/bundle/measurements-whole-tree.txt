@@ -1,0 +1,28 @@
+
+JHAI dogfood — measured, not reported
+scope: whole tree
+
+                                        repo-a      repo-b
+──────────────────────────────────────────────────────────
+files scanned                               13          28
+hand-written files                          12           8
+hand-written lines                         452         287
+installed files                              1          20
+installed lines                             58        1497
+— hand-written code only —                                
+palette utilities (bad)                     75          17
+semantic tokens (good)                       2          15
+v2 tokens (good)                             0           0
+hex literals                                 3           3
+— whole tree —                                            
+hex in brand marks (ok)                      0          11
+
+Verdict — rebrandable by CSS variables alone:
+
+  repo-a: NO
+    75 hardcoded palette utilities in hand-written code. These cannot be moved by changing a CSS variable; each is a manual edit per client.
+    offenders: bg-black, bg-blue-50/50, bg-blue-600, bg-blue-700, bg-slate-100, bg-slate-50, bg-slate-800/50, bg-white, bg-zinc-50, border-black, border-blue-500, border-slate-100
+  repo-b: NO
+    17 hardcoded palette utilities in hand-written code. These cannot be moved by changing a CSS variable; each is a manual edit per client.
+    offenders: bg-black, bg-white, bg-zinc-50, border-black, border-black/20, border-black/5, border-black/8, border-white, border-white/35, shadow-zinc-300/20, text-black, text-zinc-400
+

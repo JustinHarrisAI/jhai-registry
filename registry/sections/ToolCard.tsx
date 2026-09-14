@@ -7,7 +7,7 @@ import type { CSSProperties, ReactNode } from 'react';
  * The icon is a 22px Lucide SVG with stroke `var(--accent)`; the arrow is
  * appended to the CTA automatically so the label stays a plain lowercase verb.
  *
- * Lane W1-0, 2026-08-11 (D-24): reauthored on Tailwind utilities. The card carries no
+ * Reauthored on Tailwind utilities. The card carries no
  * status mark and no internal hairline, so it gains no primitive — the border IS the
  * card's own edge, and `.v2-cards--hairline a:hover` in v2-motion.css is what weights it
  * on hover.

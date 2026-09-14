@@ -10,12 +10,12 @@
  * a server component cannot, and the reveal end-state is what the page should show anyway.
  * The marquees are real keyframes, and every one of them stops under reduced motion.
  *
- * Lane W1-0, 2026-08-11 (D-24). `Container`, `Section` and `Grain` paint from Tailwind
+ * `Container`, `Section` and `Grain` paint from Tailwind
  * utilities now. `HomeStyles` STAYS a stylesheet: it carries the @keyframes, the four
  * marquee durations, the reverse direction, the hover and focus-within pause, the
  * reduced-motion stop, the `.v2-grid-*` collapses and the `.v2-home a:focus-visible` rule.
  * Tailwind cannot express a keyframe, and scattering the marquee across six components'
- * arbitrary values is worse than one named sheet (roster section 4).
+ * arbitrary values is worse than one named sheet (house convention).
  *
  * `.v2-container` and `.v2-section` keep their rules in that sheet as well, because
  * `page/ProofDeck.tsx` and the longform and work TEMPLATES apply those class names to raw

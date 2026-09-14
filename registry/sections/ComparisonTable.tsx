@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils';
  * column headers a screen reader can navigate, and every glyph carries a text
  * equivalent instead of leaving a blind reader with an unlabelled symbol.
  *
- * Lane W1-0, 2026-08-11: inline styles became Tailwind utilities and the bjarmi flag
+ * Inline styles became Tailwind utilities and the bjarmi flag
  * became a `separator`. The table stays a <table>, the scopes stay scopes, and the
  * text equivalents stay text — the markup a screen reader walks is byte-identical.
  */

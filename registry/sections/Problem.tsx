@@ -2,8 +2,7 @@
  * The problem. Centred, five crosses, no illustration.
  *
  * This is the one band on the page that is deliberately bare: it names the buyer's last
- * vendor, and any image here would soften a paragraph that has to sting. The CEO's
- * "every section needs a visual" note is about selling sections, and the crosses are the
+ * vendor, and any image here would soften a paragraph that has to sting. The standing * "every section needs a visual" note is about selling sections, and the crosses are the
  * visual here.
  */
 

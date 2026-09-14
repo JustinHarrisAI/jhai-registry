@@ -8,7 +8,7 @@ import type { CSSProperties, ReactNode } from 'react';
  * check = bjarmi tick for answers and inclusions.
  * cross = grey cross for pains. Never a red cross, never a colored fill.
  *
- * Lane W1-0, 2026-08-11 (D-24): reauthored off inline styles onto utilities. Every value is
+ * Reauthored off inline styles onto utilities. Every value is
  * the one the export carried; 15.5px, 14px, 11px and the 11px row gap have no token of their
  * own and stay as the literals the export declared.
  *
@@ -16,7 +16,7 @@ import type { CSSProperties, ReactNode } from 'react';
  * Two reasons, and the second is the one that matters. A text glyph renders in whatever font
  * the platform substitutes for it, so the tick was a different shape on Windows than on macOS
  * and sat on the text baseline rather than on the row's optical centre. And it is not
- * iconography: roster section 1 makes lucide the icon set, and the CEO's 2026-08-13 note —
+ * iconography: the house convention makes lucide the icon set, and a standing design note —
  * "for some reason you refuse to use iconography or imagery through the site" — is exactly
  * this pattern, a drawing rendered as a character to avoid drawing it. Colour, size and the
  * 11px row gap are unchanged, so the light and dark grounds read as they did.

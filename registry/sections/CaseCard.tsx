@@ -10,7 +10,7 @@ import { Badge } from '@/components/ui/badge';
  * Use in horizontal carousels (400px fixed) or grids. One stat max —
  * the case page carries the rest.
  *
- * Lane W1-0, 2026-08-11 (D-24): reauthored on Tailwind utilities, and the mono category
+ * Reauthored on Tailwind utilities, and the mono category
  * mark re-seated on the shadcn `badge`. The badge arrives with a chip's own chrome — a
  * 20px height, a 2rem radius, a fill and 8px of padding — and this mark has never had
  * any of that, so the chrome is switched off rather than the recipe changed. What is

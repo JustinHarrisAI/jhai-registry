@@ -8,7 +8,7 @@ import { Eyebrow } from './Eyebrow';
  * Heading weight is ALWAYS 500. One eyebrow gap, everywhere.
  * `title` may carry an <em> for the italic voice.
  *
- * Lane W1-0, 2026-08-11 (D-24): reauthored off inline styles onto utilities. The row gap is
+ * Reauthored off inline styles onto utilities. The row gap is
  * a fixed 48px in the export, so it is `gap-12` and NOT `gap-gap-grid` — `--gap-grid` steps
  * down to 32px under 760px and would move this header on a phone.
  */

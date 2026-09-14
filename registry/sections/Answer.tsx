@@ -1,7 +1,7 @@
 /**
  * The answer: six ticked pillars against a cut-out portrait.
  *
- * The portrait is the counterweight the CEO's Round 1 note demands. It is contained in a
+ * The portrait is the counterweight this section needs. It is contained in a
  * 440px column with a soft mask at its foot rather than bleeding to the section edge, so
  * the figure meets the paper instead of being cropped by it.
  */

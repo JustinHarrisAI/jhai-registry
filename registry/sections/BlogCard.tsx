@@ -7,7 +7,7 @@ import { ImageSlot } from './ImageSlot';
  * Converted from `extracted/components/cards/BlogCard.jsx`.
  * The date is lowercase mono, e.g. "jul 17, 2026".
  *
- * Lane W1-0, 2026-08-11 (D-24): reauthored on Tailwind utilities. Every value below is
+ * Reauthored on Tailwind utilities. Every value below is
  * the same value the inline styles carried; token-backed steps read the token utility
  * (`text-type-card-title-lg`, `text-type-eyebrow`, `border-line-light`) and the handful
  * with no token read the numeric scale, the way `ui/button.tsx` does with `px-7`.

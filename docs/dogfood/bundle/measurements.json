@@ -1,0 +1,677 @@
+{
+  "measuredAt": "2026-09-14T01:03:58.906Z",
+  "scope": "deliverable only (create-next-app boilerplate excluded)",
+  "repos": [
+    {
+      "root": "repo-a",
+      "scope": "deliverable only (create-next-app boilerplate excluded)",
+      "boilerplateSkipped": [
+        "src/app/layout.tsx",
+        "src/app/page.tsx"
+      ],
+      "files": 11,
+      "handWritten": {
+        "files": 10,
+        "lines": 352,
+        "palette": 58,
+        "semantic": 0,
+        "v2": 0,
+        "hex": 0
+      },
+      "installed": {
+        "files": 1,
+        "lines": 58,
+        "palette": 0,
+        "semantic": 36,
+        "v2": 0,
+        "hex": 0
+      },
+      "brandMarkHex": 0,
+      "paletteUtilities": [
+        "bg-blue-50/50",
+        "bg-blue-600",
+        "bg-blue-700",
+        "bg-slate-100",
+        "bg-slate-50",
+        "bg-slate-800/50",
+        "bg-white",
+        "border-blue-500",
+        "border-slate-100",
+        "border-slate-200",
+        "border-slate-300",
+        "border-slate-700",
+        "from-slate-400",
+        "from-slate-50",
+        "from-slate-900",
+        "ring-blue-500/20",
+        "text-green-600",
+        "text-slate-300",
+        "text-slate-600",
+        "text-slate-700",
+        "text-slate-900",
+        "text-white",
+        "to-slate-100",
+        "to-slate-600",
+        "to-slate-800"
+      ],
+      "semanticUtilities": [
+        "bg-background",
+        "bg-destructive/10",
+        "bg-destructive/20",
+        "bg-destructive/30",
+        "bg-input/30",
+        "bg-input/50",
+        "bg-muted",
+        "bg-muted/50",
+        "bg-primary",
+        "bg-primary/80",
+        "bg-secondary",
+        "border-border",
+        "border-destructive",
+        "border-destructive/40",
+        "border-destructive/50",
+        "border-input",
+        "border-ring",
+        "ring-destructive/20",
+        "ring-destructive/40",
+        "ring-ring/50",
+        "text-destructive",
+        "text-foreground",
+        "text-primary",
+        "text-primary-foreground",
+        "text-secondary-foreground"
+      ],
+      "perFile": [
+        {
+          "file": "next-env.d.ts",
+          "origin": "hand",
+          "lines": 8,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": []
+        },
+        {
+          "file": "next.config.ts",
+          "origin": "hand",
+          "lines": 8,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "next"
+          ]
+        },
+        {
+          "file": "postcss.config.mjs",
+          "origin": "hand",
+          "lines": 8,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": []
+        },
+        {
+          "file": "src/app/pricing/page.tsx",
+          "origin": "hand",
+          "lines": 18,
+          "palette": 1,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "@/components/pricing/hero",
+            "@/components/pricing/pricing-table",
+            "@/components/pricing/faq",
+            "@/components/pricing/logo-wall",
+            "@/components/pricing/stats-band"
+          ]
+        },
+        {
+          "file": "src/components/pricing/faq.tsx",
+          "origin": "hand",
+          "lines": 85,
+          "palette": 10,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "react",
+            "lucide-react"
+          ]
+        },
+        {
+          "file": "src/components/pricing/hero.tsx",
+          "origin": "hand",
+          "lines": 18,
+          "palette": 7,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": []
+        },
+        {
+          "file": "src/components/pricing/logo-wall.tsx",
+          "origin": "hand",
+          "lines": 38,
+          "palette": 9,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": true,
+          "imports": []
+        },
+        {
+          "file": "src/components/pricing/pricing-table.tsx",
+          "origin": "hand",
+          "lines": 117,
+          "palette": 20,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "lucide-react",
+            "@/components/ui/button"
+          ]
+        },
+        {
+          "file": "src/components/pricing/stats-band.tsx",
+          "origin": "hand",
+          "lines": 50,
+          "palette": 11,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": []
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "origin": "installed",
+          "lines": 58,
+          "palette": 0,
+          "semantic": 36,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "@base-ui/react/button",
+            "class-variance-authority",
+            "cn"
+          ]
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "origin": "hand",
+          "lines": 2,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": []
+        }
+      ],
+      "verdict": {
+        "rebrandableByCssVarsAlone": false,
+        "reason": "58 hardcoded palette utilities in hand-written code. These cannot be moved by changing a CSS variable; each is a manual edit per client."
+      }
+    },
+    {
+      "root": "repo-b",
+      "scope": "deliverable only (create-next-app boilerplate excluded)",
+      "boilerplateSkipped": [
+        "src/app/layout.tsx",
+        "src/app/page.tsx"
+      ],
+      "files": 26,
+      "handWritten": {
+        "files": 6,
+        "lines": 187,
+        "palette": 0,
+        "semantic": 13,
+        "v2": 0,
+        "hex": 0
+      },
+      "installed": {
+        "files": 20,
+        "lines": 1497,
+        "palette": 5,
+        "semantic": 78,
+        "v2": 37,
+        "hex": 0
+      },
+      "brandMarkHex": 11,
+      "paletteUtilities": [
+        "border-black/20",
+        "border-black/5",
+        "border-black/8",
+        "border-white/35",
+        "shadow-zinc-300/20"
+      ],
+      "semanticUtilities": [
+        "bg-background",
+        "bg-background/75",
+        "bg-card",
+        "bg-destructive/10",
+        "bg-destructive/20",
+        "bg-destructive/30",
+        "bg-foreground/5",
+        "bg-input/30",
+        "bg-input/50",
+        "bg-muted",
+        "bg-muted/50",
+        "bg-primary",
+        "bg-primary/80",
+        "bg-secondary",
+        "border-border",
+        "border-destructive",
+        "border-destructive/40",
+        "border-destructive/50",
+        "border-foreground",
+        "border-foreground/5",
+        "border-input",
+        "border-ring",
+        "fill-foreground",
+        "fill-primary/25",
+        "from-background",
+        "ring-destructive/20",
+        "ring-destructive/40",
+        "ring-foreground/5",
+        "ring-primary",
+        "ring-ring/50",
+        "stroke-primary",
+        "text-accent-foreground",
+        "text-card-foreground",
+        "text-destructive",
+        "text-foreground",
+        "text-muted-foreground",
+        "text-primary",
+        "text-primary-foreground",
+        "text-secondary",
+        "text-secondary-foreground",
+        "to-muted"
+      ],
+      "perFile": [
+        {
+          "file": "next-env.d.ts",
+          "origin": "hand",
+          "lines": 8,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": []
+        },
+        {
+          "file": "next.config.ts",
+          "origin": "hand",
+          "lines": 8,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "next"
+          ]
+        },
+        {
+          "file": "postcss.config.mjs",
+          "origin": "hand",
+          "lines": 8,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": []
+        },
+        {
+          "file": "src/app/pricing/page.tsx",
+          "origin": "hand",
+          "lines": 159,
+          "palette": 0,
+          "semantic": 13,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "@/components/hero-section-1",
+            "@/components/faqs-1",
+            "@/components/jhai/LogoWall",
+            "@/components/jhai/RecordBand",
+            "@/components/ui/card",
+            "lucide-react",
+            "next/link"
+          ]
+        },
+        {
+          "file": "src/components/faqs-1.tsx",
+          "origin": "installed",
+          "lines": 77,
+          "palette": 0,
+          "semantic": 7,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "@/components/ui/accordion",
+            "next/link"
+          ]
+        },
+        {
+          "file": "src/components/header.tsx",
+          "origin": "installed",
+          "lines": 130,
+          "palette": 2,
+          "semantic": 4,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "next/link",
+            "@/components/logo",
+            "lucide-react",
+            "@/components/ui/button",
+            "react",
+            "@/lib/utils"
+          ]
+        },
+        {
+          "file": "src/components/hero-section-1-header.tsx",
+          "origin": "hand",
+          "lines": 2,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": []
+        },
+        {
+          "file": "src/components/hero-section-1.tsx",
+          "origin": "installed",
+          "lines": 88,
+          "palette": 0,
+          "semantic": 11,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "react",
+            "next/link",
+            "@/components/ui/button",
+            "@/components/hero-section-1-header",
+            "lucide-react",
+            "next/image",
+            "@/components/ui/svgs/vercel",
+            "@/components/ui/svgs/spotify",
+            "@/components/ui/svgs/supabase"
+          ]
+        },
+        {
+          "file": "src/components/jhai/Button.tsx",
+          "origin": "installed",
+          "lines": 94,
+          "palette": 2,
+          "semantic": 1,
+          "v2": 7,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "react"
+          ]
+        },
+        {
+          "file": "src/components/jhai/Eyebrow.tsx",
+          "origin": "installed",
+          "lines": 42,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 7,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "react"
+          ]
+        },
+        {
+          "file": "src/components/jhai/FAQItem.tsx",
+          "origin": "installed",
+          "lines": 52,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 6,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "lucide-react",
+            "react"
+          ]
+        },
+        {
+          "file": "src/components/jhai/LogoWall.tsx",
+          "origin": "installed",
+          "lines": 68,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 1,
+          "hex": 0,
+          "brandMark": true,
+          "imports": [
+            "./content-types"
+          ]
+        },
+        {
+          "file": "src/components/jhai/RecordBand.tsx",
+          "origin": "installed",
+          "lines": 72,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "./StatTile",
+            "./shell",
+            "./shell",
+            "./content-types"
+          ]
+        },
+        {
+          "file": "src/components/jhai/SectionHeader.tsx",
+          "origin": "installed",
+          "lines": 80,
+          "palette": 0,
+          "semantic": 1,
+          "v2": 7,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "react",
+            "./Eyebrow"
+          ]
+        },
+        {
+          "file": "src/components/jhai/StatTile.tsx",
+          "origin": "installed",
+          "lines": 46,
+          "palette": 1,
+          "semantic": 0,
+          "v2": 6,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "react"
+          ]
+        },
+        {
+          "file": "src/components/jhai/content-types.ts",
+          "origin": "installed",
+          "lines": 55,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": []
+        },
+        {
+          "file": "src/components/jhai/shell.tsx",
+          "origin": "installed",
+          "lines": 160,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 3,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "react"
+          ]
+        },
+        {
+          "file": "src/components/logo.tsx",
+          "origin": "installed",
+          "lines": 74,
+          "palette": 0,
+          "semantic": 1,
+          "v2": 0,
+          "hex": 4,
+          "brandMark": true,
+          "imports": [
+            "@/lib/utils"
+          ]
+        },
+        {
+          "file": "src/components/pricing-1.tsx",
+          "origin": "installed",
+          "lines": 70,
+          "palette": 0,
+          "semantic": 6,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "@/components/ui/button",
+            "lucide-react",
+            "@/components/ui/card",
+            "@/components/ui/svgs/spotify",
+            "@/components/ui/svgs/supabase",
+            "@/components/ui/svgs/vercel"
+          ]
+        },
+        {
+          "file": "src/components/ui/accordion.tsx",
+          "origin": "installed",
+          "lines": 64,
+          "palette": 0,
+          "semantic": 4,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "@base-ui/react/accordion",
+            "lucide-react",
+            "@/lib/utils"
+          ]
+        },
+        {
+          "file": "src/components/ui/button.tsx",
+          "origin": "installed",
+          "lines": 58,
+          "palette": 0,
+          "semantic": 36,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "@base-ui/react/button",
+            "class-variance-authority",
+            "cn"
+          ]
+        },
+        {
+          "file": "src/components/ui/card.tsx",
+          "origin": "installed",
+          "lines": 75,
+          "palette": 0,
+          "semantic": 7,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": [
+            "react",
+            "class-variance-authority",
+            "@/lib/utils"
+          ]
+        },
+        {
+          "file": "src/components/ui/svgs/spotify.tsx",
+          "origin": "installed",
+          "lines": 17,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 1,
+          "brandMark": true,
+          "imports": [
+            "react"
+          ]
+        },
+        {
+          "file": "src/components/ui/svgs/supabase.tsx",
+          "origin": "installed",
+          "lines": 140,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 6,
+          "brandMark": true,
+          "imports": [
+            "react"
+          ]
+        },
+        {
+          "file": "src/components/ui/svgs/vercel.tsx",
+          "origin": "installed",
+          "lines": 35,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": true,
+          "imports": [
+            "react"
+          ]
+        },
+        {
+          "file": "src/lib/utils.ts",
+          "origin": "hand",
+          "lines": 2,
+          "palette": 0,
+          "semantic": 0,
+          "v2": 0,
+          "hex": 0,
+          "brandMark": false,
+          "imports": []
+        }
+      ],
+      "verdict": {
+        "rebrandableByCssVarsAlone": true,
+        "reason": "No hardcoded palette utilities in hand-written code. Every colour resolves through a CSS variable."
+      }
+    }
+  ]
+}

@@ -3,9 +3,9 @@
  * find-in-page hit inside a closed answer still resolves.
  *
  * `FAQItem` keeps its native <details> and is NOT a candidate for `@/components/ui/accordion`
- * (D-24, roster section 5). That file belongs to another lane agent and is untouched here.
+ * That file belongs to another lane agent and is untouched here.
  *
- * Lane W1-0, 2026-08-11 (D-24): inline styles became Tailwind utilities. The closing
+ * Inline styles became Tailwind utilities. The closing
  * hairline under the last row used to be a per-index `style` prop passed into FAQItem; it
  * is now a last-child variant on the stack, which is the same rule stated once.
  */

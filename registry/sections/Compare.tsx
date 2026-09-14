@@ -6,7 +6,7 @@
  * cannot drift into two different tables. Each cell carries its own mark, so a row where
  * DIY genuinely wins renders a tick against DIY.
  *
- * Lane W1-0, 2026-08-11 (D-24): inline styles became Tailwind utilities. The table itself
+ * Inline styles became Tailwind utilities. The table itself
  * belongs to `page/ComparisonTable`, so only what this file writes changed; its 56px offset
  * moved onto the wrapper this file already renders, which is where a utility can carry it.
  */

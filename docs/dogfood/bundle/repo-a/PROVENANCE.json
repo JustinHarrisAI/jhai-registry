@@ -1,0 +1,18 @@
+{
+  "$comment": "Which files a registry put here, and which a human (agent) typed. measure.mjs reads this to split hand-written from installed. If a path is not listed it counts as hand-written, which is the conservative direction.",
+  "repo": "repo-a",
+  "condition": "baseline — bare `shadcn init`, no registries block, no MCP server, no skill",
+  "handWritten": [
+    "src/app/pricing/page.tsx",
+    "src/components/pricing/hero.tsx",
+    "src/components/pricing/pricing-table.tsx",
+    "src/components/pricing/faq.tsx",
+    "src/components/pricing/logo-wall.tsx",
+    "src/components/pricing/stats-band.tsx"
+  ],
+  "installed": ["src/components/ui/button.tsx"],
+  "sources": {
+    "@shadcn/button": ["src/components/ui/button.tsx"]
+  },
+  "installedNote": "One item, from shadcn core, which a bare init provides anyway. All five sections of the brief were typed by hand."
+}

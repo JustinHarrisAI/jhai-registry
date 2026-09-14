@@ -41,10 +41,14 @@ export interface ImageSlotProps {
 
 /**
  * The plate grey was `#ECECEA`, a literal carried verbatim from the export because it had no
- * token of its own. For the registry it resolves through `--ui-surface-strong`, whose default
- * value IS that same colour — so nothing moves on JHAI, and the plate now takes a client's own
- * surface colour instead of staying JHAI grey on every site. This is the one colour change
- * made when the component became a registry item.
+ * token of its own. It is `bg-muted` now, so the plate takes the consuming project's own muted
+ * surface instead of staying one fixed grey on every site.
+ *
+ * It was briefly an alias, `bg-[var(--ui-surface-strong)]` where --ui-surface-strong: var(--muted).
+ * That is a trap and the v2.0.0 gate caught it: a custom property declared once in :root
+ * substitutes its value THERE, so the alias froze the light --muted and carried it unchanged
+ * into a .dark scope — a cream plate on a dark band. Point at the semantic directly; do not
+ * alias one custom property to another across a theme boundary.
  *
  * `circle` is 50% and not `rounded-full`: the plate is rarely square, and 9999px would give
  * a stadium where the export gives an ellipse.
@@ -74,7 +78,7 @@ export function ImageSlot({
 
   return (
     <div
-      className={`box-border flex items-center justify-center overflow-hidden bg-[var(--ui-surface-strong)] ${RADII[shape]}`}
+      className={`box-border flex items-center justify-center overflow-hidden bg-muted ${RADII[shape]}`}
       /* Runtime, not design: `ratio` is a free-form CSS aspect-ratio string and `width` any
          CSS length, both supplied per call site. Neither can be a class. */
       style={{ aspectRatio: ratio, width: width || '100%', ...style }}

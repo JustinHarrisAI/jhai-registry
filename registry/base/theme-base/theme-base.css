@@ -83,8 +83,7 @@
   --ui-hover-img-scale: 1.02;
   --ui-hover-arrow-shift: 4px;
 
-  /* ── surfaces and depth ──────────────────────────────────────────────────── */
-  --ui-surface-strong: var(--muted);
+  /* ── depth ───────────────────────────────────────────────────────────────── */
   --ui-shadow-field: 0 10px 40px rgb(0 0 0 / 0.35);
   --ui-shadow-lift: 0 24px 48px rgb(0 0 0 / 0.22);
 
@@ -104,7 +103,27 @@
    *
    * Reach for it deliberately. If you find yourself using it everywhere, the design wants a
    * different --muted-foreground, not a ramp.
+   *
+   * IT IS REDECLARED IN .dark BELOW, AND THAT IS NOT REDUNDANT. A custom property whose value
+   * is a var() substitutes where it is DECLARED, not where it is used. Declared only in :root,
+   * every step here would freeze the light palette and carry it unchanged into a .dark scope —
+   * a cream plate on a dark band. The v2.0.0 gate caught exactly that bug in ImageSlot. Any
+   * token added here that references another token must be redeclared there too.
    */
+  --ui-ink-950: var(--foreground);
+  --ui-ink-800: var(--foreground);
+  --ui-ink-600: color-mix(in oklab, var(--foreground) 82%, var(--muted-foreground));
+  --ui-ink-500: color-mix(in oklab, var(--foreground) 45%, var(--muted-foreground));
+  --ui-ink-400: var(--muted-foreground);
+  --ui-ink-300: color-mix(in oklab, var(--muted-foreground) 55%, var(--background));
+}
+
+/*
+ * The ramp again, so it resolves against the dark palette inside a .dark scope. Same
+ * definitions; only the tokens they read have changed. See the note above for why this
+ * duplication is load-bearing rather than sloppy.
+ */
+.dark {
   --ui-ink-950: var(--foreground);
   --ui-ink-800: var(--foreground);
   --ui-ink-600: color-mix(in oklab, var(--foreground) 82%, var(--muted-foreground));
@@ -137,7 +156,6 @@
   --color-ui-ink-500: var(--ui-ink-500);
   --color-ui-ink-400: var(--ui-ink-400);
   --color-ui-ink-300: var(--ui-ink-300);
-  --color-ui-surface-strong: var(--ui-surface-strong);
 
   --font-weight-ui-heading: var(--ui-weight-heading);
 

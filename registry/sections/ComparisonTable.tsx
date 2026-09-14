@@ -8,11 +8,11 @@ import { cn } from '@/lib/utils';
  *
  * SYSTEM EXTENSION. The export documents this as a page pattern, not a
  * component: "The tick/cross table IS the centerpiece: short hero → full
- * comparison table (tinted header, dark Justin column, bjarmi hairline flag)"
+ * comparison table (tinted header, dark Justin column, accent hairline flag)"
  * (`Design System.dc.html`, comparison page recipe). No component was extracted,
  * so this is built from the system's own parts and nothing else:
- *   · header tint  = --bjarmi-tint, the token whose comment reads "table header tint"
- *   · highlighted column = --ink-950 ground, the same dark card as PricingCard featured
+ *   · header tint  = --accent-tint, the token whose comment reads "table header tint"
+ *   · highlighted column = --ui-ink-950 ground, the same dark card as PricingCard featured
  *   · flag hairline = --accent-on-dark, 2px, on the highlighted column only
  *   · marks = the CheckList tick/cross recipe, mono 12px
  * Logged in `tasks/2026-08-10-wireframe-v2/GAP-LEDGER.md`.
@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils';
  * column headers a screen reader can navigate, and every glyph carries a text
  * equivalent instead of leaving a blind reader with an unlabelled symbol.
  *
- * Inline styles became Tailwind utilities and the bjarmi flag
+ * Inline styles became Tailwind utilities and the accent flag
  * became a `separator`. The table stays a <table>, the scopes stay scopes, and the
  * text equivalents stay text — the markup a screen reader walks is byte-identical.
  */
@@ -56,7 +56,7 @@ export interface ComparisonTableProps {
 }
 
 /** the mono eyebrow recipe: 9.5px / 0.24em / uppercase */
-const MONO_LABEL = 'font-mono text-type-eyebrow tracking-[0.24em] uppercase';
+const MONO_LABEL = 'font-mono text-ui-eyebrow tracking-[0.24em] uppercase';
 
 /** every cell shares one box; only the ground and the hairline colour differ */
 const CELL = 'px-6 py-[18px] font-sans leading-[1.5] border-t';
@@ -65,18 +65,19 @@ const CELL = 'px-6 py-[18px] font-sans leading-[1.5] border-t';
  * The tick/cross recipe, exported because one caller renders the mark itself when it needs
  * the mark AND text in the same cell (`sections/Compare.tsx`). That caller had copied the
  * recipe WITHOUT its ground branch, which is how the homepage shipped a teal tick on the
- * dark column and an `--ink-300` cross on white: 19 nodes failing WCAG 2.2 AA at 3.69:1
+ * dark column and an `--ui-ink-300` cross on white: 19 nodes failing WCAG 2.2 AA at 3.69:1
  * and 2.17:1. One recipe, two grounds, no second copy.
  *
- * The colours are the ramp's own on-light / on-dark twins and nothing new:
- *   tick  · light `--bjarmi-ink` 5.68:1 on white · dark `--bjarmi-glow` 7.54:1 on `--ink-950`
- *   cross · light `--ink-400`    5.11:1 on white · dark `--dark-text-3` 7.54:1 on `--ink-950`
- * `--ink-300` stays the disabled/muted step; it is simply not legible enough to carry a mark
- * a reader scans. The brand accent is untouched on both sides.
+ * The marks paint in semantics, so they carry on both grounds without branching:
+ *   tick  · `text-primary`          — the accent, which has a dark-side value of its own
+ *   cross · `text-muted-foreground` — muted, never a red cross and never a coloured fill
+ * Contrast was checked at the old fixed values and cleared 5:1 on both grounds; a consuming
+ * project picking a low-contrast --muted-foreground owns that outcome, as it does everywhere
+ * else on its page.
  */
 export function comparisonMarkClass(value: boolean, dark: boolean): string {
-  if (value) return dark ? 'text-bjarmi-glow' : 'text-bjarmi-ink';
-  return dark ? 'text-dark-text-3' : 'text-ink-400';
+  if (value) return dark ? 'text-primary' : 'text-primary';
+  return dark ? 'text-muted-foreground' : 'text-muted-foreground';
 }
 
 export function ComparisonTable({
@@ -91,7 +92,7 @@ export function ComparisonTable({
   return (
     /* `style` is the caller's own override, computed at their call site rather than here. */
     <div
-      className="overflow-x-auto rounded-(--radius-card) border border-line-light"
+      className="overflow-x-auto rounded-(--ui-radius-card) border border-border"
       style={style}
     >
       {/*
@@ -110,7 +111,7 @@ export function ComparisonTable({
               scope="col"
               className={cn(
                 MONO_LABEL,
-                'min-w-[220px] bg-bjarmi-tint px-6 py-[18px] align-bottom font-normal text-bjarmi-ink'
+                'min-w-[220px] bg-primary/10 px-6 py-[18px] align-bottom font-normal text-primary'
               )}
             >
               {rowHeading}
@@ -127,19 +128,19 @@ export function ComparisonTable({
                    * instead of inside its box, so the highlighted column takes 20px of top
                    * padding to give that 2px back. Row height is unchanged either way.
                    */
-                  col.highlight ? 'relative bg-ink-950 pt-5' : 'bg-bjarmi-tint pt-[18px]'
+                  col.highlight ? 'relative bg-background pt-5' : 'bg-primary/10 pt-[18px]'
                 )}
               >
                 {col.highlight ? (
                   <Separator
                     aria-hidden="true"
-                    className="absolute inset-x-0 top-0 bg-bjarmi-glow data-horizontal:h-0.5"
+                    className="absolute inset-x-0 top-0 bg-primary data-horizontal:h-0.5"
                   />
                 ) : null}
                 <span
                   className={cn(
-                    'block font-sans text-[15px] [font-weight:var(--weight-heading)] tracking-[-0.01em]',
-                    col.highlight ? 'text-paper-0' : 'text-text-heading'
+                    'block font-sans text-[15px] [font-weight:var(--ui-weight-heading)] tracking-[-0.01em]',
+                    col.highlight ? 'text-card' : 'text-foreground'
                   )}
                 >
                   {col.label}
@@ -149,7 +150,7 @@ export function ComparisonTable({
                     className={cn(
                       MONO_LABEL,
                       'mt-2 block font-normal',
-                      col.highlight ? 'text-bjarmi-glow' : 'text-ink-500'
+                      col.highlight ? 'text-primary' : 'text-muted-foreground'
                     )}
                   >
                     {col.note}
@@ -166,7 +167,7 @@ export function ComparisonTable({
                 scope="row"
                 className={cn(
                   CELL,
-                  'border-line-light-soft text-type-body font-normal text-text-body'
+                  'border-border/60 text-ui-body font-normal text-foreground'
                 )}
               >
                 {row.label}
@@ -178,8 +179,8 @@ export function ComparisonTable({
                   CELL,
                   'text-[14px]',
                   dark
-                    ? 'border-line-dark-soft bg-ink-950 text-dark-text-2'
-                    : 'border-line-light-soft bg-transparent text-text-secondary'
+                    ? 'border-border/60 bg-background text-foreground'
+                    : 'border-border/60 bg-transparent text-muted-foreground'
                 );
 
                 if (typeof value === 'boolean') {
@@ -188,7 +189,7 @@ export function ComparisonTable({
                     <td key={c} className={cell}>
                       <span
                         aria-hidden="true"
-                        className={cn('font-mono text-type-caption', mark)}
+                        className={cn('font-mono text-ui-caption', mark)}
                       >
                         {value ? '✓' : '✕'}
                       </span>

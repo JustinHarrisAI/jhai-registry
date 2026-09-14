@@ -39,7 +39,7 @@ export function RecordBand({
       id="record"
       label="Result band"
       ground={ground}
-      className={standalone ? 'py-section-y!' : 'pt-0! pb-section-y!'}
+      className={standalone ? 'py-ui-section-y!' : 'pt-0! pb-section-y!'}
     >
       <Container>
         {/* The 104px is the gap up to the logo wall this band hangs off. Standing alone there

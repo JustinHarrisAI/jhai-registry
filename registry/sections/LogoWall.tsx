@@ -36,7 +36,7 @@ export function LogoWall({ logos, label }: { logos: LogoEntry[]; label: string }
     <section
       id="clients"
       data-screen-label="Logo wall"
-      className="scroll-mt-[120px] bg-paper-50 pt-10 pb-0"
+      className="scroll-mt-[120px] bg-background pt-10 pb-0"
     >
       {/* The export prints no label here. The heading exists for the document outline
           and for a screen reader, and is clipped so the band still reads as one silent

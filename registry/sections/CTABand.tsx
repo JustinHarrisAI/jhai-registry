@@ -53,16 +53,16 @@ export function CTABand({
   return (
     /* `style` is the caller's own override, computed at their call site rather than here. */
     <div
-      className="relative overflow-hidden rounded-(--radius-card) bg-ink-950 p-[clamp(40px,5vw,64px)]"
+      className="relative overflow-hidden rounded-(--ui-radius-card) bg-background p-[clamp(40px,5vw,64px)]"
       style={style}
     >
       {/*
-       * `gap-12` is 48px flat, deliberately not `gap-gap-grid`. --gap-grid steps down to
+       * `gap-12` is 48px flat, deliberately not `gap-ui-gap-grid`. --gap-grid steps down to
        * 32px under 760px and this band has always held its 48px on a phone; the token
        * would quietly reflow it. Same number, no breakpoint behaviour attached.
        */}
       <div className="relative flex flex-wrap items-center gap-12">
-        <h3 className="m-0 min-w-0 flex-[1_1_320px] font-sans text-[clamp(26px,2.6vw,34px)] leading-[1.15] [font-weight:var(--weight-heading)] tracking-[-0.02em] text-dark-text-1">
+        <h3 className="m-0 min-w-0 flex-[1_1_320px] font-sans text-[clamp(26px,2.6vw,34px)] leading-[1.15] [font-weight:var(--ui-weight-heading)] tracking-[-0.02em] text-foreground">
           {title}
         </h3>
         <div className="min-w-0 flex-[1_1_320px]">
@@ -72,7 +72,7 @@ export function CTABand({
                 {link.label}
               </Button>
               {subline ? (
-                <p className="mt-3.5 m-0 font-sans text-type-caption leading-[1.5] text-dark-text-3">
+                <p className="mt-3.5 m-0 font-sans text-ui-caption leading-[1.5] text-muted-foreground">
                   {subline}
                 </p>
               ) : null}
@@ -80,7 +80,7 @@ export function CTABand({
           ) : (
             field ?? (
               subline ? (
-                <p className="m-0 font-sans text-type-caption leading-[1.5] text-dark-text-3">
+                <p className="m-0 font-sans text-ui-caption leading-[1.5] text-muted-foreground">
                   {subline}
                 </p>
               ) : null

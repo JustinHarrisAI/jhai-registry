@@ -23,11 +23,11 @@ export function Questions({ content }: { content: QuestionsContent }) {
           <Eyebrow number={content.number}>{content.label}</Eyebrow>
           <h2
             data-rv=""
-            className="m-0 font-sans text-type-section leading-[1.06] [font-weight:var(--weight-heading)] tracking-[-0.035em] text-text-heading"
+            className="m-0 font-sans text-ui-section leading-[1.06] [font-weight:var(--ui-weight-heading)] tracking-[-0.035em] text-foreground"
           >
             {content.title}
           </h2>
-          <p className="m-0 max-w-[460px] font-sans text-type-body leading-[1.62] text-text-secondary">
+          <p className="m-0 max-w-[460px] font-sans text-ui-body leading-[1.62] text-muted-foreground">
             {content.lede}
           </p>
         </div>

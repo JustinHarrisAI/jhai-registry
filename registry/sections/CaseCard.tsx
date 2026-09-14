@@ -14,7 +14,7 @@ import { Badge } from '@/components/ui/badge';
  * mark re-seated on the shadcn `badge`. The badge arrives with a chip's own chrome — a
  * 20px height, a 2rem radius, a fill and 8px of padding — and this mark has never had
  * any of that, so the chrome is switched off rather than the recipe changed. What is
- * left is the mono eyebrow recipe the export draws: 9.5px, 0.24em, uppercase, ink-500.
+ * left is the mono eyebrow recipe the export draws: 9.5px, 0.24em, uppercase, muted.
  *
  * The CTA stays the LAST CHILD of the anchor. `.v2-cards a > :last-child` in
  * v2-motion.css is what slides it 4px on hover, so nothing may be appended after it.
@@ -56,17 +56,17 @@ export function CaseCard({
   return (
     <a
       href={href}
-      className="block box-border rounded-(--radius-card) border border-line-light-soft bg-transparent p-5 no-underline"
+      className="block box-border rounded-(--ui-radius-card) border border-border/60 bg-transparent p-5 no-underline"
       /* Both survivors are runtime values. `width` is a per-call-site track width the
          carousel sets ("400px") and has no fixed step to name; the caller's `style` is
          arbitrary CSS and keeps the last word it had under the object spread. */
       style={{ width, ...style }}
     >
       <ImageSlot src={image} placeholder={imagePlaceholder} ratio="16/10" contrast />
-      <Badge className="mt-5 h-auto overflow-visible rounded-none border-0 bg-transparent p-0 font-mono text-type-eyebrow font-normal tracking-[0.24em] whitespace-normal text-ink-500 uppercase">
+      <Badge className="mt-5 h-auto overflow-visible rounded-none border-0 bg-transparent p-0 font-mono text-ui-eyebrow font-normal tracking-[0.24em] whitespace-normal text-muted-foreground uppercase">
         {tag}
       </Badge>
-      <h3 className="mt-2.5 mb-0 font-sans text-type-card-title-lg leading-[1.25] [font-weight:var(--weight-heading)] tracking-[-0.015em] text-text-heading">
+      <h3 className="mt-2.5 mb-0 font-sans text-ui-card-title-lg leading-[1.25] [font-weight:var(--ui-weight-heading)] tracking-[-0.015em] text-foreground">
         {title}
       </h3>
       {stat ? (
@@ -78,17 +78,17 @@ export function CaseCard({
             <svg width="56" height="18" viewBox="0 0 56 18" fill="none" aria-hidden="true">
               <path
                 d="M1 15 L12 13 L22 14 L32 9 L42 7 L55 2"
-                className="stroke-bjarmi-glow"
+                className="stroke-accent-glow"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
           ) : null}
-          <span className="font-sans text-[15px] [font-weight:var(--weight-heading)] text-text-heading">{stat}</span>
+          <span className="font-sans text-[15px] [font-weight:var(--ui-weight-heading)] text-foreground">{stat}</span>
         </div>
       ) : null}
-      <div className="mt-4 font-sans text-type-caption text-bjarmi-ink">{cta}</div>
+      <div className="mt-4 font-sans text-ui-caption text-primary">{cta}</div>
     </a>
   );
 }

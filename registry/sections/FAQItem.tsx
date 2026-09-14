@@ -26,10 +26,10 @@ export function FAQItem({ question, children, open = false, style }: FAQItemProp
   return (
     /* `style` is the caller's own override and is computed at their call site, not here —
        Questions.tsx closes the last row of the stack with a bottom hairline through it. */
-    <details open={open} className="border-t border-line-light" style={style}>
+    <details open={open} className="border-t border-border" style={style}>
       {/* `[&::-webkit-details-marker]:hidden` kills Safari's own disclosure triangle, which
           `list-none` alone does not reach. */}
-      <summary className="group/faq flex list-none cursor-pointer items-center justify-between gap-6 py-[22px] font-sans text-type-lede [font-weight:var(--weight-heading)] tracking-[-0.01em] text-text-heading [&::-webkit-details-marker]:hidden">
+      <summary className="group/faq flex list-none cursor-pointer items-center justify-between gap-6 py-[22px] font-sans text-ui-lede [font-weight:var(--ui-weight-heading)] tracking-[-0.01em] text-foreground [&::-webkit-details-marker]:hidden">
         {question}
         {/* The marker was a mono "+" glyph. It is lucide's Plus now, rotated 45 degrees into a
             close cross when the row is open: the same affordance, drawn properly, at the same
@@ -40,10 +40,10 @@ export function FAQItem({ question, children, open = false, style }: FAQItemProp
           size={18}
           strokeWidth={1.5}
           aria-hidden="true"
-          className="flex-none text-ink-400 motion-safe:transition-transform motion-safe:duration-200 group-open/faq:rotate-45"
+          className="flex-none text-muted-foreground motion-safe:transition-transform motion-safe:duration-200 group-open/faq:rotate-45"
         />
       </summary>
-      <div className="max-w-[640px] pb-6 font-sans text-type-body leading-[1.65] text-text-body">
+      <div className="max-w-[640px] pb-6 font-sans text-ui-body leading-[1.65] text-foreground">
         {children}
       </div>
     </details>

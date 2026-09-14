@@ -9,7 +9,7 @@ import { Eyebrow } from './Eyebrow';
  * `title` may carry an <em> for the italic voice.
  *
  * Reauthored off inline styles onto utilities. The row gap is
- * a fixed 48px in the export, so it is `gap-12` and NOT `gap-gap-grid` — `--gap-grid` steps
+ * a fixed 48px in the export, so it is `gap-12` and NOT `gap-ui-gap-grid` — `--gap-grid` steps
  * down to 32px under 760px and would move this header on a phone.
  */
 
@@ -37,9 +37,9 @@ export interface SectionHeaderProps {
  * same values, now as the utilities that carry them.
  */
 const HEADING: Record<SectionHeaderScale, string> = {
-  section: 'text-type-section leading-[1.06] tracking-[-0.035em]',
-  feature: 'text-type-feature leading-[1.02] tracking-[-0.04em]',
-  display: 'text-type-display leading-[0.98] tracking-[-0.045em]',
+  section: 'text-ui-section leading-[1.06] tracking-[-0.035em]',
+  feature: 'text-ui-feature leading-[1.02] tracking-[-0.04em]',
+  display: 'text-ui-display leading-[0.98] tracking-[-0.045em]',
 };
 
 export function SectionHeader({
@@ -58,17 +58,17 @@ export function SectionHeader({
           {label}
         </Eyebrow>
         <h2
-          className={`mt-eyebrow-gap mr-0 mb-0 ml-0 max-w-[620px] font-sans [font-weight:var(--weight-heading)] ${
+          className={`mt-ui-eyebrow-gap mr-0 mb-0 ml-0 max-w-[620px] font-sans [font-weight:var(--ui-weight-heading)] ${
             HEADING[scale]
-          } ${ground === 'dark' ? 'text-dark-text-1' : 'text-text-heading'}`}
+          } ${'text-foreground'}`}
         >
           {title}
         </h2>
       </div>
       {side ? (
         <p
-          className={`m-0 max-w-measure-side font-sans text-[15px] leading-[1.6] ${
-            ground === 'dark' ? 'text-dark-text-3' : 'text-text-secondary'
+          className={`m-0 max-w-ui-measure-side font-sans text-[15px] leading-[1.6] ${
+            'text-muted-foreground'
           }`}
         >
           {side}

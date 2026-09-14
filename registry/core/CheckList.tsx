@@ -5,7 +5,7 @@ import type { CSSProperties, ReactNode } from 'react';
  * CheckList — the inclusion / pain list.
  *
  * Converted from `extracted/components/core/CheckList.jsx`.
- * check = bjarmi tick for answers and inclusions.
+ * check = accent tick for answers and inclusions.
  * cross = grey cross for pains. Never a red cross, never a colored fill.
  *
  * Reauthored off inline styles onto utilities. Every value is
@@ -32,7 +32,7 @@ export type CheckListSize = 'md' | 'lg';
 
 export interface CheckListProps {
   items: ReactNode[];
-  /** check = bjarmi tick (answers/inclusions) · cross = grey cross (pains) */
+  /** check = accent tick (answers/inclusions) · cross = grey cross (pains) */
   mark?: CheckListMark;
   ground?: CheckListGround;
   size?: CheckListSize;
@@ -47,14 +47,13 @@ export function CheckList({
   style,
 }: CheckListProps) {
   const Glyph = mark === 'check' ? Check : X;
-  const markTone =
-    mark === 'check'
-      ? ground === 'dark'
-        ? 'text-bjarmi-glow'
-        : 'text-bjarmi-ink'
-      : ground === 'dark'
-        ? 'text-ink-400'
-        : 'text-ink-300';
+  /*
+   * The mark's colour no longer branches on `ground`. A dark band opens a nested `.dark`
+   * scope (see shell.tsx), so `text-primary` and `text-muted-foreground` already resolve to
+   * their dark-side values inside one. The check stays the accent and the cross stays muted;
+   * what changed is that the component no longer has to know which ground it landed on.
+   */
+  const markTone = mark === 'check' ? 'text-primary' : 'text-muted-foreground';
 
   return (
     <div className="flex flex-col gap-[11px]" style={style}>
@@ -67,7 +66,7 @@ export function CheckList({
              wraps to three lines. */
           className={`flex items-start gap-2.5 font-sans ${
             size === 'lg' ? 'text-[15.5px]' : 'text-[14px]'
-          } ${ground === 'dark' ? 'text-dark-text-2' : 'text-text-body'}`}
+          } ${'text-foreground'}`}
         >
           <Glyph
             size={size === 'lg' ? 15 : 14}

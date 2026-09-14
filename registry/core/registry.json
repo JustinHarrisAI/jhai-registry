@@ -7,7 +7,7 @@
       "name": "eyebrow",
       "type": "registry:component",
       "title": "Eyebrow",
-      "description": "The one mono label recipe: 9.5px, 0.24em tracking, uppercase, optional NN prefix. Dark grounds render in bjarmi glow. Never restyle this recipe per section.",
+      "description": "The one mono label recipe: 9.5px, 0.24em tracking, uppercase, optional NN prefix. Dark grounds render in the accent. Never restyle this recipe per section.",
       "author": "Justin Harris <justin@justinharris.ai>",
       "categories": [
         "typography"
@@ -85,7 +85,7 @@
       "name": "check-list",
       "type": "registry:component",
       "title": "Check List",
-      "description": "The inclusion / pain list. Check is a bjarmi tick for answers and inclusions; cross is a grey cross for pains. Never a red cross, never a coloured fill. Marks are lucide icons, not text glyphs.",
+      "description": "The inclusion / pain list. Check is a accent tick for answers and inclusions; cross is a grey cross for pains. Never a red cross, never a coloured fill. Marks are lucide icons, not text glyphs.",
       "author": "Justin Harris <justin@justinharris.ai>",
       "categories": [
         "content"
@@ -154,7 +154,7 @@
           "target": "@components/jhai/ImageSlot.tsx"
         }
       ],
-      "docs": "The plate grey resolved through --jh-surface-strong for the registry build; it was a #ECECEA literal in the source repo. Same colour on JHAI, client colour elsewhere.",
+      "docs": "The plate grey resolved through --ui-surface-strong for the registry build; it was a #ECECEA literal in the source repo. Same colour on JHAI, client colour elsewhere.",
       "meta": {
         "upstream": null,
         "upstreamLicense": null,

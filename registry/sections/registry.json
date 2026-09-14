@@ -47,7 +47,7 @@
           "target": "@components/jhai/shell.tsx"
         }
       ],
-      "docs": "Grain reads its texture from --jh-grain, which this file does not define because the SVG is a project asset. Set it beside your palette: :root { --jh-grain: url('/assets/grain.svg'); }. Unset, Grain renders nothing.",
+      "docs": "Grain reads its texture from --ui-grain, which this file does not define because the SVG is a project asset. Set it beside your palette: :root { --ui-grain: url('/assets/grain.svg'); }. Unset, Grain renders nothing.",
       "meta": {
         "upstream": null,
         "upstreamLicense": null,

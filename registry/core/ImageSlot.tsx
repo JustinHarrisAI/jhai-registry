@@ -41,7 +41,7 @@ export interface ImageSlotProps {
 
 /**
  * The plate grey was `#ECECEA`, a literal carried verbatim from the export because it had no
- * token of its own. For the registry it resolves through `--jh-surface-strong`, whose default
+ * token of its own. For the registry it resolves through `--ui-surface-strong`, whose default
  * value IS that same colour — so nothing moves on JHAI, and the plate now takes a client's own
  * surface colour instead of staying JHAI grey on every site. This is the one colour change
  * made when the component became a registry item.
@@ -50,7 +50,7 @@ export interface ImageSlotProps {
  * a stadium where the export gives an ellipse.
  */
 const RADII: Record<ImageSlotShape, string> = {
-  rounded: 'rounded-(--radius-card)',
+  rounded: 'rounded-(--ui-radius-card)',
   rect: 'rounded-none',
   circle: 'rounded-[50%]',
 };
@@ -74,7 +74,7 @@ export function ImageSlot({
 
   return (
     <div
-      className={`box-border flex items-center justify-center overflow-hidden bg-[var(--jh-surface-strong)] ${RADII[shape]}`}
+      className={`box-border flex items-center justify-center overflow-hidden bg-[var(--ui-surface-strong)] ${RADII[shape]}`}
       /* Runtime, not design: `ratio` is a free-form CSS aspect-ratio string and `width` any
          CSS length, both supplied per call site. Neither can be a class. */
       style={{ aspectRatio: ratio, width: width || '100%', ...style }}
@@ -82,11 +82,11 @@ export function ImageSlot({
       {src ? (
         <img src={src} alt={alt} className={`block h-full w-full object-cover ${filter}`} />
       ) : placeholder ? (
-        /* `--ink-500`, not `--ink-400`. The eyebrow step is authored against paper and white;
+        /* `--ui-ink-500`, not `--ui-ink-400`. The eyebrow step is authored against paper and white;
            on this plate's own `#ECECEA` it reads 4.32:1 at 9.5px and misses WCAG 2.2 AA. The
            next step down the same ramp reads 4.52:1 on the plate and is the only token that
            clears it without darkening the caption into body weight. */
-        <span className="px-4 text-center font-mono text-type-eyebrow tracking-[0.2em] text-ink-500 uppercase">
+        <span className="px-4 text-center font-mono text-ui-eyebrow tracking-[0.2em] text-muted-foreground uppercase">
           {placeholder}
         </span>
       ) : null}

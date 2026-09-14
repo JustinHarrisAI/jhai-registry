@@ -5,10 +5,10 @@
 
 export function Ticker({ text }: { text: string }) {
   /* The stroke alpha is a literal the export carries and no token names. It is written
-     exactly rather than mixed from --ink-800, because a color-mix() that an older engine
+     exactly rather than mixed from --ui-ink-800, because a color-mix() that an older engine
      cannot parse would drop the stroke and leave a transparent, invisible ticker. */
   const item = (
-    <span className="flex-none pr-16 font-sans text-[clamp(72px,8vw,116px)] leading-none [font-weight:var(--weight-heading)] tracking-[-0.04em] whitespace-nowrap text-transparent [-webkit-text-stroke:1px_color-mix(in_srgb,var(--ink-800)_22%,transparent)]">
+    <span className="flex-none pr-16 font-sans text-[clamp(72px,8vw,116px)] leading-none [font-weight:var(--ui-weight-heading)] tracking-[-0.04em] whitespace-nowrap text-transparent [-webkit-text-stroke:1px_color-mix(in_srgb,var(--ui-ink-800)_22%,transparent)]">
       {`${text} `}
     </span>
   );
@@ -19,7 +19,7 @@ export function Ticker({ text }: { text: string }) {
     <section
       data-screen-label="Ticker"
       aria-hidden="true"
-      className="overflow-hidden bg-paper-50 pt-[72px] pb-0"
+      className="overflow-hidden bg-background pt-[72px] pb-0"
     >
       <div className="v2-marquee v2-marquee--ticker">
         {item}

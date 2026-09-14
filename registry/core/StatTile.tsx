@@ -7,10 +7,10 @@ import type { CSSProperties } from 'react';
  * Skip the divider on the first tile of a row.
  *
  * Reauthored off inline styles onto utilities. The caption is
- * the mono eyebrow recipe, so its 9.5px reads through `text-type-eyebrow` rather than as a
- * literal. The light-ground rule was `rgba(0,0,0,0.08)` with no token of its own. For the registry it
- * became `--jh-rule-light`, same value, so it follows a client's palette instead of staying
- * literal black on every site.
+ * the mono eyebrow recipe, so its 9.5px reads through `text-ui-eyebrow` rather than as a
+ * literal. The light-ground rule was `rgba(0,0,0,0.08)`, a literal with no token of its own. It
+ * is `border-border` now, so it follows the consuming project's own hairline colour instead of
+ * staying literal black on every site.
  */
 
 export type StatTileGround = 'light' | 'dark';
@@ -27,18 +27,18 @@ export interface StatTileProps {
 }
 
 export function StatTile({ value, label, divider = true, ground = 'light', style }: StatTileProps) {
-  const rule = ground === 'dark' ? 'border-line-dark-soft' : 'border-rule-light';
+  const rule = 'border-border';
 
   return (
     <div className={`px-8 ${divider ? `border-l ${rule}` : ''}`} style={style}>
       <div
-        className={`font-sans text-[clamp(64px,6.5vw,96px)] leading-none [font-weight:var(--weight-heading)] tracking-[-0.04em] tabular-nums ${
-          ground === 'dark' ? 'text-dark-text-1' : 'text-text-heading'
+        className={`font-sans text-[clamp(64px,6.5vw,96px)] leading-none [font-weight:var(--ui-weight-heading)] tracking-[-0.04em] tabular-nums ${
+          'text-foreground'
         }`}
       >
         {value}
       </div>
-      <div className="mt-3.5 font-mono text-type-eyebrow tracking-[0.24em] text-ink-500 uppercase">
+      <div className="mt-3.5 font-mono text-ui-eyebrow tracking-[0.24em] text-muted-foreground uppercase">
         {label}
       </div>
     </div>

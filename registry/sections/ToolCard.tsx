@@ -40,19 +40,19 @@ export function ToolCard({
   return (
     <a
       href={href}
-      className="flex flex-col rounded-(--radius-card) border border-line-light bg-paper-0 p-8 no-underline"
+      className="flex flex-col rounded-(--ui-radius-card) border border-border bg-card p-8 no-underline"
       /* Caller-supplied CSS. Arbitrary runtime values from the call site, and the last
          word over the utilities, exactly as the object spread it replaces was. */
       style={style}
     >
       {icon}
-      <h3 className="mt-5 mb-0 font-sans text-type-card-title [font-weight:var(--weight-heading)] tracking-[-0.015em] text-text-heading">
+      <h3 className="mt-5 mb-0 font-sans text-ui-card-title [font-weight:var(--ui-weight-heading)] tracking-[-0.015em] text-foreground">
         {title}
       </h3>
-      <p className="mt-2.5 mb-0 flex-1 font-sans text-[14px] leading-[1.6] text-text-secondary">
+      <p className="mt-2.5 mb-0 flex-1 font-sans text-[14px] leading-[1.6] text-muted-foreground">
         {description}
       </p>
-      <span className="mt-5.5 font-mono text-type-eyebrow tracking-[0.2em] text-bjarmi-ink uppercase">
+      <span className="mt-5.5 font-mono text-ui-eyebrow tracking-[0.2em] text-primary uppercase">
         {cta} →
       </span>
     </a>

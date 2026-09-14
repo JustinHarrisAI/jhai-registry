@@ -29,10 +29,19 @@ import type { CSSProperties, ReactNode } from 'react';
 
 export type Ground = 'paper' | 'white' | 'ink';
 
+/**
+ * `ink` carries the `dark` class, not a separate palette.
+ *
+ * A dark band is an explicit per-section choice, independent of the page theme: an ink Section
+ * renders dark on a light page and must keep doing so. Rather than shipping a parallel set of
+ * inverted colour tokens, the band opens a nested `.dark` scope, so every semantic inside it —
+ * bg-background, text-foreground, border-border — resolves against the consuming project's own
+ * dark palette. One vocabulary, and a client's dark mode drives our dark bands for free.
+ */
 const GROUNDS: Record<Ground, string> = {
-  paper: 'bg-paper-50',
-  white: 'bg-paper-0',
-  ink: 'bg-ink-950',
+  paper: 'bg-background',
+  white: 'bg-card',
+  ink: 'dark bg-background text-foreground',
 };
 
 export function Container({
@@ -46,7 +55,7 @@ export function Container({
 }) {
   return (
     <div
-      className={['v2-container', 'mx-auto box-border max-w-container px-gutter', className]
+      className={['v2-container', 'mx-auto box-border max-w-ui-container px-ui-gutter', className]
         .filter(Boolean)
         .join(' ')}
       /* caller-computed override, passed straight through — twelve section files use it */
@@ -81,8 +90,8 @@ export function Section({
         'v2-section',
         GROUNDS[ground],
         /* the header offset, by its token: 120px, stepping to 96px with the mobile gutter */
-        'scroll-mt-header-offset',
-        'py-section-y',
+        'scroll-mt-ui-header-offset',
+        'py-ui-section-y',
         className,
       ]
         .filter(Boolean)
@@ -98,16 +107,16 @@ export function Section({
 /**
  * Grain, the one texture in the system. Sits over an ink ground, never over paper.
  *
- * REGISTRY NOTE: the texture comes from --jh-grain, which this file does not define, because
+ * REGISTRY NOTE: the texture comes from --ui-grain, which this file does not define, because
  * the SVG is a project asset rather than a registry file. Set it where you set your palette:
- *   :root { --jh-grain: url('/assets/grain.svg'); }
+ *   :root { --ui-grain: url('/assets/grain.svg'); }
  * Unset, Grain renders nothing and the layout is unaffected.
  */
 export function Grain() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 bg-(image:--jh-grain) bg-repeat opacity-5 mix-blend-overlay [background-size:180px_180px]"
+      className="pointer-events-none absolute inset-0 bg-(image:--ui-grain) bg-repeat opacity-5 mix-blend-overlay [background-size:180px_180px]"
     />
   );
 }
@@ -140,14 +149,14 @@ export function HomeStyles() {
       .v2-rail:hover .v2-marquee, .v2-rail:focus-within .v2-marquee { animation-play-state: paused; }
       .v2-pip { animation: v2Breathe 3.2s cubic-bezier(0.4,0,0.4,1) infinite; }
 
-      .v2-link { text-decoration: none; transition: color var(--dur-fast) var(--ease); }
+      .v2-link { text-decoration: none; transition: color var(--ui-dur-fast) var(--ui-ease); }
       .v2-underline {
         text-decoration: underline;
         text-underline-offset: 0.3em;
         text-decoration-thickness: 1px;
       }
-      .v2-card-h { transition: border-color var(--dur-med) var(--ease); }
-      .v2-card-h:hover { border-color: color-mix(in srgb, var(--ink-800) 18%, transparent); }
+      .v2-card-h { transition: border-color var(--ui-dur-med) var(--ui-ease); }
+      .v2-card-h:hover { border-color: color-mix(in srgb, var(--ui-ink-800) 18%, transparent); }
       .v2-svc:hover h3 { color: var(--accent); }
       .v2-home a:focus-visible {
         outline: 2px solid var(--accent);

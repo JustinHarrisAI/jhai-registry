@@ -45,23 +45,23 @@ export type ButtonProps = ButtonOwnProps &
 
 const BASE =
   'inline-flex shrink-0 items-center justify-center whitespace-nowrap select-none ' +
-  'rounded-(--radius-card) px-7 font-sans text-type-body [font-weight:var(--weight-heading)] no-underline ' +
-  'transition-[background-color,border-color,color] duration-(--dur-fast) ease-(--ease) ' +
+  'rounded-(--ui-radius-card) px-7 font-sans text-ui-body [font-weight:var(--ui-weight-heading)] no-underline ' +
+  'transition-[background-color,border-color,color] duration-(--ui-dur-fast) ease-(--ui-ease) ' +
   'outline-none focus-visible:ring-3 focus-visible:ring-ring/50 ' +
   'disabled:pointer-events-none disabled:opacity-50';
 
 const SIZE: Record<ButtonSize, string> = {
-  md: 'h-button-h',
-  nav: 'h-button-h-nav',
-  lg: 'h-field-h',
+  md: 'h-ui-button-h',
+  nav: 'h-ui-button-h-nav',
+  lg: 'h-ui-field-h',
 };
 
 /** The four combinations the v2 button actually has. One control whose fill side flips. */
 const TONE: Record<`${ButtonVariant}-${ButtonGround}`, string> = {
-  'primary-light': 'bg-ink-800 text-paper-0',
-  'primary-dark': 'bg-paper-50 text-ink-950',
-  'ghost-light': 'border border-edge-light bg-transparent text-ink-800',
-  'ghost-dark': 'border border-edge-dark bg-transparent text-dark-text-1',
+  'primary-light': 'bg-foreground text-card',
+  'primary-dark': 'bg-background text-foreground',
+  'ghost-light': 'border border-border bg-transparent text-foreground',
+  'ghost-dark': 'border border-border bg-transparent text-foreground',
 };
 
 export function Button({

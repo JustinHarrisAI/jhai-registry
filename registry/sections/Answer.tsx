@@ -21,30 +21,30 @@ export function Answer({ content }: { content: AnswerContent }) {
           <Eyebrow number={content.number}>{content.label}</Eyebrow>
           <h2
             data-rv=""
-            className="mt-eyebrow-gap font-sans text-type-feature leading-[1.02] [font-weight:var(--weight-heading)] tracking-[-0.04em] text-text-heading"
+            className="mt-ui-eyebrow-gap font-sans text-ui-feature leading-[1.02] [font-weight:var(--ui-weight-heading)] tracking-[-0.04em] text-foreground"
           >
             {content.titleLead}
             <em className="italic">{content.titleEm}</em>
           </h2>
           <p
             data-rv=""
-            className="mt-6 max-w-measure-lede font-sans text-[19px] leading-[1.5] text-text-body"
+            className="mt-6 max-w-ui-measure-lede font-sans text-[19px] leading-[1.5] text-foreground"
           >
             {content.ledeLead}
-            <em className="italic text-text-heading">{content.ledeEm}</em>
+            <em className="italic text-foreground">{content.ledeEm}</em>
           </p>
           <div data-rv="" className="v2-grid-2 mt-12 gap-x-12 gap-y-10">
             {content.pillars.map((pillar) => (
               <div key={pillar.title}>
                 <div className="flex items-baseline gap-[14px]">
-                  <span aria-hidden="true" className="flex-none font-mono text-[23px] text-bjarmi-ink">
+                  <span aria-hidden="true" className="flex-none font-mono text-[23px] text-primary">
                     ✓
                   </span>
-                  <h3 className="font-sans text-[clamp(26px,2.4vw,34px)] leading-[1.08] [font-weight:var(--weight-heading)] tracking-[-0.03em] text-text-heading">
+                  <h3 className="font-sans text-[clamp(26px,2.4vw,34px)] leading-[1.08] [font-weight:var(--ui-weight-heading)] tracking-[-0.03em] text-foreground">
                     {pillar.title}
                   </h3>
                 </div>
-                <p className="mt-2.5 ml-[30px] max-w-[400px] font-sans text-type-body leading-[1.6] text-text-body">
+                <p className="mt-2.5 ml-[30px] max-w-[400px] font-sans text-ui-body leading-[1.6] text-foreground">
                   {pillar.body}
                 </p>
               </div>

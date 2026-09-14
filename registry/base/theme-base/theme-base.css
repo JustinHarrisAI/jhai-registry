@@ -1,0 +1,182 @@
+/*
+ * theme-base — the structural tokens this component set needs, and nothing else.
+ *
+ * COLOUR IS NOT IN THIS FILE.
+ *   Components paint in shadcn semantic tokens only — --background, --foreground, --primary,
+ *   --muted-foreground, --card, --border, --ring. Those arrive as cssVars, which the CLI
+ *   merges into your project's own :root and .dark blocks, so your palette is already the
+ *   palette. There is nothing to override here and no second vocabulary to learn.
+ *
+ * WHAT IS IN THIS FILE
+ *   The values shadcn has no opinion about: a type scale, a spacing rhythm, control heights,
+ *   durations, easings, measure caps, and a neutral ink ramp for the rare case where a design
+ *   needs a step between --foreground and --muted-foreground. All prefixed --ui- so they
+ *   cannot collide with anything your project already declares.
+ *
+ * HOW TO USE IT
+ *   1. pnpm dlx shadcn@4.21.0 add @jhai/theme-base
+ *   2. One line at the top of globals.css, after the tailwind import:
+ *
+ *        @import "tailwindcss";
+ *        @import "../styles/theme-base.css";
+ *
+ *   3. Nothing else. To rebrand, edit your own shadcn tokens as you normally would.
+ *
+ * DARK BANDS
+ *   A section can render dark on a light page by carrying the `dark` class (see shell.tsx).
+ *   Everything inside then resolves against your .dark block. You do not need a second
+ *   palette, and your dark mode drives those bands for free.
+ */
+
+:root {
+  /* ── type scale ──────────────────────────────────────────────────────────── */
+  --ui-text-hero: clamp(56px, 6.8vw, 96px);
+  --ui-text-display: clamp(56px, 6.6vw, 96px);
+  --ui-text-feature: clamp(44px, 4.4vw, 60px);
+  --ui-text-section: clamp(40px, 4vw, 52px);
+  --ui-text-card-title: 19px;
+  --ui-text-card-title-lg: 21px;
+  --ui-text-lede: 17px;
+  --ui-text-body: 14.5px;
+  --ui-text-small: 13.5px;
+  --ui-text-caption: 13px;
+  --ui-text-eyebrow: 9.5px;
+  --ui-text-micro: 10px;
+
+  --ui-weight-heading: 500;
+
+  /* ── measure caps ────────────────────────────────────────────────────────── */
+  --ui-measure-lede: 520px;
+  --ui-measure-side: 340px;
+  --ui-measure-heading: 620px;
+  --ui-measure-head-lede: 460px;
+  --ui-measure-row: 640px;
+  --ui-measure-standfirst: 820px;
+  --ui-measure-statement: 900px;
+  --ui-measure-term: 220px;
+
+  /* ── rhythm ──────────────────────────────────────────────────────────────── */
+  --ui-container: 1280px;
+  --ui-gutter: 48px;
+  --ui-section-y: 150px;
+  --ui-section-y-display: 160px;
+  --ui-header-offset: 120px;
+  --ui-gap-heading-block: 56px;
+  --ui-gap-grid: 48px;
+  --ui-gap-card: 20px;
+  --ui-gap-inline: 12px;
+  --ui-eyebrow-gap: 20px;
+
+  /* ── controls ────────────────────────────────────────────────────────────── */
+  --ui-radius-card: 12px;
+  --ui-radius-inner: 8px;
+  --ui-radius-pill: 999px;
+  --ui-button-h: 50px;
+  --ui-button-h-nav: 42px;
+  --ui-field-h: 56px;
+
+  /* ── motion ──────────────────────────────────────────────────────────────── */
+  --ui-ease: cubic-bezier(0.2, 0, 0, 1);
+  --ui-dur-fast: 200ms;
+  --ui-dur-med: 400ms;
+  --ui-dur-slow: 700ms;
+  --ui-hover-img-scale: 1.02;
+  --ui-hover-arrow-shift: 4px;
+
+  /* ── surfaces and depth ──────────────────────────────────────────────────── */
+  --ui-surface-strong: var(--muted);
+  --ui-shadow-field: 0 10px 40px rgb(0 0 0 / 0.35);
+  --ui-shadow-lift: 0 24px 48px rgb(0 0 0 / 0.22);
+
+  /*
+   * Grain is an optional texture on dark bands. It reads a project asset, so it is unset
+   * here and renders nothing until you point it somewhere:
+   *   :root { --ui-grain: url('/grain.svg'); }
+   */
+
+  /*
+   * ── neutral ink ramp ──────────────────────────────────────────────────────
+   * shadcn ships two text roles, --foreground and --muted-foreground, and components here
+   * use only those. This ramp exists for the case where a design genuinely needs a step
+   * between them — a third tier in a dense table, a caption that should sit below body but
+   * above muted. Derived from your own tokens, so it follows your palette and inverts with
+   * your .dark block rather than pinning a grey.
+   *
+   * Reach for it deliberately. If you find yourself using it everywhere, the design wants a
+   * different --muted-foreground, not a ramp.
+   */
+  --ui-ink-950: var(--foreground);
+  --ui-ink-800: var(--foreground);
+  --ui-ink-600: color-mix(in oklab, var(--foreground) 82%, var(--muted-foreground));
+  --ui-ink-500: color-mix(in oklab, var(--foreground) 45%, var(--muted-foreground));
+  --ui-ink-400: var(--muted-foreground);
+  --ui-ink-300: color-mix(in oklab, var(--muted-foreground) 55%, var(--background));
+}
+
+/*
+ * The Tailwind projection. Aliases point AT the --ui- names, one direction only, so
+ * `text-ui-section`, `h-ui-button-h` and `max-w-ui-measure-side` resolve as utilities.
+ */
+@theme inline {
+  --text-ui-hero: var(--ui-text-hero);
+  --text-ui-display: var(--ui-text-display);
+  --text-ui-feature: var(--ui-text-feature);
+  --text-ui-section: var(--ui-text-section);
+  --text-ui-card-title: var(--ui-text-card-title);
+  --text-ui-card-title-lg: var(--ui-text-card-title-lg);
+  --text-ui-lede: var(--ui-text-lede);
+  --text-ui-body: var(--ui-text-body);
+  --text-ui-small: var(--ui-text-small);
+  --text-ui-caption: var(--ui-text-caption);
+  --text-ui-eyebrow: var(--ui-text-eyebrow);
+  --text-ui-micro: var(--ui-text-micro);
+
+  --color-ui-ink-950: var(--ui-ink-950);
+  --color-ui-ink-800: var(--ui-ink-800);
+  --color-ui-ink-600: var(--ui-ink-600);
+  --color-ui-ink-500: var(--ui-ink-500);
+  --color-ui-ink-400: var(--ui-ink-400);
+  --color-ui-ink-300: var(--ui-ink-300);
+  --color-ui-surface-strong: var(--ui-surface-strong);
+
+  --font-weight-ui-heading: var(--ui-weight-heading);
+
+  --spacing-ui-gutter: var(--ui-gutter);
+  --spacing-ui-section-y: var(--ui-section-y);
+  --spacing-ui-section-y-display: var(--ui-section-y-display);
+  --spacing-ui-header-offset: var(--ui-header-offset);
+  --spacing-ui-gap-heading-block: var(--ui-gap-heading-block);
+  --spacing-ui-gap-grid: var(--ui-gap-grid);
+  --spacing-ui-gap-card: var(--ui-gap-card);
+  --spacing-ui-gap-inline: var(--ui-gap-inline);
+  --spacing-ui-eyebrow-gap: var(--ui-eyebrow-gap);
+  --spacing-ui-button-h: var(--ui-button-h);
+  --spacing-ui-button-h-nav: var(--ui-button-h-nav);
+  --spacing-ui-field-h: var(--ui-field-h);
+
+  --container-ui-container: var(--ui-container);
+  --container-ui-measure-lede: var(--ui-measure-lede);
+  --container-ui-measure-side: var(--ui-measure-side);
+  --container-ui-measure-heading: var(--ui-measure-heading);
+  --container-ui-measure-head-lede: var(--ui-measure-head-lede);
+  --container-ui-measure-row: var(--ui-measure-row);
+  --container-ui-measure-standfirst: var(--ui-measure-standfirst);
+  --container-ui-measure-statement: var(--ui-measure-statement);
+  --container-ui-measure-term: var(--ui-measure-term);
+
+  --radius-ui-card: var(--ui-radius-card);
+  --radius-ui-inner: var(--ui-radius-inner);
+  --radius-ui-pill: var(--ui-radius-pill);
+}
+
+/* The one invariant that is not a token. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

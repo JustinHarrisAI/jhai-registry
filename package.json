@@ -10,6 +10,7 @@
     "build": "pnpm dlx shadcn@4.21.0 build --output r",
     "validate": "pnpm dlx shadcn@4.21.0 registry validate",
     "curation": "node scripts/build-curation-md.mjs",
-    "preflight": "pnpm dlx shadcn@4.21.0 registry validate && node scripts/check-registry-index.mjs && node scripts/check-item-deps.mjs && node scripts/build-curation-md.mjs --check"
+    "preflight": "npm run validate && node scripts/check-registry-index.mjs && node scripts/check-item-deps.mjs && node scripts/check-no-private-names.mjs && node scripts/build-curation-md.mjs --check",
+    "check:names": "node scripts/check-no-private-names.mjs"
   }
 }

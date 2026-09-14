@@ -9,7 +9,7 @@ import { ImageSlot } from './ImageSlot';
  *
  * Reauthored on Tailwind utilities. Every value below is
  * the same value the inline styles carried; token-backed steps read the token utility
- * (`text-type-card-title-lg`, `text-type-eyebrow`, `border-line-light`) and the handful
+ * (`text-ui-card-title-lg`, `text-ui-eyebrow`, `border-border`) and the handful
  * with no token read the numeric scale, the way `ui/button.tsx` does with `px-7`.
  *
  * The top rule stays a BORDER rather than becoming a `separator`. It is the card's own
@@ -39,19 +39,19 @@ export function BlogCard({ href = '#', date, title, image, imagePlaceholder, sty
          `style` and no `className`, and it is another agent's file, so the gap is set from
          its parent instead of pushed through as inline CSS. Its root div is the only div
          child of this anchor. */
-      className="block border-t border-line-light pt-5.5 no-underline [&>div]:mb-5"
+      className="block border-t border-border pt-5.5 no-underline [&>div]:mb-5"
       /* Caller-supplied CSS. Arbitrary runtime values from the call site, and the last
          word over the utilities, exactly as the object spread it replaces was. */
       style={style}
     >
       <ImageSlot src={image} placeholder={imagePlaceholder} ratio="16/10" />
-      <span className="font-mono text-type-micro tracking-[0.2em] text-ink-400 uppercase">
+      <span className="font-mono text-ui-micro tracking-[0.2em] text-muted-foreground uppercase">
         {date}
       </span>
-      <h3 className="mt-3.5 mb-0 font-sans text-type-card-title-lg leading-[1.3] [font-weight:var(--weight-heading)] tracking-[-0.015em] text-text-heading">
+      <h3 className="mt-3.5 mb-0 font-sans text-ui-card-title-lg leading-[1.3] [font-weight:var(--ui-weight-heading)] tracking-[-0.015em] text-foreground">
         {title}
       </h3>
-      <span className="mt-4 inline-block font-mono text-type-eyebrow tracking-[0.2em] text-bjarmi-ink uppercase">
+      <span className="mt-4 inline-block font-mono text-ui-eyebrow tracking-[0.2em] text-primary uppercase">
         read →
       </span>
     </a>

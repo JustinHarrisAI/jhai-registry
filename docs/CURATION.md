@@ -36,7 +36,7 @@ A ⚠︎ on a preview link means the host returns HTTP 200 for any path, so the 
 | **text reveal** | registry item | @magicui/text-reveal | `pnpm dlx shadcn@4.21.0 add @magicui/text-reveal` | [preview](https://magicui.design/docs/components/text-reveal) |
 | **hero with video** | registry item | @tailark-oss/dusk-hero-section-5-video | `pnpm dlx shadcn@4.21.0 add @tailark-oss/dusk-hero-section-5-video` | — |
 | **pricing table** | registry item | @bundui/pricing-sections-01 | `pnpm dlx shadcn@4.21.0 add @bundui/pricing-sections-01` | [preview](https://bundui.io) |
-| **FAQ** | registry item | @tailark-oss/veil-faqs-1 | `pnpm dlx shadcn@4.21.0 add @tailark-oss/veil-faqs-1` | — |
+| **FAQ** | primitive | shadcn core accordion | `pnpm dlx shadcn@4.21.0 add @shadcn/accordion` | [preview](https://ui.shadcn.com/docs/components/accordion) |
 | **form inputs** | primitive | shadcn core input, select, textarea, form, label | `pnpm dlx shadcn@4.21.0 add @shadcn/input @shadcn/select @shadcn/textarea @shadcn/form @shadcn/label` | [preview](https://ui.shadcn.com/docs/components/input) |
 | **logo wall** | library | svgl.app — fetch SVGs directly from the keyless public API | none — GET https://api.svgl.app?search=<brand>, then fetch the returned route (and wordmark / dark variant if present) | [preview](https://svgl.app) |
 | **site header** | registry item | @jhai/site-header | `pnpm dlx shadcn@4.21.0 add @jhai/site-header` | — |
@@ -64,9 +64,9 @@ Rejected:
 
 ### count-up stats
 
-**registry item — @magicui/number-ticker** · MIT (magicuidesign/magicui) · verified 2026-09-12
+**registry item — @magicui/number-ticker** · MIT (magicuidesign/magicui) · verified 2026-09-15
 
-CORRECTS the original E.1 answer, which said to build this because nothing better existed. Wrong: the fuzzy search missed it and a grep of the indexes found it immediately. Chosen over Fancy's because it demos decimal handling, which the JHAI stat tiles need. Compose it INSIDE @jhai/stat-tile rather than replacing it — the tile is the shell, the ticker is the numeral. VERIFIED 2026-09-12: unlike @magicui/marquee, number-ticker does NOT touch globals.css. It installs one file and nothing else. The marquee hazard is specific to items carrying a css block of keyframes; this is not one.
+CORRECTS the original E.1 answer, which said to build this because nothing better existed. Wrong: the fuzzy search missed it and a grep of the indexes found it immediately. Chosen over Fancy's because it demos decimal handling, which the JHAI stat tiles need. Compose it INSIDE @jhai/stat-tile rather than replacing it — the tile is the shell, the ticker is the numeral. VERIFIED 2026-09-12: unlike @magicui/marquee, number-ticker does NOT touch globals.css. It installs one file and nothing else. The marquee hazard is specific to items carrying a css block of keyframes; this is not one. BUILD-PROVEN 2026-09-15: compiles clean in an isolated project. The gallery run initially reported it FAIL, which was collateral from one undeclared @radix-ui/react-accordion poisoning the whole @magicui batch, not a defect in this item.
 
 *Restyling:* Paints nothing — it animates a number. Inherits whatever the parent sets.
 
@@ -93,9 +93,9 @@ Rejected:
 
 ### masonry wall
 
-**registry item — @hirael/masonry** · MIT (ASSET) · verified 2026-09-14
+**registry item — @hirael/masonry** · MIT (ASSET) · verified 2026-09-15
 
-GAP CLOSED 2026-09-14. The old answer was CSS columns-*, because zero of 789 wired items matched masonry across four grep terms. Widening to the full 344-entry community index found 23 registries carrying a masonry item. @hirael/masonry wins on being real and self-contained: responsive column counts, round-robin assignment, one file, no external dependency, cn from local utils, and it installed clean with zero palette utilities. It does ordered left-to-right reflow, which CSS multi-column cannot do — the exact reason the primitive was a compromise.
+GAP CLOSED 2026-09-14. The old answer was CSS columns-*, because zero of 789 wired items matched masonry across four grep terms. Widening to the full 344-entry community index found 23 registries carrying a masonry item. @hirael/masonry wins on being real and self-contained: responsive column counts, round-robin assignment, one file, no external dependency, cn from local utils, and it installed clean with zero palette utilities. It does ordered left-to-right reflow, which CSS multi-column cannot do — the exact reason the primitive was a compromise. BUILD-PROVEN 2026-09-15: installs and compiles clean.
 
 *Restyling:* No colour. Layout utilities only.
 
@@ -150,9 +150,9 @@ Rejected:
 
 ### text reveal
 
-**registry item — @magicui/text-reveal** · MIT (magicuidesign/magicui) · verified 2026-09-12
+**registry item — @magicui/text-reveal** · MIT (magicuidesign/magicui) · verified 2026-09-15
 
-Fades text in on scroll — the restrained version, which matches the justinharris.ai direction of one white ground and a single accent. Densest returns of any need in the pass, so this is a real choice rather than a default.
+Fades text in on scroll — the restrained version, which matches the justinharris.ai direction of one white ground and a single accent. Densest returns of any need in the pass, so this is a real choice rather than a default. BUILD-PROVEN 2026-09-15: compiles clean in an isolated project. The gallery run initially reported it FAIL, which was collateral from one undeclared @radix-ui/react-accordion poisoning the whole @magicui batch, not a defect in this item.
 
 *Restyling:* Inherits type colour from the parent. No hardcoded colour.
 
@@ -164,9 +164,9 @@ Rejected:
 
 ### hero with video
 
-**registry item — @tailark-oss/dusk-hero-section-5-video** · MIT (tailark/blocks) · verified 2026-09-12
+**registry item — @tailark-oss/dusk-hero-section-5-video** · MIT (tailark/blocks) · verified 2026-09-15
 
-CORRECTS the original E.1 answer, which said to build this because nothing handled it well. Four options came back. This one is a hero SECTION with video, which is the actual need, and Tailark OSS measured best-in-class on restylability across three sampled blocks (zero hardcoded colour). The brand-specific work — poster frame, preload policy, prefers-reduced-motion fallback — is still ours to add on top, but the shell is not worth rebuilding.
+CORRECTS the original E.1 answer, which said to build this because nothing handled it well. Four options came back. This one is a hero SECTION with video, which is the actual need, and Tailark OSS measured best-in-class on restylability across three sampled blocks (zero hardcoded colour). The brand-specific work — poster frame, preload policy, prefers-reduced-motion fallback — is still ours to add on top, but the shell is not worth rebuilding. BUILD NOTE 2026-09-15: @tailark-oss/dusk-hero-section-5 does not compile as installed — it imports '@/components/hero-section-5-hero-video', a sibling module the item does not ship. Install the companion item alongside it or expect TS2307.
 
 *Preview caveat: oss.tailark.com has no per-item preview pages — its own homepage links 404 — and tailark.com returns HTTP 200 for every path including bogus ones, so any link there proves nothing. Preview a Tailark block by installing it, or browse https://oss.tailark.com/r/registry.json for item names.*
 
@@ -196,9 +196,9 @@ Rejected:
 
 ### FAQ
 
-**registry item — @tailark-oss/veil-faqs-1** · MIT (tailark/blocks) · verified 2026-09-12
+**primitive — shadcn core accordion** · MIT · verified 2026-09-15
 
-Measured 5 semantic tokens, 0 hardcoded colour. Nine Tailark OSS FAQ blocks came back — the densest coverage of any need after pricing — and veil-faqs-1 is the plainest. Composes over the shadcn core accordion chosen above rather than bringing its own disclosure primitive.
+SWAPPED 2026-09-15 after the gallery run build-proved the previous pick fails. @tailark-oss/veil-faqs-1 targets a Base UI Accordion and will not compile against the Radix primitive a standard shadcn project installs. Core accordion is tokenised, accessible, and is what any replacement would wrap anyway. Revisit Tailark's FAQ blocks only on a project that has deliberately standardised on Base UI.
 
 *Preview caveat: oss.tailark.com has no per-item preview pages — its own homepage links 404 — and tailark.com returns HTTP 200 for every path including bogus ones, so any link there proves nothing. Preview a Tailark block by installing it, or browse https://oss.tailark.com/r/registry.json for item names.*
 
@@ -206,6 +206,7 @@ Measured 5 semantic tokens, 0 hardcoded colour. Nine Tailark OSS FAQ blocks came
 
 Rejected:
 
+- **@tailark-oss/veil-faqs-1 (the previous pick)** — BUILD-PROVEN FAILURE, 2026-09-15. It targets a Base UI Accordion and fails against the Radix one shadcn installs: "Type '{ children: Element[]; }' is not assignable to ... AccordionSingleProps | AccordionMultipleProps". Tailark also ships its own src/components/ui/button.tsx importing '@base-ui/react/button', which overwrites the project's Radix button. This is a registry-level incompatibility, not one bad block.
 - **@tailark-oss/veil-faqs-2 through 5** — Same family with more layout — two-column, categorised, with a contact CTA. Live options when the FAQ carries more than six questions.
 - **@tailark-oss/dusk-faqs-1 and mist-faqs-1/2/3** — Heavier families. Same reasoning as pricing.
 - **in-house page/FAQItem.tsx** — Already on disk with zero hardcoded colour, so it is a Tier 2 seed candidate. Use it when the FAQ needs JHAI-specific behaviour; use the Tailark block for a standard section on a spec site.

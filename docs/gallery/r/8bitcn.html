@@ -1,0 +1,526 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>@8bitcn</title>
+<style>
+:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
+a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
+h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
+.sub{color:var(--mut);font-size:14px;margin:0}
+.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
+.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
+.c .sh .none{color:#a1a1aa;font-size:11px}
+.c .m{padding:9px 11px}
+.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
+.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
+.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
+.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
+code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
+pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
+.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
+.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
+.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+h2{font-size:17px;font-weight:600;margin:30px 0 4px}
+.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
+</style></head><body>
+<header><div class="wrap"><h1>@8bitcn</h1>
+<p class="sub"><a href="../index.html">← all registries</a></p>
+<div class="stats"><div class="stat"><b>121</b><span>items</span></div>
+<div class="stat"><b style="color:var(--ok)">0</b><span>build</span></div>
+<div class="stat"><b style="color:var(--bad)">107</b><span>fail</span></div>
+<div class="stat"><b>0%</b><span>rate</span></div></div></div></header>
+<div class="wrap"><div class="grid"><a class="c" href="../item/8bitcn__accordion.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">accordion</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__advanced1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">advanced1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__advanced2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">advanced2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__advanced3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">advanced3</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__alert.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">alert</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__alert-dialog.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">alert-dialog</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__audio-settings.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">audio-settings</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__avatar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">avatar</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__badge.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">badge</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__breadcrumb.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">breadcrumb</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__button.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">button</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__button-group.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">button-group</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__calendar.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">calendar</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">card</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__carousel.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">carousel</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__chapter-intro.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">chapter-intro</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__character-sheet.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">character-sheet</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__chart.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">chart</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__chart-area-step.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">chart-area-step</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__chart-bar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">chart-bar</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__checkbox.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">checkbox</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__collapsible.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">collapsible</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__combo-box.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">combo-box</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__command.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">command</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__context-menu.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">context-menu</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__cta1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cta1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__cta2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cta2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__dashboard-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dashboard-01</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__date-picker.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">date-picker</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__dialog.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">dialog</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__dialogue.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialogue</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__difficulty-select.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">difficulty-select</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__drawer.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">drawer</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__dropdown-menu.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">dropdown-menu</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__duel-block.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">duel-block</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__empty.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">empty</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__enemy-health-display.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">enemy-health-display</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__faq1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">faq1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__faq2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">faq2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__faq3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">faq3</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__feature1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">feature1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__feature2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">feature2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__feature3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">feature3</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__footer1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">footer1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__friend-list.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">friend-list</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-cta1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">game-cta1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-faq1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">game-faq1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-features1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">game-features1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-hero1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">game-hero1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-hero2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">game-hero2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-over.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">game-over</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-progress.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">game-progress</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-roadmap1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">game-roadmap1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-team1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">game-team1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__health-bar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">health-bar</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__hero1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">hero1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__hero2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">hero2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__hero3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">hero3</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__hover-card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">hover-card</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__input.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">input</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__input-otp.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">input-otp</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__item.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">item</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__kbd.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">kbd</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__label.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">label</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__leaderboard.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">leaderboard</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__loading-screen.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">loading-screen</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__login-form.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-form</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__login-form-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-form-2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__login-form-with-image.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-form-with-image</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__login-page.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-page</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__main-menu.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">main-menu</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__mana-bar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">mana-bar</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__menubar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">menubar</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__navigation-menu.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">navigation-menu</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__not-found-brick-breaker.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found-brick-breaker</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__not-found-crate-pusher.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found-crate-pusher</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__not-found1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__not-found2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__not-found3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found3</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__pagination.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pagination</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__pause-menu.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pause-menu</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__player-profile-card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">player-profile-card</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__popover.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">popover</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__portal-transition.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">portal-transition</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__pricing1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pricing1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__pricing2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pricing2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__profile-card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">profile-card</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__progress.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">progress</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__quest-log.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">quest-log</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__radio-group.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">radio-group</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__resizable.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">resizable</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__retro-mode-switcher.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">retro-mode-switcher</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__save-slots.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">save-slots</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__scroll-area.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">scroll-area</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__select.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">select</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__separator.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">separator</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__sheet.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">sheet</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__sidebar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">sidebar</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__skeleton.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">skeleton</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__slider.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">slider</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__social-proof1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">social-proof1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__social-proof2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">social-proof2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__social-proof3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">social-proof3</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__spinner.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">spinner</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__switch.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">switch</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__table.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">table</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__tabs.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">tabs</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__team1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">team1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__team2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">team2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__team3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">team3</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__textarea.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">textarea</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__theme-selector.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">theme-selector</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__timeline1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">timeline1</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__timeline2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">timeline2</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__timeline3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">timeline3</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__toast.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">toast</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__toggle.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">toggle</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__toggle-group.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">toggle-group</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__tooltip.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">tooltip</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__victory-screen.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">victory-screen</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__xp-bar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">xp-bar</div><div class="rg">@8bitcn</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a></div></div></body></html>

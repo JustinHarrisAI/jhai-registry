@@ -1,0 +1,206 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>@kibo-ui</title>
+<style>
+:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
+a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
+h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
+.sub{color:var(--mut);font-size:14px;margin:0}
+.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
+.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
+.c .sh .none{color:#a1a1aa;font-size:11px}
+.c .m{padding:9px 11px}
+.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
+.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
+.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
+.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
+code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
+pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
+.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
+.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
+.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+h2{font-size:17px;font-weight:600;margin:30px 0 4px}
+.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
+</style></head><body>
+<header><div class="wrap"><h1>@kibo-ui</h1>
+<p class="sub"><a href="../index.html">← all registries</a></p>
+<div class="stats"><div class="stat"><b>41</b><span>items</span></div>
+<div class="stat"><b style="color:var(--ok)">32</b><span>build</span></div>
+<div class="stat"><b style="color:var(--bad)">8</b><span>fail</span></div>
+<div class="stat"><b>78%</b><span>rate</span></div></div></div></header>
+<div class="wrap"><div class="grid"><a class="c" href="../item/kibo-ui__announcement.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">announcement</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__avatar-stack.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">avatar-stack</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__banner.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">banner</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__calendar.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">calendar</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__choicebox.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">choicebox</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__code-block.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">code-block</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__color-picker.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">color-picker</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__combobox.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">combobox</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__comparison.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">comparison</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__contribution-graph.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">contribution-graph</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__credit-card.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">credit-card</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__cursor.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">cursor</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__deck.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">deck</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__dialog-stack.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">dialog-stack</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__dropzone.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">dropzone</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__editor.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">editor</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__gantt.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">gantt</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__glimpse.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">glimpse</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__image-crop.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">image-crop</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__image-zoom.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">image-zoom</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__kanban.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">kanban</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__list.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">list</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__marquee.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">marquee</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__mini-calendar.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">mini-calendar</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__pill.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">pill</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__qr-code.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">qr-code</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__rating.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">rating</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__reel.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">reel</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__relative-time.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">relative-time</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__sandbox.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">sandbox</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__snippet.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">snippet</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__spinner.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">spinner</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__status.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">status</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__stories.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">stories</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__table.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">table</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__tags.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">tags</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__theme-switcher.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">theme-switcher</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__ticker.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">ticker</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__tree.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">tree</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__typography.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">typography</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__video-player.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">video-player</div><div class="rg">@kibo-ui</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a></div></div></body></html>

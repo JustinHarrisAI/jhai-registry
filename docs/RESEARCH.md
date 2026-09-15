@@ -1,6 +1,11 @@
 # JHAI Component Sourcing — Research
 
-**Status:** Phases 0-4 complete. `@jhai` is public, tagged **v2.0.0**, serving **24 items** under an unbranded vocabulary — shadcn semantics for colour, `--ui-*` for structure. The C.6 theming gate **passed** at v2.0.0: 13 of 13 probes rendered in a foreign brand with zero component edits. See C.6 and [TOKEN-MAP-v2.md](TOKEN-MAP-v2.md).
+**Status:** Phases 0-4 complete, plus a **partial build-verification run (2026-09-15)**: 10 of 17
+registries, 1,287 of 4,585 items, published as [BUILD-STATUS.json](BUILD-STATUS.json) and a
+[gallery](https://justinharrisai.github.io/jhai-registry/gallery/). Read the caveat in that file
+before trusting any FAIL — PASS is reliable, FAIL means "did not build in this harness".
+
+Phases 0-4 complete. `@jhai` is public, tagged **v2.0.0**, serving **24 items** under an unbranded vocabulary — shadcn semantics for colour, `--ui-*` for structure. The C.6 theming gate **passed** at v2.0.0: 13 of 13 probes rendered in a foreign brand with zero component edits. See C.6 and [TOKEN-MAP-v2.md](TOKEN-MAP-v2.md).
 **Date of research:** 2026-09-12. Every price and license claim below was fetched on that date.
 
 > **Amended 2026-09-12 after Phase 0 + 1 execution.** Findings that changed are marked

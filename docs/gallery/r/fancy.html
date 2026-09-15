@@ -1,0 +1,674 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>@fancy</title>
+<style>
+:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
+a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
+h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
+.sub{color:var(--mut);font-size:14px;margin:0}
+.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
+.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
+.c .sh .none{color:#a1a1aa;font-size:11px}
+.c .m{padding:9px 11px}
+.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
+.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
+.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
+.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
+code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
+pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
+.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
+.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
+.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+h2{font-size:17px;font-weight:600;margin:30px 0 4px}
+.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
+</style></head><body>
+<header><div class="wrap"><h1>@fancy</h1>
+<p class="sub"><a href="../index.html">← all registries</a></p>
+<div class="stats"><div class="stat"><b>158</b><span>items</span></div>
+<div class="stat"><b style="color:var(--ok)">88</b><span>build</span></div>
+<div class="stat"><b style="color:var(--bad)">56</b><span>fail</span></div>
+<div class="stat"><b>56%</b><span>rate</span></div></div></div></header>
+<div class="wrap"><div class="grid"><a class="c" href="../item/fancy__animated-gradient-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">animated-gradient-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__animated-gradient-with-svg.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">animated-gradient-with-svg</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__basic-number-ticker.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">basic-number-ticker</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__basic-number-ticker-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">basic-number-ticker-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__box-carousel.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">box-carousel</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__box-carousel-autoplay-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">box-carousel-autoplay-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__box-carousel-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">box-carousel-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__box-carousel-video-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">box-carousel-video-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__breathing-text.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">breathing-text</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__breathing-text-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">breathing-text-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__calculate-position.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">calculate-position</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__circling-elements.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">circling-elements</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__circling-elements-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">circling-elements-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__circling-elements-easing-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">circling-elements-easing-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__css-box.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">css-box</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__css-box-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">css-box-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__css-box-hover-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">css-box-hover-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__css-box-non-uniform-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">css-box-non-uniform-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__css-box-scroll-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">css-box-scroll-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__cursor-attractor-and-gravity.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cursor-attractor-and-gravity</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__cursor-attractor-and-gravity-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cursor-attractor-and-gravity-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__cursor-attractor-and-gravity-image-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cursor-attractor-and-gravity-image-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__cursor-attractor-and-gravity-svg-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cursor-attractor-and-gravity-svg-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__demo-images.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">demo-images</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__drag-elements.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">drag-elements</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__drag-elements-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">drag-elements-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__drag-elements-momentum-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">drag-elements-momentum-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__elastic-line.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">elastic-line</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__elastic-line-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">elastic-line-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__element-along-svg-path.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">element-along-svg-path</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__element-along-svg-path-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">element-along-svg-path-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__fancy-basic-number-ticker-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">fancy-basic-number-ticker-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__float.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">float</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__float-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">float-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__float-offset-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">float-offset-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__gooey-svg-filter.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">gooey-svg-filter</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__gooey-svg-filter-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gooey-svg-filter-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__gooey-svg-filter-menu-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gooey-svg-filter-menu-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__gooey-svg-filter-pixel-trail-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gooey-svg-filter-pixel-trail-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__gravity.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gravity</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__gravity-body-types-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gravity-body-types-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__gravity-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gravity-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__gravity-non-draggable-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gravity-non-draggable-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__gravity-svg-bodies-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gravity-svg-bodies-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__image-trail.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">image-trail</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__image-trail-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">image-trail-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__image-trail-instant-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">image-trail-instant-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__image-trail-various-elements-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">image-trail-various-elements-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__image-trail-zindex-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">image-trail-zindex-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__letter-3d-swap.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">letter-3d-swap</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__letter-3d-swap-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">letter-3d-swap-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__letter-3d-swap-explanation-left-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">letter-3d-swap-explanation-left-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__letter-3d-swap-explanation-top-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">letter-3d-swap-explanation-top-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__letter-3d-swap-rotate-top-explainer.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">letter-3d-swap-rotate-top-explainer</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__letter-3d-swap-stagger-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">letter-3d-swap-stagger-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__letter-swap-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">letter-swap-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__letter-swap-demo-line.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">letter-swap-demo-line</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__letter-swap-demo-stagger.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">letter-swap-demo-stagger</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__letter-swap-forward-anim.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">letter-swap-forward-anim</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__letter-swap-pingpong-anim.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">letter-swap-pingpong-anim</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__marquee-along-svg-path.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">marquee-along-svg-path</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__marquee-along-svg-path-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">marquee-along-svg-path-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__marquee-along-svg-path-mapping-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">marquee-along-svg-path-mapping-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__marquee-along-svg-path-scroll-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">marquee-along-svg-path-scroll-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__media-between-text.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">media-between-text</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__media-between-text-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">media-between-text-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__media-between-text-scroll-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">media-between-text-scroll-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__media-between-text-vertical-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">media-between-text-vertical-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__parallax-floating.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">parallax-floating</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__parallax-floating-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">parallax-floating-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__pixel-trail.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">pixel-trail</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__pixel-trail-custom-pixel-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pixel-trail-custom-pixel-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__pixel-trail-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pixel-trail-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__pixel-trail-no-fade-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">pixel-trail-no-fade-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__pixelate-svg-filter.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">pixelate-svg-filter</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__pixelate-svg-filter-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pixelate-svg-filter-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__pixelate-svg-filter-text.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pixelate-svg-filter-text</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__random-letter-swap-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">random-letter-swap-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__random-letter-swap-forward-anim.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">random-letter-swap-forward-anim</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__random-letter-swap-pingpong-anim.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">random-letter-swap-pingpong-anim</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__scramble-hover.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">scramble-hover</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__scramble-hover-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">scramble-hover-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__scramble-hover-diff-class-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">scramble-hover-diff-class-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__scramble-hover-new-chars-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">scramble-hover-new-chars-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__scramble-hover-sequential-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">scramble-hover-sequential-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__scramble-in.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">scramble-in</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__scramble-in-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">scramble-in-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__screensaver.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">screensaver</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__screensaver-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">screensaver-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__scroll-and-swap-text.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">scroll-and-swap-text</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__scroll-and-swap-text-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">scroll-and-swap-text-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__simple-carousel.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">simple-carousel</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__simple-marquee.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">simple-marquee</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__simple-marquee-3d-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">simple-marquee-3d-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__simple-marquee-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">simple-marquee-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__simple-marquee-drag-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">simple-marquee-drag-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__simple-marquee-easing-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">simple-marquee-easing-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__simple-marquee-explainer-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">simple-marquee-explainer-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__stacking-cards.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">stacking-cards</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__stacking-cards-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">stacking-cards-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__sticky-footer-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">sticky-footer-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__svg-path-to-vertices.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">svg-path-to-vertices</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-along-path.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">text-along-path</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-along-path-auto-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">text-along-path-auto-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-along-path-circle-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">text-along-path-circle-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-along-path-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">text-along-path-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-along-path-scroll-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">text-along-path-scroll-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-cursor-proximity.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-cursor-proximity</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-cursor-proximity-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-cursor-proximity-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-cursor-proximity-falloff-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-cursor-proximity-falloff-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-highlighter.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-highlighter</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-highlighter-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-highlighter-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-highlighter-hover-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-highlighter-hover-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-highlighter-ref-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-highlighter-ref-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-highlighter-scroll-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-highlighter-scroll-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-rotate.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-rotate</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-rotate-custom-animation-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-rotate-custom-animation-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-rotate-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-rotate-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-rotate-mapping-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-rotate-mapping-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-rotate-multiline-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-rotate-multiline-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-rotate-scroll-step-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-rotate-scroll-step-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-rotate-stagger-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-rotate-stagger-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__text-rotate-step-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">text-rotate-step-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__typewriter.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">typewriter</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__typewriter-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">typewriter-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__underline-center.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">underline-center</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__underline-comes-in-goes-out.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">underline-comes-in-goes-out</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__underline-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">underline-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__underline-goes-out-comes-in.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">underline-goes-out-comes-in</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__underline-to-background.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">underline-to-background</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__underline-to-background-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">underline-to-background-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__use-debounced-dimensions.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">use-debounced-dimensions</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__use-detect-browser.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">use-detect-browser</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__use-dimensions.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">use-dimensions</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__use-elastic-line-events.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">use-elastic-line-events</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__use-line-breakdown.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">use-line-breakdown</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__use-line-count.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">use-line-count</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__use-mounted.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">use-mounted</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__use-mouse-position.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">use-mouse-position</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__use-mouse-position-ref.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">use-mouse-position-ref</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__use-mouse-vector.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">use-mouse-vector</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__use-screen-size.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">use-screen-size</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__variable-font-and-cursor.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">variable-font-and-cursor</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__variable-font-and-cursor-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">variable-font-and-cursor-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__variable-font-cursor-proximity.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">variable-font-cursor-proximity</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__variable-font-cursor-proximity-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">variable-font-cursor-proximity-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__variable-font-cursor-proximity-falloff-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">variable-font-cursor-proximity-falloff-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__variable-font-hover-by-letter.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">variable-font-hover-by-letter</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__variable-font-hover-by-letter-demo.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">variable-font-hover-by-letter-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__variable-font-hover-by-random-letter.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">variable-font-hover-by-random-letter</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__variable-font-hover-by-random-letter-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">variable-font-hover-by-random-letter-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__vertical-cut-reveal.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">vertical-cut-reveal</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__vertical-cut-reveal-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">vertical-cut-reveal-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__vertical-cut-reveal-letter-random-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">vertical-cut-reveal-letter-random-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__vertical-cut-reveal-line-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">vertical-cut-reveal-line-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__vertical-cut-reveal-scroll-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">vertical-cut-reveal-scroll-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__vertical-cut-reveal-stagger-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">vertical-cut-reveal-stagger-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/fancy__vertical-cut-reveal-word-demo.html">
+<div class="sh"><span class="none">no thumbnail</span></div>
+<div class="m"><div class="nm">vertical-cut-reveal-word-demo</div><div class="rg">@fancy</div>
+<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
+<span class="pill p-asset">ASSET</span></div></div></a></div></div></body></html>

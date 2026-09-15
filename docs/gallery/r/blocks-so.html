@@ -1,0 +1,362 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>@blocks-so</title>
+<style>
+:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
+a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
+h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
+.sub{color:var(--mut);font-size:14px;margin:0}
+.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
+.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
+.c .sh .none{color:#a1a1aa;font-size:11px}
+.c .m{padding:9px 11px}
+.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
+.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
+.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
+.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
+code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
+pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
+.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
+.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
+.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+h2{font-size:17px;font-weight:600;margin:30px 0 4px}
+.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
+</style></head><body>
+<header><div class="wrap"><h1>@blocks-so</h1>
+<p class="sub"><a href="../index.html">← all registries</a></p>
+<div class="stats"><div class="stat"><b>80</b><span>items</span></div>
+<div class="stat"><b style="color:var(--ok)">0</b><span>build</span></div>
+<div class="stat"><b style="color:var(--bad)">80</b><span>fail</span></div>
+<div class="stat"><b>0%</b><span>rate</span></div></div></div></header>
+<div class="wrap"><div class="grid"><a class="c" href="../item/blocks-so__ai-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">ai-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__ai-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">ai-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__ai-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">ai-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__ai-04.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">ai-04</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__ai-05.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">ai-05</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__chat-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">chat-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__chat-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">chat-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__chat-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">chat-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__command-menu-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">command-menu-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__command-menu-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">command-menu-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__command-menu-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">command-menu-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dashboard-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dashboard-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-04.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-04</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-05.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-05</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-06.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-06</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-07.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-07</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-08.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-08</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-09.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-09</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-10.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-10</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-11</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__dialog-12.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">dialog-12</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__file-upload-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">file-upload-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__file-upload-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">file-upload-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__file-upload-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">file-upload-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__file-upload-04.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">file-upload-04</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__file-upload-05.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">file-upload-05</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__file-upload-06.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">file-upload-06</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__form-layout-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">form-layout-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__form-layout-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">form-layout-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__form-layout-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">form-layout-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__form-layout-04.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">form-layout-04</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__form-layout-05.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">form-layout-05</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__grid-list-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">grid-list-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__grid-list-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">grid-list-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__grid-list-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">grid-list-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__login-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__login-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__login-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__login-04.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-04</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__login-05.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-05</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__login-06.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-06</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__login-07.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-07</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__login-08.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-08</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__login-09.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">login-09</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__onboarding-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">onboarding-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__onboarding-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">onboarding-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__onboarding-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">onboarding-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__onboarding-04.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">onboarding-04</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__onboarding-05.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">onboarding-05</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__onboarding-06.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">onboarding-06</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__onboarding-07.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">onboarding-07</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__sidebar-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">sidebar-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__sidebar-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">sidebar-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__sidebar-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">sidebar-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__sidebar-04.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">sidebar-04</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__sidebar-05.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">sidebar-05</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__sidebar-06.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">sidebar-06</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-04.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-04</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-05.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-05</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-06.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-06</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-07.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-07</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-08.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-08</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-09.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-09</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-10.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-10</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-11</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-12.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-12</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-13.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-13</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-14.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-14</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__stats-15.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stats-15</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__table-01.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">table-01</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__table-02.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">table-02</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__table-03.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">table-03</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__table-04.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">table-04</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/blocks-so__table-05.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">table-05</div><div class="rg">@blocks-so</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a></div></div></body></html>

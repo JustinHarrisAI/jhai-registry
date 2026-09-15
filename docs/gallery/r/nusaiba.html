@@ -1,0 +1,518 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>@nusaiba</title>
+<style>
+:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
+a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
+h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
+.sub{color:var(--mut);font-size:14px;margin:0}
+.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
+.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
+.c .sh .none{color:#a1a1aa;font-size:11px}
+.c .m{padding:9px 11px}
+.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
+.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
+.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
+.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
+code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
+pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
+.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
+.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
+.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+h2{font-size:17px;font-weight:600;margin:30px 0 4px}
+.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
+</style></head><body>
+<header><div class="wrap"><h1>@nusaiba</h1>
+<p class="sub"><a href="../index.html">← all registries</a></p>
+<div class="stats"><div class="stat"><b>119</b><span>items</span></div>
+<div class="stat"><b style="color:var(--ok)">0</b><span>build</span></div>
+<div class="stat"><b style="color:var(--bad)">111</b><span>fail</span></div>
+<div class="stat"><b>0%</b><span>rate</span></div></div></div></header>
+<div class="wrap"><div class="grid"><a class="c" href="../item/nusaiba__auth-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">auth-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__auth-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">auth-11</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__auth-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">auth-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__auth-3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">auth-3</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__auth-4.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">auth-4</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__auth-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">auth-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__auth-6.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">auth-6</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__auth-7.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">auth-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__auth-9.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">auth-9</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__blog-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">blog-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__blog-13.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">blog-13</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__blog-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">blog-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__blog-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">blog-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__blog-9.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">blog-9</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__brand-typography.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">brand-typography</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__bubble-background.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">bubble-background</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__contact-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">contact-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__contact-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">contact-11</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__contact-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">contact-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__contact-3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">contact-3</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__contact-4.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">contact-4</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__contact-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">contact-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__contact-6.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">contact-6</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__contact-7.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">contact-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__cta-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cta-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__cta-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cta-11</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__cta-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cta-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__cta-3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cta-3</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__cta-6.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cta-6</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__cta-7.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">cta-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__cta-9.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">cta-9</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__decor-icon.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">decor-icon</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__faqs-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">faqs-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__faqs-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">faqs-11</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__faqs-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">faqs-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__faqs-3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">faqs-3</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__faqs-4.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">faqs-4</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__faqs-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">faqs-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__faqs-7.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">faqs-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__faqs-8.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">faqs-8</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__features-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">features-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__features-10.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">features-10</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__features-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">features-11</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__features-12.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">features-12</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__features-3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">features-3</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__features-4.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">features-4</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__features-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">features-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__features-7.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">features-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__features-8.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">features-8</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__footer-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">footer-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__footer-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">footer-11</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__footer-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">footer-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__footer-4.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">footer-4</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__footer-6.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">footer-6</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__footer-7.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">footer-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__footer-8.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">footer-8</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__foundation.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">foundation</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__full-width-divider.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">full-width-divider</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__gallery-10.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gallery-10</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__gallery-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gallery-11</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__gallery-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gallery-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__gallery-3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gallery-3</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__gallery-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gallery-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__gallery-6.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gallery-6</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__gallery-7.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gallery-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__gallery-visuals.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">gallery-visuals</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__header-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">header-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__header-12.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">header-12</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__header-3.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">header-3</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__header-4.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">header-4</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__header-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">header-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__header-6.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">header-6</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__header-7.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">header-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__header-9.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">header-9</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__hero-12.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">hero-12</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__hero-15.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">hero-15</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__hero-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">hero-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__hero-4.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">hero-4</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__hero-6.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">hero-6</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__hero-7.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">hero-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__hero-9.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">hero-9</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__integrations-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">integrations-11</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__integrations-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">integrations-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__integrations-3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">integrations-3</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__integrations-4.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">integrations-4</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__integrations-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">integrations-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__integrations-6.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">integrations-6</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__integrations-7.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">integrations-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__logo-cloud-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">logo-cloud-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__logo-cloud-14.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">logo-cloud-14</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__logo-cloud-16.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">logo-cloud-16</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__logo-cloud-18.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">logo-cloud-18</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__logo-cloud-3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">logo-cloud-3</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__logo-cloud-4.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">logo-cloud-4</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__logo-cloud-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">logo-cloud-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__logo-cloud-7.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">logo-cloud-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__not-found-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__not-found-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found-11</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__not-found-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__not-found-3.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found-3</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__not-found-4.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found-4</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__not-found-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__not-found-6.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found-6</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__not-found-7.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">not-found-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__pricing-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pricing-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__pricing-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pricing-11</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__pricing-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pricing-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__pricing-4.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pricing-4</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__pricing-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pricing-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__pricing-6.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pricing-6</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__pricing-7.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pricing-7</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__pricing-8.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pricing-8</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__testimonials-1.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">testimonials-1</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__testimonials-10.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">testimonials-10</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__testimonials-11.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">testimonials-11</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__testimonials-2.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">testimonials-2</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__testimonials-5.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">testimonials-5</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__testimonials-6.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">testimonials-6</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/nusaiba__theme-sera.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">theme-sera</div><div class="rg">@nusaiba</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-pointer">POINTER</span></div></div></a></div></div></body></html>

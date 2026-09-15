@@ -1,0 +1,778 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>@ilinxa</title>
+<style>
+:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
+a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
+h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
+.sub{color:var(--mut);font-size:14px;margin:0}
+.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
+.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
+.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
+.c .sh .none{color:#a1a1aa;font-size:11px}
+.c .m{padding:9px 11px}
+.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
+.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
+.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
+.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
+code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
+pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
+.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
+.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
+.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+h2{font-size:17px;font-weight:600;margin:30px 0 4px}
+.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
+</style></head><body>
+<header><div class="wrap"><h1>@ilinxa</h1>
+<p class="sub"><a href="../index.html">← all registries</a></p>
+<div class="stats"><div class="stat"><b>184</b><span>items</span></div>
+<div class="stat"><b style="color:var(--ok)">0</b><span>build</span></div>
+<div class="stat"><b style="color:var(--bad)">61</b><span>fail</span></div>
+<div class="stat"><b>0%</b><span>rate</span></div></div></div></header>
+<div class="wrap"><div class="grid"><a class="c" href="../item/ilinxa__account-switcher.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">account-switcher</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__account-switcher-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">account-switcher-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__account-switcher-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">account-switcher-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__app-sidebar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">app-sidebar</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__app-sidebar-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">app-sidebar-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__article-body-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">article-body-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__article-meta.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">article-meta</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__article-meta-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">article-meta-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__article-meta-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">article-meta-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__author-card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">author-card</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__author-card-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">author-card-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__author-card-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">author-card-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__blackboard.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">blackboard</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__blackboard-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">blackboard-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__blackboard-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">blackboard-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__calendar-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">calendar-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__card-tree.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">card-tree</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__card-tree-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">card-tree-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__card-tree-node.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">card-tree-node</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__card-tree-node-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">card-tree-node-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__carousel-composer.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">carousel-composer</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__carousel-composer-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">carousel-composer-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__category-cloud.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">category-cloud</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__category-cloud-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">category-cloud-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__category-cloud-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">category-cloud-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__code-block.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">code-block</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__code-block-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">code-block-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__comment-thread.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">comment-thread</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__comment-thread-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">comment-thread-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__comment-thread-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">comment-thread-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__content-card-news-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">content-card-news-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__content-composer.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">content-composer</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__content-composer-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">content-composer-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__content-composer-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">content-composer-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__cooperative-challenge-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">cooperative-challenge-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__data-table.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">data-table</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__data-table-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">data-table-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__detail-panel.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">detail-panel</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__detail-panel-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">detail-panel-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__empty-state.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">empty-state</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__empty-state-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">empty-state-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__engagement-bar.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">engagement-bar</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__engagement-bar-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">engagement-bar-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__engagement-bar-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">engagement-bar-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__entity-picker.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">entity-picker</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__entity-picker-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">entity-picker-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-calendar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">event-calendar</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-calendar-editing.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">event-calendar-editing</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-calendar-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">event-calendar-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">event-card</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-card-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">event-card-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-card-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">event-card-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__expandable-text.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">expandable-text</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__expandable-text-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">expandable-text-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__expandable-text-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">expandable-text-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__file-clipboard.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">file-clipboard</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__file-manager.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">file-manager</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__file-manager-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">file-manager-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__file-tree.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">file-tree</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__file-tree-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">file-tree-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-bar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">filter-bar</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-bar-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">filter-bar-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-bar-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">filter-bar-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-panel.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">filter-panel</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-panel-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">filter-panel-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-stack.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">filter-stack</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__flow-canvas.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">flow-canvas</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__flow-canvas-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">flow-canvas-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__flow-canvas-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">flow-canvas-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__gamification-kit.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">gamification-kit</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__gantt-timeline.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">gantt-timeline</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__gantt-timeline-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">gantt-timeline-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__gantt-timeline-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">gantt-timeline-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__grid-layout-news-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">grid-layout-news-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__info-list.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">info-list</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__info-list-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">info-list-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__info-list-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">info-list-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__json-form.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">json-form</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__json-form-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">json-form-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__kanban-board.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">kanban-board</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__kanban-board-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">kanban-board-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__kanban-board-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">kanban-board-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__magazine-layout.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">magazine-layout</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__magazine-layout-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">magazine-layout-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__markdown-editor.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">markdown-editor</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__markdown-editor-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">markdown-editor-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-carousel.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">media-carousel</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-carousel-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">media-carousel-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-carousel-editor-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">media-carousel-editor-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-carousel-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">media-carousel-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-editor.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">media-editor</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-editor-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">media-editor-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-editor-capture.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">media-editor-capture</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-editor-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">media-editor-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-library.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">media-library</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-library-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">media-library-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-library-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">media-library-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__news-card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">news-card</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__news-card-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">news-card-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__newsletter-card-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">newsletter-card-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__newsletter-signup.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">newsletter-signup</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__newsletter-signup-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">newsletter-signup-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__page-hero.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">page-hero</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__page-hero-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">page-hero-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__page-hero-news-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">page-hero-news-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__pdf-viewer.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pdf-viewer</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__pdf-viewer-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">pdf-viewer-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__people-grid.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">people-grid</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__people-grid-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">people-grid-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__people-grid-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">people-grid-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__post-card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">post-card</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__post-card-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">post-card-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__post-card-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">post-card-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__pricing-table.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">pricing-table</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__pricing-table-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">pricing-table-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__pricing-table-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">pricing-table-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__progress-timeline.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">progress-timeline</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__progress-timeline-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">progress-timeline-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__progress-timeline-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">progress-timeline-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__project-card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">project-card</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__project-card-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">project-card-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__project-card-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">project-card-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__properties-form.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">properties-form</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__properties-form-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">properties-form-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__registration-card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">registration-card</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__registration-card-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">registration-card-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__registration-card-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">registration-card-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__registration-form-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">registration-form-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__rich-card.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">rich-card</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__rich-card-in-flow.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">rich-card-in-flow</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__rich-sidebar.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">rich-sidebar</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__rich-text-editor.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">rich-text-editor</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__rich-text-editor-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">rich-text-editor-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__schedule-list.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">schedule-list</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__schedule-list-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">schedule-list-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__schedule-list-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">schedule-list-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__share-bar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">share-bar</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__share-bar-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">share-bar-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__share-bar-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">share-bar-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__signup-form.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">signup-form</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__signup-form-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">signup-form-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__split-workspace.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">split-workspace</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__split-workspace-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">split-workspace-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__stat-card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">stat-card</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__stat-card-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">stat-card-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-composer.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">story-composer</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-composer-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">story-composer-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-composer-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">story-composer-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-rail.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">story-rail</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-rail-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">story-rail-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-rail-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">story-rail-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-viewer.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">story-viewer</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-viewer-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">story-viewer-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-viewer-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">story-viewer-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__task-card.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">task-card</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__task-card-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">task-card-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__task-choice-control-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">task-choice-control-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__task-tree.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">task-tree</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__task-tree-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">task-tree-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-challenge.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">team-challenge</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-challenge-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">team-challenge-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-feedback-loop.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">team-feedback-loop</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-feedback-loop-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">team-feedback-loop-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-feedback-loop-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">team-feedback-loop-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-progress-bar.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">team-progress-bar</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-progress-bar-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">team-progress-bar-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-progress-bar-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">team-progress-bar-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-quest-log.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">team-quest-log</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-quest-log-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">team-quest-log-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-quest-log-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">team-quest-log-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-task-claim.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">team-task-claim</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-task-claim-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">team-task-claim-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-trophy-shelf.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">team-trophy-shelf</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-trophy-shelf-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">team-trophy-shelf-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-trophy-shelf-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">team-trophy-shelf-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__thumb-list-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">thumb-list-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__thumbnail-list.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">thumbnail-list</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__thumbnail-list-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">thumbnail-list-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__todo-rich-card.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">todo-rich-card</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__todo-tree.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">todo-tree</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__video-player.html">
+<div class="sh"><span class="none">FAIL</span></div>
+<div class="m"><div class="nm">video-player</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__video-player-01.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">video-player-01</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__video-player-fixtures.html">
+<div class="sh"><span class="none">NO_ROUTE</span></div>
+<div class="m"><div class="nm">video-player-fixtures</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
+<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__workspace.html">
+<div class="sh"><span class="none">SHARED</span></div>
+<div class="m"><div class="nm">workspace</div><div class="rg">@ilinxa</div>
+<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
+<span class="pill p-asset">ASSET</span></div></div></a></div></div></body></html>

@@ -1,526 +1,1157 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>@8bitcn</title>
-<style>
-:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
-a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
-h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
-.sub{color:var(--mut);font-size:14px;margin:0}
-.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
-.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
-.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
-thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
-td.n{text-align:right;font-variant-numeric:tabular-nums}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
-.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
-.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
-.c .sh .none{color:#a1a1aa;font-size:11px}
-.c .m{padding:9px 11px}
-.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
-.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
-.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
-.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
-code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
-pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
-.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
-.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
-.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-h2{font-size:17px;font-weight:600;margin:30px 0 4px}
-.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
-</style></head><body>
-<header><div class="wrap"><h1>@8bitcn</h1>
-<p class="sub"><a href="../index.html">← all registries</a></p>
-<div class="stats"><div class="stat"><b>121</b><span>items</span></div>
-<div class="stat"><b style="color:var(--ok)">0</b><span>build</span></div>
-<div class="stat"><b style="color:var(--bad)">107</b><span>fail</span></div>
-<div class="stat"><b>0%</b><span>rate</span></div></div></div></header>
-<div class="wrap"><div class="grid"><a class="c" href="../item/8bitcn__accordion.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">accordion</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__advanced1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">advanced1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__advanced2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">advanced2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__advanced3.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">advanced3</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__alert.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">alert</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__alert-dialog.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">alert-dialog</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__audio-settings.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">audio-settings</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__avatar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">avatar</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__badge.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">badge</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__breadcrumb.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">breadcrumb</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__button.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">button</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__button-group.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">button-group</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__calendar.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">calendar</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">card</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__carousel.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">carousel</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__chapter-intro.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">chapter-intro</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__character-sheet.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">character-sheet</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__chart.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">chart</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__chart-area-step.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">chart-area-step</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__chart-bar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">chart-bar</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__checkbox.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">checkbox</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__collapsible.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">collapsible</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__combo-box.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">combo-box</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__command.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">command</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__context-menu.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">context-menu</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__cta1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">cta1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__cta2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">cta2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__dashboard-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">dashboard-01</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__date-picker.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">date-picker</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__dialog.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">dialog</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__dialogue.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">dialogue</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__difficulty-select.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">difficulty-select</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__drawer.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">drawer</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__dropdown-menu.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">dropdown-menu</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__duel-block.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">duel-block</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__empty.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">empty</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__enemy-health-display.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">enemy-health-display</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__faq1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">faq1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__faq2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">faq2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__faq3.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">faq3</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__feature1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">feature1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__feature2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">feature2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__feature3.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">feature3</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__footer1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">footer1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__friend-list.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">friend-list</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-cta1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">game-cta1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-faq1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">game-faq1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-features1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">game-features1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-hero1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">game-hero1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-hero2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">game-hero2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-over.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">game-over</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-progress.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">game-progress</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-roadmap1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">game-roadmap1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__game-team1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">game-team1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__health-bar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">health-bar</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__hero1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">hero1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__hero2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">hero2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__hero3.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">hero3</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__hover-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">hover-card</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__input.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">input</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__input-otp.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">input-otp</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__item.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">item</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__kbd.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">kbd</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__label.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">label</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__leaderboard.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">leaderboard</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__loading-screen.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">loading-screen</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__login-form.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">login-form</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__login-form-2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">login-form-2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__login-form-with-image.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">login-form-with-image</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__login-page.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">login-page</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__main-menu.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">main-menu</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__mana-bar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">mana-bar</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__menubar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">menubar</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__navigation-menu.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">navigation-menu</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__not-found-brick-breaker.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">not-found-brick-breaker</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__not-found-crate-pusher.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">not-found-crate-pusher</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__not-found1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">not-found1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__not-found2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">not-found2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__not-found3.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">not-found3</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__pagination.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">pagination</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__pause-menu.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">pause-menu</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__player-profile-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">player-profile-card</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__popover.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">popover</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__portal-transition.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">portal-transition</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__pricing1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">pricing1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__pricing2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">pricing2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__profile-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">profile-card</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__progress.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">progress</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__quest-log.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">quest-log</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__radio-group.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">radio-group</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__resizable.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">resizable</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__retro-mode-switcher.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">retro-mode-switcher</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__save-slots.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">save-slots</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__scroll-area.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">scroll-area</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__select.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">select</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__separator.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">separator</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__sheet.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">sheet</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__sidebar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">sidebar</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__skeleton.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">skeleton</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__slider.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">slider</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__social-proof1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">social-proof1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__social-proof2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">social-proof2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__social-proof3.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">social-proof3</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__spinner.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">spinner</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__switch.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">switch</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__table.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">table</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__tabs.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">tabs</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__team1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">team1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__team2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">team2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__team3.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">team3</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__textarea.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">textarea</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__theme-selector.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">theme-selector</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__timeline1.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">timeline1</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__timeline2.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">timeline2</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__timeline3.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">timeline3</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__toast.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">toast</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__toggle.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">toggle</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__toggle-group.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">toggle-group</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__tooltip.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">tooltip</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__victory-screen.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">victory-screen</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/8bitcn__xp-bar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">xp-bar</div><div class="rg">@8bitcn</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a></div></div></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@8bitcn — build status</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> · 2026-09-16</p>
+  <h1><code style="background:none;color:inherit;font-size:.8em">@8bitcn</code></h1>
+  <p class="lede">94 of 121 items rendered.
+  Licence <strong>POINTER</strong> — repository found but no LICENSE file present on main or master — treated as not redistributable until a grant is read (<code>TheOrcDev/8bitcn-ui</code>).
+  Dominant primitive base: <strong>radix</strong>.</p>
+</div></header>
+<section><div class="wrap">
+  
+  <div class="grid"><a class="card" href="../i/8bitcn--accordion.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/accordion.webp" alt=""></span>
+    <span class="meta"><span class="nm">accordion</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--advanced1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/advanced1.webp" alt=""></span>
+    <span class="meta"><span class="nm">advanced1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--advanced2.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/advanced2.webp" alt=""></span>
+    <span class="meta"><span class="nm">advanced2</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--alert.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/alert.webp" alt=""></span>
+    <span class="meta"><span class="nm">alert</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--audio-settings.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/audio-settings.webp" alt=""></span>
+    <span class="meta"><span class="nm">audio-settings</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--avatar.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/avatar.webp" alt=""></span>
+    <span class="meta"><span class="nm">avatar</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--badge.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/badge.webp" alt=""></span>
+    <span class="meta"><span class="nm">badge</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--breadcrumb.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/breadcrumb.webp" alt=""></span>
+    <span class="meta"><span class="nm">breadcrumb</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--button.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/button.webp" alt=""></span>
+    <span class="meta"><span class="nm">button</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--button-group.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/button-group.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-group</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--card.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/card.webp" alt=""></span>
+    <span class="meta"><span class="nm">card</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--carousel.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/carousel.webp" alt=""></span>
+    <span class="meta"><span class="nm">carousel</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--chapter-intro.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/chapter-intro.webp" alt=""></span>
+    <span class="meta"><span class="nm">chapter-intro</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--character-sheet.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/character-sheet.webp" alt=""></span>
+    <span class="meta"><span class="nm">character-sheet</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--chart.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/chart.webp" alt=""></span>
+    <span class="meta"><span class="nm">chart</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--chart-area-step.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/chart-area-step.webp" alt=""></span>
+    <span class="meta"><span class="nm">chart-area-step</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--chart-bar.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/chart-bar.webp" alt=""></span>
+    <span class="meta"><span class="nm">chart-bar</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--checkbox.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/checkbox.webp" alt=""></span>
+    <span class="meta"><span class="nm">checkbox</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--collapsible.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/collapsible.webp" alt=""></span>
+    <span class="meta"><span class="nm">collapsible</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--combo-box.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/combo-box.webp" alt=""></span>
+    <span class="meta"><span class="nm">combo-box</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--command.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/command.webp" alt=""></span>
+    <span class="meta"><span class="nm">command</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--cta1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/cta1.webp" alt=""></span>
+    <span class="meta"><span class="nm">cta1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--cta2.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/cta2.webp" alt=""></span>
+    <span class="meta"><span class="nm">cta2</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--date-picker.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/date-picker.webp" alt=""></span>
+    <span class="meta"><span class="nm">date-picker</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--dialogue.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/dialogue.webp" alt=""></span>
+    <span class="meta"><span class="nm">dialogue</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--difficulty-select.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/difficulty-select.webp" alt=""></span>
+    <span class="meta"><span class="nm">difficulty-select</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--drawer.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/drawer.webp" alt=""></span>
+    <span class="meta"><span class="nm">drawer</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--dropdown-menu.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/dropdown-menu.webp" alt=""></span>
+    <span class="meta"><span class="nm">dropdown-menu</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--empty.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/empty.webp" alt=""></span>
+    <span class="meta"><span class="nm">empty</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--enemy-health-display.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/enemy-health-display.webp" alt=""></span>
+    <span class="meta"><span class="nm">enemy-health-display</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--faq1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/faq1.webp" alt=""></span>
+    <span class="meta"><span class="nm">faq1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--faq2.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/faq2.webp" alt=""></span>
+    <span class="meta"><span class="nm">faq2</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--faq3.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/faq3.webp" alt=""></span>
+    <span class="meta"><span class="nm">faq3</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--feature1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/feature1.webp" alt=""></span>
+    <span class="meta"><span class="nm">feature1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--feature2.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/feature2.webp" alt=""></span>
+    <span class="meta"><span class="nm">feature2</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--feature3.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/feature3.webp" alt=""></span>
+    <span class="meta"><span class="nm">feature3</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--footer1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/footer1.webp" alt=""></span>
+    <span class="meta"><span class="nm">footer1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--game-cta1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/game-cta1.webp" alt=""></span>
+    <span class="meta"><span class="nm">game-cta1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--game-features1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/game-features1.webp" alt=""></span>
+    <span class="meta"><span class="nm">game-features1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--game-hero1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/game-hero1.webp" alt=""></span>
+    <span class="meta"><span class="nm">game-hero1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--game-hero2.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/game-hero2.webp" alt=""></span>
+    <span class="meta"><span class="nm">game-hero2</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--game-over.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/game-over.webp" alt=""></span>
+    <span class="meta"><span class="nm">game-over</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--game-progress.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/game-progress.webp" alt=""></span>
+    <span class="meta"><span class="nm">game-progress</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--game-roadmap1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/game-roadmap1.webp" alt=""></span>
+    <span class="meta"><span class="nm">game-roadmap1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--game-team1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/game-team1.webp" alt=""></span>
+    <span class="meta"><span class="nm">game-team1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--health-bar.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/health-bar.webp" alt=""></span>
+    <span class="meta"><span class="nm">health-bar</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--hero1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/hero1.webp" alt=""></span>
+    <span class="meta"><span class="nm">hero1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--hero2.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/hero2.webp" alt=""></span>
+    <span class="meta"><span class="nm">hero2</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--hero3.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/hero3.webp" alt=""></span>
+    <span class="meta"><span class="nm">hero3</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--input.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/input.webp" alt=""></span>
+    <span class="meta"><span class="nm">input</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--input-otp.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/input-otp.webp" alt=""></span>
+    <span class="meta"><span class="nm">input-otp</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--item.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/item.webp" alt=""></span>
+    <span class="meta"><span class="nm">item</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--kbd.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/kbd.webp" alt=""></span>
+    <span class="meta"><span class="nm">kbd</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--label.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/label.webp" alt=""></span>
+    <span class="meta"><span class="nm">label</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--loading-screen.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/loading-screen.webp" alt=""></span>
+    <span class="meta"><span class="nm">loading-screen</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--login-form.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/login-form.webp" alt=""></span>
+    <span class="meta"><span class="nm">login-form</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--login-form-2.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/login-form-2.webp" alt=""></span>
+    <span class="meta"><span class="nm">login-form-2</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--login-form-with-image.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/login-form-with-image.webp" alt=""></span>
+    <span class="meta"><span class="nm">login-form-with-image</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--login-page.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/login-page.webp" alt=""></span>
+    <span class="meta"><span class="nm">login-page</span><span class="rg">registry:page</span></span></a>
+<a class="card" href="../i/8bitcn--main-menu.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/main-menu.webp" alt=""></span>
+    <span class="meta"><span class="nm">main-menu</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--mana-bar.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/mana-bar.webp" alt=""></span>
+    <span class="meta"><span class="nm">mana-bar</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--menubar.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/menubar.webp" alt=""></span>
+    <span class="meta"><span class="nm">menubar</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--navigation-menu.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/navigation-menu.webp" alt=""></span>
+    <span class="meta"><span class="nm">navigation-menu</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--not-found-crate-pusher.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/not-found-crate-pusher.webp" alt=""></span>
+    <span class="meta"><span class="nm">not-found-crate-pusher</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--pagination.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/pagination.webp" alt=""></span>
+    <span class="meta"><span class="nm">pagination</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--pause-menu.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/pause-menu.webp" alt=""></span>
+    <span class="meta"><span class="nm">pause-menu</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--player-profile-card.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/player-profile-card.webp" alt=""></span>
+    <span class="meta"><span class="nm">player-profile-card</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--popover.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/popover.webp" alt=""></span>
+    <span class="meta"><span class="nm">popover</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--portal-transition.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/portal-transition.webp" alt=""></span>
+    <span class="meta"><span class="nm">portal-transition</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--pricing1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/pricing1.webp" alt=""></span>
+    <span class="meta"><span class="nm">pricing1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--profile-card.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/profile-card.webp" alt=""></span>
+    <span class="meta"><span class="nm">profile-card</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--progress.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/progress.webp" alt=""></span>
+    <span class="meta"><span class="nm">progress</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--quest-log.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/quest-log.webp" alt=""></span>
+    <span class="meta"><span class="nm">quest-log</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--radio-group.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/radio-group.webp" alt=""></span>
+    <span class="meta"><span class="nm">radio-group</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--resizable.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/resizable.webp" alt=""></span>
+    <span class="meta"><span class="nm">resizable</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--retro-mode-switcher.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/retro-mode-switcher.webp" alt=""></span>
+    <span class="meta"><span class="nm">retro-mode-switcher</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--scroll-area.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/scroll-area.webp" alt=""></span>
+    <span class="meta"><span class="nm">scroll-area</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--select.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/select.webp" alt=""></span>
+    <span class="meta"><span class="nm">select</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--separator.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/separator.webp" alt=""></span>
+    <span class="meta"><span class="nm">separator</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--skeleton.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/skeleton.webp" alt=""></span>
+    <span class="meta"><span class="nm">skeleton</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--slider.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/slider.webp" alt=""></span>
+    <span class="meta"><span class="nm">slider</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--social-proof2.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/social-proof2.webp" alt=""></span>
+    <span class="meta"><span class="nm">social-proof2</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--social-proof3.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/social-proof3.webp" alt=""></span>
+    <span class="meta"><span class="nm">social-proof3</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--switch.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/switch.webp" alt=""></span>
+    <span class="meta"><span class="nm">switch</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--table.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/table.webp" alt=""></span>
+    <span class="meta"><span class="nm">table</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--tabs.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/tabs.webp" alt=""></span>
+    <span class="meta"><span class="nm">tabs</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--team1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/team1.webp" alt=""></span>
+    <span class="meta"><span class="nm">team1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--team2.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/team2.webp" alt=""></span>
+    <span class="meta"><span class="nm">team2</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--textarea.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/textarea.webp" alt=""></span>
+    <span class="meta"><span class="nm">textarea</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--timeline1.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/timeline1.webp" alt=""></span>
+    <span class="meta"><span class="nm">timeline1</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--timeline2.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/timeline2.webp" alt=""></span>
+    <span class="meta"><span class="nm">timeline2</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--timeline3.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/timeline3.webp" alt=""></span>
+    <span class="meta"><span class="nm">timeline3</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/8bitcn--toggle.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/toggle.webp" alt=""></span>
+    <span class="meta"><span class="nm">toggle</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/8bitcn--xp-bar.html">
+    <span class="shot"><img loading="lazy" src="../shots/8bitcn/xp-bar.webp" alt=""></span>
+    <span class="meta"><span class="nm">xp-bar</span><span class="rg">registry:component</span></span></a></div>
+</div></section>
+<section><div class="wrap">
+  <h2>Every item</h2>
+  <p class="sub">Including what failed and why. The first line of the error is shown; the full text is in
+  <code>docs/build-errors-2026-09-16.json</code>.</p>
+  <table><thead><tr><th>item</th><th>verdict</th><th>base</th><th>tokens</th><th>reason</th></tr></thead><tbody>
+  <tr>
+    <td><a href="../i/8bitcn--accordion.html">accordion</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--advanced1.html">advanced1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--advanced2.html">advanced2</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--alert.html">alert</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">37/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--audio-settings.html">audio-settings</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--avatar.html">avatar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">71/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--badge.html">badge</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">31/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--breadcrumb.html">breadcrumb</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--button.html">button</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">45/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--button-group.html">button-group</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">66/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--card.html">card</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--carousel.html">carousel</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--chapter-intro.html">chapter-intro</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--character-sheet.html">character-sheet</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">13/9/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--chart.html">chart</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">16/0/5</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--chart-area-step.html">chart-area-step</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">16/0/5</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--chart-bar.html">chart-bar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">16/0/5</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--checkbox.html">checkbox</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">15/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--collapsible.html">collapsible</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--combo-box.html">combo-box</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">50/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--command.html">command</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">44/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--cta1.html">cta1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--cta2.html">cta2</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--date-picker.html">date-picker</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">91/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--dialogue.html">dialogue</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--difficulty-select.html">difficulty-select</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--drawer.html">drawer</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--dropdown-menu.html">dropdown-menu</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">40/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--empty.html">empty</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">16/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--enemy-health-display.html">enemy-health-display</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">10/10/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--faq1.html">faq1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--faq2.html">faq2</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--faq3.html">faq3</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--feature1.html">feature1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--feature2.html">feature2</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--feature3.html">feature3</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--footer1.html">footer1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--game-cta1.html">game-cta1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--game-features1.html">game-features1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--game-hero1.html">game-hero1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--game-hero2.html">game-hero2</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--game-over.html">game-over</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--game-progress.html">game-progress</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">7/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--game-roadmap1.html">game-roadmap1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--game-team1.html">game-team1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--health-bar.html">health-bar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">7/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--hero1.html">hero1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--hero2.html">hero2</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--hero3.html">hero3</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--input.html">input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">15/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--input-otp.html">input-otp</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">13/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--item.html">item</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--kbd.html">kbd</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--label.html">label</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--loading-screen.html">loading-screen</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--login-form.html">login-form</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--login-form-2.html">login-form-2</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--login-form-with-image.html">login-form-with-image</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--login-page.html">login-page</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--main-menu.html">main-menu</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--mana-bar.html">mana-bar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">7/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--menubar.html">menubar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">36/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--navigation-menu.html">navigation-menu</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">29/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--not-found-crate-pusher.html">not-found-crate-pusher</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">37/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--pagination.html">pagination</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">27/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--pause-menu.html">pause-menu</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--player-profile-card.html">player-profile-card</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">6/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--popover.html">popover</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--portal-transition.html">portal-transition</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--pricing1.html">pricing1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--profile-card.html">profile-card</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">121/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--progress.html">progress</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--quest-log.html">quest-log</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--radio-group.html">radio-group</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">37/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--resizable.html">resizable</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">22/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--retro-mode-switcher.html">retro-mode-switcher</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--scroll-area.html">scroll-area</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--select.html">select</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">9/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--separator.html">separator</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--skeleton.html">skeleton</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">26/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--slider.html">slider</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">14/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--social-proof2.html">social-proof2</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--social-proof3.html">social-proof3</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--switch.html">switch</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">23/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--table.html">table</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">14/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--tabs.html">tabs</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">24/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--team1.html">team1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--team2.html">team2</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--textarea.html">textarea</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">12/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--timeline1.html">timeline1</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--timeline2.html">timeline2</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--timeline3.html">timeline3</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--toggle.html">toggle</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">20/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/8bitcn--xp-bar.html">xp-bar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">7/2/5</td>
+    <td></td></tr>
+<tr>
+    <td>advanced3
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>friend-list
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>radix</code></td>
+    <td class="num">20/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>game-faq1
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>radix</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>leaderboard
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>radix</code></td>
+    <td class="num">28/3/0</td>
+    <td></td></tr>
+<tr>
+    <td>not-found-brick-breaker
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>not-found1
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>not-found2
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>not-found3
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>pricing2
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>radix</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>save-slots
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>radix</code></td>
+    <td class="num">22/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>social-proof1
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>radix</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>team3
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>victory-screen
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>radix</code></td>
+    <td class="num">9/7/0</td>
+    <td></td></tr>
+<tr>
+    <td>alert-dialog
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>radix</code></td>
+    <td class="num">53/1/0</td>
+    <td></td></tr>
+<tr>
+    <td>context-menu
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>radix</code></td>
+    <td class="num">25/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>dialog
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>none</code></td>
+    <td class="num">10/1/0</td>
+    <td></td></tr>
+<tr>
+    <td>hover-card
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>radix</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>sheet
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>radix</code></td>
+    <td class="num">21/2/0</td>
+    <td></td></tr>
+<tr>
+    <td>spinner
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>calendar
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>dashboard-01
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>radix</code></td>
+    <td class="num">91/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>sidebar
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>theme-selector
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>radix</code></td>
+    <td class="num">5/0/20 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td></td></tr>
+<tr>
+    <td>toggle-group
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>radix</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>tooltip
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>duel-block
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>toast
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">25/1/0</td>
+    <td>no renderable component export found</td></tr>
+  </tbody></table>
+  <p class="sub">The tokens column is semantic / palette / hex occurrences in the installed source.
+  A high palette or hex count against few semantic tokens means the item resists a client palette.</p>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

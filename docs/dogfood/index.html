@@ -117,7 +117,7 @@
     <div class="callout">
       <strong>Repo B restyles from the token block.</strong> Zero palette utilities in the
       hand-written code, 13 semantic tokens, and every installed component reads through
-      <code>--jh-*</code>. The whole page follows a client's palette without a component edit.
+      the theme's own variables. The whole page follows a client's palette without a component edit.
     </div>
 
     <div class="callout warn">
@@ -205,8 +205,8 @@
       on <code>button.tsx</code> that <code>--yes</code> does not cover.</li>
       <li><strong>Two hairline literals were still baked into JHAI's own components</strong> —
       <code>border-black/20</code> in Button and <code>border-black/8</code> in StatTile. Found
-      by measuring B's output, not by review. Now tokenised as <code>--jh-edge-*</code> and
-      <code>--jh-rule-light</code>.</li>
+      by measuring B's output, not by review. Both now read <code>border-border</code>, so they
+      follow the consuming project's own hairline colour.</li>
     </ul>
   </div>
 </section>
@@ -261,7 +261,11 @@
   <div class="wrap">
     Method: two throwaway Next.js 15 + React 19 + Tailwind v4 apps, identical brief, isolated
     sessions. Colour counts measured independently of each agent's self-report, with the same
-    grep in both repos. Registry <code>v1.0.1</code>, shadcn CLI <code>4.21.0</code>.
+    grep in both repos. Measured against registry <code>v1.0.1</code>; the registry is <code>v2.0.0</code> now and the
+    JHAI-private token names this page originally quoted no longer exist. shadcn CLI
+    <code>4.21.0</code>. The measured result stands as recorded &mdash; only the token vocabulary
+    changed. See the
+    <a href="../gallery/index.html">build-verification gallery</a> for what the whole catalogue does.
     <a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a> ·
     <a href="https://github.com/JustinHarrisAI/jhai-registry/blob/main/docs/CURATION.md">curation index</a>
   </div>

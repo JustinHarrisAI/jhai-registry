@@ -1,910 +1,1796 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>@bundui</title>
-<style>
-:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
-a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
-h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
-.sub{color:var(--mut);font-size:14px;margin:0}
-.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
-.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
-.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
-thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
-td.n{text-align:right;font-variant-numeric:tabular-nums}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
-.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
-.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
-.c .sh .none{color:#a1a1aa;font-size:11px}
-.c .m{padding:9px 11px}
-.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
-.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
-.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
-.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
-code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
-pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
-.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
-.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
-.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-h2{font-size:17px;font-weight:600;margin:30px 0 4px}
-.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
-</style></head><body>
-<header><div class="wrap"><h1>@bundui</h1>
-<p class="sub"><a href="../index.html">← all registries</a></p>
-<div class="stats"><div class="stat"><b>217</b><span>items</span></div>
-<div class="stat"><b style="color:var(--ok)">119</b><span>build</span></div>
-<div class="stat"><b style="color:var(--bad)">97</b><span>fail</span></div>
-<div class="stat"><b>55%</b><span>rate</span></div></div></div></header>
-<div class="wrap"><div class="grid"><a class="c" href="../item/bundui__accordion-collapsible.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">accordion-collapsible</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__accordion-default.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">accordion-default</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__accordion-with-plus-icon.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">accordion-with-plus-icon</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__alert-danger.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">alert-danger</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__alert-default.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">alert-default</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__alert-dialog.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">alert-dialog</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__alert-success.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">alert-success</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__alert-warning.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">alert-warning</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__alert-with-action-button.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">alert-with-action-button</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__alert-with-dismiss.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">alert-with-dismiss</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__alert-with-icon.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">alert-with-icon</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__alert-with-title.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">alert-with-title</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__animated-beam.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">animated-beam</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__animated-gradient-border.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">animated-gradient-border</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__animated-gradient-text.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">animated-gradient-text</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__animated-tab.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">animated-tab</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__animated-text.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">animated-text</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__avatar-avatar-group.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">avatar-avatar-group</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__avatar-default.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">avatar-default</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__avatar-fallback-only.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">avatar-fallback-only</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__avatar-sizes.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">avatar-sizes</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__avatar-with-status-indicator.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">avatar-with-status-indicator</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__badge-default.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">badge-default</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__badge-destructive.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">badge-destructive</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__badge-indicator.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">badge-indicator</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__badge-outline.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">badge-outline</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__badge-secondary.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">badge-secondary</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__badge-with-dismiss.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">badge-with-dismiss</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__badge-with-icon.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">badge-with-icon</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__banners-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">banners-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__banners-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">banners-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__banners-03.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">banners-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__blog-sections-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">blog-sections-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__blog-sections-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">blog-sections-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__breadcrumb-default.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">breadcrumb-default</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__breadcrumb-with-dropdown.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">breadcrumb-with-dropdown</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__breadcrumb-with-icon.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">breadcrumb-with-icon</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-default.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-default</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-destructive.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-destructive</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-disabled.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-disabled</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-ghost.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-ghost</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-icon-sizes.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-icon-sizes</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-link.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-link</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-loading.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-loading</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-loading-with-icon.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-loading-with-icon</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-only-icon.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-only-icon</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-outline.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-outline</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-secondary.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-secondary</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-sizes.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-sizes</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__button-with-icon.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button-with-icon</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__calendar.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">calendar</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__card-colored.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">card-colored</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__card-default.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">card-default</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__card-with-action.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">card-with-action</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__card-with-footer.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">card-with-footer</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__card-with-header.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">card-with-header</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__card-with-header-description.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">card-with-header-description</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__card-with-header-icon.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">card-with-header-icon</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__carousel-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">carousel-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__carousel-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">carousel-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__carousel-03.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">carousel-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__category-filters.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">category-filters</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__category-previews-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">category-previews-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__category-previews-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">category-previews-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__chart.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">chart</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__checkbox.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">checkbox</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__checkout-forms-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">checkout-forms-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__checkout-forms-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">checkout-forms-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__circle-path.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">circle-path</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__collapsible.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">collapsible</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__combobox.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">combobox</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__command.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">command</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__contact-sections.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">contact-sections</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__context-menu.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">context-menu</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__cookie-consent-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">cookie-consent-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__cookie-consent-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">cookie-consent-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__cookie-consent-03.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">cookie-consent-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__countdown.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">countdown</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__counter-animation.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">counter-animation</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__cta-sections-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">cta-sections-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__cta-sections-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">cta-sections-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__cta-sections-03.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">cta-sections-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__cta-sections-04.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">cta-sections-04</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__customer-reviews.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">customer-reviews</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__data-table-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">data-table-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__data-table-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">data-table-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__data-table-03.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">data-table-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__date-picker.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">date-picker</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__dialog.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">dialog</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__divider-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">divider-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__divider-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">divider-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__divider-03.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">divider-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__drawer.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">drawer</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__dropdown-menu.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">dropdown-menu</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__feature-sections.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">feature-sections</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__fireworks.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">fireworks</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__flip-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">flip-card</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__floating-button.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">floating-button</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__floating-paths.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">floating-paths</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__fluid-particles.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">fluid-particles</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__footers.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">footers</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__form-layouts-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">form-layouts-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__form-layouts-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">form-layouts-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__hero-sections-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">hero-sections-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__hero-sections-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">hero-sections-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__hero-sections-03.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">hero-sections-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__hero-sections-04.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">hero-sections-04</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__hero-sections-05.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">hero-sections-05</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__hover-card.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">hover-card</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__image-comparison.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">image-comparison</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__image-reveal.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">image-reveal</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">input</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__input-otp.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">input-otp</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__integrations.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">integrations</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__interactive-image-slider.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">interactive-image-slider</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__logo-clouds-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">logo-clouds-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__logo-clouds-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">logo-clouds-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__magnetic-hover-effect-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">magnetic-hover-effect-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__magnetic-hover-effect-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">magnetic-hover-effect-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__marquee-effect.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">marquee-effect</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__menubar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">menubar</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__meteor-shower-animation.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">meteor-shower-animation</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__modal-dialogs-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">modal-dialogs-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__modal-dialogs-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">modal-dialogs-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__modal-dialogs-03.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">modal-dialogs-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__mouse-trail.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">mouse-trail</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__navbars-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">navbars-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__navbars-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">navbars-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__navbars-03.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">navbars-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__navbars-04.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">navbars-04</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__navigation-menu.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">navigation-menu</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__newsletter-sections.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">newsletter-sections</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__order-summaries-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">order-summaries-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__order-summaries-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">order-summaries-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__page-layouts-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">page-layouts-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__page-layouts-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">page-layouts-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__page-layouts-03.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">page-layouts-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__pagination.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">pagination</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__parallax-cards.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">parallax-cards</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__popover.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">popover</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__pricing-sections-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">pricing-sections-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__pricing-sections-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">pricing-sections-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__pricing-sections-03.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">pricing-sections-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-cards-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">product-cards-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-cards-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">product-cards-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-cards-03.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">product-cards-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-cards-04.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">product-cards-04</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-cards-05.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">product-cards-05</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-cards-06.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">product-cards-06</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-cards-07.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">product-cards-07</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-details.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">product-details</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-list-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">product-list-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-list-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">product-list-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-list-03.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">product-list-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-quickviews-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">product-quickviews-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__product-quickviews-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">product-quickviews-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__progress.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">progress</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__promo-sections-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">promo-sections-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__promo-sections-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">promo-sections-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__promotional-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">promotional-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__promotional-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">promotional-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__property-cards-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">property-cards-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__property-cards-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">property-cards-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__property-cards-03.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">property-cards-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__property-cards-04.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">property-cards-04</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__property-detail.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">property-detail</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__property-filters.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">property-filters</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__property-list-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">property-list-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__property-list-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">property-list-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__radio-group.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">radio-group</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__ripple-effect-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">ripple-effect-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__ripple-effect-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">ripple-effect-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__ripple-effect-03.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">ripple-effect-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__scroll-progress-bar-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">scroll-progress-bar-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__scroll-progress-bar-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">scroll-progress-bar-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__select-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">select-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__select-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">select-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__select-03.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">select-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__select-04.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">select-04</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__select-05.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">select-05</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__sheet.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">sheet</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__shopping-carts-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">shopping-carts-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__shopping-carts-02.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">shopping-carts-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__sidebar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">sidebar</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__sidebar-layouts.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">sidebar-layouts</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__sign-in-forms-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">sign-in-forms-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__sign-in-forms-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">sign-in-forms-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__sign-in-forms-03.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">sign-in-forms-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__skeleton.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">skeleton</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__slider.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">slider</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__sliding-number.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">sliding-number</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__snowfall-animation.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">snowfall-animation</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__stars.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">stars</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__stat-cards-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">stat-cards-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__stat-cards-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">stat-cards-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__stat-cards-03.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">stat-cards-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__stat-cards-04.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">stat-cards-04</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__stat-cards-05.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">stat-cards-05</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__stat-cards-06.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">stat-cards-06</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__stat-cards-07.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">stat-cards-07</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__stat-cards-08.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">stat-cards-08</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__stats-section-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">stats-section-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__stats-section-02.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">stats-section-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__store-navigations.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">store-navigations</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__switch.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">switch</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__tables.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">tables</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__tabs.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">tabs</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__team-sections-01.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">team-sections-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__team-sections-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">team-sections-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__testimonials-01.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">testimonials-01</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__testimonials-02.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">testimonials-02</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__testimonials-03.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">testimonials-03</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__text-gradient-scroll.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">text-gradient-scroll</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__text-morph-animation.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">text-morph-animation</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__tilt-effect.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">tilt-effect</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__toggle-group.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">toggle-group</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/bundui__tooltip.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">tooltip</div><div class="rg">@bundui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a></div></div></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@bundui — build status</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> · 2026-09-16</p>
+  <h1><code style="background:none;color:inherit;font-size:.8em">@bundui</code></h1>
+  <p class="lede">83 of 217 items rendered.
+  Licence <strong>ASSET</strong> — permissive grant read from the LICENSE file (MIT License) (<code>bundui/components</code>).
+  Dominant primitive base: <strong>radix</strong>.</p>
+</div></header>
+<section><div class="wrap">
+  
+  <div class="grid"><a class="card" href="../i/bundui--accordion-collapsible.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/accordion-collapsible.webp" alt=""></span>
+    <span class="meta"><span class="nm">accordion-collapsible</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--accordion-default.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/accordion-default.webp" alt=""></span>
+    <span class="meta"><span class="nm">accordion-default</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--accordion-with-plus-icon.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/accordion-with-plus-icon.webp" alt=""></span>
+    <span class="meta"><span class="nm">accordion-with-plus-icon</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--alert-danger.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/alert-danger.webp" alt=""></span>
+    <span class="meta"><span class="nm">alert-danger</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--alert-default.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/alert-default.webp" alt=""></span>
+    <span class="meta"><span class="nm">alert-default</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--alert-success.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/alert-success.webp" alt=""></span>
+    <span class="meta"><span class="nm">alert-success</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--alert-warning.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/alert-warning.webp" alt=""></span>
+    <span class="meta"><span class="nm">alert-warning</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--alert-with-action-button.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/alert-with-action-button.webp" alt=""></span>
+    <span class="meta"><span class="nm">alert-with-action-button</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--alert-with-dismiss.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/alert-with-dismiss.webp" alt=""></span>
+    <span class="meta"><span class="nm">alert-with-dismiss</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--alert-with-icon.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/alert-with-icon.webp" alt=""></span>
+    <span class="meta"><span class="nm">alert-with-icon</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--alert-with-title.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/alert-with-title.webp" alt=""></span>
+    <span class="meta"><span class="nm">alert-with-title</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--avatar-avatar-group.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/avatar-avatar-group.webp" alt=""></span>
+    <span class="meta"><span class="nm">avatar-avatar-group</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--avatar-default.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/avatar-default.webp" alt=""></span>
+    <span class="meta"><span class="nm">avatar-default</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--avatar-fallback-only.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/avatar-fallback-only.webp" alt=""></span>
+    <span class="meta"><span class="nm">avatar-fallback-only</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--avatar-sizes.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/avatar-sizes.webp" alt=""></span>
+    <span class="meta"><span class="nm">avatar-sizes</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--avatar-with-status-indicator.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/avatar-with-status-indicator.webp" alt=""></span>
+    <span class="meta"><span class="nm">avatar-with-status-indicator</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--badge-default.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/badge-default.webp" alt=""></span>
+    <span class="meta"><span class="nm">badge-default</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--badge-destructive.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/badge-destructive.webp" alt=""></span>
+    <span class="meta"><span class="nm">badge-destructive</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--badge-indicator.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/badge-indicator.webp" alt=""></span>
+    <span class="meta"><span class="nm">badge-indicator</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--badge-outline.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/badge-outline.webp" alt=""></span>
+    <span class="meta"><span class="nm">badge-outline</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--badge-secondary.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/badge-secondary.webp" alt=""></span>
+    <span class="meta"><span class="nm">badge-secondary</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--badge-with-dismiss.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/badge-with-dismiss.webp" alt=""></span>
+    <span class="meta"><span class="nm">badge-with-dismiss</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--badge-with-icon.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/badge-with-icon.webp" alt=""></span>
+    <span class="meta"><span class="nm">badge-with-icon</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--banners-01.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/banners-01.webp" alt=""></span>
+    <span class="meta"><span class="nm">banners-01</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--banners-02.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/banners-02.webp" alt=""></span>
+    <span class="meta"><span class="nm">banners-02</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--banners-03.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/banners-03.webp" alt=""></span>
+    <span class="meta"><span class="nm">banners-03</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-default.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-default.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-default</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-destructive.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-destructive.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-destructive</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-disabled.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-disabled.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-disabled</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-ghost.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-ghost.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-ghost</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-icon-sizes.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-icon-sizes.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-icon-sizes</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-link.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-link.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-link</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-loading.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-loading.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-loading</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-loading-with-icon.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-loading-with-icon.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-loading-with-icon</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-only-icon.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-only-icon.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-only-icon</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-outline.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-outline.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-outline</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-secondary.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-secondary.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-secondary</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-sizes.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-sizes.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-sizes</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--button-with-icon.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/button-with-icon.webp" alt=""></span>
+    <span class="meta"><span class="nm">button-with-icon</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--calendar.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/calendar.webp" alt=""></span>
+    <span class="meta"><span class="nm">calendar</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--card-colored.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/card-colored.webp" alt=""></span>
+    <span class="meta"><span class="nm">card-colored</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--card-default.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/card-default.webp" alt=""></span>
+    <span class="meta"><span class="nm">card-default</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--card-with-action.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/card-with-action.webp" alt=""></span>
+    <span class="meta"><span class="nm">card-with-action</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--card-with-footer.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/card-with-footer.webp" alt=""></span>
+    <span class="meta"><span class="nm">card-with-footer</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--card-with-header.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/card-with-header.webp" alt=""></span>
+    <span class="meta"><span class="nm">card-with-header</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--card-with-header-description.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/card-with-header-description.webp" alt=""></span>
+    <span class="meta"><span class="nm">card-with-header-description</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--card-with-header-icon.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/card-with-header-icon.webp" alt=""></span>
+    <span class="meta"><span class="nm">card-with-header-icon</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--category-previews-01.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/category-previews-01.webp" alt=""></span>
+    <span class="meta"><span class="nm">category-previews-01</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--category-previews-02.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/category-previews-02.webp" alt=""></span>
+    <span class="meta"><span class="nm">category-previews-02</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--checkbox.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/checkbox.webp" alt=""></span>
+    <span class="meta"><span class="nm">checkbox</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--collapsible.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/collapsible.webp" alt=""></span>
+    <span class="meta"><span class="nm">collapsible</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--cookie-consent-01.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/cookie-consent-01.webp" alt=""></span>
+    <span class="meta"><span class="nm">cookie-consent-01</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--cookie-consent-02.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/cookie-consent-02.webp" alt=""></span>
+    <span class="meta"><span class="nm">cookie-consent-02</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--cookie-consent-03.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/cookie-consent-03.webp" alt=""></span>
+    <span class="meta"><span class="nm">cookie-consent-03</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--cta-sections-01.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/cta-sections-01.webp" alt=""></span>
+    <span class="meta"><span class="nm">cta-sections-01</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--cta-sections-02.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/cta-sections-02.webp" alt=""></span>
+    <span class="meta"><span class="nm">cta-sections-02</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--hero-sections-01.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/hero-sections-01.webp" alt=""></span>
+    <span class="meta"><span class="nm">hero-sections-01</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--hero-sections-02.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/hero-sections-02.webp" alt=""></span>
+    <span class="meta"><span class="nm">hero-sections-02</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--hero-sections-04.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/hero-sections-04.webp" alt=""></span>
+    <span class="meta"><span class="nm">hero-sections-04</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--hero-sections-05.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/hero-sections-05.webp" alt=""></span>
+    <span class="meta"><span class="nm">hero-sections-05</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--pagination.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/pagination.webp" alt=""></span>
+    <span class="meta"><span class="nm">pagination</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--popover.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/popover.webp" alt=""></span>
+    <span class="meta"><span class="nm">popover</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--product-cards-01.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/product-cards-01.webp" alt=""></span>
+    <span class="meta"><span class="nm">product-cards-01</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--product-cards-02.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/product-cards-02.webp" alt=""></span>
+    <span class="meta"><span class="nm">product-cards-02</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--product-cards-03.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/product-cards-03.webp" alt=""></span>
+    <span class="meta"><span class="nm">product-cards-03</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--product-cards-04.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/product-cards-04.webp" alt=""></span>
+    <span class="meta"><span class="nm">product-cards-04</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--product-details.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/product-details.webp" alt=""></span>
+    <span class="meta"><span class="nm">product-details</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--product-list-01.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/product-list-01.webp" alt=""></span>
+    <span class="meta"><span class="nm">product-list-01</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--product-list-02.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/product-list-02.webp" alt=""></span>
+    <span class="meta"><span class="nm">product-list-02</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--product-list-03.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/product-list-03.webp" alt=""></span>
+    <span class="meta"><span class="nm">product-list-03</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--progress.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/progress.webp" alt=""></span>
+    <span class="meta"><span class="nm">progress</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--radio-group.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/radio-group.webp" alt=""></span>
+    <span class="meta"><span class="nm">radio-group</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--skeleton.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/skeleton.webp" alt=""></span>
+    <span class="meta"><span class="nm">skeleton</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--slider.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/slider.webp" alt=""></span>
+    <span class="meta"><span class="nm">slider</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--stat-cards-03.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/stat-cards-03.webp" alt=""></span>
+    <span class="meta"><span class="nm">stat-cards-03</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--stat-cards-04.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/stat-cards-04.webp" alt=""></span>
+    <span class="meta"><span class="nm">stat-cards-04</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--stat-cards-05.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/stat-cards-05.webp" alt=""></span>
+    <span class="meta"><span class="nm">stat-cards-05</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--stat-cards-06.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/stat-cards-06.webp" alt=""></span>
+    <span class="meta"><span class="nm">stat-cards-06</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--stat-cards-07.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/stat-cards-07.webp" alt=""></span>
+    <span class="meta"><span class="nm">stat-cards-07</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--stat-cards-08.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/stat-cards-08.webp" alt=""></span>
+    <span class="meta"><span class="nm">stat-cards-08</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--switch.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/switch.webp" alt=""></span>
+    <span class="meta"><span class="nm">switch</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--tabs.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/tabs.webp" alt=""></span>
+    <span class="meta"><span class="nm">tabs</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/bundui--toggle-group.html">
+    <span class="shot"><img loading="lazy" src="../shots/bundui/toggle-group.webp" alt=""></span>
+    <span class="meta"><span class="nm">toggle-group</span><span class="rg">registry:component</span></span></a></div>
+</div></section>
+<section><div class="wrap">
+  <h2>Every item</h2>
+  <p class="sub">Including what failed and why. The first line of the error is shown; the full text is in
+  <code>docs/build-errors-2026-09-16.json</code>.</p>
+  <table><thead><tr><th>item</th><th>verdict</th><th>base</th><th>tokens</th><th>reason</th></tr></thead><tbody>
+  <tr>
+    <td><a href="../i/bundui--accordion-collapsible.html">accordion-collapsible</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--accordion-default.html">accordion-default</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--accordion-with-plus-icon.html">accordion-with-plus-icon</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--alert-danger.html">alert-danger</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--alert-default.html">alert-default</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--alert-success.html">alert-success</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--alert-warning.html">alert-warning</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--alert-with-action-button.html">alert-with-action-button</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--alert-with-dismiss.html">alert-with-dismiss</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--alert-with-icon.html">alert-with-icon</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--alert-with-title.html">alert-with-title</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--avatar-avatar-group.html">avatar-avatar-group</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--avatar-default.html">avatar-default</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--avatar-fallback-only.html">avatar-fallback-only</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--avatar-sizes.html">avatar-sizes</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--avatar-with-status-indicator.html">avatar-with-status-indicator</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/3/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--badge-default.html">badge-default</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--badge-destructive.html">badge-destructive</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--badge-indicator.html">badge-indicator</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--badge-outline.html">badge-outline</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--badge-secondary.html">badge-secondary</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--badge-with-dismiss.html">badge-with-dismiss</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--badge-with-icon.html">badge-with-icon</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--banners-01.html">banners-01</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/3/2 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--banners-02.html">banners-02</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/4/4 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--banners-03.html">banners-03</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/6/0 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-default.html">button-default</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-destructive.html">button-destructive</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-disabled.html">button-disabled</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-ghost.html">button-ghost</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-icon-sizes.html">button-icon-sizes</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-link.html">button-link</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-loading.html">button-loading</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-loading-with-icon.html">button-loading-with-icon</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-only-icon.html">button-only-icon</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-outline.html">button-outline</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-secondary.html">button-secondary</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-sizes.html">button-sizes</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--button-with-icon.html">button-with-icon</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--calendar.html">calendar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--card-colored.html">card-colored</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/8/0 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--card-default.html">card-default</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--card-with-action.html">card-with-action</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--card-with-footer.html">card-with-footer</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--card-with-header.html">card-with-header</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--card-with-header-description.html">card-with-header-description</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--card-with-header-icon.html">card-with-header-icon</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--category-previews-01.html">category-previews-01</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--category-previews-02.html">category-previews-02</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--checkbox.html">checkbox</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--collapsible.html">collapsible</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--cookie-consent-01.html">cookie-consent-01</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--cookie-consent-02.html">cookie-consent-02</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/3/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--cookie-consent-03.html">cookie-consent-03</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--cta-sections-01.html">cta-sections-01</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--cta-sections-02.html">cta-sections-02</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--hero-sections-01.html">hero-sections-01</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--hero-sections-02.html">hero-sections-02</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--hero-sections-04.html">hero-sections-04</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--hero-sections-05.html">hero-sections-05</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">12/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--pagination.html">pagination</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--popover.html">popover</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--product-cards-01.html">product-cards-01</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--product-cards-02.html">product-cards-02</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--product-cards-03.html">product-cards-03</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--product-cards-04.html">product-cards-04</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/4/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--product-details.html">product-details</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">16/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--product-list-01.html">product-list-01</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--product-list-02.html">product-list-02</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--product-list-03.html">product-list-03</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--progress.html">progress</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--radio-group.html">radio-group</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--skeleton.html">skeleton</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--slider.html">slider</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--stat-cards-03.html">stat-cards-03</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--stat-cards-04.html">stat-cards-04</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/5/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--stat-cards-05.html">stat-cards-05</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/12/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--stat-cards-06.html">stat-cards-06</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--stat-cards-07.html">stat-cards-07</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--stat-cards-08.html">stat-cards-08</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/8/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--switch.html">switch</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--tabs.html">tabs</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/bundui--toggle-group.html">toggle-group</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>product-quickviews-01
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">15/6/3</td>
+    <td></td></tr>
+<tr>
+    <td>product-quickviews-02
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">15/6/3</td>
+    <td></td></tr>
+<tr>
+    <td>sidebar-layouts
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>tooltip
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>alert-dialog
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/alert-dialog.tsx</td></tr>
+<tr>
+    <td>animated-beam
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>animated-gradient-border
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>animated-gradient-text
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>animated-tab
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>animated-text
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>blog-sections-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>blog-sections-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>breadcrumb-default
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/breadcrumb-default.tsx</td></tr>
+<tr>
+    <td>breadcrumb-with-dropdown
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/breadcrumb-with-dropdown.tsx</td></tr>
+<tr>
+    <td>breadcrumb-with-icon
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/breadcrumb-with-icon.tsx</td></tr>
+<tr>
+    <td>carousel-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/carousel-01.tsx</td></tr>
+<tr>
+    <td>carousel-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/carousel-02.tsx</td></tr>
+<tr>
+    <td>carousel-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/carousel-03.tsx</td></tr>
+<tr>
+    <td>category-filters
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/20/0</td>
+    <td>src/components/category-filters.tsx</td></tr>
+<tr>
+    <td>chart
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td>src/components/chart.tsx</td></tr>
+<tr>
+    <td>checkout-forms-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>checkout-forms-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>circle-path
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>combobox
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/combobox.tsx</td></tr>
+<tr>
+    <td>command
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/command.tsx</td></tr>
+<tr>
+    <td>contact-sections
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>context-menu
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/context-menu.tsx</td></tr>
+<tr>
+    <td>countdown
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>counter-animation
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>cta-sections-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>cta-sections-04
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>customer-reviews
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>data-table-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/data-table-01.tsx</td></tr>
+<tr>
+    <td>data-table-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td>src/components/data-table-02.tsx</td></tr>
+<tr>
+    <td>data-table-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">20/0/0</td>
+    <td>src/components/data-table-03.tsx</td></tr>
+<tr>
+    <td>date-picker
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>dialog
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>divider-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>divider-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>divider-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>drawer
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>dropdown-menu
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>feature-sections
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>fireworks
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>flip-card
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>floating-button
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>floating-paths
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>fluid-particles
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>footers
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>form-layouts-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>form-layouts-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>hero-sections-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td>src/components/hero-sections-03.tsx</td></tr>
+<tr>
+    <td>hover-card
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>image-comparison
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>image-reveal
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>input
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>input-otp
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>integrations
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>interactive-image-slider
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>logo-clouds-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>logo-clouds-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>magnetic-hover-effect-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>magnetic-hover-effect-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>marquee-effect
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>menubar
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>meteor-shower-animation
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>modal-dialogs-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>modal-dialogs-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>modal-dialogs-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>mouse-trail
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>navbars-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>navbars-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">13/0/0</td>
+    <td>src/components/navbars-02.tsx</td></tr>
+<tr>
+    <td>navbars-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">9/0/0</td>
+    <td>src/components/navbars-03.tsx</td></tr>
+<tr>
+    <td>navbars-04
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/3/0</td>
+    <td>src/components/navbars-04.tsx</td></tr>
+<tr>
+    <td>navigation-menu
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>newsletter-sections
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>order-summaries-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>order-summaries-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>page-layouts-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>parallax-cards
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>pricing-sections-01
+         <span class="tag t-OWN">curated</span></td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>pricing-sections-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>pricing-sections-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>product-cards-05
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>product-cards-06
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>product-cards-07
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>promo-sections-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>promo-sections-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>promotional-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>promotional-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>property-cards-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>property-cards-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>property-cards-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>property-cards-04
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>property-detail
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>property-filters
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>property-list-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>property-list-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>ripple-effect-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>ripple-effect-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>ripple-effect-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>scroll-progress-bar-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>scroll-progress-bar-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>select-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/select-01.tsx</td></tr>
+<tr>
+    <td>select-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/select-02.tsx</td></tr>
+<tr>
+    <td>select-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/3/0</td>
+    <td>src/components/select-03.tsx</td></tr>
+<tr>
+    <td>select-04
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/select-04.tsx</td></tr>
+<tr>
+    <td>select-05
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td>src/components/select-05.tsx</td></tr>
+<tr>
+    <td>sheet
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/sheet.tsx</td></tr>
+<tr>
+    <td>sidebar
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/sidebar.tsx</td></tr>
+<tr>
+    <td>sign-in-forms-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>sign-in-forms-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>sign-in-forms-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>sliding-number
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>snowfall-animation
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>stars
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>stat-cards-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/1/0</td>
+    <td>src/components/stat-cards-01.tsx</td></tr>
+<tr>
+    <td>stat-cards-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td>src/components/stat-cards-02.tsx</td></tr>
+<tr>
+    <td>stats-section-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>stats-section-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>store-navigations
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>tables
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/25/0 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td>src/components/tables.tsx</td></tr>
+<tr>
+    <td>team-sections-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>team-sections-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>testimonials-01
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>testimonials-02
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>testimonials-03
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>text-gradient-scroll
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>text-morph-animation
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>tilt-effect
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>- Checking registry.</td></tr>
+<tr>
+    <td>page-layouts-02
+        </td>
+    <td><span class="tag t-UNATTRIBUTED">UNATTRIBUTED</span></td>
+    <td><code>none</code></td>
+    <td class="num">12/0/0</td>
+    <td>src/components/page-layouts/components/nav-main-horizontal.tsx</td></tr>
+<tr>
+    <td>page-layouts-03
+        </td>
+    <td><span class="tag t-UNATTRIBUTED">UNATTRIBUTED</span></td>
+    <td><code>none</code></td>
+    <td class="num">16/0/0</td>
+    <td>src/components/page-layouts/components/nav-main-horizontal.tsx</td></tr>
+<tr>
+    <td>shopping-carts-01
+        </td>
+    <td><span class="tag t-UNATTRIBUTED">UNATTRIBUTED</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/3/0</td>
+    <td>src/components/shopping-carts/cart-item.tsx</td></tr>
+<tr>
+    <td>shopping-carts-02
+        </td>
+    <td><span class="tag t-UNATTRIBUTED">UNATTRIBUTED</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/3/0</td>
+    <td>src/components/shopping-carts/cart-item.tsx</td></tr>
+  </tbody></table>
+  <p class="sub">The tokens column is semantic / palette / hex occurrences in the installed source.
+  A high palette or hex count against few semantic tokens means the item resists a client palette.</p>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

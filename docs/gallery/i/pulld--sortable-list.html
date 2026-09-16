@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/sortable-list</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Sortable List</h1>
+  <p class="lede">Drag-to-reorder list: grab a row's grip handle and drop it in a new place — and do the same thing from the keyboard, which is the half that is normally missing. Reach for it whenever the order itself is the data: reordering tasks or a to-do list, ranking priorities, choices or search results, arranging table columns, form fields or a form builder's questions, dashboard widgets, nav and sidebar links, playlist tracks, an image or gallery order, quiz question order, steps in a workflow, checklist or recipe, saved filters and views, a queue of jobs, and the cards inside one kanban column. Common asks it answers: &quot;sortable list react&quot;, &quot;drag and drop list react&quot;, &quot;reorderable list&quot;, &quot;drag to reorder&quot;, &quot;drag handle list&quot;, &quot;reorder items react&quot;, &quot;draggable list order&quot;, &quot;move item up and down&quot;, &quot;shadcn drag and drop&quot;, &quot;shadcn sortable&quot;, &quot;sortable list without a library&quot;, &quot;drag and drop with no dependencies react&quot;, &quot;dnd-kit alternative&quot;, &quot;@dnd-kit/sortable simpler&quot;, &quot;react-beautiful-dnd replacement&quot;, &quot;react-beautiful-dnd is deprecated what now&quot;, &quot;react-sortable-hoc alternative&quot;, &quot;SortableJS react&quot;, &quot;framer-motion Reorder alternative&quot;, &quot;accessible drag and drop react&quot;, &quot;keyboard accessible reorder list&quot;, &quot;drag and drop is not keyboard accessible&quot;, &quot;screen reader drag and drop announcements&quot;, &quot;aria-live drag and drop&quot;, &quot;roving tabindex list&quot;, &quot;html5 drag and drop does not work on touch&quot;, &quot;drag to reorder on mobile&quot;, &quot;reorder list with different row heights&quot;, &quot;next.js drag and drop list&quot;, &quot;並び替え ドラッグ react&quot;. Official shadcn/ui ships nothing that reorders, and it is not close: across all sixty-three of its registry entries (sixty-two fetchable; questionnaire is listed but 404s), sortable, draggable, dnd, reorder, dragstart, onDragStart and pointerdown are every one of them a zero hit — and so are aria-live and roving, which is the other half of the problem. So this gets hand-rolled each time, and the keyboard is what gets dropped, because a mouse-only reorder looks finished. Here the whole interaction works without a mouse: Tab reaches the list once through a roving tabindex, arrow keys walk it, Space or Enter picks a row up, arrows move the picked-up row, Space or Enter drops it, Escape puts it back where it started, and each step is spoken through an assertive live region (&quot;Picked up Design review. Position 2 of 5.&quot;). Every announcement — the handle label, the instructions, and the grabbed, moved, dropped and cancelled sentences — is an overridable function, so it translates. Dragging is plain pointer events: no dnd-kit, no react-dnd, no HTML5 drag-and-drop. That is what makes touch work at all (the HTML5 API has never fired on a phone), and it is why rows of different heights land exactly where they look like they will — every row is measured once at the start of a drag and displaced with transforms rather than guessed at from a uniform row height. Controlled: pass items ({ id, label } plus whatever else you carry) and persist the array onReorder hands back; renderItem draws the row body beside the handle and is told the row's index and whether it is being dragged or grabbed, and itemClassName styles the row. Within pulld it is the ordering counterpart to upload-list and bulk-action-bar, which act on rows rather than arrange them, and to tree-view, which shows a hierarchy rather than a sequence. One file, and its only dependency is lucide-react for the grip icon.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/sortable-list.webp" alt="sortable-list rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/sortable-list</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/sortable-list.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>6 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

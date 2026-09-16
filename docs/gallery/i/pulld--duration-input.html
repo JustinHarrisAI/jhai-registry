@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/duration-input</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Duration Input</h1>
+  <p class="lede">A text field that takes a length of time written the way people actually write one — 90m, 1h30m, 1h 30m, 2d 4h 15m, 1:30, 1.5h, 500ms, &quot;90 minutes&quot; — reads it into milliseconds, and echoes the reading back in words underneath it (&quot;1 hour 30 minutes&quot;) so the interpretation is never left to be guessed at. Reach for it wherever a form asks how long rather than when: a request timeout or deadline, a cache TTL or expiry, session and token lifetimes, a retry or backoff interval, a polling or refresh interval, an SLA target, a job or cron timeout, an auto-logout window, a rate-limit window, a task estimate, a video or audio length, a snooze or reminder delay. Common asks it answers: &quot;duration input&quot;, &quot;duration picker&quot;, &quot;time duration field&quot;, &quot;timeout input&quot;, &quot;TTL input&quot;, &quot;interval input&quot;, &quot;parse 1h30m&quot;, &quot;hh:mm:ss duration input&quot;, &quot;humanize duration&quot; — the field otherwise assembled from a number box beside a unit &lt;select&gt;, or from parse-duration / pretty-ms / ms / humanize-duration. Official shadcn/ui has no duration component of any kind: input is a bare text box you would still have to parse, input-otp is for codes, and calendar answers which day, not how long. It settles the two things hand-rolled duration parsers get wrong. First, m versus ms: the whole run of letters is read before anything is looked up, so 500ms can never come out as 500 minutes. Second, what 1:30 means: two colon fields are read as mm:ss and three as hh:mm:ss, the way stopwatches and media players write them, and blur rewrites the entry into its canonical short form so 1:30 visibly becomes 1m 30s — a clock time is the other component's job, so 9:30 here is nine and a half minutes of elapsed time and time-input is where you type half past nine. Months and years are refused by name instead of being given an invented length, which also settles the usual M/m argument — parsing is case-insensitive and M is minutes. Beyond parsing: minMs/maxMs mark the field aria-invalid with a polite live message naming the bound in words, a value that is unusable or out of range is withheld from onValueChange so nothing handed to the caller needs validating twice, text that does not parse stays on screen instead of being deleted out from under the reader, and giving the field a name posts the milliseconds through a hidden input so the server is never handed prose. parseDuration and formatDuration are exported as plain functions for the rest of the app to share. One file, themed with shadcn tokens, no dependencies beyond React.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/duration-input.webp" alt="duration-input rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/duration-input</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/duration-input.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>7 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

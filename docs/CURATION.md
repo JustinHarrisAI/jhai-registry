@@ -35,7 +35,7 @@ A ⚠︎ on a preview link means the host returns HTTP 200 for any path, so the 
 | **scroll reveal** | build in-house | @jhai/scroll-reveal — thin wrapper over Motion whileInView | pending Phase 3; today, hand-write it over the existing motion dependency | [preview](https://magicui.design/docs/components/text-reveal) |
 | **text reveal** | registry item | @magicui/text-reveal | `pnpm dlx shadcn@4.21.0 add @magicui/text-reveal` | [preview](https://magicui.design/docs/components/text-reveal) |
 | **hero with video** | registry item | @tailark-oss/dusk-hero-section-5-video | `pnpm dlx shadcn@4.21.0 add @tailark-oss/dusk-hero-section-5-video` | — |
-| **pricing table** | registry item | @bundui/pricing-sections-01 | `pnpm dlx shadcn@4.21.0 add @bundui/pricing-sections-01` | [preview](https://bundui.io) |
+| **pricing table** | registry item | @hirael/pricing-01 | `pnpm dlx shadcn@4.21.0 add @hirael/pricing-01` | [preview](https://justinharrisai.github.io/jhai-registry/gallery/i/hirael--pricing-01.html) |
 | **FAQ** | primitive | shadcn core accordion | `pnpm dlx shadcn@4.21.0 add @shadcn/accordion` | [preview](https://ui.shadcn.com/docs/components/accordion) |
 | **form inputs** | primitive | shadcn core input, select, textarea, form, label | `pnpm dlx shadcn@4.21.0 add @shadcn/input @shadcn/select @shadcn/textarea @shadcn/form @shadcn/label` | [preview](https://ui.shadcn.com/docs/components/input) |
 | **logo wall** | library | svgl.app — fetch SVGs directly from the keyless public API | none — GET https://api.svgl.app?search=<brand>, then fetch the returned route (and wordmark / dark variant if present) | [preview](https://svgl.app) |
@@ -179,9 +179,9 @@ Rejected:
 
 ### pricing table
 
-**registry item — @bundui/pricing-sections-01** · MIT (ASSET) · verified 2026-09-14
+**registry item — @hirael/pricing-01** · MIT (ASSET) · verified 2026-09-14
 
-GAP CLOSED 2026-09-14. The dogfood exposed this: every Tailark pricing block indexed was single-tier, so the three-tier table at the centre of a pricing brief had to be hand-written. 26 registries in the community index carry an explicitly multi-tier pricing item. bundui installed clean — 4 files, zero palette utilities, zero hex — and ships three pricing-sections variants so there is a fallback shape without leaving the namespace.
+Three tiers, a monthly/yearly toggle that swaps the price and the billing note, and a featured middle tier — the shape a service-site pricing page actually needs, and the shape the dogfood had to hand-write 116 lines to get. Verified on 2026-09-15 by installing it into a throwaway on the neutral palette, building it, and rendering it in a browser: 16 semantic tokens, zero palette utilities, zero hex. @hirael came out of the same run at 223 of 239 usable, the highest rate of any wired registry.
 
 *Preview caveat: oss.tailark.com has no per-item preview pages — its own homepage links 404 — and tailark.com returns HTTP 200 for every path including bogus ones, so any link there proves nothing. Preview a Tailark block by installing it, or browse https://oss.tailark.com/r/registry.json for item names.*
 
@@ -189,6 +189,7 @@ GAP CLOSED 2026-09-14. The dogfood exposed this: every Tailark pricing block ind
 
 Rejected:
 
+- **@bundui/pricing-sections-01** — Build-verified 2026-09-15 and it does not install. The published item's registryDependencies point at http://localhost:3000/r/marquee-effect.json — the author's own dev server, left in the registry. Every consumer gets 'connect ECONNREFUSED ::1:3000'. It is the same defect across 97 of @bundui's 126 failures, so this is the registry, not this item.
 - **@tailark-oss/veil-pricing-1 (the old pick)** — Kept for single-tier and enterprise shapes, where it is still good. Demoted because it is single-tier: the dogfood installed it against a three-tier brief and the block had to be discarded.
 - **@hirael/pricing-01..04** — Four variants, MIT, clean measurements. A close second and the right escalation if bundui's shapes do not fit. Loses only on bundui's sections being more obviously marketing-page furniture.
 - **@nusaiba/pricing-1..8** — Eight variants, the widest single set found. Loses on measurement: 65 semantic against 16 palette utilities, so it needs per-client edits the others do not.

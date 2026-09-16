@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/gauge</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Gauge</h1>
+  <p class="lede">A semicircular (half-circle) gauge or dial that shows one measurement inside a known range, drawn as an SVG arc that fills from the left and animates to its new position. Reach for it when the number is a *level being read*, not a task being finished: CPU, memory, load average or server utilisation on an infrastructure dashboard; disk, storage or bandwidth used against a plan; API rate-limit, quota or credit consumption; a health, uptime, performance, SEO or Lighthouse-style score; a speedometer or throughput readout; temperature, humidity, pressure or a sensor reading on an IoT panel; battery, signal or capacity level; a credit, risk, trust or fraud score; NPS and satisfaction; and KPI, quota or target attainment on a sales or revenue dashboard. Common asks it answers: &quot;gauge component&quot;, &quot;gauge chart react&quot;, &quot;semi circle gauge&quot;, &quot;half circle progress&quot;, &quot;speedometer component&quot;, &quot;dial component&quot;, &quot;meter component react&quot;, &quot;radial gauge&quot;, &quot;arc progress&quot;, &quot;score gauge&quot;, &quot;KPI gauge&quot;, &quot;utilization gauge&quot;, &quot;shadcn gauge&quot;, &quot;shadcn meter&quot;, &quot;shadcn speedometer&quot;, &quot;tailwind gauge component&quot;, &quot;react-gauge-chart alternative&quot;. Official shadcn/ui has no gauge, meter, dial or speedometer, and the two items that look adjacent are not substitutes: `progress` is a linear bar that means *how far along*, and `chart` is a Recharts wrapper — a charting library you install (recharts) and configure with data series, which can be bent into a radial bar but arrives as a chart rather than as a labelled single-value readout. The distinction is also the accessibility one, and it is the reason this is not a progress ring: a gauge exposes `role=&quot;meter&quot;` with `aria-valuemin`, `aria-valuemax` and `aria-valuenow`, which is what assistive technology reads as &quot;a measurement within a range&quot;, where `role=&quot;progressbar&quot;` announces a task advancing toward completion. Getting that backwards is the single most common mistake in hand-rolled dials, and it is invisible until someone uses a screen reader. Set `segments` to change the arc colour at thresholds — green under 60, amber under 85, red to 100 — passing shadcn/Tailwind colour classes so the zones follow light and dark mode; omit it for a single primary-coloured dial. `min`/`max` set the scale, `showValue` renders the number in the centre, `formatValue` formats it (percent, bytes, ms, currency), `label` adds a caption, and `children` replaces the centre entirely when you want a sparkline, a delta or an icon in there. One file, no charting library, no icon package — nothing beyond your `cn` util.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/gauge.webp" alt="gauge rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/gauge</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/gauge.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>9 / 2 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

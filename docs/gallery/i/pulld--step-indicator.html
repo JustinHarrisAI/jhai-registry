@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/step-indicator</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Step Indicator</h1>
+  <p class="lede">Horizontal stepper that shows where someone is in a fixed sequence — numbered circle markers joined by a connecting line, each drawn as complete (filled, with a check), current (ringed and highlighted) or upcoming (muted). Pass the steps and a current index and it derives every state; there is nothing to keep in sync by hand. Reach for it at the top of anything multi-step: a checkout or cart flow, a signup and onboarding wizard, account or workspace setup, a KYC or identity-verification flow, a document or tax filing, a multi-page form split across screens, an upload-then-review-then-publish pipeline, a survey or quiz, or an installer. Common asks it answers: &quot;stepper component&quot;, &quot;step indicator react&quot;, &quot;multi-step form progress&quot;, &quot;wizard steps ui&quot;, &quot;checkout progress bar with steps&quot;, &quot;onboarding progress indicator&quot;, &quot;shadcn stepper&quot;, &quot;progress steps 1 2 3&quot;, &quot;form wizard header&quot;. shadcn/ui has no stepper: its progress component is a single bar with no notion of discrete stages, labels or a current position, and while its questionnaire is a multi-step flow, that component owns the questions and answers and reports its place as a plain &quot;3 of 8&quot; counter rather than a rail of numbered markers — so the header that shows where someone is in a sequence you already control still gets rebuilt by hand out of divs and borders. It is also not a timeline: this one counts position through a sequence that is known in advance and still to be finished, while timeline is the record of what already happened and has no current step. Built as an ordered list, because the steps are an ordered list: the active one carries aria-current=&quot;step&quot;, every marker states its own status in screen-reader-only text (Completed / Current step / Not completed) rather than leaving the meaning to a colour and a tick, and the check icon is aria-hidden so it is not announced twice. Conveying stage by colour alone fails WCAG 1.4.1, which is why the status is always spelled out. Pass onStepClick and the steps already reached become real buttons with a focus-visible ring, while upcoming steps stay inert — a stepper that lets someone jump forward past validation is worse than one that is not clickable at all. Theme-aware through shadcn tokens with dark mode, and the only dependency is lucide-react for the check icon.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/step-indicator.webp" alt="step-indicator rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/step-indicator</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/step-indicator.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>14 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

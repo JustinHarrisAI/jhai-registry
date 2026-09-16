@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/inline-edit</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Inline Edit</h1>
+  <p class="lede">Click-to-edit text that stays where it is: a value shown as plain text with a pencil affordance that swaps to an input in the same spot when activated, commits on Enter or blur, and reverts on Escape — no dialog, drawer or separate edit form. Reach for it wherever one field is edited far more often than the rest of the record: renaming a project, board, list, folder, file or column header, a kanban or issue card title, a document or dashboard name, a cell in a table or data grid, a display name, bio or label in profile and settings, an environment or API key nickname, a saved view or filter name, a playlist or collection title. Common asks it answers: &quot;inline edit react&quot;, &quot;click to edit text&quot;, &quot;edit in place&quot;, &quot;editable text component&quot;, &quot;editable label&quot;, &quot;rename inline&quot;, &quot;inline rename react&quot;, &quot;double-click to rename&quot;, &quot;contenteditable alternative&quot;, &quot;react-contenteditable alternative&quot;, &quot;editable table cell react&quot;, &quot;inline edit input shadcn&quot;, &quot;shadcn editable text&quot;, &quot;notion-style inline editing&quot;, &quot;click to edit title&quot;. Official shadcn/ui has nothing in this area, and it is worth stating precisely: across all 63 of its components the words contentEditable, editable, dblclick, rename, select() and setSelectionRange do not appear once, and its input is a twenty-line bare &lt;input&gt; with no state of any kind. So what gets written inline is an Input plus a boolean, and the boolean is where the bugs are. The one nobody catches is focus. Enter and Escape unmount the input while it still holds focus, so focus falls to &lt;body&gt;, and the next Tab restarts at the top of the page — the user renames a card, presses Enter, presses Tab, and is somewhere in the site header. Here a keyboard exit hands focus back to the trigger it came from, while a blur exit deliberately does not, because focus has already gone where the user put it. The trigger is a real &lt;button&gt;, so it is in the tab order and opens on Enter or Space; a &lt;div onClick&gt; version, which is what gets hand-rolled, is invisible to the keyboard entirely. The input focuses and selects itself on entry so typing replaces the value rather than appending to it. onSave is called with the trimmed draft and only when it actually differs from the value — clicking in and back out fires nothing, which matters because in a real app that callback is a network request and a row in an audit log, once per stray click. Escape restores the original, and the draft is re-seeded from value on every entry, so reopening after a cancel does not show the abandoned text. An empty value renders muted placeholder text rather than a zero-width button nobody can find and click. Both halves are named for a screen reader — &quot;Edit {label}&quot; on the trigger and {label} on the input — because the visible text that named the field is exactly what disappears when it becomes an input. saveOnBlur (default true) is the switch between committing on blur and requiring an explicit Enter, which is the right choice when the save is expensive or destructive. What it deliberately is not: it is an &lt;input&gt;, so it is single line — reach for a textarea for a description — and onSave is fire-and-forget, with no pending or error state of its own, so wrap it if the save can fail. Within pulld it is distinct from copy-field, which is a read-only value beside a copy button, from floating-label-input and autosize-textarea, which are form fields that are always fields, and from slug-input, which transforms as you type. Controlled through value + onSave; disabled leaves the tab order; every colour is a shadcn token (input, accent, ring, muted-foreground) so it follows light and dark; one file, one lucide icon, no other dependency.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/inline-edit.webp" alt="inline-edit rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/inline-edit</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/inline-edit.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>7 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

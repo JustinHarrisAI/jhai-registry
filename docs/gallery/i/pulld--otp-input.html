@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/otp-input</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>OTP Input</h1>
+  <p class="lede">A one-time passcode field split into separate digit boxes — the &quot;enter the 6-digit code we sent you&quot; screen. Reach for it on any challenge step where a short numeric code is typed or pasted: two-factor and multi-factor sign-in (2FA/MFA), an authenticator app's TOTP code, an SMS or phone verification code, an email confirmation code, a magic-link fallback code, account recovery, a step-up check before a payment or a destructive settings change, device or TV pairing, and PIN entry. Common asks it answers: &quot;otp input&quot;, &quot;one time password input&quot;, &quot;verification code input&quot;, &quot;6 digit code input&quot;, &quot;enter code boxes&quot;, &quot;2fa code field&quot;, &quot;sms code input&quot;, &quot;confirmation code input&quot;, &quot;pin input react&quot;, &quot;segmented code input&quot;, &quot;react-otp-input alternative&quot;, &quot;input-otp alternative&quot;, &quot;otp input without dependencies&quot;, &quot;shadcn otp input&quot;. Official shadcn/ui covers the same screen with input-otp, and the difference is the dependency: that one is a wrapper around the third-party input-otp package (plus lucide-react for its separator), so installing it adds a runtime dependency and hands the caret and paste behaviour to a library. This is the same boxed UI written out in a single file with no dependencies at all — reach for it when the project is keeping its dependency list short, when a package has to be vendored or audited before it can be added, or when you want the behaviour in code you can read and change rather than configure. Digits only, by design: the value is stripped to digits and truncated to `length` (default 6) on every path in, so a controlled parent, a paste and a keystroke cannot disagree about what is in the field. Pasting a full code into any box distributes it across the rest and lands the caret on the last filled one, typing auto-advances, Backspace clears and steps back, and the arrow keys, Home and End move between boxes. The first box carries autocomplete=&quot;one-time-code&quot;, so iOS and Android offer the code from the incoming SMS, and every box is inputMode=&quot;numeric&quot; with pattern=&quot;[0-9]*&quot; for a numeric keypad on mobile. Every box is labelled &quot;Digit N of 6&quot; and the group carries a name of its own, so a screen reader user is told where they are instead of hearing six unlabelled text fields. Works controlled (`value` + `onChange`) or uncontrolled (`defaultValue`), fires `onComplete` once when the last box fills — on the fill only, not on every later edit — and forwards a ref to the first box so a page can focus it on mount or from a shortcut. Passing `name` mirrors the joined value into a hidden input, so it posts with a plain HTML form, a Next.js server action, or React Hook Form without a controller. Themed with shadcn tokens, so it follows dark mode.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/otp-input.webp" alt="otp-input rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/otp-input</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/otp-input.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>2 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

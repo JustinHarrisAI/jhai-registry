@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/read-more</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Read More</h1>
+  <p class="lede">Long text clamped to a few lines with a Show more / Show less toggle that appears only when the text is genuinely too long. Use it wherever text is usually short but occasionally is not: product and marketplace listing descriptions, comments, reviews and replies, user bios and profile blurbs, release notes and changelog entries, incident and error detail, log lines, AI answers and summaries, job posts, FAQ answers, and long cells in a card or table. Common asks it answers: &quot;read more button&quot;, &quot;show more / show less&quot;, &quot;expandable text&quot;, &quot;truncate text with a show more link&quot;, &quot;line clamp with toggle&quot;, &quot;collapsible paragraph&quot;, &quot;see more link&quot;, &quot;clamp description to 3 lines&quot;, &quot;react-show-more-text alternative&quot;, &quot;text truncation with expand&quot;. shadcn/ui ships nothing for this, and its collapsible is a different thing — a generic open/close container whose trigger is always there and which does no clamping — so the genuinely awkward part is left to you: deciding whether the toggle should exist at all. This measures the rendered text and renders the control only when the clamped box actually overflows, so a list of mostly-short entries does not sprout a pointless &quot;Show more&quot; under every one of them. It re-measures when the column resizes and the text rewraps, and again once web fonts have loaded, because a clamped box keeps its height while the line count underneath it changes; an element that is off screen in a closed tab or accordion measures zero, which it treats as &quot;unknown&quot; rather than &quot;it fits&quot;, so the toggle is not dropped while the text is out of view. The clamp is applied as inline style rather than Tailwind's line-clamp-N utility, because `lines` is a runtime value and a dynamic `line-clamp-${n}` class is invisible to Tailwind's scanner — it would work in dev and silently vanish from the production build. Accessibility is where the hand-rolled version usually goes wrong: the full text always stays in the DOM and is only clipped visually, so screen readers read all of it and find-in-page still reaches it, instead of the usual text.slice(0, 200) that destroys the content for everybody; the control is a real button carrying aria-expanded and aria-controls pointing at the text. Clipped is not hidden, so a link inside the invisible part is still in the tab order — focus landing there expands the block rather than letting the browser scroll the clamped box and shear the text mid-line. Collapsing pulls the block back into view when it has already scrolled off the top, so the reader is not dumped further down the page. Uncontrolled by default; pass expanded and onExpandedChange to drive it from an &quot;expand all&quot; control. Styled with shadcn tokens (ring, muted-foreground) so it follows light and dark themes, and ships with no dependencies beyond your own cn util.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/read-more.webp" alt="read-more rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/read-more</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/read-more.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>2 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

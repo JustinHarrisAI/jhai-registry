@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/rating</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Rating</h1>
+  <p class="lede">A star rating that works both ways: as an input that collects a score, and read-only as a display of one. Reach for it wherever a number between 0 and 5 is really a row of stars: the &quot;rate this&quot; step after a purchase, delivery or booking; a product, app-store or seller review form; a CSAT or satisfaction question at the end of a support ticket or chat; a post-call or post-session feedback prompt; a difficulty, quality or priority score on an internal form; and, in read-only mode, the average beside a listing, a product card, a search result, a testimonial or a review summary (an average like 3.7 fills 70% of the fourth star, so the display is not rounded to a whole one). Common asks it answers: &quot;star rating&quot;, &quot;rating component&quot;, &quot;rating input&quot;, &quot;react star rating&quot;, &quot;five star rating&quot;, &quot;half star rating&quot;, &quot;review stars&quot;, &quot;star rating readonly&quot;, &quot;average rating display&quot;, &quot;feedback rating component&quot;, &quot;shadcn rating&quot;, &quot;shadcn star rating&quot;, &quot;react-rating alternative&quot;, &quot;rate this product component&quot;, &quot;CSAT stars&quot;. Official shadcn/ui has no rating or star item of any kind — its slider is a range control with a thumb on a track, which is a different shape of answer — so the usual fallback is a row of buttons with no shared value semantics, and that is what makes it inaccessible. This one is a real slider: focusable with a focus-visible ring, arrow keys raise and lower the score in either axis, Home clears it to 0 and End maxes it out, and it exposes aria-valuemin/valuemax/valuenow plus a spoken aria-valuetext (&quot;3.5 out of 5 stars&quot;) so a screen reader announces the score rather than counting buttons; read-only mode drops the slider role and renders as a labelled image instead, which is the correct semantic for a number you cannot change, and the individual stars stay aria-hidden either way because the value is announced once, not five times. Set allowHalf to take half stars — click the left half of a star, or step by 0.5 from the keyboard. Works controlled or uncontrolled through a plain number value with onValueChange (a number, not a string, so there is nothing to parse), forwards a ref, and posts through a hidden input in native forms via `name`. `max` changes the number of stars for a 3- or 10-point scale, `size` sets the pixel size, and `disabled` keeps the slider semantics while refusing input. Theme-aware via shadcn tokens — filled stars use the primary color, so it follows light and dark mode — with lucide-react as its only dependency, for the star icon.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/rating.webp" alt="rating rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/rating</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/rating.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>4 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

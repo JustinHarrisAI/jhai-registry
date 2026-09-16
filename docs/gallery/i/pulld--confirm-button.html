@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/confirm-button</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Confirm Button</h1>
+  <p class="lede">Inline two-step confirmation on the button itself: the first click arms it — the label swaps to &quot;Confirm?&quot; and the button turns destructive — and only the second click calls onConfirm. It disarms itself after a timeout (3s by default) and on blur, so a stray double-click, a scroll away, or a Tab out can never fire the action. Reach for it wherever a modal would outweigh the action: a delete or remove button in a table row, a card, a list item or a toolbar; removing a member or collaborator; revoking an API key, token or session; disconnecting an integration; clearing a cache or a log; unsubscribing; resetting a filter or a setting; discarding a draft; leaving a channel. Common asks it answers: &quot;confirm before delete without a dialog&quot;, &quot;two-step delete button react&quot;, &quot;click twice to confirm&quot;, &quot;are you sure button shadcn&quot;, &quot;inline confirmation button&quot;, &quot;destructive button with confirmation&quot;, &quot;delete button in a table row&quot;, &quot;undo-less delete confirmation&quot;. Props: `onConfirm` (fired only on the confirming click), `confirmText` for the armed label, `timeout` in milliseconds, plus everything else a `&lt;button&gt;` takes. It is one real `&lt;button&gt;` element — Enter and Space confirm it, `disabled` is honoured, your `className` is merged through `cn`, and it defaults to `type=&quot;button&quot;` so an armed click inside a form cannot submit it by accident. The armed state is exposed as `data-armed` for styling and announced through a polite live region, so the change is never carried by colour and label alone. Theme-aware through the destructive tokens, no dependencies, and `&quot;use client&quot;` because it holds a state and a timer. What official shadcn/ui offers instead is alert-dialog: a modal that pulls in @radix-ui/react-alert-dialog, renders through a portal, traps focus and needs open state wired up — right for a page-level, consequential confirmation, heavy for a row-level one. Official button has a destructive variant but no confirmation behaviour at all. For an action severe enough that a second click is not enough — deleting a production project or an account — use type-to-confirm, which makes the user type the name first.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/confirm-button.webp" alt="confirm-button rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/confirm-button</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/confirm-button.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>9 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

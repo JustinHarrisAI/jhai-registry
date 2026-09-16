@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/tree-view</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Tree View</h1>
+  <p class="lede">The nested list you can open, close and walk with the arrow keys: a file explorer or file tree, a folder or directory tree, a category or taxonomy picker, an org chart, an API-schema browser, a docs sidebar with nested sections. Common asks it answers: &quot;tree view&quot;, &quot;tree component&quot;, &quot;file tree&quot;, &quot;folder tree&quot;, &quot;directory tree&quot;, &quot;file explorer sidebar&quot;, &quot;nested list with expand/collapse&quot;, &quot;collapsible tree&quot;, &quot;expandable folder list&quot;, &quot;VS Code-style explorer&quot;, &quot;category tree&quot;, &quot;org chart tree&quot;. shadcn/ui ships no tree of any kind — its collapsible is one open/closed section and its sidebar nests menus without the tree semantics — so this gets hand-rolled every time, and the part that gets dropped is always the keyboard. Pass a `data` array of `{ id, label, children?, icon? }`: a node with a `children` array is a parent (an empty array is an empty folder, which still opens), a node without one is a leaf. Open state and selection are each controlled (`expandedIds` / `selectedId` plus `onExpandedChange` / `onSelect`, which hands you the whole node) or uncontrolled (`defaultExpandedIds` / `defaultSelectedId`), so it drops into a router-driven sidebar or runs on its own. It is the real ARIA tree pattern, not a pile of nested collapsibles: role=tree / treeitem / group with aria-expanded, aria-selected and aria-level/posinset/setsize, and a roving tabindex so the whole tree is one Tab stop instead of one stop per row. Up/Down walk only the rows actually on screen, Right opens a parent and then steps into it, Left closes it or jumps out to the parent, Home/End hit the ends, Enter/Space select, and type-ahead jumps to the next row starting with what you typed (repeat a letter to cycle). Three details that are easy to get wrong are handled: closing a subtree that contains the focused row hands focus back to the row being closed instead of dropping it on &lt;body&gt;; the row is named by its own label via aria-labelledby, because a treeitem owns its child group and a name computed from contents would read the entire subtree as one row's name; and the disclosure arrow is a click target rather than a nested &lt;button&gt;, since a treeitem must not contain its own focusable elements. Renders folder/file icons by default (`showIcons={false}` for category or org trees), `indent` sets the per-level offset, and per-node `icon` overrides a single row. Styled with shadcn tokens (accent, muted-foreground, ring) so it follows light and dark themes; lucide-react is the only dependency, with no Radix and no state library. Distinct from command-palette, which is a flat searchable launcher: this is for structure you navigate rather than a name you already know. Distinct from json-viewer, which takes the parsed JSON value itself and renders its keys, types and entry counts: reach for that one to display a payload you did not author, and this one when you have your own hierarchy to express as `{ id, label, children }` nodes.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/tree-view.webp" alt="tree-view rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/tree-view</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/tree-view.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>7 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/diff-view</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Diff View</h1>
+  <p class="lede">A line-by-line diff of two strings — the before/after view a screen needs when it has to show what changed: a config or settings change, a record edited in an admin panel, a document revision, a webhook payload against the last one, an audit-log entry, a restored backup next to what is live, or the edit an AI agent is proposing before the user accepts it. Pass before and after and it renders a git-style diff, unified by default or side by side with view=&quot;split&quot;. Unchanged lines collapse into a counted gap, so a 400-line file with a three-line change shows three lines and a summary instead of 400; context sets how many surrounding lines survive and context={Infinity} shows the whole text. Both line-number gutters are select-none, so selecting the diff copies the code and not a column of numbers. CRLF and LF are folded together, because a file that changed only its line endings would otherwise report every single line as rewritten. It is meaning-first rather than colour-first: every changed row carries a + or - sign and a screen-reader-only &quot;Added line:&quot; / &quot;Removed line:&quot; prefix, so the diff still reads for someone who cannot tell the red and green backgrounds apart — conveying the change by colour alone, which fails WCAG 1.4.1, is the single most common defect in a hand-rolled diff. The table also gets an sr-only caption stating how many lines were added and removed. The diff is a longest-common-subsequence over lines with the shared prefix and suffix trimmed off first, which keeps a large document with a small edit fast (a 4,000-line file with one changed line diffs in well under a millisecond) and makes an appended line read as appended instead of shifting everything by one. Pathologically large inputs degrade to &quot;this block was replaced&quot; rather than allocating a table of hundreds of megabytes during a render. No dependencies, no diff library and no hooks, so it renders inside a React server component without a &quot;use client&quot; of its own and ships no client JavaScript — which is the common case, because the text being compared has usually just been fetched on the server. Official shadcn/ui has no diff component of any kind: table is an unstyled table and chart is a Recharts wrapper, and neither computes or displays a change.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/diff-view.webp" alt="diff-view rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/diff-view</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/diff-view.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>11 / 3 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

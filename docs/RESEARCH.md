@@ -763,6 +763,168 @@ State this plainly rather than discovering it mid-build:
 
 ---
 
+## H. Run-2 build verification — what the catalogue actually contains [NEW 2026-09-15]
+
+Every wired registry was installed, compiled and **mounted in a real browser**. This section
+replaces the run-1 numbers entirely; those were a harness artefact and should not be cited.
+
+### H.1 The headline
+
+**3,254 of 4,452 items are usable** — installed clean, typechecked, built, and
+rendered something visible on the shadcn default neutral palette. That is 73%.
+
+Run 1 reported 354 of 1,287. The catalogue did not change; the harness did. Seven defects were
+found and fixed, and each one had been reporting healthy components as broken:
+
+| Defect | What it cost |
+|---|---|
+| Ordinary peer packages not pre-installed | `@magicui` scored 0 of 250 on one undeclared `@radix-ui/react-accordion` |
+| `@tanstack/react-table` installed at v9 | v9 renamed `getCoreRowModel`; 71 false failures in `@8bitcn` alone |
+| Type errors isolated by deleting sources | 262 run-1 failures named `@/components`, 308 named a relative path — all collateral |
+| Ownership resolved by bare basename | every `@kibo-ui` item ships an `index.tsx`; twelve items were credited with twelve files and the registry collapsed into one shared blob |
+| Alias-prefixed targets unhandled | `@tailark-oss` writes `@components/header.tsx`; all 259 items resolved to paths that do not exist |
+| Ownership diffed by file size | 190 `@tailark-oss` items re-publish an identical shared file and were recorded as "wrote nothing" |
+| Registry demo pages left in place | one `src/app/page.tsx` importing an uninstalled component failed the whole build and blamed nobody |
+
+### H.2 Build rate by registry
+
+Usable = installed, compiled, and rendered visibly. "Needs props" built cleanly and crashed only
+on the harness's invented props — almost certainly fine with real content, but not proven here,
+so it is not counted. "No mount" is hooks, CSS, themes and utilities: real catalogue entries with
+nothing for a screenshot to show.
+
+| Registry | Licence | Primitive base | Items | Usable | Rate | Needs props | Failed | No mount |
+|---|---|---|---:|---:|---:|---:|---:|---:|
+| `@hirael` | ASSET | radix | 239 | **223** | 93% | 5 | 3 | 3 |
+| `@magicui` | ASSET | radix | 250 | **232** | 93% | 6 | 8 | 2 |
+| `@cnippet` | ASSET | base-ui | 1130 | **968** | 86% | 6 | 134 | 14 |
+| `@shadcnui-blocks` | ASSET | radix | 541 | **447** | 83% | 0 | 83 | 0 |
+| `@ns-ui` | ASSET | none | 542 | **431** | 80% | 105 | 1 | 0 |
+| `@pulld` | POINTER | none | 87 | **69** | 79% | 12 | 0 | 0 |
+| `@8bitcn` | POINTER | radix | 121 | **94** | 78% | 13 | 0 | 2 |
+| `@tailark-oss` | ASSET | base-ui | 259 | **192** | 74% | 0 | 56 | 11 |
+| `@kibo-ui` | POINTER | radix | 41 | **30** | 73% | 2 | 7 | 1 |
+| `@flx` | POINTER | base-ui | 450 | **295** | 66% | 1 | 151 | 2 |
+| `@jhai` | OWN | none | 34 | **22** | 65% | 9 | 0 | 2 |
+| `@fancy` | ASSET | none | 158 | **88** | 56% | 6 | 49 | 14 |
+| `@blocks-so` | ASSET | none | 80 | **39** | 49% | 0 | 41 | 0 |
+| `@bundui` | ASSET | radix | 217 | **83** | 38% | 2 | 130 | 0 |
+| `@ilinxa` | ASSET | radix | 184 | **26** | 14% | 29 | 3 | 117 |
+| `@nusaiba` | POINTER | base-ui | 119 | **15** | 13% | 0 | 101 | 3 |
+
+`@vllnt-ui` is wired and was not run: every request to `ui.vllnt.com` returns **HTTP 403**,
+including the site root, with and without a browser User-Agent. It answered when it was wired on
+2026-09-14. Recorded under `$notRun` in `BUILD-STATUS.json`.
+
+### H.3 The Base UI question, answered with measurement
+
+**A project can mix Base UI and Radix. The packages do not conflict; the files do.**
+
+Of 4,452 items, only **165 import a primitive base directly at all** — 92 Radix, 73 Base UI.
+The other 4,287 import neither: they compose the project's own `components/ui/*` files, or plain
+markup. Not a single item imports both.
+
+Every scaffold in this run carried **both** `@radix-ui/*` and `@base-ui/react` installed side by
+side. Nothing conflicted at the package, context, portal or focus level, and `@tailark-oss` —
+unrunnable in run 1 and assumed Base-UI-blocked — came out at **192 of 259 usable**. Its real
+defect is unrelated: 39 items ship SVG components typed `SVGProps` with no type argument, which
+is a `TS2314` the author can fix in an afternoon.
+
+**What actually breaks is the shared `ui/` file.** 1,022 of the 4,452 items write into
+`components/ui/*`: `@ns-ui` 542, `@8bitcn` 121, `@pulld` 87, `@magicui` 78, `@tailark-oss` 59,
+`@cnippet` 57. When one of those files imports a different base than the rest of the project,
+`shadcn add` replaces the project's primitive and reports success. That is the failure mode, and
+it is detectable rather than preventable, so `scripts/check-ui-clobber.mjs` detects it: run it
+after installing, and it names the odd file and exits 1.
+
+**Is the base per-site or per-component?** Per-site, and shadcn now treats it that way: since
+July 2026 `shadcn init` defaults to **Base UI**, with Radix one flag away (`-b radix`). Radix is
+not deprecated and shadcn ships blocks for both, but the default moved, and the JHAI factory
+should take the base as an explicit per-site decision at init rather than inheriting whatever a
+registry item drags in.
+
+### H.4 Rebrandability
+
+Every registry that rendered was sampled with the semantic tokens overridden to deliberately
+absurd values. **All 16 came back `RETOKENS`** — the sampled components move when the palette
+moves. This is the property the whole system exists for and it is now measured per registry
+rather than assumed.
+
+Per item, `BUILD-STATUS.json` carries semantic / palette / hex counts and a `retokenRisk` flag.
+An item marked `HIGH-RETOKEN` still installs; it just costs edits on every client.
+
+### H.5 A defect in `@jhai/theme-base` itself
+
+`r/theme-base.json` ships a **full semantic colour palette** in its `cssVars` block, including
+`--primary: oklch(0.51 0.033 184)` and a matching `--ring` — a teal that is recognisably JHAI's.
+C.6 says theme-base carries `--ui-*` structural tokens only and no colour. That is not what the
+built item contains, and a client project installing `@jhai/theme-base` inherits JHAI's hue.
+
+Not changed in this pass: removing the colour block is a breaking change for anything already
+consuming v2.0.0, and which way it should go — a colourless base, or a base that ships a neutral
+default palette — is a decision, not a fix. The clean split is a separate
+`@jhai/theme-default-palette` item that a project opts into.
+
+---
+
+## I. The open-source library sweep [NEW 2026-09-15]
+
+Every previous pass searched shadcn registries only, which is a frame the original brief set and
+nobody questioned. A registry item is source I own and can retoken. A **library** is a dependency
+I configure, and for behaviour — charts, drag physics, form state, scheduling animation — the
+library is the right answer and copied source is not. The way a library becomes mine is being
+wrapped once into a `@jhai` item that paints from the project's own tokens.
+
+### I.1 Adopted — five, behaviour only
+
+| Dependency | Licence | What it buys that copied source cannot | Wrapper |
+|---|---|---|---|
+| `recharts` | MIT | SVG chart primitives, axis and scale maths, responsive measurement | `@jhai/chart` |
+| `motion` | MIT | Scheduling, interruption, `prefers-reduced-motion`, viewport triggers | `@jhai/reveal` |
+| `embla-carousel-react` | MIT | Drag physics, snap points, pointer capture, resize handling | `@jhai/carousel-rail` |
+| `react-hook-form` | MIT | Per-field validation state before a server round trip | `@jhai/contact-form` |
+| `zod` | MIT | One schema that validates identically on the client and in a server action | `@jhai/contact-form` |
+
+`motion` and `embla-carousel-react` were already in the tree transitively — several wired
+registries pull motion, and shadcn's own carousel depends on Embla. Making them explicit is the
+difference between a version JHAI pins and tests and one that moves when shadcn moves.
+
+**Proven, not asserted.** `scripts/gallery/prove-wrappers.mjs` installs all four wrappers from the
+live registry into a throwaway on the neutral palette, uses each the way a real page would,
+typechecks, builds, renders, and then re-renders with the tokens overridden. Result in
+`docs/WRAPPER-PROOF.json`: build and typecheck clean, every block renders, and **97.2% of painted
+nodes change under the palette swap** (174 of 179). Screenshots of both states are in
+`docs/gallery/proof/`. The chart bars move with the palette, which is the specific thing Recharts
+does not do on its own — it takes colour as literal string props, so `@jhai/chart` declares
+`--series-1…6` from the project's chart tokens and the chart references those instead of colours.
+
+### I.2 Rejected, and why
+
+| Rejected | Why |
+|---|---|
+| **Tremor** | Stable release two years old; the React 19 rewrite is in beta. Styles itself, which fights the token layer. |
+| **Nivo** | Not RSC-compatible; documented problems with the App Router. Themed by prop object, not CSS variables. |
+| **Chart.js, ECharts, Observable Plot** | Canvas or bespoke theming; no path to a CSS-variable rebrand. |
+| **Unovis** | The one real alternative — native CSS-variable theming, Apache 2.0, F5-backed. Loses on bundle (582 KB tree-shaken vs Recharts' ~120 KB) and on ecosystem: shadcn's own chart is Recharts, so Recharts composes with the rest of the catalogue. |
+| **GSAP** | Now free for commercial use, and still rejected: ~180–200 KB, and it does **not** honour `prefers-reduced-motion` without manual wiring. Its strength is long timeline sequencing, which service sites do not need. |
+| **Lenis** | 3 KB and it does respect reduced motion. Held back anyway: CSS `scroll-behavior` plus Motion's scroll triggers cover the need, and momentum scroll is a taste, not a capability. Reconsider when a brief actually asks for it. |
+| **Swiper, keen-slider** | Swiper duplicates Embla at a larger size. keen-slider has had no release in twelve months and is untested on React 19. |
+| **react-spring** | Overlaps Motion. Physics-first is the wrong default for entrance animation. |
+| **`@use-gesture/react`, `react-intersection-observer`, `@formkit/auto-animate`, `tw-animate-css`** | All real and all small, and all things Motion or a twenty-line hook already do. A dependency in every client site has to earn more than convenience. |
+| **`@tanstack/react-table`, `@tanstack/react-virtual`, `react-virtuoso`** | Genuinely the best headless table and virtualisation available, and genuinely not what a service site needs. Add per-site when a brief has a real data table; do not put it in every site. |
+| **ag-grid, MUI X Data Grid** | Both ship their own design systems. `ag-grid` bundles 31 theme stylesheets; MUI X drags in Emotion and `@mui/material`. Disqualified on rebrandability. |
+| **formik** | Three releases in twelve months after a six-month gap. Not something to commit client sites to. |
+| **valibot, yup** | valibot is smaller than zod and less integrated; yup is older. Neither beats zod's ecosystem position enough to matter. |
+| **Mantine, HeroUI, Park UI** | Off-doctrine and not assessed. Full component sets replace shadcn rather than feed it, and everything here rests on shadcn semantics. |
+
+### I.3 What was not swept
+
+Headless primitives were assessed as an ecosystem question (H.3), not as adoption candidates:
+the project's primitive base arrives with `shadcn init`, not as a separate decision. Icons, dates
+and i18n were out of scope for this pass.
+
+---
+
 ## Sources
 
 All fetched 2026-09-12.

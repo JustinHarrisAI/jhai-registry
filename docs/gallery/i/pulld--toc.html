@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/toc</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Table of Contents</h1>
+  <p class="lede">A table of contents for the page the reader is on, with the section they are currently reading highlighted as they scroll. Use it for the &quot;On this page&quot; rail beside documentation and guides, API references, changelogs and release notes, long blog posts and tutorials, handbooks, legal and policy pages, and reports. Common asks it answers: &quot;table of contents component&quot;, &quot;toc sidebar&quot;, &quot;on this page nav&quot;, &quot;scrollspy&quot;, &quot;scroll spy in React&quot;, &quot;highlight the active heading while scrolling&quot;, &quot;docs right rail&quot;, &quot;anchor link navigation&quot;, &quot;in-page navigation&quot;, &quot;sticky table of contents&quot;, &quot;MDX toc&quot;, &quot;react-scrollspy alternative&quot;. shadcn/ui ships nothing for this, and its navigation-menu and sidebar are for moving between pages, not around one. You pass the headings in as items — the shape rehype-slug, MDX and Contentlayer pipelines already hand you — so the list is rendered on the server and the links work before, and without, JavaScript; only the highlight needs the client. The awkward part is deciding which heading counts as current, and this fixes the three ways a hand-rolled one gets it wrong. The last section is normally shorter than the viewport, so its heading never reaches the activation line and the final entry can never light up — reaching the bottom of the scrollable area selects the last heading, because there is nothing further to read. A section stays current while it is being read rather than only while its heading is on screen, which is where an IntersectionObserver checking is-it-visible goes blank on any section taller than the window. And clicking an entry starts a scroll lasting hundreds of milliseconds, during which every heading it travels past would light up in turn, leaving the entry you clicked as the one thing not highlighted; the list holds your choice until the scroll settles, and hands control straight back if you grab the page mid-flight. offset clears a sticky site header, both for where a click lands and for where the current section begins, since the browser's own fragment jump puts the heading underneath it. It re-measures on resize and once web fonts have loaded, follows a nested scroller when the app shell scrolls an inner element instead of the window, and honours prefers-reduced-motion. The active entry is marked with aria-current=&quot;location&quot; rather than colour alone, so it is announced and not merely seen; because clicking has to preventDefault to apply the offset, focus is moved to the heading the way the browser would have, so a keyboard reader lands in the section instead of carrying on down the contents. Modifier and middle clicks are left alone, so opening a section in a new tab still works.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/toc.webp" alt="toc rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/toc</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/toc.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>4 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

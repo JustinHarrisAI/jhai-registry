@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/autosize-textarea</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Autosize Textarea</h1>
+  <p class="lede">A textarea that grows as you type and stops at a maximum height, then scrolls. Reach for it wherever a fixed-height box is the wrong shape: a chat, message or AI prompt composer; a comment, reply or code-review box; a commit message or pull-request description; a bio, note, changelog, release note or feedback field; a support ticket or contact form; a task or issue description; and any &quot;tell us more&quot; field where one line is too small and a tall empty box wastes the page. Common asks it answers: &quot;auto resize textarea&quot;, &quot;auto-growing textarea&quot;, &quot;expanding textarea react&quot;, &quot;textarea that grows with content&quot;, &quot;auto height textarea&quot;, &quot;textarea min rows max rows&quot;, &quot;chat input that expands&quot;, &quot;message composer textarea&quot;, &quot;prompt input that grows&quot;, &quot;ChatGPT-style input react&quot;, &quot;shadcn autosize textarea&quot;, &quot;shadcn textarea auto grow&quot;, &quot;react-textarea-autosize alternative&quot;, &quot;autosize textarea without a library&quot;, &quot;textarea scrollHeight resize&quot;, &quot;growing text input component&quot;. shadcn/ui's own textarea is a fixed-height styled element with a drag handle in the corner; this replaces that behaviour, and turns the handle off, because the height is now the field's own business. minRows sets the height it sits at when empty, maxRows caps the growth before it starts scrolling. The reason to install it rather than paste the four-line version is that the four-line version is subtly wrong in three ways that only show up on somebody else's screen. It measures a row from the element's real computed line-height — and falls back to the font size where that computes to &quot;normal&quot;, which is what it computes to unless you set it explicitly, and which parses to NaN and produces a field with no height at all. It adds the border back on a border-box element, because scrollHeight counts content and padding but not border, so the naive arithmetic is short by a pixel or two on every keystroke and the field creeps. And it watches the element rather than the window, so the height is recomputed when a collapsing sidebar, an opening drawer, a resizing split pane or a tab becoming visible rewraps the text — none of which fire a window resize — while deliberately ignoring height changes, since reacting to its own writes would feed the observer straight back into itself. It renders at roughly the right height before hydration through the rows attribute, so there is no first-paint jump in Next.js, and it is correct controlled or uncontrolled: a controlled field re-measures on the value it is given, an uncontrolled one on its own input. It keeps the native &lt;textarea&gt; and forwards a ref to it, so labels, placeholders, autofocus, maxLength, form libraries such as react-hook-form, and native validation all work unchanged. Styled with shadcn tokens (border-input, ring, muted-foreground) so it follows light and dark, and it ships zero dependencies beyond your own cn util — no icon package, one file.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/autosize-textarea.webp" alt="autosize-textarea rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/autosize-textarea</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/autosize-textarea.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>3 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/sparkline</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Sparkline</h1>
+  <p class="lede">An inline SVG trend line — a sparkline — that shows the shape of a series in about the space of a line of text. Use it when you need a chart small enough to live inside something else: a 7-day or 30-day trend next to a KPI in a stat card or dashboard tile, a per-row usage or activity graph in a table (requests, spend, errors, signups, page views), a mini price or metric history, a tiny “last N days” graph in a list item, or any micro / inline / thumbnail chart where axes, gridlines, a legend and a tooltip would just be noise. It renders as a plain &lt;svg&gt; with no hooks, no state and no effects, so it works unchanged inside a React Server Component, in a static export, and with JavaScript disabled — there is no “use client” in the file. Different from shadcn/ui’s official chart, which is a ~10KB wrapper around Recharts (it declares recharts@2.15.4 as a dependency and also pulls in card) meant for full charts with axes, tooltips and legends: this is one zero-dependency file that draws a single path and needs nothing but your cn util. Different from gauge and progress-ring, which draw one current value as an arc rather than a series over time. It handles the parts hand-written sparklines get wrong: null, undefined and NaN entries are treated as gaps that keep their slot on the x axis and break the line, instead of being dropped (which slides the rest of the series sideways) or drawn as zero (which invents a crash that is not in the data); a flat series is centred rather than dividing by zero and emitting a NaN path that silently renders nothing at all; the plot area is inset by half the stroke so the highest and lowest points are not sliced in half by the viewport edge; vector-effect=“non-scaling-stroke” keeps the line an even weight when the SVG is stretched across a wide table cell, and the last-value dot is drawn as a round line cap so it stays a circle instead of being squashed into an ellipse by that same stretch. Pass min and max to pin the scale so a whole column of sparklines is actually comparable — autoscale every row to its own extremes and they all end up looking like the same shape. It also ships an aria-label generated from the data (“12 points, up from 3 to 91, low 3, high 94”), where shadcn’s own chart.tsx sets no role=“img” or aria-label of its own; pass your own aria-label to override it, or aria-hidden when a surrounding stat card already announces the number. Props: data, width, height, min, max, strokeWidth, area, showLast, formatValue.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/sparkline.webp" alt="sparkline rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/sparkline</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/sparkline.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>1 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

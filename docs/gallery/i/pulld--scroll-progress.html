@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/scroll-progress</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Scroll Progress</h1>
+  <p class="lede">A bar that fills as the reader scrolls — the reading indicator across the top of an article, and the &quot;how much is left?&quot; cue on anything long. Use it on blog posts and long-form articles, documentation pages, guides and tutorials, changelogs and release notes, terms / privacy / policy pages, onboarding and multi-section landing pages, reports, and long forms or checkout flows where the reader wants to know how much further there is to go. Common asks it answers: &quot;reading progress bar&quot;, &quot;scroll progress bar react&quot;, &quot;scroll indicator component&quot;, &quot;article reading progress&quot;, &quot;page scroll percentage&quot;, &quot;Medium-style progress bar&quot;, &quot;progress bar at top of page on scroll&quot;, &quot;how far down the page has the user scrolled&quot;, &quot;scroll-linked progress indicator&quot;, &quot;blog reading indicator&quot;, &quot;useScrollProgress hook&quot;, &quot;track scroll position in React&quot;. Drop in `&lt;ScrollProgress className=&quot;fixed inset-x-0 top-0 z-50&quot; /&gt;` for the classic placement, or render it as an ordinary block under a sticky header. Pass `target={articleRef}` when progress should mean &quot;through this article&quot; rather than &quot;down this page&quot; — on a page that continues into related posts, a comment thread or a tall footer, a whole-page bar is still short of the end when the article has actually been read, and a tracked element fills exactly as the last line arrives. `indicatorClassName` styles the filled part; the track and fill use your `--muted` and `--primary` tokens, so both themes follow automatically with no hardcoded colours. It settles the details a hand-rolled version gets wrong. Measurement is throttled to one requestAnimationFrame per scroll burst and quantised before it reaches state, so a flick that moves the bar by less than a fifth of a pixel re-renders nothing. Content that grows after first paint — an image finishing decoding, a lazily loaded section, an accordion opening, a web font swapping in — is picked up through a ResizeObserver and `document.fonts.ready`, where a scroll-and-resize-only implementation keeps reporting the old page height. A tracked element inside an app shell that scrolls its own `&lt;main&gt;` instead of the window is measured against that scroller, not the viewport, which is the layout where a naive bar sits frozen. When the content already fits on screen the bar reads full rather than empty, because everything there is to read is visible — the usual choice of 0 leaves a permanently empty bar on every short page, which looks broken rather than finished. The first paint is server-safe: it renders an empty bar on the server and takes its real measurement in a layout effect before the browser paints, so there is no hydration mismatch and no visible jump on a page restored mid-scroll. Decorative by design — the scrollbar already tells assistive technology where the reader is, and a `role=&quot;progressbar&quot;` updating every frame of a scroll is announced as a stream of numbers over whatever is being read, so the element is `aria-hidden` instead of noisy. `useScrollProgress` is exported for indicators this component does not draw (a percentage in the header, a circular ring, chapter markers) so they share one number instead of a second implementation that disagrees at the edges. No dependencies beyond React. Official shadcn/ui has nothing scroll-aware: its progress is a Radix bar you drive with a value you already have, not one derived from the reader's position.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/scroll-progress.webp" alt="scroll-progress rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/scroll-progress</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/scroll-progress.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>2 / 1 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

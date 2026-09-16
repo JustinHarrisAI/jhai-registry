@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/search-input</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Search Input</h1>
+  <p class="lede">Search field with a leading magnifier icon and a trailing clear (✕) button that appears as soon as there is text, empties the field, and puts focus back so typing can continue. Use it above filterable lists and data tables, in sidebars and settings pages, over dropdown and combobox options, for docs and help search, for admin record lookup, and anywhere a &quot;/&quot; shortcut focuses a search box. Common asks it answers: &quot;search input&quot;, &quot;search bar&quot;, &quot;search box&quot;, &quot;filter input&quot;, &quot;clearable input&quot;, &quot;input with a clear button&quot;, &quot;search field with icon&quot;, &quot;type to filter a list&quot;, &quot;table search box&quot;, &quot;searchbar component&quot;. shadcn/ui has no search field: its input is a bare styled &lt;input&gt;, and its input-group is a layout kit of six parts (InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupInput, InputGroupTextarea) that pulls in button, input and textarea and hands you slots to hang your own icon and clear control in — you still write the clear button, the show-it-only-when-there-is-text rule, the refocus, and the event plumbing. This is that already assembled, in one import. The part that is easy to get wrong is clearing. Assigning to the input's value does not make React's onChange fire, so a hand-rolled clear button empties the box while the list behind it stays filtered on the old query. This writes through the native value setter and dispatches a bubbling input event, so onChange fires for controlled and uncontrolled usage alike and whatever filtering it drives actually updates. It also hides the WebKit search-cancel button so there is not a second ✕ beside the first, keeps the icon out of the accessibility tree and out of pointer events, gives the clear control a screen-reader label, and passes only one of value/defaultValue through so React never warns about a field switching between controlled and uncontrolled. The clear button is deliberately left out of the tab order, so Tab moves on to the next field instead of into a control that duplicates select-all-and-delete. Standard input props and a forwarded ref pass straight through, so a &quot;/&quot; hotkey can focus it. Theme-aware via shadcn tokens; depends only on lucide-react.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/search-input.webp" alt="search-input rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/search-input</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/search-input.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>7 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

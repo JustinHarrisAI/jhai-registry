@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/timeline</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Timeline</h1>
+  <p class="lede">A vertical timeline: a list of events drawn as dots on a connecting line, each with an optional timestamp, title, description and icon. Reach for it wherever the content itself is &quot;what happened, and in what order&quot;: an activity feed on a record, profile or dashboard; an audit, security or admin history log; a changelog or release-notes page; order, shipment and delivery tracking; a deploy, build or CI/CD run log; incident updates on a status page; a support ticket's history; approval and review trails; the event stream on an order, invoice or subscription; notification history; a product roadmap; and the experience or education list on a resume or &quot;about&quot; page. Common asks it answers: &quot;timeline component&quot;, &quot;vertical timeline&quot;, &quot;activity feed&quot;, &quot;activity timeline&quot;, &quot;history log component&quot;, &quot;audit log UI&quot;, &quot;changelog timeline&quot;, &quot;release notes timeline&quot;, &quot;order tracking timeline&quot;, &quot;shipment tracking UI&quot;, &quot;deploy history list&quot;, &quot;event stream component&quot;, &quot;status timeline&quot;, &quot;shadcn timeline&quot;, &quot;shadcn activity feed&quot;, &quot;react vertical timeline alternative&quot;, &quot;react-chrono alternative&quot;, &quot;MUI Timeline equivalent&quot;, &quot;antd Timeline equivalent&quot;, &quot;resume timeline&quot;. shadcn/ui ships no timeline: fetching the source of all 63 items in its registry and grepping them turns up no timeline, no &lt;time&gt; element and no connector line anywhere. The nearest things it has are marker — one annotation row of an icon beside muted text, with a variant that rules a line across it, the &quot;New messages&quot; divider in a chat — and item, a kit for laying out a single row; neither stacks events on a shared line nor carries a time. It is also not step-indicator, the other dots-on-a-line component here: a step indicator counts position through a sequence that is known in advance and still to be finished, while a timeline is the record of what already happened and has no current step. Pass an items array (title, optional time, description, icon and a colour accent). The timestamp renders as a semantic &lt;time&gt; element with a machine-readable dateTime, so it is legible to a reader and to a crawler; the connecting line and the decorative dots are aria-hidden, so a screen reader hears the events rather than the ornament; and each marker takes a per-item colour (muted, primary, success, warning, destructive), so status like succeeded, failed or pending can be flagged without reaching for a second component. Pass an icon to render an icon badge instead of a plain dot. It is a pure display component with no state, so it renders inside a server component with no &quot;use client&quot; and costs nothing on the client. Theme-aware via shadcn tokens with dark mode; no dependencies (bring your own icons).</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/timeline.webp" alt="timeline rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/timeline</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/timeline.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>11 / 2 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

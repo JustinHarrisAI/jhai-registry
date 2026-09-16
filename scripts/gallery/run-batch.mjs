@@ -180,8 +180,8 @@ function scaffold(dir, registries) {
    */
   rmSync(join(app, 'next.config.ts'), { force: true });
   writeFileSync(join(app, 'next.config.mjs'),
-    'const nextConfig = { typescript: { ignoreBuildErrors: true }, eslint: { ignoreDuringBuilds: true },\n' +
-    '  images: { unoptimized: true } };\nexport default nextConfig;\n');
+    'const nextConfig = { typescript: { ignoreBuildErrors: true }, images: { unoptimized: true } };\n'
+    + 'export default nextConfig;\n');
 
   // One install of the whole ordinary peer surface, plus a local shadcn so item installs do not
   // pay `pnpm dlx` resolution 250 times over.
@@ -598,7 +598,8 @@ function buildAttribute(app, routes, shared, ownerOf) {
       if (full.startsWith('src/app/i/')) continue;
       if (!ownerOf.has(full)) continue;
       badFiles.add(full);
-      for (const slug of ownerOf.get(full)) (shared.has(full) ? viaShared : direct).add(slug);
+      const sole = ownerOf.get(full).size === 1;
+      for (const slug of ownerOf.get(full)) (sole ? direct : viaShared).add(slug);
     }
     /*
      * A file that breaks the bundler and belongs to no route still has to go, or every later pass
@@ -699,6 +700,11 @@ async function main() {
   const slugReg = REGISTRY.replace('@', '') + (TAG ? `-${TAG}` : '');
   const dir = join(WORK, slugReg);
   const app = scaffold(dir, registries);
+  // Kept verbatim so an item that overwrites the app shell can be undone rather than allowed to
+  // fail the whole build on an import of something it did not install.
+  const appShell = new Map(['src/app/page.tsx', 'src/app/layout.tsx']
+    .filter((f) => existsSync(join(app, f)))
+    .map((f) => [f, readFileSync(join(app, f), 'utf8')]));
   const v = validateScaffold(app);
   if (!v.ok) {
     writeFileSync(join(OUT, `${slugReg}.json`), JSON.stringify({
@@ -747,6 +753,29 @@ async function main() {
     if ((i / INSTALL_BATCH) % 4 === 0) log(`installed ${Math.min(i + INSTALL_BATCH, live.length)}/${live.length}`);
   }
 
+  /*
+   * Registry items routinely ship a demo `src/app/page.tsx` that imports the whole showcase.
+   * @tailark-oss does, and the resulting unresolved import failed the ENTIRE build with one
+   * error that named no item this harness could blame — 192 items unattributed behind a demo
+   * page. The harness owns the app shell, so it takes it back after installing and records who
+   * tried to replace it, because shipping an app route is worth knowing about.
+   */
+  const shellOverwrites = [];
+  for (const [rel, original] of appShell) {
+    const cur = existsSync(join(app, rel)) ? readFileSync(join(app, rel), 'utf8') : null;
+    if (cur !== original) {
+      shellOverwrites.push(rel);
+      writeFileSync(join(app, rel), original);
+    }
+    for (const rec of Object.values(records)) {
+      if ((rec.files || []).includes(rel)) {
+        rec.files = rec.files.filter((f) => f !== rel);
+        rec.overwritesAppShell = true;
+      }
+    }
+  }
+  if (shellOverwrites.length) log(`restored app shell: ${shellOverwrites.join(', ')}`);
+
   // Everything landed. Now the ownership map is complete, so sharing can be computed from the
   // real import graph rather than from declarations alone.
   const ownerOf = new Map();
@@ -782,7 +811,14 @@ async function main() {
     for (const [slug, rec] of Object.entries(routes)) {
       const mine = [rec.route, ...(rec.files || [])].filter((f) => f && tc.byFile.has(f));
       if (!mine.length) continue;
-      const exclusive = mine.filter((f) => f === rec.route || !shared.has(f));
+      /*
+       * Blame follows DECLARATION, not import. @tailark-oss ships one SVG per item and its blocks
+       * import them, so every one of those SVGs counts as shared — and blaming by sharing left
+       * 221 items unattributed behind a type error that exactly one item published. A file with a
+       * single declaring owner is that owner's defect even when half the registry imports it;
+       * sharing still governs DELETION, because deleting it would break those importers.
+       */
+      const exclusive = mine.filter((f) => f === rec.route || (ownerOf.get(f)?.size ?? 0) === 1);
       const errs = mine.map((f) => `${f}\n  ${tc.byFile.get(f).join('\n  ')}`).join('\n').slice(0, 1500);
       if (exclusive.length) { rec.status = 'FAIL'; rec.stage = 'typecheck'; tsFail++; }
       else { rec.status = 'UNATTRIBUTED'; rec.stage = 'typecheck'; tsUnattr++; }
@@ -810,7 +846,7 @@ async function main() {
     buildOk: b.ok, typecheckOk: tc.ok, typeErrorFiles: tc.byFile.size,
     attributionPasses: b.passes, sharedFiles: shared.size, declaredShared: sharedAll.size,
     batchInstallErrors: batchNotes.length, deadlineHit: !!b.deadlineHit,
-    primitiveClobbers: clobbers.length, appDir: app,
+    primitiveClobbers: clobbers.length, appShellOverwrites: shellOverwrites.length, appDir: app,
   };
   writeFileSync(join(OUT, `${slugReg}.json`),
     JSON.stringify({ summary, sharedFiles: [...shared], clobbers, batchNotes, items: list }, null, 1));

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/stat-card</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Stat Card</h1>
+  <p class="lede">The single-number tile at the top of a dashboard: a label, one big value, and an optional percentage change with an up or down arrow — green when the number moved the right way, red when it did not. Use it wherever a screen opens with a row of headline figures: an analytics or metrics dashboard, an admin overview, a KPI or scorecard row, a billing and usage summary, a SaaS home screen, a revenue or traffic report. Common asks it answers: &quot;stat card&quot;, &quot;metric card&quot;, &quot;KPI card&quot;, &quot;metric tile&quot;, &quot;summary card&quot;, &quot;big number card&quot;, &quot;dashboard stat tile&quot;, &quot;stats card react&quot;, &quot;shadcn dashboard cards&quot;, &quot;tailwind stat card&quot;, &quot;number card with percentage change&quot;, &quot;card with trend indicator&quot;, &quot;percentage change badge&quot;, &quot;revenue card with trend arrow&quot;, &quot;analytics summary cards&quot;, &quot;stats row&quot;, &quot;show total users with growth&quot;, &quot;MRR / ARR card&quot;, &quot;active users card&quot;, &quot;conversion rate card&quot;, &quot;Next.js dashboard stats&quot;, &quot;Stripe/Vercel-style dashboard tiles&quot;. shadcn/ui ships card as an empty container with no notion of a metric, so the value typography, the delta colouring and the arrow are hand-rolled on every dashboard. Pass `label`, `value` and optionally `delta` (a number: positive renders the up arrow, negative the down arrow, and omitting it renders no delta at all) plus a `hint` line for the comparison period, e.g. &quot;vs. last month&quot;. `value` is a ReactNode, not a string, so a pre-formatted currency or an Intl.NumberFormat result drops straight in and the component never guesses at your locale or currency. The direction is not left to colour alone: the arrow is aria-hidden and an sr-only &quot;Up&quot;/&quot;Down&quot; is spoken before the number, so the tile still means something to a screen reader and to a red-green colour-blind reader, which a bare green percentage does not. Composes into a responsive grid to form the stats row, and pairs with gauge and progress-ring when the figure is a ratio rather than a total. Styled with shadcn tokens (card, muted-foreground) with an explicit dark-mode pair for the delta colours; lucide-react is the only dependency. One thing it deliberately does not decide for you: `delta` is read as &quot;up is good&quot;, so a positive number is always green. For a metric where rising is bad — churn, bounce rate, error rate, p95 latency, refunds, open incidents, cost per acquisition — pass the change negated (a 2-point rise in churn as `-2`) or wrap the card, rather than expecting it to know which way your metric should move. Distinct from feature-card, which sells a capability with an icon and copy: this one carries a live number.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/stat-card.webp" alt="stat-card rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/stat-card</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/stat-card.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>3 / 4 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

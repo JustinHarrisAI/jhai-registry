@@ -1,0 +1,63 @@
+{
+ "date": "2026-09-16",
+ "items": [
+  "@jhai/theme-base",
+  "@jhai/chart",
+  "@jhai/carousel-rail",
+  "@jhai/reveal",
+  "@jhai/contact-form"
+ ],
+ "steps": {
+  "install": {
+   "ok": true,
+   "tail": "sVars rather than inside the CSS file, because the CLI merges cssVars into your project's own :root, which is declared later in globals.css than the @import. A mapping inside the file would render correctly on a bare project and silently lose on a real shadcn one.\n\nWHY type IS registry:theme AND NOT registry:base — measured, shadcn CLI 4.21.0. A registry:base item's cssVars block is silently ignored: the files land, the CLI reports success, and not one token reaches globals.css. registry:theme applies them correctly. No error, no warning, visible only by diffing globals.css after an install.\n\n"
+  },
+  "typecheck": {
+   "ok": true
+  },
+  "build": {
+   "ok": true
+  },
+  "render": {
+   "ok": true,
+   "blocks": {
+    "chart": {
+     "w": 944,
+     "h": 296,
+     "text": 71,
+     "nodes": 130
+    },
+    "carousel": {
+     "w": 944,
+     "h": 124,
+     "text": 238,
+     "nodes": 30
+    },
+    "reveal": {
+     "w": 944,
+     "h": 88,
+     "text": 57,
+     "nodes": 3
+    },
+    "form": {
+     "w": 448,
+     "h": 288,
+     "text": 33,
+     "nodes": 11
+    }
+   },
+   "everyBlockRendered": true
+  },
+  "palette": {
+   "nodes": 179,
+   "changed": 174,
+   "ratio": 0.972,
+   "verdict": "RETOKENS",
+   "screenshots": [
+    "docs/gallery/proof/wrappers-neutral.webp",
+    "docs/gallery/proof/wrappers-swapped.webp"
+   ]
+  }
+ },
+ "verdict": "PROVEN"
+}

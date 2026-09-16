@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/currency-input</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Currency Input</h1>
+  <p class="lede">A money input that shows a grouped, currency-formatted amount ($1,234.50) when idle and the raw number while you're editing, so the cursor never fights the thousands separators or symbol. Use it in any form that takes an amount: a price or product cost field, an invoice/quote line item, a budget/limit/goal, a donation, tip, or payment amount, a salary or rate field, an expense entry, or a checkout total. Common asks it answers: &quot;currency input&quot;, &quot;money input&quot;, &quot;price field&quot;, &quot;formatted amount input&quot;, &quot;thousands separator input&quot;, &quot;dollar/euro input&quot;, &quot;react-currency-input alternative&quot;. shadcn/ui ships no currency or money field — you'd otherwise bolt masking onto its Input by hand; this packages it: value/onValueChange work in plain numbers (major units, e.g. 1234.5), not strings, so there's no parsing on your side, and it commits the rounded number on blur to the currency's own precision. The symbol, grouping, symbol placement, and decimal places come from Intl.NumberFormat via the `currency` (ISO 4217, default USD) and `locale` (default en-US) props, so $/€/¥ and 2-decimal vs 0-decimal (JPY) currencies all render correctly with no hardcoding. Typing follows that same locale, so comma-decimal locales (de-DE, fr-FR) accept &quot;1.234,50&quot; and &quot;1234,50&quot; rather than silently misreading them, and grouping characters or a pasted currency symbol are ignored; set allowNegative for refunds or adjustments. It stays controlled or uncontrolled like a native input, forwards a ref to the real &lt;input&gt; (so &lt;Label htmlFor&gt;, name, placeholder, and form libraries like react-hook-form all work), uses inputMode=&quot;decimal&quot; for a numeric mobile keypad, and is styled with shadcn tokens (border-input, ring, muted-foreground, tabular-nums) for automatic light/dark theming with no extra dependencies beyond your cn util. Distinct from number-input, which is a stepper for counts/quantities with +/− buttons; this one is for formatted money.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/currency-input.webp" alt="currency-input rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/currency-input</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/currency-input.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>3 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

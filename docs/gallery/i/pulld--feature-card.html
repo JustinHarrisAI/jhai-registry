@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/feature-card</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Feature Card</h1>
+  <p class="lede">An icon + heading + one line of copy, as the repeating tile in the features or benefits section of a landing or marketing page — a “why us” grid, “what’s included”, value props, product highlights, services, capabilities, or a perks row on a pricing page. Drop several into a responsive grid (grid-cols-2 / grid-cols-3) and that is the whole section; each card takes icon, title, description and optionally href. Set href and the entire card becomes the click target: it renders as an &lt;a&gt; rather than a &lt;div&gt;, with hover and a focus-visible ring, so keyboard users get one tab stop per card instead of hunting for a small link nested inside it. shadcn/ui ships no feature card. Its card is a generic container (~1.8KB of source, no dependencies) with no icon slot and no href — the icon square, the heading and the link are all yours to assemble. Its newer item is the closest thing in shape and does have an icon slot, but it is a ten-part compound kit (ItemGroup, Item, ItemMedia, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemHeader, ItemFooter, ItemSeparator) that also pulls in separator, and it is built for list rows rather than a marketing grid. Two concrete differences past the assembly work: official’s ItemTitle renders a &lt;div&gt;, so a features grid built from it contributes nothing to the document outline, whereas this renders a real heading you choose with headingLevel (h2/h3/h4, default h3) so screen-reader users can jump feature to feature; and official’s ItemMedia sets no aria-hidden, so a purely decorative icon can still be announced, whereas this marks the icon square aria-hidden and lets the title carry the meaning. Neither official component accepts an href, so “make the whole tile a link” is hand-wired in both. Zero dependencies — bring your own icon element (a lucide-react icon, an emoji, an &lt;img&gt;); it sits in a tinted primary/10 square, and everything else follows your shadcn tokens including dark mode.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/feature-card.webp" alt="feature-card rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/feature-card</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/feature-card.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>10 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

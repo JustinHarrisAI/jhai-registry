@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/loading-button</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Loading Button</h1>
+  <p class="lede">Submit button that shows a spinner, announces itself, and refuses to fire twice while an async action is in flight. Set loading={true} for the duration of the request and the button disables itself, so a second click cannot send the same request again; loadingText swaps the label for &quot;Saving…&quot; or &quot;Charging card…&quot; while it waits. It is the button for every action that has to go somewhere and come back: submit, save, publish, send, invite, apply, sign in, sign up, pay or check out, upload, export, retry, connect, delete in a confirmation dialog, and &quot;generate&quot; or &quot;run&quot; in an AI app. In practice the loading prop is wired straight to a state your data layer already has: isSubmitting from react-hook-form's formState, isPending from a TanStack Query useMutation or from React 19's useActionState, pending from useFormStatus inside a Next.js server action form, state !== &quot;idle&quot; from Remix or React Router's useNavigation, isMutating from SWR, isLoading from an RTK Query trigger — or a plain useState flag around an await fetch. Common asks it answers: &quot;react button with loading spinner&quot;, &quot;shadcn loading button&quot;, &quot;button loading state react&quot;, &quot;disable button while submitting&quot;, &quot;prevent double submit react&quot;, &quot;prevent duplicate form submission&quot;, &quot;async submit button&quot;, &quot;pending state button shadcn&quot;, &quot;spinner inside button tailwind&quot;, &quot;button spinner while awaiting fetch&quot;, &quot;form submit loading state&quot;, &quot;isPending button&quot;, &quot;useFormStatus pending button&quot;, &quot;useActionState loading button&quot;, &quot;react-hook-form isSubmitting button&quot;, &quot;tanstack query mutation loading button&quot;, &quot;next.js server action loading button&quot;, &quot;button aria-busy&quot;. Official shadcn/ui has no loading state anywhere in this path: its button ships no loading, pending or busy prop, and its spinner is a bare spinning icon with an aria-label — pairing them, disabling the button, and keeping the two in step is left to you, and doing it by hand is exactly where the double-submit bug comes from. This one carries aria-busy while pending, and the spinner it composes is pulld's, which puts the label in a role=&quot;status&quot; polite live region rather than only on the icon, so the wait is announced instead of being a silent frozen button — and the label it announces is your loadingText, so &quot;Charging card…&quot; is what gets read out rather than a generic &quot;Loading&quot;. Two things worth knowing before you drop it in a form: it defaults to type=&quot;button&quot;, so pass type=&quot;submit&quot; explicitly when it submits a form (props are spread last, so your type wins), and disabling a focused button takes it out of the tab order — the live region is what carries the state to a screen reader once focus has moved. Within pulld it is the plain async button; confirm-button is the one that makes a destructive action be clicked twice, and type-to-confirm the one that makes it be typed out. The spinner atom installs with it through registryDependencies, it renders no client-side state of its own so it needs no &quot;use client&quot;, and there is nothing else to add.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/loading-button.webp" alt="loading-button rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/loading-button</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/loading-button.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td><code>https://pulld.pages.dev/r/spinner.json</code></td></tr>
+    <tr><th>semantic / palette / hex</th><td>4 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

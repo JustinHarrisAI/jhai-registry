@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/copy-button</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Copy Button</h1>
+  <p class="lede">A one-click copy control: a square icon button that writes a string to the clipboard, swaps its clipboard icon for a tick, announces &quot;Copied&quot; to a screen reader, and resets itself a couple of seconds later. Reach for it wherever a value on the page is there to be taken somewhere else: an install or CLI command in docs, a curl or SDK example, an API key, token or client secret in a settings screen, a share or invite link, a webhook or callback URL, a connection string, a git SHA or branch name, a wallet or contract address, an invoice, order, ticket, trace or request ID, a coupon or referral code, a two-factor recovery code, an error message or stack trace a user is about to paste into a bug report, a generated password, a colour hex in a palette, and the value cell of any table or key/value list. Common asks it answers: &quot;copy button&quot;, &quot;copy to clipboard button react&quot;, &quot;copy icon button&quot;, &quot;clipboard button shadcn&quot;, &quot;shadcn copy to clipboard&quot;, &quot;copy button with copied state&quot;, &quot;copy with tooltip feedback&quot;, &quot;copy code button&quot;, &quot;copy API key button&quot;, &quot;copy link button&quot;, &quot;useCopyToClipboard alternative&quot;, &quot;react-copy-to-clipboard alternative&quot;, &quot;copy button accessible&quot;. shadcn/ui has nothing that touches the clipboard — not in button, not in input-group, not anywhere in its sixty-odd components — so this is the piece everyone rebuilds inline, and the inline version is where the bugs live. Distinct from pulld copy-field, which is the read-only input with the value shown beside the button, and from pulld code-block, which is the scrollable panel that reveals one on hover; both compose this button rather than repeating it. What the four-line inline version gets wrong, in order: it forgets `type=&quot;button&quot;`, so pressing it inside a form submits the form; it swaps the icon and nothing else, so a screen reader user gets no feedback at all, since a changed icon is not an event; it leaves the timeout running, so a button unmounted mid-countdown sets state on a dead component; and it treats the write as if it always succeeds. Here the button is `type=&quot;button&quot;`, the copied state is announced through an sr-only `aria-live=&quot;polite&quot;` region rather than through the icon, both icons are aria-hidden so nothing reads &quot;check&quot; out loud, and the reset timer is cleared on unmount and whenever `timeout` changes. `navigator.clipboard.writeText` rejects on an insecure origin, inside a sandboxed iframe, or when the document is not focused; a rejected write leaves the button resting instead of flashing a success it did not get, so nothing lies to the user — wrap it if you also want an error toast. The API is two props on top of a real button: `value` is the string to copy and `timeout` (default 2000ms) is how long the tick stays. Everything else is a normal button — `disabled`, `title`, `id`, `data-*` and event handlers all pass through, and your own `aria-label` replaces the built-in &quot;Copy to clipboard&quot; / &quot;Copied&quot; pair when you want to name what is being copied (&quot;Copy API key&quot;), with the live region still announcing the result. Styled with shadcn tokens (input, accent, ring, muted-foreground) so it follows light and dark mode, `className` merges rather than fights, and the focus ring is `focus-visible` so pointer users never see it. One file, two lucide icons, no clipboard library.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/copy-button.webp" alt="copy-button rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/copy-button</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/copy-button.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>5 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

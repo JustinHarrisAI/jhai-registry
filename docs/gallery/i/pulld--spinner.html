@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/spinner</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Spinner</h1>
+  <p class="lede">An inline loading indicator that announces itself: a spinning lucide Loader2 inside a role=&quot;status&quot; live region with a screen-reader-only label, so a pending operation is heard as well as seen. Reach for it while fetching data, submitting a form, loading a page or a section, as a Suspense or lazy-route fallback, beside a disabled control, inside a table cell or panel that is still filling in, or anywhere you would otherwise drop a bare &quot;Loading…&quot; string. Common asks it answers: &quot;loading spinner&quot;, &quot;react spinner component&quot;, &quot;loader component&quot;, &quot;busy indicator&quot;, &quot;activity indicator&quot;, &quot;throbber&quot;, &quot;accessible loading state&quot;, &quot;aria-live loading announcement&quot;, &quot;screen reader loading&quot;, &quot;Suspense fallback spinner&quot;, &quot;spinning Loader2&quot;, &quot;animate-spin loader&quot;. The usual hand-rolled version — a bare Loader2 with animate-spin dropped straight into the markup — is invisible to assistive technology: the icon is decorative, so nothing is announced and a screen-reader user waits in silence. Official shadcn/ui now ships a spinner of its own, so choose deliberately rather than by search rank: theirs is the Loader2 icon itself carrying role=&quot;status&quot; and the hard-coded English string aria-label=&quot;Loading&quot;, which is announced but cannot be changed without overriding the attribute, and its registry entry adds class-variance-authority to your package.json. Here the icon is aria-hidden and the announcement comes from a real sr-only text node in a wrapping live region, &quot;Loading&quot; by default; set label to say what is actually loading (&quot;Loading invoices&quot;) so the same component announces something useful on every screen, and so the string sits where a translation pipeline can find it rather than inside an aria attribute. Take theirs if you want the icon element itself and nothing around it; take this one if the announcement has to say more than &quot;Loading&quot;. It is 1rem square and inherits the current text colour, so it sits correctly inside a button, a link, or a line of muted text with no extra styling, and every span prop (id, style, className, data-*) passes straight through to the wrapper. Pick the sibling that matches the shape: loading-button for a button whose own label swaps to a busy state, progress-ring or gauge when the percentage is known — this is the indeterminate &quot;something is happening&quot; case. Styled with shadcn tokens for light and dark themes; lucide-react is the only dependency.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/spinner.webp" alt="spinner rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/spinner</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/spinner.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>0 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/ansi-log</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>ANSI Log</h1>
+  <p class="lede">Renders raw terminal output — escape sequences and all — as styled, theme-aware HTML. Reach for it wherever a process's own output has to be shown inside a page: CI and build logs, deploy and release output, npm/pnpm/cargo/docker build output piped into a dashboard, test-runner results, job and worker logs in an admin panel, an agent or LLM tool-call transcript, git and lint output in a code-review UI, or the output pane of a web terminal. Common asks it answers: &quot;ansi to html react&quot;, &quot;render ANSI colours in the browser&quot;, &quot;ci log viewer component&quot;, &quot;terminal output component react&quot;, &quot;build log with colours&quot;, &quot;convert ANSI escape codes&quot;, &quot;shadcn log viewer&quot;, &quot;docker logs in a web UI&quot;, &quot;colored console output in React&quot;. It handles the parts a hand-rolled converter gets wrong. A carriage return moves the cursor instead of breaking the line, so a progress bar that redraws itself stays one line reading &quot;100%&quot; rather than turning into a hundred lines of noise — and the tail a shorter redraw does not cover survives, exactly as on a real terminal. Erase-in-line (all three modes), backspace, the 16 named colours, the full 256-colour palette including the 6x6x6 cube and the 24-step grey ramp, 24-bit truecolor, both the semicolon and the colon spelling of extended colour that libvte and kitty emit, bold, dim, italic, underline, strike and reverse video. Every sequence it does not implement — cursor moves, hide-cursor, alternate-screen, window-title OSC — is consumed rather than printed as visible gibberish, which is the usual failure of a parser that only knows about the colour sequence. OSC 8 hyperlinks keep their label and drop their target deliberately: a URL in a log is exactly as attacker-supplied as the log is, and turning it into a live anchor would put javascript: one click away. Colour follows your theme instead of a fixed terminal palette — the 16 named colours are light/dark pairs chosen against the panel, and backgrounds are drawn as a translucent wash rather than a solid block, so text can never land on a saturated slab below contrast in one theme or the other. The scroll region takes keyboard focus, since a log that only scrolls with a mouse puts the right-hand end of every long line out of reach. The optional line-number gutter is not selectable, so dragging across the log copies the log and not a column of numbers, and maxLines keeps the end of the log — the failure is at the bottom — while saying out loud how many earlier lines it dropped instead of quietly presenting a suffix as the whole thing. No dependencies and no hooks, so it renders inside a React server component with no &quot;use client&quot; of its own and ships no client JavaScript. shadcn/ui has nothing of the kind: there is no log, terminal or ANSI item in its registry, and a plain code block shows escape sequences as literal characters.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/ansi-log.webp" alt="ansi-log rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/ansi-log</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/ansi-log.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>13 / 84 / 0 <span class="tag t-NEEDS_PROPS">high retoken cost</span></td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

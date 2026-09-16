@@ -1,206 +1,405 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>@kibo-ui</title>
-<style>
-:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
-a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
-h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
-.sub{color:var(--mut);font-size:14px;margin:0}
-.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
-.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
-.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
-thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
-td.n{text-align:right;font-variant-numeric:tabular-nums}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
-.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
-.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
-.c .sh .none{color:#a1a1aa;font-size:11px}
-.c .m{padding:9px 11px}
-.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
-.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
-.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
-.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
-code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
-pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
-.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
-.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
-.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-h2{font-size:17px;font-weight:600;margin:30px 0 4px}
-.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
-</style></head><body>
-<header><div class="wrap"><h1>@kibo-ui</h1>
-<p class="sub"><a href="../index.html">← all registries</a></p>
-<div class="stats"><div class="stat"><b>41</b><span>items</span></div>
-<div class="stat"><b style="color:var(--ok)">32</b><span>build</span></div>
-<div class="stat"><b style="color:var(--bad)">8</b><span>fail</span></div>
-<div class="stat"><b>78%</b><span>rate</span></div></div></div></header>
-<div class="wrap"><div class="grid"><a class="c" href="../item/kibo-ui__announcement.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">announcement</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__avatar-stack.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">avatar-stack</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__banner.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">banner</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__calendar.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">calendar</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__choicebox.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">choicebox</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__code-block.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">code-block</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__color-picker.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">color-picker</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__combobox.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">combobox</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__comparison.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">comparison</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__contribution-graph.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">contribution-graph</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__credit-card.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">credit-card</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__cursor.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">cursor</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__deck.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">deck</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__dialog-stack.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">dialog-stack</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__dropzone.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">dropzone</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__editor.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">editor</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__gantt.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">gantt</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__glimpse.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">glimpse</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__image-crop.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">image-crop</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__image-zoom.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">image-zoom</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__kanban.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">kanban</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__list.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">list</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__marquee.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">marquee</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__mini-calendar.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">mini-calendar</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__pill.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">pill</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__qr-code.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">qr-code</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__rating.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">rating</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__reel.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">reel</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__relative-time.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">relative-time</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__sandbox.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">sandbox</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__snippet.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">snippet</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__spinner.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">spinner</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__status.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">status</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__stories.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">stories</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__table.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">table</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__tags.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">tags</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__theme-switcher.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">theme-switcher</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__ticker.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">ticker</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__tree.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">tree</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__typography.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">typography</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/kibo-ui__video-player.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">video-player</div><div class="rg">@kibo-ui</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a></div></div></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@kibo-ui — build status</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> · 2026-09-16</p>
+  <h1><code style="background:none;color:inherit;font-size:.8em">@kibo-ui</code></h1>
+  <p class="lede">30 of 41 items rendered.
+  Licence <strong>POINTER</strong> — repository not resolvable from the site; licence not read — treated as not redistributable until a grant is read (<code>shadcnblocks/kibo</code>).
+  Dominant primitive base: <strong>radix</strong>.</p>
+</div></header>
+<section><div class="wrap">
+  
+  <div class="grid"><a class="card" href="../i/kibo-ui--announcement.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/announcement.webp" alt=""></span>
+    <span class="meta"><span class="nm">announcement</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--avatar-stack.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/avatar-stack.webp" alt=""></span>
+    <span class="meta"><span class="nm">avatar-stack</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--banner.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/banner.webp" alt=""></span>
+    <span class="meta"><span class="nm">banner</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--calendar.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/calendar.webp" alt=""></span>
+    <span class="meta"><span class="nm">calendar</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--combobox.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/combobox.webp" alt=""></span>
+    <span class="meta"><span class="nm">combobox</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--comparison.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/comparison.webp" alt=""></span>
+    <span class="meta"><span class="nm">comparison</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--credit-card.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/credit-card.webp" alt=""></span>
+    <span class="meta"><span class="nm">credit-card</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--cursor.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/cursor.webp" alt=""></span>
+    <span class="meta"><span class="nm">cursor</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--deck.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/deck.webp" alt=""></span>
+    <span class="meta"><span class="nm">deck</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--dialog-stack.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/dialog-stack.webp" alt=""></span>
+    <span class="meta"><span class="nm">dialog-stack</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--dropzone.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/dropzone.webp" alt=""></span>
+    <span class="meta"><span class="nm">dropzone</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--gantt.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/gantt.webp" alt=""></span>
+    <span class="meta"><span class="nm">gantt</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--image-zoom.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/image-zoom.webp" alt=""></span>
+    <span class="meta"><span class="nm">image-zoom</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--kanban.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/kanban.webp" alt=""></span>
+    <span class="meta"><span class="nm">kanban</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--list.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/list.webp" alt=""></span>
+    <span class="meta"><span class="nm">list</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--marquee.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/marquee.webp" alt=""></span>
+    <span class="meta"><span class="nm">marquee</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--mini-calendar.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/mini-calendar.webp" alt=""></span>
+    <span class="meta"><span class="nm">mini-calendar</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--pill.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/pill.webp" alt=""></span>
+    <span class="meta"><span class="nm">pill</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--qr-code.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/qr-code.webp" alt=""></span>
+    <span class="meta"><span class="nm">qr-code</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--reel.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/reel.webp" alt=""></span>
+    <span class="meta"><span class="nm">reel</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--relative-time.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/relative-time.webp" alt=""></span>
+    <span class="meta"><span class="nm">relative-time</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--sandbox.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/sandbox.webp" alt=""></span>
+    <span class="meta"><span class="nm">sandbox</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--snippet.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/snippet.webp" alt=""></span>
+    <span class="meta"><span class="nm">snippet</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--status.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/status.webp" alt=""></span>
+    <span class="meta"><span class="nm">status</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--stories.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/stories.webp" alt=""></span>
+    <span class="meta"><span class="nm">stories</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--tags.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/tags.webp" alt=""></span>
+    <span class="meta"><span class="nm">tags</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--theme-switcher.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/theme-switcher.webp" alt=""></span>
+    <span class="meta"><span class="nm">theme-switcher</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--ticker.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/ticker.webp" alt=""></span>
+    <span class="meta"><span class="nm">ticker</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--tree.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/tree.webp" alt=""></span>
+    <span class="meta"><span class="nm">tree</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/kibo-ui--video-player.html">
+    <span class="shot"><img loading="lazy" src="../shots/kibo-ui/video-player.webp" alt=""></span>
+    <span class="meta"><span class="nm">video-player</span><span class="rg">registry:ui</span></span></a></div>
+</div></section>
+<section><div class="wrap">
+  <h2>Every item</h2>
+  <p class="sub">Including what failed and why. The first line of the error is shown; the full text is in
+  <code>docs/build-errors-2026-09-16.json</code>.</p>
+  <table><thead><tr><th>item</th><th>verdict</th><th>base</th><th>tokens</th><th>reason</th></tr></thead><tbody>
+  <tr>
+    <td><a href="../i/kibo-ui--announcement.html">announcement</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--avatar-stack.html">avatar-stack</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--banner.html">banner</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--calendar.html">calendar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--combobox.html">combobox</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--comparison.html">comparison</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--credit-card.html">credit-card</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/2/3</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--cursor.html">cursor</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--deck.html">deck</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--dialog-stack.html">dialog-stack</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">8/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--dropzone.html">dropzone</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--gantt.html">gantt</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">33/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--image-zoom.html">image-zoom</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--kanban.html">kanban</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--list.html">list</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--marquee.html">marquee</a>
+         <span class="tag t-OWN">curated</span></td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--mini-calendar.html">mini-calendar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--pill.html">pill</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/10/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--qr-code.html">qr-code</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--reel.html">reel</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">0/43/0 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--relative-time.html">relative-time</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--sandbox.html">sandbox</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--snippet.html">snippet</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--status.html">status</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/8/0 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--stories.html">stories</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/6/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--tags.html">tags</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--theme-switcher.html">theme-switcher</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>radix</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--ticker.html">ticker</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/4/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--tree.html">tree</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/kibo-ui--video-player.html">video-player</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>contribution-graph
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">14/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>rating
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>radix</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>color-picker
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">13/3/8</td>
+    <td></td></tr>
+<tr>
+    <td>choicebox
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td>src/components/kibo-ui/choicebox/index.tsx</td></tr>
+<tr>
+    <td>code-block
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>radix</code></td>
+    <td class="num">7/11/0</td>
+    <td>src/components/kibo-ui/code-block/index.tsx</td></tr>
+<tr>
+    <td>editor
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">42/0/42</td>
+    <td>src/components/kibo-ui/editor/index.tsx</td></tr>
+<tr>
+    <td>glimpse
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td>src/components/kibo-ui/glimpse/index.tsx</td></tr>
+<tr>
+    <td>image-crop
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/components/kibo-ui/image-crop/index.tsx</td></tr>
+<tr>
+    <td>spinner
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td>src/components/kibo-ui/spinner/index.tsx</td></tr>
+<tr>
+    <td>table
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td>./src/components/kibo-ui/table/index.tsx:20:10</td></tr>
+<tr>
+    <td>typography
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+  </tbody></table>
+  <p class="sub">The tokens column is semantic / palette / hex occurrences in the installed source.
+  A high palette or hex count against few semantic tokens means the item resists a client palette.</p>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

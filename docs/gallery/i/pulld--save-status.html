@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/save-status</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Save Status</h1>
+  <p class="lede">The small inline &quot;Saving… / Saved 2 minutes ago / Couldn't save · Retry&quot; indicator that sits beside an autosaving surface. Use it wherever edits persist in the background instead of behind a Save button: a document, note, or rich-text editor, a settings or profile page that saves on blur, a draft post or email composer, a form with debounced autosave, a spreadsheet-style inline-edit table, or a builder/canvas. Common asks it answers: &quot;autosave indicator&quot;, &quot;saving spinner next to the title&quot;, &quot;all changes saved&quot;, &quot;draft saved status&quot;, &quot;last saved timestamp&quot;, &quot;Google-Docs-style save state&quot;, &quot;how to show saving/saved/error&quot;. shadcn/ui ships nothing for this — you'd hand-roll the state wording, the spinner, and the announcement each time. You pass one `status` prop (idle | saving | saved | error): idle renders nothing visible, so you can render it unconditionally and just mirror your mutation state (react-query isPending/isError, a useActionState, or your own flag). Pass `savedAt` and the &quot;Saved&quot; text is followed by a live relative timestamp that keeps itself fresh — it composes the time-ago component rather than freezing a string that goes stale while the tab sits open. Pass `onRetry` and the error state grows a Retry button. Accessibility is the fiddly part it gets right: the wording lives in an always-mounted role=status region so the very first transition is actually announced, while the ticking timestamp and the Retry label sit outside it — inside, the timer would make the page announce &quot;Saved 3 minutes ago&quot; every minute unprompted. It stays polite rather than assertive, because aria-live is honoured at registration time and a failed autosave should not cut across someone mid-sentence. All labels are overridable for i18n. Styled with shadcn tokens (muted-foreground, destructive, ring) so it follows light/dark themes. Distinct from toast, which pops a transient message after an action, and from spinner or loading-button, which cover a single in-flight request: this one is the persistent status of a background save.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/save-status.webp" alt="save-status rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/save-status</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/save-status.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td><code>https://pulld.pages.dev/r/time-ago.json</code></td></tr>
+    <tr><th>semantic / palette / hex</th><td>3 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

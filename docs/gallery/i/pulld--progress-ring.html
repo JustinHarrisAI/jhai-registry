@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/progress-ring</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Progress Ring</h1>
+  <p class="lede">A circular progress indicator: an SVG ring that fills clockwise from twelve o'clock, with the percentage — or any icon or short label you pass — sitting in the middle of it. Reach for it when a linear bar is the wrong shape: file, image and video upload progress, a storage or quota meter (disk, seats, API credits, plan limits), a goal, streak or activity ring, profile or setup completeness, onboarding and multi-step progress badges, a countdown or timer dial, per-row progress in a compact table or card, and score or health dials on a dashboard. Common asks it answers: &quot;circular progress&quot;, &quot;circle progress bar&quot;, &quot;radial progress&quot;, &quot;progress circle&quot;, &quot;donut progress&quot;, &quot;percentage circle&quot;, &quot;completion ring&quot;, &quot;activity ring&quot;, &quot;upload progress circle&quot;, &quot;quota ring&quot;, &quot;react-circular-progressbar alternative&quot;, &quot;shadcn circular progress&quot;. Official shadcn/ui has no radial progress component: its progress is a linear bar that pulls in @radix-ui/react-progress and is a client component, with no notion of a circle, a percentage readout or an unknown total; its spinner turns forever and reports no value at all. This one is a single file with no npm dependencies whatsoever — not Radix, not class-variance-authority — and it declares no &quot;use client&quot;, so it renders inside a React Server Component instead of dragging a client boundary along with it. Set showValue to print the rounded percent in the centre, or pass children to put an icon, a fraction or a short word there instead. Set indeterminate when the total is not known yet — an upload with no content length, a job whose size the server has not reported — and it spins a fixed quarter arc and drops aria-valuenow, which is how a progressbar is supposed to say &quot;running, position unknown&quot; rather than lying with a number. Otherwise it exposes role=progressbar with aria-valuenow, aria-valuemin and aria-valuemax and takes an aria-label for its accessible name, and the ring itself is aria-hidden so the value is announced once rather than twice. size and strokeWidth are plain pixel props, the geometry is derived so the stroke never clips at the edge of the box, a value past max or below zero is clamped instead of drawing an impossible ring, and max=0 reads as empty rather than dividing by zero. Themed with shadcn tokens so it follows dark mode.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/progress-ring.webp" alt="progress-ring rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/progress-ring</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/progress-ring.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>3 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

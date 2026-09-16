@@ -1,778 +1,1394 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>@ilinxa</title>
-<style>
-:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
-a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
-h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
-.sub{color:var(--mut);font-size:14px;margin:0}
-.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
-.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
-.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
-thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
-td.n{text-align:right;font-variant-numeric:tabular-nums}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
-.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
-.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
-.c .sh .none{color:#a1a1aa;font-size:11px}
-.c .m{padding:9px 11px}
-.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
-.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
-.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
-.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
-code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
-pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
-.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
-.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
-.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-h2{font-size:17px;font-weight:600;margin:30px 0 4px}
-.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
-</style></head><body>
-<header><div class="wrap"><h1>@ilinxa</h1>
-<p class="sub"><a href="../index.html">← all registries</a></p>
-<div class="stats"><div class="stat"><b>184</b><span>items</span></div>
-<div class="stat"><b style="color:var(--ok)">0</b><span>build</span></div>
-<div class="stat"><b style="color:var(--bad)">61</b><span>fail</span></div>
-<div class="stat"><b>0%</b><span>rate</span></div></div></div></header>
-<div class="wrap"><div class="grid"><a class="c" href="../item/ilinxa__account-switcher.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">account-switcher</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__account-switcher-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">account-switcher-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__account-switcher-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">account-switcher-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__app-sidebar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">app-sidebar</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__app-sidebar-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">app-sidebar-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__article-body-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">article-body-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__article-meta.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">article-meta</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__article-meta-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">article-meta-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__article-meta-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">article-meta-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__author-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">author-card</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__author-card-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">author-card-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__author-card-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">author-card-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__blackboard.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">blackboard</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__blackboard-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">blackboard-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__blackboard-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">blackboard-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__calendar-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">calendar-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__card-tree.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">card-tree</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__card-tree-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">card-tree-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__card-tree-node.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">card-tree-node</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__card-tree-node-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">card-tree-node-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__carousel-composer.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">carousel-composer</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__carousel-composer-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">carousel-composer-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__category-cloud.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">category-cloud</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__category-cloud-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">category-cloud-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__category-cloud-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">category-cloud-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__code-block.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">code-block</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__code-block-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">code-block-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__comment-thread.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">comment-thread</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__comment-thread-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">comment-thread-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__comment-thread-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">comment-thread-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__content-card-news-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">content-card-news-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__content-composer.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">content-composer</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__content-composer-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">content-composer-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__content-composer-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">content-composer-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__cooperative-challenge-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">cooperative-challenge-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__data-table.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">data-table</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__data-table-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">data-table-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__detail-panel.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">detail-panel</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__detail-panel-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">detail-panel-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__empty-state.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">empty-state</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__empty-state-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">empty-state-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__engagement-bar.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">engagement-bar</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__engagement-bar-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">engagement-bar-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__engagement-bar-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">engagement-bar-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__entity-picker.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">entity-picker</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__entity-picker-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">entity-picker-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-calendar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">event-calendar</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-calendar-editing.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">event-calendar-editing</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-calendar-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">event-calendar-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">event-card</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-card-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">event-card-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__event-card-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">event-card-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__expandable-text.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">expandable-text</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__expandable-text-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">expandable-text-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__expandable-text-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">expandable-text-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__file-clipboard.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">file-clipboard</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__file-manager.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">file-manager</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__file-manager-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">file-manager-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__file-tree.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">file-tree</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__file-tree-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">file-tree-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-bar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">filter-bar</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-bar-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">filter-bar-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-bar-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">filter-bar-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-panel.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">filter-panel</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-panel-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">filter-panel-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__filter-stack.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">filter-stack</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__flow-canvas.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">flow-canvas</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__flow-canvas-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">flow-canvas-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__flow-canvas-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">flow-canvas-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__gamification-kit.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">gamification-kit</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__gantt-timeline.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">gantt-timeline</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__gantt-timeline-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">gantt-timeline-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__gantt-timeline-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">gantt-timeline-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__grid-layout-news-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">grid-layout-news-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__info-list.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">info-list</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__info-list-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">info-list-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__info-list-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">info-list-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__json-form.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">json-form</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__json-form-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">json-form-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__kanban-board.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">kanban-board</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__kanban-board-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">kanban-board-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__kanban-board-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">kanban-board-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__magazine-layout.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">magazine-layout</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__magazine-layout-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">magazine-layout-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__markdown-editor.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">markdown-editor</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__markdown-editor-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">markdown-editor-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-carousel.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">media-carousel</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-carousel-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">media-carousel-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-carousel-editor-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">media-carousel-editor-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-carousel-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">media-carousel-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-editor.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">media-editor</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-editor-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">media-editor-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-editor-capture.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">media-editor-capture</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-editor-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">media-editor-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-library.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">media-library</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-library-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">media-library-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__media-library-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">media-library-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__news-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">news-card</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__news-card-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">news-card-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__newsletter-card-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">newsletter-card-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__newsletter-signup.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">newsletter-signup</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__newsletter-signup-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">newsletter-signup-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__page-hero.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">page-hero</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__page-hero-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">page-hero-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__page-hero-news-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">page-hero-news-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__pdf-viewer.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">pdf-viewer</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__pdf-viewer-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">pdf-viewer-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__people-grid.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">people-grid</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__people-grid-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">people-grid-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__people-grid-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">people-grid-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__post-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">post-card</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__post-card-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">post-card-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__post-card-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">post-card-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__pricing-table.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">pricing-table</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__pricing-table-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">pricing-table-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__pricing-table-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">pricing-table-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__progress-timeline.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">progress-timeline</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__progress-timeline-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">progress-timeline-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__progress-timeline-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">progress-timeline-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__project-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">project-card</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__project-card-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">project-card-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__project-card-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">project-card-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__properties-form.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">properties-form</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__properties-form-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">properties-form-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__registration-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">registration-card</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__registration-card-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">registration-card-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__registration-card-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">registration-card-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__registration-form-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">registration-form-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__rich-card.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">rich-card</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__rich-card-in-flow.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">rich-card-in-flow</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__rich-sidebar.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">rich-sidebar</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__rich-text-editor.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">rich-text-editor</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__rich-text-editor-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">rich-text-editor-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__schedule-list.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">schedule-list</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__schedule-list-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">schedule-list-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__schedule-list-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">schedule-list-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__share-bar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">share-bar</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__share-bar-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">share-bar-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__share-bar-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">share-bar-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__signup-form.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">signup-form</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__signup-form-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">signup-form-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__split-workspace.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">split-workspace</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__split-workspace-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">split-workspace-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__stat-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">stat-card</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__stat-card-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">stat-card-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-composer.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">story-composer</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-composer-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">story-composer-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-composer-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">story-composer-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-rail.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">story-rail</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-rail-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">story-rail-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-rail-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">story-rail-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-viewer.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">story-viewer</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-viewer-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">story-viewer-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__story-viewer-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">story-viewer-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__task-card.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">task-card</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__task-card-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">task-card-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__task-choice-control-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">task-choice-control-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__task-tree.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">task-tree</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__task-tree-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">task-tree-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-challenge.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">team-challenge</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-challenge-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">team-challenge-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-feedback-loop.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">team-feedback-loop</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-feedback-loop-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">team-feedback-loop-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-feedback-loop-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">team-feedback-loop-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-progress-bar.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">team-progress-bar</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-progress-bar-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">team-progress-bar-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-progress-bar-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">team-progress-bar-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-quest-log.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">team-quest-log</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-quest-log-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">team-quest-log-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-quest-log-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">team-quest-log-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-task-claim.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">team-task-claim</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-task-claim-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">team-task-claim-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-trophy-shelf.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">team-trophy-shelf</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-trophy-shelf-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">team-trophy-shelf-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__team-trophy-shelf-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">team-trophy-shelf-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__thumb-list-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">thumb-list-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__thumbnail-list.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">thumbnail-list</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__thumbnail-list-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">thumbnail-list-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__todo-rich-card.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">todo-rich-card</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__todo-tree.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">todo-tree</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__video-player.html">
-<div class="sh"><span class="none">FAIL</span></div>
-<div class="m"><div class="nm">video-player</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-fail">FAIL</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__video-player-01.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">video-player-01</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__video-player-fixtures.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">video-player-fixtures</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/ilinxa__workspace.html">
-<div class="sh"><span class="none">SHARED</span></div>
-<div class="m"><div class="nm">workspace</div><div class="rg">@ilinxa</div>
-<div style="margin-top:6px"><span class="pill p-nr">SHARED</span>
-<span class="pill p-asset">ASSET</span></div></div></a></div></div></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@ilinxa — build status</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> · 2026-09-16</p>
+  <h1><code style="background:none;color:inherit;font-size:.8em">@ilinxa</code></h1>
+  <p class="lede">26 of 184 items rendered.
+  Licence <strong>ASSET</strong> — permissive grant read from the LICENSE file (MIT License) (<code>ilinxa/pro-ui</code>).
+  Dominant primitive base: <strong>radix</strong>.</p>
+</div></header>
+<section><div class="wrap">
+  
+  <div class="grid"><a class="card" href="../i/ilinxa--author-card.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/author-card.webp" alt=""></span>
+    <span class="meta"><span class="nm">author-card</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--card-tree.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/card-tree.webp" alt=""></span>
+    <span class="meta"><span class="nm">card-tree</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--carousel-composer.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/carousel-composer.webp" alt=""></span>
+    <span class="meta"><span class="nm">carousel-composer</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--code-block.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/code-block.webp" alt=""></span>
+    <span class="meta"><span class="nm">code-block</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--detail-panel.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/detail-panel.webp" alt=""></span>
+    <span class="meta"><span class="nm">detail-panel</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--empty-state.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/empty-state.webp" alt=""></span>
+    <span class="meta"><span class="nm">empty-state</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--filter-bar.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/filter-bar.webp" alt=""></span>
+    <span class="meta"><span class="nm">filter-bar</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--flow-canvas.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/flow-canvas.webp" alt=""></span>
+    <span class="meta"><span class="nm">flow-canvas</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--gantt-timeline.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/gantt-timeline.webp" alt=""></span>
+    <span class="meta"><span class="nm">gantt-timeline</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--json-form.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/json-form.webp" alt=""></span>
+    <span class="meta"><span class="nm">json-form</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--media-carousel.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/media-carousel.webp" alt=""></span>
+    <span class="meta"><span class="nm">media-carousel</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--newsletter-signup.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/newsletter-signup.webp" alt=""></span>
+    <span class="meta"><span class="nm">newsletter-signup</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--page-hero.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/page-hero.webp" alt=""></span>
+    <span class="meta"><span class="nm">page-hero</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--project-card.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/project-card.webp" alt=""></span>
+    <span class="meta"><span class="nm">project-card</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--registration-card.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/registration-card.webp" alt=""></span>
+    <span class="meta"><span class="nm">registration-card</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--schedule-list.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/schedule-list.webp" alt=""></span>
+    <span class="meta"><span class="nm">schedule-list</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--share-bar.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/share-bar.webp" alt=""></span>
+    <span class="meta"><span class="nm">share-bar</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--split-workspace.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/split-workspace.webp" alt=""></span>
+    <span class="meta"><span class="nm">split-workspace</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--stat-card.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/stat-card.webp" alt=""></span>
+    <span class="meta"><span class="nm">stat-card</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--story-composer.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/story-composer.webp" alt=""></span>
+    <span class="meta"><span class="nm">story-composer</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--story-rail.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/story-rail.webp" alt=""></span>
+    <span class="meta"><span class="nm">story-rail</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--story-viewer.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/story-viewer.webp" alt=""></span>
+    <span class="meta"><span class="nm">story-viewer</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--task-tree.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/task-tree.webp" alt=""></span>
+    <span class="meta"><span class="nm">task-tree</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--team-task-claim.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/team-task-claim.webp" alt=""></span>
+    <span class="meta"><span class="nm">team-task-claim</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--team-trophy-shelf.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/team-trophy-shelf.webp" alt=""></span>
+    <span class="meta"><span class="nm">team-trophy-shelf</span><span class="rg">registry:block</span></span></a>
+<a class="card" href="../i/ilinxa--thumbnail-list.html">
+    <span class="shot"><img loading="lazy" src="../shots/ilinxa/thumbnail-list.webp" alt=""></span>
+    <span class="meta"><span class="nm">thumbnail-list</span><span class="rg">registry:block</span></span></a></div>
+</div></section>
+<section><div class="wrap">
+  <h2>Every item</h2>
+  <p class="sub">Including what failed and why. The first line of the error is shown; the full text is in
+  <code>docs/build-errors-2026-09-16.json</code>.</p>
+  <table><thead><tr><th>item</th><th>verdict</th><th>base</th><th>tokens</th><th>reason</th></tr></thead><tbody>
+  <tr>
+    <td><a href="../i/ilinxa--author-card.html">author-card</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">14/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--card-tree.html">card-tree</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">311/4/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--carousel-composer.html">carousel-composer</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">43/8/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--code-block.html">code-block</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">40/4/24</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--detail-panel.html">detail-panel</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">15/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--empty-state.html">empty-state</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">14/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--filter-bar.html">filter-bar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--flow-canvas.html">flow-canvas</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">15/0/5</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--gantt-timeline.html">gantt-timeline</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">100/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--json-form.html">json-form</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">86/0/2</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--media-carousel.html">media-carousel</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--newsletter-signup.html">newsletter-signup</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">13/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--page-hero.html">page-hero</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">12/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--project-card.html">project-card</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">27/14/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--registration-card.html">registration-card</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">9/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--schedule-list.html">schedule-list</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">13/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--share-bar.html">share-bar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--split-workspace.html">split-workspace</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">40/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--stat-card.html">stat-card</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">25/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--story-composer.html">story-composer</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/21/1 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--story-rail.html">story-rail</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">24/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--story-viewer.html">story-viewer</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">34/47/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--task-tree.html">task-tree</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">43/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--team-task-claim.html">team-task-claim</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--team-trophy-shelf.html">team-trophy-shelf</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">21/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/ilinxa--thumbnail-list.html">thumbnail-list</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">10/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>account-switcher
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">29/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>app-sidebar
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">71/4/0</td>
+    <td></td></tr>
+<tr>
+    <td>article-meta
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>blackboard
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/65/0 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td></td></tr>
+<tr>
+    <td>card-tree-node
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">44/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>category-cloud
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>comment-thread
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">16/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>content-composer
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">38/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>data-table
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>engagement-bar
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">33/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>entity-picker
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">12/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>event-calendar
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">72/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>event-card
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">74/20/0</td>
+    <td></td></tr>
+<tr>
+    <td>expandable-text
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>file-manager
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">76/4/0</td>
+    <td></td></tr>
+<tr>
+    <td>file-tree
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">44/2/0</td>
+    <td></td></tr>
+<tr>
+    <td>filter-panel
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">19/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>info-list
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">15/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>kanban-board
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">68/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>magazine-layout
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>media-editor-capture
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/37/1 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td></td></tr>
+<tr>
+    <td>media-library
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">131/32/0</td>
+    <td></td></tr>
+<tr>
+    <td>news-card
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">103/35/0</td>
+    <td></td></tr>
+<tr>
+    <td>people-grid
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">9/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>post-card
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">62/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>progress-timeline
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">14/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>properties-form
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">23/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>team-feedback-loop
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">15/0/4</td>
+    <td></td></tr>
+<tr>
+    <td>team-quest-log
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">29/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>media-editor
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>radix</code></td>
+    <td class="num">70/120/19</td>
+    <td></td></tr>
+<tr>
+    <td>event-calendar-editing
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">15/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>markdown-editor
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">28/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>rich-text-editor
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">74/0/2</td>
+    <td></td></tr>
+<tr>
+    <td>signup-form
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">31/1/0</td>
+    <td></td></tr>
+<tr>
+    <td>task-card
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">43/10/0</td>
+    <td></td></tr>
+<tr>
+    <td>team-challenge
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">25/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>team-progress-bar
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>video-player
+        </td>
+    <td><span class="tag t-RENDER_CRASH">RENDER CRASH</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/1/0</td>
+    <td></td></tr>
+<tr>
+    <td>file-clipboard
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>src/app/i/file-clipboard/page.tsx</td></tr>
+<tr>
+    <td>pdf-viewer
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">31/0/1</td>
+    <td>src/components/pdf-viewer/parts/pdf-page.tsx</td></tr>
+<tr>
+    <td>pricing-table
+        </td>
+    <td><span class="tag t-FAIL">FAIL</span></td>
+    <td><code>none</code></td>
+    <td class="num">55/0/0</td>
+    <td>./src/components/pricing-table/parts/billing-toggle.tsx:1:10</td></tr>
+<tr>
+    <td>account-switcher-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>app-sidebar-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>article-meta-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>author-card-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>blackboard-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>card-tree-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>card-tree-node-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>carousel-composer-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>category-cloud-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>code-block-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>comment-thread-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>content-composer-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>data-table-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>detail-panel-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>empty-state-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>engagement-bar-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>entity-picker-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>event-calendar-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/3</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>event-card-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">30/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>expandable-text-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>file-manager-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>file-tree-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>filter-bar-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>filter-panel-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>flow-canvas-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>gamification-kit
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>gantt-timeline-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/5 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>info-list-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>json-form-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>kanban-board-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>magazine-layout-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>markdown-editor-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>media-carousel-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>media-editor-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/1</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>media-library-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>news-card-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/6/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>newsletter-signup-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>page-hero-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>pdf-viewer-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>people-grid-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>post-card-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>pricing-table-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>progress-timeline-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>project-card-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">10/7/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>properties-form-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>registration-card-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>rich-text-editor-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>schedule-list-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>share-bar-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>signup-form-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>split-workspace-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>stat-card-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>story-composer-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>story-rail-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>story-viewer-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/1</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>task-card-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/2</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>task-tree-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/1</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>team-challenge-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>team-feedback-loop-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>team-progress-bar-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>team-quest-log-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>team-task-claim-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>team-trophy-shelf-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>thumbnail-list-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>video-player-fixtures
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>account-switcher-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>article-body-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>article-meta-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>author-card-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>blackboard-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>calendar-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>category-cloud-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>comment-thread-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>content-card-news-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>content-composer-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>cooperative-challenge-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>engagement-bar-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>event-card-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>expandable-text-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>filter-bar-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>filter-stack
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>flow-canvas-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>gantt-timeline-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>grid-layout-news-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>info-list-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>kanban-board-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>media-carousel-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>media-carousel-editor-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>media-editor-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>media-library-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>newsletter-card-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>page-hero-news-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>people-grid-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>post-card-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>pricing-table-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>progress-timeline-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>project-card-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>registration-card-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>registration-form-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>rich-card
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>rich-card-in-flow
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>rich-sidebar
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>schedule-list-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>share-bar-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>story-composer-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>story-rail-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>story-viewer-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>task-choice-control-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>team-feedback-loop-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>team-progress-bar-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>team-quest-log-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>team-trophy-shelf-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>thumb-list-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>todo-rich-card
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>todo-tree
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>video-player-01
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+<tr>
+    <td>workspace
+        </td>
+    <td><span class="tag t-NO_FILES">NO FILES</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>install reported success but no file on disk could be attributed to this item</td></tr>
+  </tbody></table>
+  <p class="sub">The tokens column is semantic / palette / hex occurrences in the installed source.
+  A high palette or hex count against few semantic tokens means the item resists a client palette.</p>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

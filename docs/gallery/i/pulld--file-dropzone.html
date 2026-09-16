@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/file-dropzone</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>File Dropzone</h1>
+  <p class="lede">A drag-and-drop file upload area that is also a real file picker: drop files onto it, or click it — or focus it and press Enter or Space — to open the native chooser. Reach for it at the point a product takes a file in: an avatar or profile photo upload, a logo in brand settings, an image or gallery upload, a CSV/TSV/XLSX import step, a document, PDF, contract or resume upload, receipts and invoices, ID and KYC documents, attachments on a ticket, issue, message or email composer, a bulk media or photo drop, a dataset or training-corpus upload for an AI app, a .zip or backup restore, and the file step of an onboarding or import wizard. Common asks it answers: &quot;file dropzone&quot;, &quot;drag and drop file upload&quot;, &quot;drop zone react&quot;, &quot;drag drop upload area&quot;, &quot;upload box&quot;, &quot;click to browse files&quot;, &quot;file picker component&quot;, &quot;shadcn file input&quot;, &quot;shadcn file upload&quot;, &quot;shadcn dropzone&quot;, &quot;react-dropzone alternative&quot;, &quot;filepond alternative&quot;, &quot;uppy alternative&quot;, &quot;csv upload component&quot;, &quot;image upload dropzone&quot;, &quot;multiple file upload react&quot;, &quot;accept only images&quot;, &quot;limit file size on upload&quot;, &quot;restrict file types react&quot;. The gap in official shadcn/ui is the taking-in half, and it is worth being precise about it now that the catalogue has grown: input covers text-like types and never file, and attachment — its newer component in this area — renders a file that has already been attached, with media, title, description and actions, but contains no `&lt;input type=&quot;file&quot;&gt;`, no drop target, and no accept or size filtering. Nothing there receives a file. What is hand-rolled every time and easy to get wrong: a drop target only works if `dragover` is cancelled, and a version that skips it drops the file straight into the browser, which navigates away from the app and takes any unsaved form with it — so `dragover` is cancelled here. The `accept` attribute is also filtering theatre on a drop: the browser applies it to the chooser dialog only, and anything dragged in arrives unfiltered, so the same rules are applied a second time in JavaScript. Dropped and picked files therefore go through one path and one filter — `accept` (a mime type, a wildcard like image/*, or a .ext), `maxSize` in bytes, and `maxFiles` — and everything skipped comes back through `onReject` tagged with the reason it was skipped (&quot;type&quot;, &quot;size&quot; or &quot;too-many&quot;), so the UI can say why instead of swallowing the file and looking broken. It wraps a hidden real `&lt;input type=&quot;file&quot;&gt;` rather than simulating one, so the control still submits with a form, still takes `name` and `required`, and still forwards a ref for a caller who wants to open the chooser from a button elsewhere. Works controlled or uncontrolled over a `File[]`, single or multiple, with a highlighted drag-over state and a disabled state that also leaves the tab order. Accessible without a mouse or a screen: the region is a `role=&quot;button&quot;` with a real tab stop, activated by Enter and Space, drawn with a focus-visible ring, marked `aria-disabled` when disabled, and every add and every rejection is announced through a polite live region — the part hand-rolled dropzones almost always omit, which leaves a screen-reader user with no confirmation that a dropped file landed or any idea why it did not. It hands back a `File[]` and deliberately stops there — no endpoint, no auth, no progress source it would have to guess. Pair it with upload-list for the rows that show what happened to those files. Styled with shadcn tokens so it follows light and dark mode; the only dependency is lucide-react, for the upload icon.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/file-dropzone.webp" alt="file-dropzone rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/file-dropzone</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/file-dropzone.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>7 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

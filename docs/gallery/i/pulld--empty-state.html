@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/empty-state</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Empty State</h1>
+  <p class="lede">The centred placeholder a screen shows when it has nothing to draw — a dashed panel with an optional icon, a heading, one line of explanation, and room for a call to action. Use it for an empty table, list, inbox, or feed, a search or filter that matched nothing, a workspace, project or team before its first item exists, a first-run or onboarding screen, a dashboard card with no data yet, an empty cart, folder, or notification tray. Common asks it answers: &quot;empty state&quot;, &quot;no results found&quot;, &quot;zero state&quot;, &quot;blank slate&quot;, &quot;no data placeholder&quot;, &quot;nothing here yet&quot;, &quot;empty list or table component&quot;, &quot;empty search results&quot;, &quot;first run experience&quot;, &quot;no items yet with a create button&quot;. shadcn/ui now ships an `empty` of its own, so choose deliberately rather than by accident: theirs is a six-part compound API (Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent) that composes into any arrangement and pulls in class-variance-authority; this is the one-import version — title plus optional icon, description and action, four props in total and no dependencies at all — for the much more common case where every empty state in the app looks alike and assembling six elements at each call site is just ceremony. Two accessibility details differ as well, and they are the two most often got wrong: here the title renders as a real h3, so it joins the heading outline and screen-reader users can reach it with heading navigation, whereas the official EmptyTitle is a styled div that heading navigation cannot see; and the icon wrapper is marked aria-hidden, because it is decoration, and announcing &quot;inbox&quot; or &quot;circle-slash&quot; before the sentence that actually explains the situation is noise. The description is capped at max-w-sm so the line keeps a readable measure inside a wide table. It has no hooks and no event handlers, so it carries no &quot;use client&quot; and renders inside a React Server Component without pulling a client boundary in behind it; you pass your own icon element, so it adds no icon library. Styled with shadcn tokens (border, muted-foreground) for light and dark themes. Distinct from skeleton and spinner, which say the rows are still loading: this one says the rows are not coming until the user does something.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/empty-state.webp" alt="empty-state rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/empty-state</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/empty-state.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>2 / 0 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

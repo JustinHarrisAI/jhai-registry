@@ -242,13 +242,16 @@ pre{background:#f1f0ee;padding:12px;overflow:auto;font-size:12px;border:1px soli
 const page = (title, body, depth = 0) => `<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(title)}</title><style>${CSS}</style></head><body>${body}
+<title>${esc(title)}</title><link rel="stylesheet" href="${'../'.repeat(depth)}gallery.css"></head><body>${body}
 <footer><div class="wrap">Built ${DATE} by <code>scripts/gallery/run-all.sh</code> on the shadcn default
 neutral palette. <a href="${'../'.repeat(depth)}index.html">gallery index</a> ·
 <a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
 </body></html>`;
 
 mkdirSync(join(GAL, 'shots'), { recursive: true });
+// One stylesheet, linked rather than inlined: 4 KB of CSS repeated into 3,253 detail pages cost
+// 13 MB of repository for no benefit, since the browser caches a linked sheet once.
+writeFileSync(join(GAL, 'gallery.css'), CSS);
 mkdirSync(join(GAL, 'i'), { recursive: true });
 mkdirSync(join(GAL, 'r'), { recursive: true });
 

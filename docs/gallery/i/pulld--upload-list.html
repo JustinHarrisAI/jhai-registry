@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/upload-list</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>Upload List</h1>
+  <p class="lede">The list of files under a dropzone or file picker — one row each with the file name, its size, a progress bar while it uploads, an error with a retry button when it fails, and an X to drop it from the queue. Use it on any screen that accepts files: an attachment picker, an image or avatar upload, a CSV/spreadsheet import step, a document or PDF upload, a bulk media drop, or an import wizard. Common asks it answers: &quot;file upload list&quot;, &quot;upload queue&quot;, &quot;show selected files with progress&quot;, &quot;file list with remove button&quot;, &quot;upload progress bar per file&quot;, &quot;attachment list&quot;, &quot;retry failed upload&quot;, &quot;Dropbox/Gmail-style upload rows&quot;. shadcn/ui ships nothing that tracks an upload: its attachment component renders a file that is already attached — media, title, actions — with no status, no progress and no retry, and its progress primitive is a single bar with no notion of a file, so the row layout, the byte formatting, the per-file progress and the failure affordance are hand-rolled every time. It pairs with the file-dropzone component, which hands you a File[] and deliberately stops there: this is the half that shows what happened to those files. Pass an `items` array of `{ id, name, size?, status, progress?, error? }` where status is pending | uploading | done | error; omit `progress` and the bar goes indeterminate for uploads with no known length, and an empty array renders nothing so you can mount it unconditionally next to your queue state. It is presentational on purpose and never uploads anything — you keep the requests, the concurrency, the cancellation and the retry policy, and pass `onRemove`/`onRetry` to get the buttons. Accessibility is where a queue usually goes wrong and this one is built around it: progress sits in a role=progressbar, which is not a live region, so a file crawling from 1% to 100% does not narrate every tick; instead an always-mounted role=status region announces only the rows that just finished or just failed, batched into one message per change; the first render is treated as the starting state, so a list that mounts with finished rows stays silent; and every remove/retry button carries the file name in its accessible name, because a column of buttons all called &quot;Remove&quot; is unusable without sight of the row. Sizes are formatted to KB/MB/GB with tabular numerals, long names truncate with a title tooltip, and it is styled with shadcn tokens (muted-foreground, destructive, primary, accent, ring) so it follows light and dark themes; lucide-react is the only dependency. Distinct from save-status, which is a one-line indicator for a single background save, and from progress-ring, which is one circular meter: this is the multi-file queue.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/upload-list.webp" alt="upload-list rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/upload-list</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/upload-list.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>15 / 2 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

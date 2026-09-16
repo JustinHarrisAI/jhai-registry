@@ -1,162 +1,332 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>@jhai</title>
-<style>
-:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
-a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
-h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
-.sub{color:var(--mut);font-size:14px;margin:0}
-.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
-.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
-.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
-thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
-td.n{text-align:right;font-variant-numeric:tabular-nums}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
-.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
-.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
-.c .sh .none{color:#a1a1aa;font-size:11px}
-.c .m{padding:9px 11px}
-.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
-.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
-.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
-.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
-code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
-pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
-.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
-.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
-.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-h2{font-size:17px;font-weight:600;margin:30px 0 4px}
-.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
-</style></head><body>
-<header><div class="wrap"><h1>@jhai</h1>
-<p class="sub"><a href="../index.html">← all registries</a></p>
-<div class="stats"><div class="stat"><b>30</b><span>items</span></div>
-<div class="stat"><b style="color:var(--ok)">28</b><span>build</span></div>
-<div class="stat"><b style="color:var(--bad)">0</b><span>fail</span></div>
-<div class="stat"><b>93%</b><span>rate</span></div></div></div></header>
-<div class="wrap"><div class="grid"><a class="c" href="../item/jhai__answer.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">answer</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__blog-card.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">blog-card</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__button.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">button</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__case-card.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">case-card</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__check-list.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">check-list</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__compare.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">compare</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__comparison-table.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">comparison-table</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__content-types.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">content-types</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__cta-band.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">cta-band</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__cta-band-section.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">cta-band-section</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__eyebrow.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">eyebrow</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__faq-item.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">faq-item</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__hero.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">hero</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__icons.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">icons</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__image-slot.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">image-slot</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__logo-wall.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">logo-wall</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__pricing.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">pricing</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__problem.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">problem</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__questions.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">questions</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__rating-mark.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">rating-mark</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__record-band.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">record-band</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__section-header.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">section-header</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__shell.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">shell</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__site-footer.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">site-footer</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__site-header.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">site-header</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__stat-tile.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">stat-tile</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__testimonials.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">testimonials</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__theme-base.html">
-<div class="sh"><span class="none">NO_ROUTE</span></div>
-<div class="m"><div class="nm">theme-base</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-nr">NO_ROUTE</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__ticker.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">ticker</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a><a class="c" href="../item/jhai__tool-card.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">tool-card</div><div class="rg">@jhai</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-asset">ASSET</span></div></div></a></div></div></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@jhai — build status</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> · 2026-09-16</p>
+  <h1><code style="background:none;color:inherit;font-size:.8em">@jhai</code></h1>
+  <p class="lede">22 of 34 items rendered.
+  Licence <strong>OWN</strong> — JHAI’s own registry; nothing to redistribute from someone else (<code>JustinHarrisAI/jhai-registry</code>).
+  Dominant primitive base: <strong>none</strong>.</p>
+</div></header>
+<section><div class="wrap">
+  
+  <div class="grid"><a class="card" href="../i/jhai--blog-card.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/blog-card.webp" alt=""></span>
+    <span class="meta"><span class="nm">blog-card</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--button.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/button.webp" alt=""></span>
+    <span class="meta"><span class="nm">button</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--chart.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/chart.webp" alt=""></span>
+    <span class="meta"><span class="nm">chart</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--comparison-table.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/comparison-table.webp" alt=""></span>
+    <span class="meta"><span class="nm">comparison-table</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--contact-form.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/contact-form.webp" alt=""></span>
+    <span class="meta"><span class="nm">contact-form</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--cta-band.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/cta-band.webp" alt=""></span>
+    <span class="meta"><span class="nm">cta-band</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--cta-band-section.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/cta-band-section.webp" alt=""></span>
+    <span class="meta"><span class="nm">cta-band-section</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--eyebrow.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/eyebrow.webp" alt=""></span>
+    <span class="meta"><span class="nm">eyebrow</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--faq-item.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/faq-item.webp" alt=""></span>
+    <span class="meta"><span class="nm">faq-item</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--image-slot.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/image-slot.webp" alt=""></span>
+    <span class="meta"><span class="nm">image-slot</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--logo-wall.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/logo-wall.webp" alt=""></span>
+    <span class="meta"><span class="nm">logo-wall</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--pricing.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/pricing.webp" alt=""></span>
+    <span class="meta"><span class="nm">pricing</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--rating-mark.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/rating-mark.webp" alt=""></span>
+    <span class="meta"><span class="nm">rating-mark</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--record-band.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/record-band.webp" alt=""></span>
+    <span class="meta"><span class="nm">record-band</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--reveal.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/reveal.webp" alt=""></span>
+    <span class="meta"><span class="nm">reveal</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--section-header.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/section-header.webp" alt=""></span>
+    <span class="meta"><span class="nm">section-header</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--shell.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/shell.webp" alt=""></span>
+    <span class="meta"><span class="nm">shell</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--site-footer.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/site-footer.webp" alt=""></span>
+    <span class="meta"><span class="nm">site-footer</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--site-header.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/site-header.webp" alt=""></span>
+    <span class="meta"><span class="nm">site-header</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--stat-tile.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/stat-tile.webp" alt=""></span>
+    <span class="meta"><span class="nm">stat-tile</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--testimonials.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/testimonials.webp" alt=""></span>
+    <span class="meta"><span class="nm">testimonials</span><span class="rg">registry:component</span></span></a>
+<a class="card" href="../i/jhai--ticker.html">
+    <span class="shot"><img loading="lazy" src="../shots/jhai/ticker.webp" alt=""></span>
+    <span class="meta"><span class="nm">ticker</span><span class="rg">registry:component</span></span></a></div>
+</div></section>
+<section><div class="wrap">
+  <h2>Every item</h2>
+  <p class="sub">Including what failed and why. The first line of the error is shown; the full text is in
+  <code>docs/build-errors-2026-09-16.json</code>.</p>
+  <table><thead><tr><th>item</th><th>verdict</th><th>base</th><th>tokens</th><th>reason</th></tr></thead><tbody>
+  <tr>
+    <td><a href="../i/jhai--blog-card.html">blog-card</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--button.html">button</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">9/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--chart.html">chart</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--comparison-table.html">comparison-table</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">24/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--contact-form.html">contact-form</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--cta-band.html">cta-band</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--cta-band-section.html">cta-band-section</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--eyebrow.html">eyebrow</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--faq-item.html">faq-item</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--image-slot.html">image-slot</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/2</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--logo-wall.html">logo-wall</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--pricing.html">pricing</a>
+         <span class="tag t-OWN">curated</span></td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--rating-mark.html">rating-mark</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--record-band.html">record-band</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--reveal.html">reveal</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--section-header.html">section-header</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--shell.html">shell</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--site-footer.html">site-footer</a>
+         <span class="tag t-OWN">curated</span></td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--site-header.html">site-header</a>
+         <span class="tag t-OWN">curated</span></td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--stat-tile.html">stat-tile</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--testimonials.html">testimonials</a>
+         <span class="tag t-OWN">curated</span></td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/jhai--ticker.html">ticker</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>answer
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>carousel-rail
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/0/2</td>
+    <td></td></tr>
+<tr>
+    <td>case-card
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>check-list
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>compare
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>hero
+         <span class="tag t-OWN">curated</span></td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>problem
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>questions
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>tool-card
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>icons
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>content-types
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td>no renderable component export found</td></tr>
+<tr>
+    <td>theme-base
+        </td>
+    <td><span class="tag t-NO_ROUTE">NO ROUTE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td>no renderable component export found</td></tr>
+  </tbody></table>
+  <p class="sub">The tokens column is semantic / palette / hex occurrences in the installed source.
+  A high palette or hex count against few semantic tokens means the item resists a client palette.</p>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

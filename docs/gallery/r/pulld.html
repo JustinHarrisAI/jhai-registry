@@ -1,390 +1,844 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>@pulld</title>
-<style>
-:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
-a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
-h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
-.sub{color:var(--mut);font-size:14px;margin:0}
-.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
-.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
-.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
-thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
-td.n{text-align:right;font-variant-numeric:tabular-nums}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
-.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
-.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
-.c .sh .none{color:#a1a1aa;font-size:11px}
-.c .m{padding:9px 11px}
-.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
-.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
-.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
-.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
-code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
-pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
-.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
-.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
-.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-h2{font-size:17px;font-weight:600;margin:30px 0 4px}
-.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
-</style></head><body>
-<header><div class="wrap"><h1>@pulld</h1>
-<p class="sub"><a href="../index.html">← all registries</a></p>
-<div class="stats"><div class="stat"><b>87</b><span>items</span></div>
-<div class="stat"><b style="color:var(--ok)">87</b><span>build</span></div>
-<div class="stat"><b style="color:var(--bad)">0</b><span>fail</span></div>
-<div class="stat"><b>100%</b><span>rate</span></div></div></div></header>
-<div class="wrap"><div class="grid"><a class="c" href="../item/pulld__announcement-bar.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">announcement-bar</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__ansi-log.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">ansi-log</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__autosize-textarea.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">autosize-textarea</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__avatar-stack.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">avatar-stack</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__bento-grid.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">bento-grid</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__bulk-action-bar.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">bulk-action-bar</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__calendar-heatmap.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">calendar-heatmap</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__char-counter.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">char-counter</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__code-block.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">code-block</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__color-picker.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">color-picker</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__command-palette.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">command-palette</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__confirm-button.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">confirm-button</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__copy-button.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">copy-button</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__copy-field.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">copy-field</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__countdown.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">countdown</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__country-select.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">country-select</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__cron-expression.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">cron-expression</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__csv-export-button.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">csv-export-button</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__currency-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">currency-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__currency-select.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">currency-select</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__date-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">date-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__diff-view.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">diff-view</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__duration-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">duration-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__empty-state.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">empty-state</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__feature-card.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">feature-card</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__file-dropzone.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">file-dropzone</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__floating-label-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">floating-label-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__form-error-summary.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">form-error-summary</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__gauge.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">gauge</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__idle-timeout.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">idle-timeout</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__image-comparison.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">image-comparison</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__image-crop.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">image-crop</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__infinite-scroll.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">infinite-scroll</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__inline-edit.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">inline-edit</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__json-viewer.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">json-viewer</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__kbd.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">kbd</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__keyboard-shortcuts.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">keyboard-shortcuts</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__language-select.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">language-select</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__loading-button.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">loading-button</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__masked-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">masked-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__mention-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">mention-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__middle-truncate.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">middle-truncate</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__month-picker.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">month-picker</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__multi-select.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">multi-select</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__network-status.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">network-status</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__number-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">number-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__otp-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">otp-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__password-generator.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">password-generator</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__password-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">password-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__password-strength.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">password-strength</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__phone-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">phone-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__pricing-card.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">pricing-card</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__print-button.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">print-button</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__progress-ring.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">progress-ring</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__qr-code.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">qr-code</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__rating.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">rating</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__ratio-bar.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">ratio-bar</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__read-more.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">read-more</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__recovery-codes.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">recovery-codes</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__save-status.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">save-status</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__scroll-progress.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">scroll-progress</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__scroll-shadow.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">scroll-shadow</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__search-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">search-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__segmented-control.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">segmented-control</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__share-button.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">share-button</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__signature-pad.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">signature-pad</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__slug-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">slug-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__sort-header.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">sort-header</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__sortable-list.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">sortable-list</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__sparkline.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">sparkline</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__spinner.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">spinner</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__stat-card.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">stat-card</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__step-indicator.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">step-indicator</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__tag-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">tag-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__theme-toggle.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">theme-toggle</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__time-ago.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">time-ago</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__time-input.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">time-input</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__timeline.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">timeline</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__timezone-select.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">timezone-select</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__toast.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">toast</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__toc.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">toc</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__tree-view.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">tree-view</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__type-to-confirm.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">type-to-confirm</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__unsaved-changes-guard.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">unsaved-changes-guard</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__upload-list.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">upload-list</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__virtual-list.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">virtual-list</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a><a class="c" href="../item/pulld__weekly-hours.html">
-<div class="sh"><span class="none">no thumbnail</span></div>
-<div class="m"><div class="nm">weekly-hours</div><div class="rg">@pulld</div>
-<div style="margin-top:6px"><span class="pill p-pass">PASS</span>
-<span class="pill p-pointer">POINTER</span></div></div></a></div></div></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld — build status</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> · 2026-09-16</p>
+  <h1><code style="background:none;color:inherit;font-size:.8em">@pulld</code></h1>
+  <p class="lede">69 of 87 items rendered.
+  Licence <strong>POINTER</strong> — site serves the registry only; no repository or licence published — treated as not redistributable until a grant is read.
+  Dominant primitive base: <strong>none</strong>.</p>
+</div></header>
+<section><div class="wrap">
+  
+  <div class="grid"><a class="card" href="../i/pulld--announcement-bar.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/announcement-bar.webp" alt=""></span>
+    <span class="meta"><span class="nm">announcement-bar</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--ansi-log.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/ansi-log.webp" alt=""></span>
+    <span class="meta"><span class="nm">ansi-log</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--autosize-textarea.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/autosize-textarea.webp" alt=""></span>
+    <span class="meta"><span class="nm">autosize-textarea</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--bento-grid.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/bento-grid.webp" alt=""></span>
+    <span class="meta"><span class="nm">bento-grid</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--bulk-action-bar.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/bulk-action-bar.webp" alt=""></span>
+    <span class="meta"><span class="nm">bulk-action-bar</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--char-counter.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/char-counter.webp" alt=""></span>
+    <span class="meta"><span class="nm">char-counter</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--code-block.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/code-block.webp" alt=""></span>
+    <span class="meta"><span class="nm">code-block</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--color-picker.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/color-picker.webp" alt=""></span>
+    <span class="meta"><span class="nm">color-picker</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--confirm-button.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/confirm-button.webp" alt=""></span>
+    <span class="meta"><span class="nm">confirm-button</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--copy-button.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/copy-button.webp" alt=""></span>
+    <span class="meta"><span class="nm">copy-button</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--copy-field.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/copy-field.webp" alt=""></span>
+    <span class="meta"><span class="nm">copy-field</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--country-select.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/country-select.webp" alt=""></span>
+    <span class="meta"><span class="nm">country-select</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--cron-expression.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/cron-expression.webp" alt=""></span>
+    <span class="meta"><span class="nm">cron-expression</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--csv-export-button.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/csv-export-button.webp" alt=""></span>
+    <span class="meta"><span class="nm">csv-export-button</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--currency-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/currency-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">currency-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--currency-select.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/currency-select.webp" alt=""></span>
+    <span class="meta"><span class="nm">currency-select</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--date-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/date-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">date-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--diff-view.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/diff-view.webp" alt=""></span>
+    <span class="meta"><span class="nm">diff-view</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--duration-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/duration-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">duration-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--empty-state.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/empty-state.webp" alt=""></span>
+    <span class="meta"><span class="nm">empty-state</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--feature-card.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/feature-card.webp" alt=""></span>
+    <span class="meta"><span class="nm">feature-card</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--file-dropzone.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/file-dropzone.webp" alt=""></span>
+    <span class="meta"><span class="nm">file-dropzone</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--floating-label-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/floating-label-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">floating-label-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--gauge.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/gauge.webp" alt=""></span>
+    <span class="meta"><span class="nm">gauge</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--image-comparison.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/image-comparison.webp" alt=""></span>
+    <span class="meta"><span class="nm">image-comparison</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--image-crop.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/image-crop.webp" alt=""></span>
+    <span class="meta"><span class="nm">image-crop</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--infinite-scroll.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/infinite-scroll.webp" alt=""></span>
+    <span class="meta"><span class="nm">infinite-scroll</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--inline-edit.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/inline-edit.webp" alt=""></span>
+    <span class="meta"><span class="nm">inline-edit</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--json-viewer.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/json-viewer.webp" alt=""></span>
+    <span class="meta"><span class="nm">json-viewer</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--kbd.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/kbd.webp" alt=""></span>
+    <span class="meta"><span class="nm">kbd</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--language-select.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/language-select.webp" alt=""></span>
+    <span class="meta"><span class="nm">language-select</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--loading-button.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/loading-button.webp" alt=""></span>
+    <span class="meta"><span class="nm">loading-button</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--mention-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/mention-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">mention-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--middle-truncate.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/middle-truncate.webp" alt=""></span>
+    <span class="meta"><span class="nm">middle-truncate</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--month-picker.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/month-picker.webp" alt=""></span>
+    <span class="meta"><span class="nm">month-picker</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--network-status.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/network-status.webp" alt=""></span>
+    <span class="meta"><span class="nm">network-status</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--number-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/number-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">number-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--otp-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/otp-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">otp-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--password-generator.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/password-generator.webp" alt=""></span>
+    <span class="meta"><span class="nm">password-generator</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--password-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/password-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">password-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--password-strength.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/password-strength.webp" alt=""></span>
+    <span class="meta"><span class="nm">password-strength</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--phone-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/phone-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">phone-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--print-button.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/print-button.webp" alt=""></span>
+    <span class="meta"><span class="nm">print-button</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--progress-ring.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/progress-ring.webp" alt=""></span>
+    <span class="meta"><span class="nm">progress-ring</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--qr-code.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/qr-code.webp" alt=""></span>
+    <span class="meta"><span class="nm">qr-code</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--rating.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/rating.webp" alt=""></span>
+    <span class="meta"><span class="nm">rating</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--read-more.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/read-more.webp" alt=""></span>
+    <span class="meta"><span class="nm">read-more</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--save-status.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/save-status.webp" alt=""></span>
+    <span class="meta"><span class="nm">save-status</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--scroll-progress.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/scroll-progress.webp" alt=""></span>
+    <span class="meta"><span class="nm">scroll-progress</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--scroll-shadow.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/scroll-shadow.webp" alt=""></span>
+    <span class="meta"><span class="nm">scroll-shadow</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--search-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/search-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">search-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--segmented-control.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/segmented-control.webp" alt=""></span>
+    <span class="meta"><span class="nm">segmented-control</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--share-button.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/share-button.webp" alt=""></span>
+    <span class="meta"><span class="nm">share-button</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--slug-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/slug-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">slug-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--sort-header.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/sort-header.webp" alt=""></span>
+    <span class="meta"><span class="nm">sort-header</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--sortable-list.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/sortable-list.webp" alt=""></span>
+    <span class="meta"><span class="nm">sortable-list</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--sparkline.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/sparkline.webp" alt=""></span>
+    <span class="meta"><span class="nm">sparkline</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--spinner.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/spinner.webp" alt=""></span>
+    <span class="meta"><span class="nm">spinner</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--stat-card.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/stat-card.webp" alt=""></span>
+    <span class="meta"><span class="nm">stat-card</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--step-indicator.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/step-indicator.webp" alt=""></span>
+    <span class="meta"><span class="nm">step-indicator</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--theme-toggle.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/theme-toggle.webp" alt=""></span>
+    <span class="meta"><span class="nm">theme-toggle</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--time-input.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/time-input.webp" alt=""></span>
+    <span class="meta"><span class="nm">time-input</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--timeline.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/timeline.webp" alt=""></span>
+    <span class="meta"><span class="nm">timeline</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--timezone-select.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/timezone-select.webp" alt=""></span>
+    <span class="meta"><span class="nm">timezone-select</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--toast.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/toast.webp" alt=""></span>
+    <span class="meta"><span class="nm">toast</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--toc.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/toc.webp" alt=""></span>
+    <span class="meta"><span class="nm">toc</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--tree-view.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/tree-view.webp" alt=""></span>
+    <span class="meta"><span class="nm">tree-view</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--upload-list.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/upload-list.webp" alt=""></span>
+    <span class="meta"><span class="nm">upload-list</span><span class="rg">registry:ui</span></span></a>
+<a class="card" href="../i/pulld--weekly-hours.html">
+    <span class="shot"><img loading="lazy" src="../shots/pulld/weekly-hours.webp" alt=""></span>
+    <span class="meta"><span class="nm">weekly-hours</span><span class="rg">registry:ui</span></span></a></div>
+</div></section>
+<section><div class="wrap">
+  <h2>Every item</h2>
+  <p class="sub">Including what failed and why. The first line of the error is shown; the full text is in
+  <code>docs/build-errors-2026-09-16.json</code>.</p>
+  <table><thead><tr><th>item</th><th>verdict</th><th>base</th><th>tokens</th><th>reason</th></tr></thead><tbody>
+  <tr>
+    <td><a href="../i/pulld--announcement-bar.html">announcement-bar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">12/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--ansi-log.html">ansi-log</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">13/84/0 <span class="tag t-NEEDS_PROPS">retoken</span></td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--autosize-textarea.html">autosize-textarea</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--bento-grid.html">bento-grid</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--bulk-action-bar.html">bulk-action-bar</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--char-counter.html">char-counter</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--code-block.html">code-block</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--color-picker.html">color-picker</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">18/0/14</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--confirm-button.html">confirm-button</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">9/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--copy-button.html">copy-button</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--copy-field.html">copy-field</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--country-select.html">country-select</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--cron-expression.html">cron-expression</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--csv-export-button.html">csv-export-button</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">5/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--currency-input.html">currency-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--currency-select.html">currency-select</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">14/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--date-input.html">date-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--diff-view.html">diff-view</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/3/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--duration-input.html">duration-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--empty-state.html">empty-state</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--feature-card.html">feature-card</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">10/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--file-dropzone.html">file-dropzone</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--floating-label-input.html">floating-label-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--gauge.html">gauge</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">9/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--image-comparison.html">image-comparison</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">12/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--image-crop.html">image-crop</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/4/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--infinite-scroll.html">infinite-scroll</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--inline-edit.html">inline-edit</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--json-viewer.html">json-viewer</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">9/8/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--kbd.html">kbd</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--language-select.html">language-select</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">13/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--loading-button.html">loading-button</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--mention-input.html">mention-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">9/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--middle-truncate.html">middle-truncate</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--month-picker.html">month-picker</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">15/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--network-status.html">network-status</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">10/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--number-input.html">number-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">10/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--otp-input.html">otp-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--password-generator.html">password-generator</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">17/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--password-input.html">password-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--password-strength.html">password-strength</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/12/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--phone-input.html">phone-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--print-button.html">print-button</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/1</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--progress-ring.html">progress-ring</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--qr-code.html">qr-code</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/4/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--rating.html">rating</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--read-more.html">read-more</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--save-status.html">save-status</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--scroll-progress.html">scroll-progress</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">2/1/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--scroll-shadow.html">scroll-shadow</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/5</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--search-input.html">search-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--segmented-control.html">segmented-control</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--share-button.html">share-button</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--slug-input.html">slug-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--sort-header.html">sort-header</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--sortable-list.html">sortable-list</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--sparkline.html">sparkline</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--spinner.html">spinner</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">0/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--stat-card.html">stat-card</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/4/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--step-indicator.html">step-indicator</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">14/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--theme-toggle.html">theme-toggle</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--time-input.html">time-input</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--timeline.html">timeline</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--timezone-select.html">timezone-select</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--toast.html">toast</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">12/3/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--toc.html">toc</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">4/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--tree-view.html">tree-view</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">7/0/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--upload-list.html">upload-list</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">15/2/0</td>
+    <td></td></tr>
+<tr>
+    <td><a href="../i/pulld--weekly-hours.html">weekly-hours</a>
+        </td>
+    <td><span class="tag t-USABLE">USABLE</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>avatar-stack
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>form-error-summary
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">6/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>keyboard-shortcuts
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/1/0</td>
+    <td></td></tr>
+<tr>
+    <td>masked-input
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>multi-select
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">18/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>pricing-card
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>ratio-bar
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">13/1/0</td>
+    <td></td></tr>
+<tr>
+    <td>recovery-codes
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">13/0/5</td>
+    <td></td></tr>
+<tr>
+    <td>signature-pad
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">19/0/3</td>
+    <td></td></tr>
+<tr>
+    <td>tag-input
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">8/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>type-to-confirm
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>virtual-list
+        </td>
+    <td><span class="tag t-NEEDS_PROPS">NEEDS PROPS</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>calendar-heatmap
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>none</code></td>
+    <td class="num">9/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>command-palette
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>none</code></td>
+    <td class="num">15/1/0</td>
+    <td></td></tr>
+<tr>
+    <td>countdown
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>none</code></td>
+    <td class="num">3/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>idle-timeout
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/1/0</td>
+    <td></td></tr>
+<tr>
+    <td>time-ago
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>none</code></td>
+    <td class="num">1/0/0</td>
+    <td></td></tr>
+<tr>
+    <td>unsaved-changes-guard
+        </td>
+    <td><span class="tag t-BUILDS_BLANK">BUILDS BLANK</span></td>
+    <td><code>none</code></td>
+    <td class="num">11/1/0</td>
+    <td></td></tr>
+  </tbody></table>
+  <p class="sub">The tokens column is semantic / palette / hex occurrences in the installed source.
+  A high palette or hex count against few semantic tokens means the item resists a client palette.</p>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

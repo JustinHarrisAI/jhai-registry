@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@pulld/json-viewer</title><link rel="stylesheet" href="../gallery.css"></head><body>
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/pulld.html" style="color:#9fb3ad">@pulld</a></p>
+  <h1>JSON Viewer</h1>
+  <p class="lede">Renders a parsed JSON value as a collapsible, type-coloured tree you can read and navigate. Reach for it wherever a page has to show a payload the reader did not write: an API or REST response in an admin or debug panel, a webhook body, the payload attached to a log or audit entry, a GraphQL response, an LLM tool-call's arguments, a JSONB/JSON database column, a feature-flag or config blob, a job's input and output in a queue dashboard, or the raw record behind a row in an internal tool. Common asks it answers: &quot;json viewer&quot;, &quot;json tree viewer&quot;, &quot;json inspector&quot;, &quot;object inspector&quot;, &quot;display JSON in React&quot;, &quot;render an API response&quot;, &quot;pretty print JSON component&quot;, &quot;collapsible JSON&quot;, &quot;expandable JSON tree&quot;, &quot;JSON formatter component&quot;, &quot;view webhook payload&quot;, &quot;debug panel for API responses&quot;, &quot;react-json-view alternative&quot;, &quot;shadcn JSON viewer&quot;. shadcn/ui ships nothing for JSON — its accordion and collapsible are single open/closed sections that know nothing about types, counts or depth — so this is normally either a raw &lt;pre&gt;{JSON.stringify(data, null, 2)}&lt;/pre&gt;, which is unreadable past a screenful and cannot be collapsed, or a third-party viewer pulled in for one panel. Pass the value itself — `data={await res.json()}` — and nothing else is required: objects and arrays open and close, strings, numbers, booleans and null are coloured by type, every container reports how many entries it holds, and `defaultExpandedDepth` sets how much is open on first paint (0 for just the root, 1 by default, Infinity for the whole document). Built for payloads that are bigger than the demo: a container draws `maxItemsPerNode` entries (100 by default) behind a keyboard-reachable “… 39,900 more” row, so a 40,000-element array costs a hundred rows rather than mounting all of them, long strings are elided inside their quotes with the full text kept on hover, and a value that points back at one of its own ancestors is drawn as [Circular] instead of unfolding forever. It is the real ARIA tree pattern rather than a stack of collapsibles: role=tree/treeitem with aria-expanded, aria-level, aria-posinset and aria-setsize, and a roving tabindex that makes the whole viewer one Tab stop instead of one per row. Up/Down walk the rows actually on screen, Right opens a container and then steps into it, Left closes it or jumps to the parent, Home/End hit the ends, Enter/Space toggle a row or ask a “… more” row for its next page. `onSelect` hands back the row's accessor path — `$.items[0].id`, quoted so that `{ &quot;a.b&quot;: 1 }` and `{ a: { b: 1 } }` never produce the same string, and pasteable straight into code — together with the live value, which is the hook for a copy button or a “filter to this” action; pair it with copy-button for copy-on-click. Open state is stored as the difference from `defaultExpandedDepth` rather than as a set of open paths, so swapping in the next response leaves the view opened to the same depth instead of collapsing to one unreadable root row. Counts are grouped without toLocaleString, whose locale-dependent output shows up as a hydration mismatch in Next.js. Styled with shadcn tokens (foreground, muted-foreground, accent, ring) plus dark-aware type colours so it follows light and dark themes; lucide-react is the only dependency, with no Radix, no state library and no JSON parser of its own. Distinct from tree-view, which renders a hierarchy you have already built into `{ id, label, children }` nodes: this one takes the raw parsed value and needs no node-building step, and it renders keys, types and counts rather than labels. Distinct from code-block, which shows JSON as static text to copy rather than a structure to open and walk.</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/pulld/json-viewer.webp" alt="json-viewer rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>pnpm dlx shadcn@4.21.0 add @pulld/json-viewer</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-POINTER">POINTER</span></td></tr>
+    <tr><th>primitive base</th><td><code>none</code></td></tr>
+    <tr><th>type</th><td><code>registry:ui</code></td></tr>
+    <tr><th>files</th><td><code>src/components/ui/json-viewer.tsx</code></td></tr>
+    <tr><th>npm deps pulled</th><td>none beyond the pre-installed peer set</td></tr>
+    <tr><th>registry deps</th><td>—</td></tr>
+    <tr><th>semantic / palette / hex</th><td>9 / 8 / 0 </td></tr>
+    <tr><th>writes shared ui/</th><td>yes — can overwrite the project’s own primitives</td></tr>
+  </tbody></table>
+</div></section>
+
+<footer><div class="wrap">Built 2026-09-16 by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="../index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>

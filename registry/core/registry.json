@@ -212,6 +212,88 @@
         "upstreamLicense": null,
         "jhaiVersion": "2.1.0"
       }
+    },
+    {
+      "name": "score-bar",
+      "type": "registry:component",
+      "title": "Score Bar",
+      "description": "One measured value on a fixed scale, with an optional reference rule and a first-class unmeasured state. A null value draws a hueless hatch and never a zero, because a bar component that treats missing as zero tells someone they failed a test that was never run.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "data",
+        "chart"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "ScoreBar.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/ScoreBar.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "severity-mark",
+      "type": "registry:component",
+      "title": "Severity Mark",
+      "description": "How bad a thing is, carried by colour, shape and word together so any one of the three can be lost. Octagon, triangle and circle rank without hue, which matters because a hot-to-cool ramp is the exact axis a red-green deficiency removes.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "data",
+        "feedback"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "SeverityMark.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/SeverityMark.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": "lucide",
+        "upstreamLicense": "ISC",
+        "jhaiVersion": "1.0.0"
+      }
+    },
+    {
+      "name": "ratio-bar",
+      "type": "registry:component",
+      "title": "Ratio Bar",
+      "description": "A count against its own denominator, drawn at the proportion it actually is. Refuses to render when the count exceeds its total, because a bar drawn against the wrong denominator draws 2% where the truth is 15% and the picture is what gets believed.",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "categories": [
+        "data",
+        "chart"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/severity-mark"
+      ],
+      "files": [
+        {
+          "path": "RatioBar.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/RatioBar.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      }
     }
   ]
 }

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "severity-mark",
+  "title": "Severity Mark",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "How bad a thing is, carried by colour, shape and word together so any one of the three can be lost. Octagon, triangle and circle rank without hue, which matters because a hot-to-cool ramp is the exact axis a red-green deficiency removes.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@jhai/theme-base"
+  ],
+  "files": [
+    {
+      "path": "registry/core/SeverityMark.tsx",
+      "content": "import type { CSSProperties } from 'react';\nimport { Info, OctagonAlert, TriangleAlert } from 'lucide-react';\n\n/**\n * SeverityMark — how bad a thing is, readable before the words are.\n *\n * WHY THREE SIGNALS FOR ONE VALUE, AND WHY THAT IS NOT BELT AND BRACES\n *\n * Colour alone fails. A severity ramp runs hot to cool, which in practice means\n * red through amber, and that is precisely the axis a red-green deficiency\n * removes. Roughly eight per cent of men cannot rank this ramp by hue.\n *\n * Shape fixes it. An octagon, a triangle and a circle are distinguishable with\n * no colour at all, and they are the three shapes road signage has used for a\n * century, so the ranking is legible without a key.\n *\n * The word is the third signal, for a screen reader and for a monochrome print.\n * Any one of the three can be lost and the severity still arrives.\n *\n * The icons are Lucide and they are drawn, never set as text glyphs. A\n * character renders in whatever font the platform substitutes and sits on the\n * text baseline instead of the row's optical centre.\n *\n * COLOUR COMES FROM THE PROJECT, NOT FROM HERE\n *\n * Each level reads `--ui-severity-N` and falls back to a semantic token the\n * shadcn base always defines, which is the same indirection `@jhai/chart` uses\n * for its series. A project that defines the three tokens gets its own ramp for\n * free; a project that defines none still gets a readable, on-brand mark.\n *\n * The lowest level deliberately does not fall back to a grey. Grey almost\n * always means \"not applicable\" or \"not measured\" elsewhere on the same page,\n * and a low-severity finding is a real finding about a real problem. Merging\n * those two states is worse than an imperfect hue.\n */\n\nexport type SeverityLevel = 'high' | 'medium' | 'low';\n\ninterface LevelSpec {\n  color: string;\n  tint: string;\n  Icon: typeof OctagonAlert;\n}\n\n/**\n * Exported because anything tinting itself to match a severity, a ratio bar or\n * a row highlight, has to read the same map. Two hardcoded lists is how a\n * medium becomes two different ambers on one page.\n */\nexport const SEVERITY: Record<SeverityLevel, LevelSpec> = {\n  high: {\n    color: 'var(--ui-severity-high, var(--destructive))',\n    tint: 'color-mix(in oklab, var(--ui-severity-high, var(--destructive)) 10%, transparent)',\n    Icon: OctagonAlert,\n  },\n  medium: {\n    color: 'var(--ui-severity-medium, var(--ring))',\n    tint: 'color-mix(in oklab, var(--ui-severity-medium, var(--ring)) 10%, transparent)',\n    Icon: TriangleAlert,\n  },\n  low: {\n    color: 'var(--ui-severity-low, var(--primary))',\n    tint: 'color-mix(in oklab, var(--ui-severity-low, var(--primary)) 10%, transparent)',\n    Icon: Info,\n  },\n};\n\nexport interface SeverityMarkProps {\n  level: SeverityLevel;\n  /**\n   * The words. Pass the vocabulary the rest of the product already uses, e.g.\n   * \"P0 · Critical\" or \"Blocker\". Required, because the mark is not allowed to\n   * rely on colour and shape alone.\n   */\n  label: string;\n  className?: string;\n  style?: CSSProperties;\n}\n\nexport function SeverityMark({ level, label, className, style }: SeverityMarkProps) {\n  const spec = SEVERITY[level] ?? SEVERITY.low;\n  const { Icon } = spec;\n\n  return (\n    <span\n      className={`inline-flex items-center gap-1.5 font-mono text-ui-eyebrow tracking-[0.24em] uppercase whitespace-nowrap ${\n        className ?? ''\n      }`}\n      style={{ color: spec.color, ...style }}\n    >\n      <Icon size={13} strokeWidth={1.75} aria-hidden />\n      {label}\n    </span>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/SeverityMark.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": "lucide",
+    "upstreamLicense": "ISC",
+    "jhaiVersion": "1.0.0"
+  },
+  "categories": [
+    "data",
+    "feedback"
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ratio-bar",
+  "title": "Ratio Bar",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "A count against its own denominator, drawn at the proportion it actually is. Refuses to render when the count exceeds its total, because a bar drawn against the wrong denominator draws 2% where the truth is 15% and the picture is what gets believed.",
+  "registryDependencies": [
+    "@jhai/theme-base",
+    "@jhai/severity-mark"
+  ],
+  "files": [
+    {
+      "path": "registry/core/RatioBar.tsx",
+      "content": "import type { CSSProperties } from 'react';\nimport { SEVERITY, type SeverityLevel } from './SeverityMark';\n\n/**\n * RatioBar — \"115 of 150 pages\", drawn at the proportion it actually is.\n *\n * WHY THE RATIO IS WORTH A COMPONENT\n *\n * \"115 of your 150 pages have no meta description\" and \"8 of your 150 pages\n * share a title\" are the same sentence shape carrying completely different\n * news, and a reader skimming a list of them does not stop to divide. Three\n * quarters of a site against one twentieth of it is the difference between a\n * rewrite and an afternoon, and in a sentence that difference is buried in the\n * middle.\n *\n * THE DENOMINATOR RULE, WHICH IS THE ONLY THING THIS MUST GET RIGHT\n *\n * `total` must be the denominator belonging to the thing being counted, never\n * a convenient larger number from the surrounding context. The failure is\n * specific and was live in production: a count of affected services was drawn\n * against the site's total page count, so \"3 of your 150 services\" appeared on\n * a site with twenty services. The numerator was right, the denominator was a\n * different quantity entirely, and the sentence was arithmetically false.\n *\n * A bar drawn against the wrong denominator does not merely mislabel. It draws\n * 2% where the truth is 15%, and a picture of a false number is worse than the\n * false number alone, because the picture is what gets believed.\n *\n * So this renders nothing at all unless it has a positive total and a count\n * that fits inside it. A caller who cannot supply both keeps its sentence and\n * loses its bar, which is the correct degradation.\n *\n * THE NUMBERS ARE ALWAYS TEXT\n *\n * Both numbers and the percentage render as text under the bar. The bar adds\n * proportion to a fact that is fully readable without it.\n */\n\nexport interface RatioBarProps {\n  /** How many items are affected. */\n  count: number;\n  /** What they are affected out of. The count's OWN total. */\n  total: number;\n  /** Plural noun for what is counted, e.g. \"pages\", \"services\", \"orders\". */\n  subject: string;\n  /** Tints the bar to match the finding it belongs to. */\n  level?: SeverityLevel;\n  className?: string;\n  style?: CSSProperties;\n}\n\nexport function RatioBar({\n  count,\n  total,\n  subject,\n  level = 'low',\n  className,\n  style,\n}: RatioBarProps) {\n  /*\n   * Each of these is a reason to draw nothing rather than draw something wrong.\n   * A zero total is a division by zero, and a count above its own total means\n   * the two numbers came from different quantities, which is the precise bug\n   * the denominator rule above exists to catch.\n   */\n  if (!Number.isFinite(count) || !Number.isFinite(total)) return null;\n  if (total <= 0 || count < 0 || count > total) return null;\n\n  const spec = SEVERITY[level] ?? SEVERITY.low;\n  const share = (count / total) * 100;\n\n  /*\n   * A true 0.7% is a third of a pixel on a 380px track, which rounds away and\n   * reads as \"no bar drawn\" rather than as \"almost none\". The floor keeps a\n   * hairline visible. It only ever applies to a non-zero count, so it can never\n   * invent a problem that does not exist.\n   */\n  const drawn = count === 0 ? 0 : Math.max(share, 0.8);\n\n  return (\n    <div className={className} style={style}>\n      <div\n        className=\"relative h-1.5 overflow-hidden rounded-ui-pill\"\n        style={{\n          background: spec.tint,\n          printColorAdjust: 'exact',\n          WebkitPrintColorAdjust: 'exact',\n        }}\n        aria-hidden\n      >\n        <div\n          className=\"absolute inset-y-0 left-0 rounded-ui-pill\"\n          style={{\n            width: `${drawn}%`,\n            background: spec.color,\n            printColorAdjust: 'exact',\n            WebkitPrintColorAdjust: 'exact',\n          }}\n        />\n      </div>\n      <p className=\"mt-1.5 font-mono text-ui-micro tracking-[0.16em] uppercase text-muted-foreground\">\n        {count.toLocaleString('en-US')} of {total.toLocaleString('en-US')} {subject}\n        {' · '}\n        {/*\n         * Rounded to a whole percent, and never to 0% while anything is\n         * affected. \"0%\" beside \"8 of 150\" is a contradiction the reader has to\n         * resolve, and they resolve it in favour of the percentage.\n         */}\n        {count === 0 ? '0%' : `${Math.max(1, Math.round(share))}%`}\n      </p>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/RatioBar.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": null,
+    "upstreamLicense": null,
+    "jhaiVersion": "1.0.0"
+  },
+  "categories": [
+    "data",
+    "chart"
+  ],
+  "type": "registry:component"
+}

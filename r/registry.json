@@ -307,6 +307,88 @@
       "type": "registry:component"
     },
     {
+      "name": "score-bar",
+      "title": "Score Bar",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "One measured value on a fixed scale, with an optional reference rule and a first-class unmeasured state. A null value draws a hueless hatch and never a zero, because a bar component that treats missing as zero tells someone they failed a test that was never run.",
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/core/ScoreBar.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/ScoreBar.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      },
+      "categories": [
+        "data",
+        "chart"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "severity-mark",
+      "title": "Severity Mark",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "How bad a thing is, carried by colour, shape and word together so any one of the three can be lost. Octagon, triangle and circle rank without hue, which matters because a hot-to-cool ramp is the exact axis a red-green deficiency removes.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/core/SeverityMark.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/SeverityMark.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": "lucide",
+        "upstreamLicense": "ISC",
+        "jhaiVersion": "1.0.0"
+      },
+      "categories": [
+        "data",
+        "feedback"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "ratio-bar",
+      "title": "Ratio Bar",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "A count against its own denominator, drawn at the proportion it actually is. Refuses to render when the count exceeds its total, because a bar drawn against the wrong denominator draws 2% where the truth is 15% and the picture is what gets believed.",
+      "registryDependencies": [
+        "@jhai/theme-base",
+        "@jhai/severity-mark"
+      ],
+      "files": [
+        {
+          "path": "registry/core/RatioBar.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/RatioBar.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": null,
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      },
+      "categories": [
+        "data",
+        "chart"
+      ],
+      "type": "registry:component"
+    },
+    {
       "name": "content-types",
       "title": "Content Types",
       "author": "Justin Harris <justin@justinharris.ai>",
@@ -1016,6 +1098,32 @@
       },
       "categories": [
         "form"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "booking-embed",
+      "title": "Booking Embed",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "A GoHighLevel booking calendar that actually appears. The vendor script parks the iframe off-screen while the widget boots and does not always reveal it, and resolves its width against the window rather than the column. Both are reversed here, with a printable address fallback.",
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/wrappers/BookingEmbed.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/BookingEmbed.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": "gohighlevel form_embed.js",
+        "upstreamLicense": null,
+        "jhaiVersion": "1.0.0"
+      },
+      "categories": [
+        "marketing",
+        "integration"
       ],
       "type": "registry:component"
     }

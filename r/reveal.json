@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reveal",
+  "title": "Reveal",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "The single entrance animation. Reads --ui-dur-med and --ui-ease from the theme so motion is a brand property, and collapses to a near-instant fade under prefers-reduced-motion.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "@jhai/theme-base"
+  ],
+  "files": [
+    {
+      "path": "registry/wrappers/Reveal.tsx",
+      "content": "'use client';\n\nimport { motion, useReducedMotion } from 'motion/react';\nimport type { ReactNode } from 'react';\n\n/**\n * Reveal — the single entrance animation, wired to the project's own motion tokens.\n *\n * WHY THIS IS THE ONLY MOTION ITEM\n * Every registry that ships animation ships its own durations and easings, so a site assembled\n * from four sources moves four different ways. This wrapper reads `--ui-dur-*` and `--ui-ease`\n * from the theme, which means motion is a brand property the same way colour is: set once,\n * followed everywhere, changed without touching a component.\n *\n * REDUCED MOTION IS NOT OPTIONAL\n * `useReducedMotion` short-circuits to a plain fade with no travel when the reader has asked\n * the OS for less movement. A marketing site that ignores that preference is a defect, not a\n * style choice, and it is the reason this is a component rather than a convention.\n */\n\nexport type RevealDirection = 'up' | 'down' | 'left' | 'right' | 'none';\n\nexport interface RevealProps {\n  children: ReactNode;\n  /** Travel direction for the entrance. `none` fades only. */\n  from?: RevealDirection;\n  /** Travel distance in pixels. Ignored when reduced motion is requested. */\n  distance?: number;\n  /** Seconds of delay, for staggering siblings. */\n  delay?: number;\n  /** Fire once when scrolled into view (default) or on every entry. */\n  once?: boolean;\n  className?: string;\n}\n\nconst OFFSET: Record<RevealDirection, { x: number; y: number }> = {\n  up: { x: 0, y: 1 },\n  down: { x: 0, y: -1 },\n  left: { x: 1, y: 0 },\n  right: { x: -1, y: 0 },\n  none: { x: 0, y: 0 },\n};\n\n/*\n * Motion needs numbers, and the tokens are CSS time strings. Reading them at mount keeps one\n * source of truth — the theme — rather than duplicating the ramp in JS. The fallbacks are the\n * theme's own defaults, so a project that has not installed @jhai/theme-base still animates\n * sensibly instead of snapping.\n */\nfunction seconds(varName: string, fallback: number): number {\n  if (typeof window === 'undefined') return fallback;\n  const raw = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();\n  if (!raw) return fallback;\n  const n = parseFloat(raw);\n  if (Number.isNaN(n)) return fallback;\n  return raw.endsWith('ms') ? n / 1000 : n;\n}\n\nexport function Reveal({ children, from = 'up', distance = 16, delay = 0, once = true, className }: RevealProps) {\n  const reduced = useReducedMotion();\n  const dir = OFFSET[from];\n  const travel = reduced ? 0 : distance;\n\n  return (\n    <motion.div\n      className={className}\n      initial={{ opacity: 0, x: dir.x * travel, y: dir.y * travel }}\n      whileInView={{ opacity: 1, x: 0, y: 0 }}\n      viewport={{ once, amount: 0.25 }}\n      transition={{\n        duration: reduced ? 0.01 : seconds('--ui-dur-med', 0.45),\n        delay: reduced ? 0 : delay,\n        ease: [0.22, 0.61, 0.36, 1],\n      }}\n    >\n      {children}\n    </motion.div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/Reveal.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": "motion",
+    "upstreamLicense": "MIT",
+    "adoptedDependency": "motion",
+    "jhaiVersion": "2.1.0"
+  },
+  "categories": [
+    "motion"
+  ],
+  "type": "registry:component"
+}

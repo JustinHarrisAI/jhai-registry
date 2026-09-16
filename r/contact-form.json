@@ -1,0 +1,33 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contact-form",
+  "title": "Contact form",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "Per-field validation before the round trip, with one zod schema usable unchanged inside a server action. Submission is the caller's, because where a lead goes is a per-client decision.",
+  "dependencies": [
+    "react-hook-form",
+    "zod",
+    "@hookform/resolvers"
+  ],
+  "registryDependencies": [
+    "@jhai/theme-base"
+  ],
+  "files": [
+    {
+      "path": "registry/wrappers/ContactForm.tsx",
+      "content": "'use client';\n\nimport { useForm } from 'react-hook-form';\nimport { zodResolver } from '@hookform/resolvers/zod';\nimport { z } from 'zod';\n\n/**\n * ContactForm — the one form on a service site, validated client-side and painted from tokens.\n *\n * WHY A LIBRARY FOR THIS\n * Next's own form actions handle submission perfectly well, and for a newsletter box they are\n * enough. What they do not give you is per-field feedback before the round trip: a mistyped\n * email that only reports itself after a submit and a page transition reads as broken, and on a\n * quote request — the form that carries the money — that is the difference between a lead and a\n * bounce. react-hook-form supplies the field state; zod supplies one schema that validates the\n * same way on the client and inside a server action, so the rules cannot drift apart.\n *\n * WHAT THIS DOES NOT DO\n * It does not send anything. `onSubmit` is the caller's, because where a lead goes is a per\n * client decision — a server action, a CRM webhook, an email relay — and baking one in would\n * make this item unusable for the next client.\n */\n\nexport const contactSchema = z.object({\n  name: z.string().min(2, 'Tell me who you are.'),\n  email: z.string().email('That address does not look right.'),\n  message: z.string().min(10, 'A sentence or two is plenty.'),\n});\n\nexport type ContactValues = z.infer<typeof contactSchema>;\n\nexport interface ContactFormContent {\n  nameLabel?: string;\n  emailLabel?: string;\n  messageLabel?: string;\n  submitLabel?: string;\n  successMessage?: string;\n}\n\nexport interface ContactFormProps {\n  /** Receives validated values. Throw to surface a submission error to the reader. */\n  onSubmit: (values: ContactValues) => Promise<void> | void;\n  content?: ContactFormContent;\n  className?: string;\n}\n\nexport function ContactForm({ onSubmit, content = {}, className }: ContactFormProps) {\n  const {\n    register,\n    handleSubmit,\n    formState: { errors, isSubmitting, isSubmitSuccessful },\n  } = useForm<ContactValues>({ resolver: zodResolver(contactSchema), mode: 'onBlur' });\n\n  const {\n    nameLabel = 'Name',\n    emailLabel = 'Email',\n    messageLabel = 'What do you need?',\n    submitLabel = 'Send',\n    successMessage = 'Thank you. I will reply personally.',\n  } = content;\n\n  if (isSubmitSuccessful) {\n    return (\n      <p className={`text-ui-lede text-foreground ${className ?? ''}`} role=\"status\">\n        {successMessage}\n      </p>\n    );\n  }\n\n  return (\n    <form\n      noValidate\n      onSubmit={handleSubmit(onSubmit)}\n      className={`flex flex-col gap-[var(--ui-gap-inline)] ${className ?? ''}`}\n    >\n      <Field id=\"name\" label={nameLabel} error={errors.name?.message}>\n        <input id=\"name\" autoComplete=\"name\" {...register('name')} className={INPUT} />\n      </Field>\n\n      <Field id=\"email\" label={emailLabel} error={errors.email?.message}>\n        <input id=\"email\" type=\"email\" autoComplete=\"email\" {...register('email')} className={INPUT} />\n      </Field>\n\n      <Field id=\"message\" label={messageLabel} error={errors.message?.message}>\n        <textarea id=\"message\" rows={4} {...register('message')} className={`${INPUT} h-auto py-3`} />\n      </Field>\n\n      <button\n        type=\"submit\"\n        disabled={isSubmitting}\n        className=\"h-[var(--ui-button-h)] rounded-[var(--ui-radius-inner)] bg-primary px-6\n                   text-primary-foreground transition-opacity duration-[var(--ui-dur-fast)]\n                   ease-[var(--ui-ease)] hover:opacity-90 disabled:opacity-60\n                   focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n      >\n        {isSubmitting ? 'Sending…' : submitLabel}\n      </button>\n    </form>\n  );\n}\n\nconst INPUT =\n  'h-[var(--ui-field-h)] w-full rounded-[var(--ui-radius-inner)] border border-input bg-background ' +\n  'px-3 text-foreground placeholder:text-muted-foreground ' +\n  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring';\n\nfunction Field({\n  id, label, error, children,\n}: { id: string; label: string; error?: string; children: React.ReactNode }) {\n  return (\n    <div className=\"flex flex-col gap-1.5\">\n      <label htmlFor={id} className=\"text-ui-caption text-muted-foreground\">{label}</label>\n      {children}\n      {/*\n        The error is announced, not just coloured. Colour alone fails anyone who cannot see it,\n        and on a lead form that is a lost enquiry rather than a cosmetic miss.\n      */}\n      {error ? (\n        <p role=\"alert\" className=\"text-ui-micro text-destructive\">{error}</p>\n      ) : null}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/ContactForm.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": "react-hook-form + zod",
+    "upstreamLicense": "MIT",
+    "adoptedDependency": "react-hook-form, zod",
+    "jhaiVersion": "2.1.0"
+  },
+  "categories": [
+    "form"
+  ],
+  "type": "registry:component"
+}

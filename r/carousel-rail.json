@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "carousel-rail",
+  "title": "Carousel rail",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "Embla drag rail with controls and progress dots painted from semantic tokens. Embla renders nothing itself, which is why the rail can be retokened without touching the library.",
+  "dependencies": [
+    "embla-carousel-react"
+  ],
+  "registryDependencies": [
+    "@jhai/theme-base"
+  ],
+  "files": [
+    {
+      "path": "registry/wrappers/CarouselRail.tsx",
+      "content": "'use client';\n\nimport { useCallback, useEffect, useState } from 'react';\nimport useEmblaCarousel from 'embla-carousel-react';\nimport type { ReactNode } from 'react';\n\n/**\n * CarouselRail — a drag rail with token-painted controls.\n *\n * WHY A LIBRARY AND NOT COPIED SOURCE\n * Drag physics, momentum, snap points, pointer capture and the resize maths are behaviour, not\n * appearance. Hand-rolling them produces a rail that feels wrong on a trackpad and breaks on\n * touch, and shadcn/ui's own carousel already depends on Embla, so the package is in the tree\n * whether or not it is written down. This makes it explicit, which is the difference between a\n * pinned version JHAI tests and a transitive one that moves when shadcn moves.\n *\n * WHAT THE WRAPPER ADDS\n * Every visible surface — the controls, their ring, the progress dots — paints from the\n * project's own semantic tokens, so a client palette swap recolours the rail with no edit here.\n * Embla itself renders nothing, which is exactly why it is safe to adopt.\n */\n\nexport interface CarouselRailProps {\n  /** Slides. Each child is wrapped in a flex-basis slot by this component. */\n  children: ReactNode[];\n  /** Slot width as a Tailwind basis utility, e.g. \"basis-full\" or \"basis-1/3\". */\n  slotClass?: string;\n  /** Show previous/next controls. Dots are always shown when there is more than one page. */\n  controls?: boolean;\n  /** Accessible label for the rail region. */\n  label?: string;\n  className?: string;\n}\n\nexport function CarouselRail({\n  children,\n  slotClass = 'basis-full sm:basis-1/2 lg:basis-1/3',\n  controls = true,\n  label = 'Carousel',\n  className,\n}: CarouselRailProps) {\n  const [ref, api] = useEmblaCarousel({ align: 'start', containScroll: 'trimSnaps' });\n  const [selected, setSelected] = useState(0);\n  const [snaps, setSnaps] = useState<number[]>([]);\n\n  useEffect(() => {\n    if (!api) return;\n    const sync = () => setSelected(api.selectedScrollSnap());\n    setSnaps(api.scrollSnapList());\n    sync();\n    api.on('select', sync).on('reInit', () => { setSnaps(api.scrollSnapList()); sync(); });\n  }, [api]);\n\n  const go = useCallback((i: number) => api?.scrollTo(i), [api]);\n\n  return (\n    <section className={className} aria-roledescription=\"carousel\" aria-label={label}>\n      <div className=\"overflow-hidden\" ref={ref}>\n        <div className=\"flex gap-[var(--ui-gap-card)]\">\n          {children.map((child, i) => (\n            <div key={i} className={`min-w-0 shrink-0 grow-0 ${slotClass}`} aria-roledescription=\"slide\">\n              {child}\n            </div>\n          ))}\n        </div>\n      </div>\n\n      {snaps.length > 1 ? (\n        <div className=\"mt-[var(--ui-gap-inline)] flex items-center gap-3\">\n          {controls ? (\n            <>\n              <RailButton onClick={() => api?.scrollPrev()} label=\"Previous slide\">&#8592;</RailButton>\n              <RailButton onClick={() => api?.scrollNext()} label=\"Next slide\">&#8594;</RailButton>\n            </>\n          ) : null}\n          <div className=\"flex gap-1.5\" role=\"tablist\" aria-label=\"Slides\">\n            {snaps.map((_, i) => (\n              <button\n                key={i}\n                type=\"button\"\n                role=\"tab\"\n                aria-selected={i === selected}\n                aria-label={`Go to slide ${i + 1}`}\n                onClick={() => go(i)}\n                className={`h-1.5 rounded-full transition-[width,background-color] duration-[var(--ui-dur-fast)] ease-[var(--ui-ease)] ${\n                  i === selected ? 'w-6 bg-foreground' : 'w-1.5 bg-border'\n                }`}\n              />\n            ))}\n          </div>\n        </div>\n      ) : null}\n    </section>\n  );\n}\n\nfunction RailButton({ onClick, label, children }: { onClick: () => void; label: string; children: ReactNode }) {\n  return (\n    <button\n      type=\"button\"\n      onClick={onClick}\n      aria-label={label}\n      className=\"inline-flex h-[var(--ui-button-h-nav)] w-[var(--ui-button-h-nav)] items-center justify-center\n                 rounded-full border border-border bg-background text-foreground\n                 transition-colors duration-[var(--ui-dur-fast)] ease-[var(--ui-ease)]\n                 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n    >\n      {children}\n    </button>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/CarouselRail.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": "embla-carousel-react",
+    "upstreamLicense": "MIT",
+    "adoptedDependency": "embla-carousel-react",
+    "jhaiVersion": "2.1.0"
+  },
+  "categories": [
+    "media",
+    "layout"
+  ],
+  "type": "registry:component"
+}

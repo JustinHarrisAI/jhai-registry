@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chart",
+  "title": "Chart",
+  "author": "Justin Harris <justin@justinharris.ai>",
+  "description": "Recharts container that declares --series-1..6 from the project's own chart tokens, so charts follow a client palette instead of baking colours in. Composes Recharts chart types rather than hiding them.",
+  "dependencies": [
+    "recharts"
+  ],
+  "registryDependencies": [
+    "@jhai/theme-base"
+  ],
+  "files": [
+    {
+      "path": "registry/wrappers/Chart.tsx",
+      "content": "'use client';\n\nimport type { ReactElement } from 'react';\nimport { ResponsiveContainer } from 'recharts';\n\n/**\n * Chart — the one place Recharts is allowed to know what colour anything is.\n *\n * WHY THIS WRAPPER EXISTS\n * Recharts takes colour as literal string props on its own elements: `fill`, `stroke`, `dot`.\n * It does not read CSS custom properties on its own, so a chart written the obvious way bakes\n * a hex into the page and stops following the client's palette. That is the one thing this\n * registry exists to prevent.\n *\n * The fix is a CSS variable indirection. This container declares `--series-1` … `--series-6`\n * from the project's own chart tokens, and every child chart references `var(--series-N)`\n * rather than a colour. Swapping the client's palette moves the whole chart, because the value\n * the chart reads was never a colour in the first place — it was a pointer to one.\n *\n * WHAT THIS DELIBERATELY DOES NOT DO\n * It does not wrap the chart types. `LineChart`, `BarChart` and `AreaChart` stay Recharts\n * components composed by the caller, because an abstraction over them would have to grow a prop\n * for every Recharts prop and would be worse than the library it hid. This is a colour bridge\n * and a sizing container, nothing else.\n */\n\nexport interface ChartProps {\n  /** A Recharts chart tree. Reference colours as `var(--series-1)` … `var(--series-6)`. */\n  children: ReactElement;\n  /** Container height. Recharts needs a definite height to measure against. */\n  height?: number;\n  /** Optional caption rendered under the plot in the mono eyebrow recipe. */\n  caption?: string;\n  className?: string;\n}\n\n/*\n * The series ramp is declared here rather than in the theme so that a project with no chart\n * tokens still gets a readable, on-brand chart: each entry falls back to a semantic token the\n * shadcn base always defines. A project that sets --chart-1..5 overrides the ramp for free.\n */\nconst SERIES: Record<string, string> = {\n  '--series-1': 'var(--chart-1, var(--primary))',\n  '--series-2': 'var(--chart-2, var(--secondary))',\n  '--series-3': 'var(--chart-3, var(--accent))',\n  '--series-4': 'var(--chart-4, var(--muted-foreground))',\n  '--series-5': 'var(--chart-5, var(--destructive))',\n  '--series-6': 'var(--foreground)',\n  '--series-grid': 'var(--border)',\n  '--series-axis': 'var(--muted-foreground)',\n};\n\nexport function Chart({ children, height = 300, caption, className }: ChartProps) {\n  return (\n    <figure className={className} style={SERIES as React.CSSProperties}>\n      <div className=\"w-full text-foreground\" style={{ height }}>\n        <ResponsiveContainer width=\"100%\" height=\"100%\">\n          {children}\n        </ResponsiveContainer>\n      </div>\n      {caption ? (\n        <figcaption className=\"mt-3 text-ui-eyebrow uppercase tracking-[0.18em] text-muted-foreground\">\n          {caption}\n        </figcaption>\n      ) : null}\n    </figure>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "@components/jhai/Chart.tsx"
+    }
+  ],
+  "meta": {
+    "upstream": "recharts",
+    "upstreamLicense": "MIT",
+    "adoptedDependency": "recharts",
+    "jhaiVersion": "2.1.0"
+  },
+  "categories": [
+    "data",
+    "chart"
+  ],
+  "type": "registry:component"
+}

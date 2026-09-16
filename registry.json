@@ -5,6 +5,7 @@
   "include": [
     "registry/base/registry.json",
     "registry/core/registry.json",
-    "registry/sections/registry.json"
+    "registry/sections/registry.json",
+    "registry/wrappers/registry.json"
   ]
 }

@@ -1,231 +1,414 @@
 #!/usr/bin/env node
 /**
- * build-gallery.mjs — turn the batch results into docs/BUILD-STATUS.json and a static gallery.
+ * build-gallery.mjs — turn the run's per-registry records into the two deliverables.
  *
- * BUILD-STATUS.json is the primary deliverable: the factory reads it to answer "which item
- * fills this need, and does it provably compile". The gallery is the visible side effect.
+ *   docs/BUILD-STATUS.json        the primary artefact, consumed by the site factory. Every item,
+ *                                 its verdict, and enough to install and judge it. Error text is
+ *                                 truncated to its first line so the file stays queryable.
+ *   docs/build-errors-<date>.json the full error text, separated so a multi-megabyte blob is never
+ *                                 in the loop when the factory only wants the taxonomy.
+ *   docs/gallery/                 a static browse surface on the existing Pages site. Neutral
+ *                                 palette. Screenshots for what renders; failures listed with
+ *                                 their reason, because a catalogue that hides its failures is how
+ *                                 run 1's numbers went unquestioned for a whole pass.
  *
- * Failures are shown, not hidden. An item that does not build is information.
- *
- * Neutral palette throughout — no palette picker, no favourites, no polish. Those were
- * considered and deliberately deferred.
+ * VERDICTS, and what each one means for the factory
+ *   USABLE        built, mounted in a real browser, and rendered something visible. Countable.
+ *   NEEDS_PROPS   built, but crashed under the harness's invented props. Almost certainly fine with
+ *                 real content; not counted as usable, because that has not been proven here.
+ *   BUILDS_BLANK  built and rendered nothing. Worse than a failure: it would be picked and ship empty.
+ *   RENDER_CRASH  built, then crashed for a reason that is not the harness's prop guess.
+ *   FAIL          attributed to this item's own source.
+ *   UNATTRIBUTED  something in the batch was broken and the blame could not be pinned on one item.
+ *   NO_ROUTE      installed, but exports nothing mountable — hooks, CSS, themes, utilities.
  */
-import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, copyFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
 
-const OUT = process.argv[2] || '/tmp/gallery/out';
-const REPO = process.cwd();
-const DOCS = join(REPO, 'docs');
-const SITE = join(DOCS, 'gallery');
+const args = Object.fromEntries(
+  process.argv.slice(2).reduce((a, v, i, arr) => (v.startsWith('--') ? [...a, [v.slice(2), arr[i + 1]]] : a), [])
+);
+const ROOT = args.root || process.cwd();
+const IN = args.in || '/tmp/gallery2/out';
+const SHOTS = args.shots || '/tmp/gallery2/shots';
+const DOCS = join(ROOT, 'docs');
+const GAL = join(DOCS, 'gallery');
+const DATE = new Date().toISOString().slice(0, 10);
 
-// ASSET = permissive with a redistribution grant, so it may enter @jhai.
-// POINTER = usable in client work but not redistributable; stays a curation pointer.
-const LICENSE = {
-  '@jhai': ['ASSET', 'JHAI, unlicensed-internal'],
-  '@kibo-ui': ['ASSET', 'MIT'], '@blocks-so': ['ASSET', 'MIT'], '@magicui': ['ASSET', 'MIT'],
-  '@fancy': ['ASSET', 'MIT'], '@tailark-oss': ['ASSET', 'MIT'], '@hirael': ['ASSET', 'MIT'],
-  '@bundui': ['ASSET', 'MIT'], '@ilinxa': ['ASSET', 'MIT'], '@8bitcn': ['ASSET', 'MIT'],
-  '@cnippet': ['ASSET', 'MIT'], '@ns-ui': ['ASSET', 'MIT'], '@vllnt-ui': ['ASSET', 'MIT'],
-  '@flx': ['ASSET', 'MIT'], '@nusaiba': ['POINTER', 'no discoverable LICENSE'],
-  '@pulld': ['POINTER', 'no discoverable LICENSE'],
-  '@shadcnui-blocks': ['POINTER', 'no permissive grant found'],
+const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const firstLine = (s) => String(s || '').split('\n').map((l) => l.trim()).filter(Boolean)[0]?.slice(0, 240) || '';
+
+const licenses = existsSync(join(DOCS, 'LICENSES.json'))
+  ? JSON.parse(readFileSync(join(DOCS, 'LICENSES.json'), 'utf8')).registries : {};
+const curation = existsSync(join(DOCS, 'CURATION.json'))
+  ? JSON.parse(readFileSync(join(DOCS, 'CURATION.json'), 'utf8')) : { entries: [] };
+const curatedSpecs = new Set((curation.entries || []).map((e) => e.choice).filter(Boolean));
+
+/** Merge a registry's chunks back together; the chunking was a build-time concern only. */
+function load() {
+  const byReg = new Map();
+  for (const f of readdirSync(IN)) {
+    if (!f.endsWith('.json') || f.endsWith('.render.json')) continue;
+    const rec = JSON.parse(readFileSync(join(IN, f), 'utf8'));
+    const renderPath = join(IN, f.replace(/\.json$/, '.render.json'));
+    const render = existsSync(renderPath) ? JSON.parse(readFileSync(renderPath, 'utf8')) : { rendered: {} };
+    const reg = rec.summary.registry;
+    if (!byReg.has(reg)) {
+      byReg.set(reg, { registry: reg, items: [], chunks: [], clobbers: [], palette: [], totalItems: 0 });
+    }
+    const g = byReg.get(reg);
+    g.chunks.push(rec.summary);
+    g.totalItems = Math.max(g.totalItems, rec.summary.totalItems || 0);
+    g.clobbers.push(...(rec.clobbers || []));
+    if (render.palette) g.palette.push(render.palette);
+    for (const it of rec.items) g.items.push({ ...it, render: render.rendered?.[it.slug] });
+  }
+  return [...byReg.values()];
+}
+
+function verdictOf(it) {
+  if (it.status !== 'BUILT') return it.status;
+  const r = it.render?.render;
+  if (r === 'RENDERS') return 'USABLE';
+  if (r === 'BLANK') return 'BUILDS_BLANK';
+  if (r === 'CRASH_PROPS') return 'NEEDS_PROPS';
+  if (r === 'CRASH') return 'RENDER_CRASH';
+  return 'BUILT_NOT_RENDERED';
+}
+
+const primitiveOf = (it) => {
+  const p = it.primitives || {};
+  const on = [p.baseUi && 'base-ui', p.radix && 'radix', p.reactAria && 'react-aria', p.arkUi && 'ark-ui'].filter(Boolean);
+  return on.length ? on.join('+') : 'none';
 };
 
-const files = existsSync(OUT) ? readdirSync(OUT).filter((f) => f.endsWith('.json')) : [];
+const groups = load();
+const errors = {};
+const statusRank = ['USABLE', 'NEEDS_PROPS', 'BUILDS_BLANK', 'RENDER_CRASH', 'BUILT_NOT_RENDERED',
+                    'FAIL', 'UNATTRIBUTED', 'NO_ROUTE', 'NO_FILES'];
+
 const registries = [];
-const all = [];
-for (const f of files) {
-  const d = JSON.parse(readFileSync(join(OUT, f), 'utf8'));
-  registries.push(d.summary);
-  for (const it of d.items) {
-    const [label, lic] = LICENSE[it.registry] || ['POINTER', 'unknown'];
-    all.push({ ...it, label, license: lic });
+for (const g of groups) {
+  const lic = licenses[g.registry] || { label: 'UNVERIFIED' };
+  const counts = Object.fromEntries(statusRank.map((s) => [s, 0]));
+  const prim = { 'base-ui': 0, radix: 0, 'react-aria': 0, 'ark-ui': 0, none: 0, mixed: 0 };
+  for (const it of g.items) {
+    it.verdict = verdictOf(it);
+    counts[it.verdict] = (counts[it.verdict] || 0) + 1;
+    const p = primitiveOf(it);
+    if (p.includes('+')) prim.mixed++; else prim[p] = (prim[p] || 0) + 1;
+    if (it.error) {
+      errors[`${g.registry}/${it.item}`] = it.error;
+      it.errorFirstLine = firstLine(it.error);
+      delete it.error;
+    }
   }
+  const attempted = g.items.length;
+  registries.push({
+    registry: g.registry,
+    license: lic.label || 'UNVERIFIED',
+    licenseWhy: lic.why,
+    repo: lic.repo || null,
+    totalItems: g.totalItems || attempted,
+    attempted,
+    counts,
+    usableRate: attempted ? +(counts.USABLE / attempted).toFixed(3) : 0,
+    primitiveBase: prim,
+    dominantBase: Object.entries(prim).filter(([k, v]) => k !== 'none' && v > 0)
+      .sort((a, b) => b[1] - a[1])[0]?.[0] || 'none',
+    writesSharedUi: g.items.filter((i) => i.writesSharedUi).length,
+    primitiveClobbers: g.clobbers,
+    paletteChecks: g.palette,
+    chunks: g.chunks.map((c) => ({ tag: c.tag, offset: c.offset, attempted: c.attempted,
+                                   buildOk: c.buildOk, typecheckOk: c.typecheckOk,
+                                   deadlineHit: c.deadlineHit, sharedFiles: c.sharedFiles })),
+  });
 }
+registries.sort((a, b) => b.usableRate - a.usableRate);
 
-const pass = all.filter((i) => i.status === 'PASS');
-const fail = all.filter((i) => i.status === 'FAIL');
-const noRoute = all.filter((i) => i.status === 'NO_ROUTE');
+const allItems = groups.flatMap((g) => g.items.map((it) => ({
+  registry: g.registry,
+  item: it.item,
+  slug: it.slug,
+  verdict: it.verdict,
+  stage: it.stage || null,
+  title: it.title || null,
+  description: it.description || null,
+  itemType: it.itemType || null,
+  install: it.install,
+  license: (licenses[g.registry] || {}).label || 'UNVERIFIED',
+  primitiveBase: primitiveOf(it),
+  writesSharedUi: !!it.writesSharedUi,
+  curated: curatedSpecs.has(`${g.registry}/${it.item}`),
+  files: it.files || [],
+  deps: it.deps || [],
+  registryDeps: it.registryDeps || [],
+  semantic: it.semantic ?? 0,
+  palette: it.palette ?? 0,
+  hex: it.hex ?? 0,
+  bytes: it.bytes ?? 0,
+  retokenRisk: (it.palette ?? 0) + (it.hex ?? 0) > 3 * ((it.semantic ?? 0) + 1) ? 'HIGH-RETOKEN' : 'ok',
+  shot: it.render?.shot || null,
+  visibleNodes: it.render?.visible ?? null,
+  error: it.errorFirstLine || null,
+})));
 
-/** Group failures by cause so the taxonomy is computed, not eyeballed. */
-function cause(i) {
-  const e = (i.error || '').toLowerCase();
-  if (i.stage === 'install') {
-    if (/404|not in the npm registry/.test(e)) return 'install: npm package 404';
-    if (/401|403|license key|auth/.test(e)) return 'install: key-gated';
-    if (/wrote no files/.test(e)) return 'install: wrote no files';
-    return 'install: other';
-  }
-  if (/ts2307|cannot find module/.test(e)) return 'build: unresolved import';
-  if (/ts2305|has no exported member/.test(e)) return 'build: missing export';
-  if (/ts2322|ts2741|ts2739|not assignable/.test(e)) return 'build: type mismatch';
-  if (/prerender/.test(e)) return 'build: prerender crash';
-  if (/unattributed/.test(i.stage || '')) return 'build: unattributed';
-  return 'build: other';
-}
-const taxonomy = {};
-for (const i of fail) taxonomy[cause(i)] = (taxonomy[cause(i)] || 0) + 1;
-
-const byReg = {};
-for (const i of all) {
-  const r = (byReg[i.registry] ||= { registry: i.registry, total: 0, pass: 0, fail: 0, noRoute: 0 });
-  r.total++;
-  if (i.status === 'PASS') r.pass++;
-  else if (i.status === 'FAIL') r.fail++;
-  else r.noRoute++;
-}
-for (const r of Object.values(byReg)) r.buildRate = r.total ? +(r.pass / r.total).toFixed(3) : 0;
-
+const totals = Object.fromEntries(statusRank.map((s) => [s, allItems.filter((i) => i.verdict === s).length]));
 const status = {
-  $comment:
-    'Per-item build status for the JHAI component catalog. PASS means the item installed, its ' +
-    'source compiled and its imports resolved in an isolated Next project on the shadcn default ' +
-    'neutral palette. It does NOT mean the component renders correctly with no props — most real ' +
-    'components have required props, so routes are force-dynamic and props are spread as any. ' +
-    'This is what the factory consumes: an item that cannot install is not a component we have.',
-  $meta: {
-    generated: new Date().toISOString().slice(0, 10),
-    cli: 'shadcn@4.21.0',
-    palette: 'shadcn default neutral (deliberately not JHAI)',
-    registriesRun: registries.length,
-    itemsAttempted: all.length,
-    pass: pass.length, fail: fail.length, noRoute: noRoute.length,
-    buildRate: all.length ? +(pass.length / all.length).toFixed(3) : 0,
-    usableItemCount: pass.length,
+  $comment: 'Primary artefact of the run-2 build verification. One record per catalogue item. '
+    + 'USABLE means the item installed, compiled, and rendered something visible in a real browser '
+    + 'on the shadcn default neutral palette. Error text is the first line only; the full text is in '
+    + `build-errors-${DATE}.json keyed by "<registry>/<item>".`,
+  $verdicts: {
+    USABLE: 'built and rendered visibly — countable as a component we actually have',
+    NEEDS_PROPS: 'built, but crashed under the harness’s invented props; almost certainly fine with real content, not proven here',
+    BUILDS_BLANK: 'built and rendered nothing — worse than a failure, because it would be picked and ship empty',
+    RENDER_CRASH: 'built, then crashed at render for a reason that is not the harness’s prop guess',
+    FAIL: 'attributed to this item’s own source',
+    UNATTRIBUTED: 'something in the batch was broken and the blame could not be pinned on one item',
+    NO_ROUTE: 'installed, but exports nothing mountable — hooks, CSS, themes and utilities land here',
+    NO_FILES: 'install reported success but no file could be attributed to this item',
   },
-  byRegistry: Object.values(byReg).sort((a, b) => b.buildRate - a.buildRate),
-  failureTaxonomy: Object.fromEntries(Object.entries(taxonomy).sort((a, b) => b[1] - a[1])),
-  items: all.sort((a, b) => (a.registry + a.item).localeCompare(b.registry + b.item)),
+  $method: {
+    date: DATE,
+    cli: 'shadcn@4.21.0',
+    scaffold: 'create-next-app, Next 16, React 19, Tailwind v4, shadcn new-york, baseColor neutral',
+    peers: 'the ordinary peer surface pre-installed before any item — see scripts/gallery/lib/peers.mjs',
+    isolation: 'one throwaway project per registry, chunked at 400 items, one route per item',
+    typeErrors: 'attributed by a single tsc --noEmit pass, by file, with no deletion',
+    render: 'next start plus headless Chromium; two fixture passes, string-shaped then list-shaped',
+    palette: 'per-registry sample re-rendered with the semantic tokens overridden to absurd values',
+  },
+  $totals: { registries: registries.length, items: allItems.length, ...totals },
+  registries,
+  items: allItems,
 };
+
 mkdirSync(DOCS, { recursive: true });
 writeFileSync(join(DOCS, 'BUILD-STATUS.json'), JSON.stringify(status, null, 1));
+writeFileSync(join(DOCS, `build-errors-${DATE}.json`), JSON.stringify({
+  $comment: 'Full error text for every non-usable item, keyed by "<registry>/<item>". Split out of '
+    + 'BUILD-STATUS.json so the taxonomy stays queryable without loading a multi-megabyte blob.',
+  $date: DATE, errors,
+}, null, 1));
 
-// ── gallery ────────────────────────────────────────────────────────────────────────────────
-const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+/* ---------------------------------------------------------------- gallery */
+
 const CSS = `
-:root{--bg:#fafafa;--fg:#18181b;--mut:#71717a;--line:#e4e4e7;--card:#fff;--ok:#15803d;--bad:#b91c1c;--warn:#a16207}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif}
-a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-header{border-bottom:1px solid var(--line);background:var(--card);padding:28px 0}
-h1{margin:0 0 6px;font-size:24px;font-weight:600;letter-spacing:-.02em}
-.sub{color:var(--mut);font-size:14px;margin:0}
-.stats{display:flex;gap:26px;margin-top:18px;flex-wrap:wrap}
-.stat b{display:block;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
-.stat span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.09em}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:13.5px;margin:18px 0}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
-thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);font-weight:500;background:#f4f4f5}
-td.n{text-align:right;font-variant-numeric:tabular-nums}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 40px}
-.c{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:block}
-.c .sh{height:132px;background:#f4f4f5;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.c .sh img{width:100%;height:100%;object-fit:cover;object-position:top}
-.c .sh .none{color:#a1a1aa;font-size:11px}
-.c .m{padding:9px 11px}
-.c .nm{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.c .rg{font-size:11px;color:var(--mut);font-family:ui-monospace,monospace}
-.pill{display:inline-block;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;padding:2px 6px;border-radius:3px;font-weight:500}
-.p-pass{background:#dcfce7;color:var(--ok)}.p-fail{background:#fee2e2;color:var(--bad)}.p-nr{background:#fef9c3;color:var(--warn)}
-.p-asset{background:#e0e7ff;color:#3730a3}.p-pointer{background:#f4f4f5;color:#52525b}
-code{font-family:ui-monospace,monospace;font-size:12.5px;background:#f4f4f5;padding:2px 5px;border-radius:3px}
-pre{background:#18181b;color:#e4e4e7;padding:13px;border-radius:6px;overflow:auto;font-size:12px;line-height:1.5}
-.tabs{display:flex;gap:6px;margin:18px 0 0;flex-wrap:wrap}
-.tabs a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
-.tabs a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-h2{font-size:17px;font-weight:600;margin:30px 0 4px}
-.note{color:var(--mut);font-size:13px;margin:0 0 10px;max-width:74ch}
+:root{--bg:#f6f6f5;--paper:#fff;--ink:#1c1c1b;--ink-2:#55554f;--ink-3:#7a7a73;
+  --line-soft:rgba(0,0,0,.055);--ok:#2f6b4f;--warn:#8a6d1f;--bad:#9c3b32;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 ui-sans-serif,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header{background:#111110;color:#eceae6;padding:46px 0 40px}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#9fb3ad;margin:0 0 14px}
+h1{font-size:clamp(26px,3.4vw,38px);line-height:1.08;letter-spacing:-.03em;font-weight:500;margin:0 0 14px}
+.lede{color:#b3b1ab;max-width:72ch;margin:0;font-size:15px}
+section{padding:34px 0}
+h2{font-size:22px;font-weight:500;letter-spacing:-.02em;margin:0 0 4px}
+.sub{color:var(--ink-3);margin:0 0 20px;font-size:14px;max-width:88ch}
+a{color:#3c6360;text-underline-offset:.22em}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin:0 0 6px}
+.stats div{background:var(--paper);padding:16px}
+.stats .n{font-size:26px;font-weight:500;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.stats .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:8px}
+table{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line-soft);font-size:14px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+thead th{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:500;background:#fafaf9;white-space:nowrap}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+code{font-family:var(--mono);font-size:12px;background:#eeedeb;padding:1px 5px;border-radius:3px}
+.tag{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:3px;white-space:nowrap}
+.t-USABLE{background:#e4efe9;color:var(--ok)}
+.t-NEEDS_PROPS{background:#f3eddd;color:var(--warn)}
+.t-BUILDS_BLANK,.t-RENDER_CRASH,.t-FAIL{background:#f6e6e3;color:var(--bad)}
+.t-UNATTRIBUTED,.t-NO_ROUTE,.t-NO_FILES,.t-BUILT_NOT_RENDERED{background:#eeecea;color:var(--ink-3)}
+.t-ASSET{background:#e4efe9;color:var(--ok)}.t-POINTER{background:#f3eddd;color:var(--warn)}
+.t-OWN{background:#e7ecf3;color:#3a5877}.t-UNVERIFIED{background:#eeecea;color:var(--ink-3)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line-soft);overflow:hidden;display:block;text-decoration:none;color:inherit}
+.card .shot{height:150px;background:#fbfbfa;display:block;overflow:hidden;border-bottom:1px solid var(--line-soft)}
+.card .shot img{width:100%;display:block}
+.card .meta{padding:9px 11px}
+.card .nm{font-size:13px;font-weight:500;word-break:break-word;display:block}
+.card .rg{font-family:var(--mono);font-size:10px;color:var(--ink-3);margin-top:3px;display:block}
+.note{border-left:2px solid #8a6d1f;background:#fdfaf1;padding:12px 16px;margin:0 0 22px;font-size:14px;max-width:88ch}
+footer{padding:36px 0 60px;color:var(--ink-3);font-size:13px}
+.shotbox{background:var(--paper);border:1px solid var(--line-soft);padding:10px}
+.shotbox img{max-width:100%;display:block}
+pre{background:#f1f0ee;padding:12px;overflow:auto;font-size:12px;border:1px solid var(--line-soft)}
 `;
 
-const card = (i) => `<a class="c" href="item/${esc(i.registry.replace('@', ''))}__${esc(i.slug)}.html">
-<div class="sh">${i.thumb ? `<img loading="lazy" src="${esc(i.thumb)}" alt="">` : `<span class="none">${i.status === 'PASS' ? 'no thumbnail' : esc(i.status)}</span>`}</div>
-<div class="m"><div class="nm">${esc(i.item)}</div><div class="rg">${esc(i.registry)}</div>
-<div style="margin-top:6px"><span class="pill p-${i.status === 'PASS' ? 'pass' : i.status === 'FAIL' ? 'fail' : 'nr'}">${esc(i.status)}</span>
-<span class="pill p-${i.label.toLowerCase()}">${esc(i.label)}</span></div></div></a>`;
+const page = (title, body, depth = 0) => `<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(title)}</title><style>${CSS}</style></head><body>${body}
+<footer><div class="wrap">Built ${DATE} by <code>scripts/gallery/run-all.sh</code> on the shadcn default
+neutral palette. <a href="${'../'.repeat(depth)}index.html">gallery index</a> ·
+<a href="https://github.com/JustinHarrisAI/jhai-registry">jhai-registry</a></div></footer>
+</body></html>`;
 
-const shell = (title, body, depth = 0) => `<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title>
-<style>${CSS}</style></head><body>${body}</body></html>`;
+mkdirSync(join(GAL, 'shots'), { recursive: true });
+mkdirSync(join(GAL, 'i'), { recursive: true });
+mkdirSync(join(GAL, 'r'), { recursive: true });
 
-mkdirSync(join(SITE, 'item'), { recursive: true });
-mkdirSync(join(SITE, 'thumb'), { recursive: true });
-
-const m = status.$meta;
-const regRows = status.byRegistry.map((r) => `<tr><td><code>${esc(r.registry)}</code></td>
-<td class="n">${r.total}</td><td class="n" style="color:var(--ok)">${r.pass}</td>
-<td class="n" style="color:var(--bad)">${r.fail}</td><td class="n">${r.noRoute}</td>
-<td class="n"><b>${(r.buildRate * 100).toFixed(0)}%</b></td></tr>`).join('');
-const taxRows = Object.entries(status.failureTaxonomy)
-  .map(([k, v]) => `<tr><td>${esc(k)}</td><td class="n">${v}</td></tr>`).join('');
-
-writeFileSync(join(SITE, 'index.html'), shell('JHAI component gallery', `
-<header><div class="wrap"><h1>JHAI component gallery</h1>
-<p class="sub">Every item in the wired catalog, built in isolation and recorded PASS or FAIL.
-Thumbnails are screenshots; detail pages show the live component.</p>
-<div class="stats">
-<div class="stat"><b>${m.itemsAttempted}</b><span>attempted</span></div>
-<div class="stat"><b style="color:var(--ok)">${m.pass}</b><span>build</span></div>
-<div class="stat"><b style="color:var(--bad)">${m.fail}</b><span>fail</span></div>
-<div class="stat"><b>${(m.buildRate * 100).toFixed(0)}%</b><span>build rate</span></div>
-<div class="stat"><b>${m.registriesRun}</b><span>registries</span></div>
-</div></div></header>
-<div class="wrap">
-<div style="background:#fef9c3;border:1px solid #fde047;border-radius:6px;padding:14px 16px;margin:20px 0;max-width:80ch">
-<b>The fail count is a floor, not a measurement.</b> Two harness defects inflate it, both fixed for the
-next run but not re-run here. <b>To isolate a failing item the runner deletes its source</b> — Next
-type-checks the whole project, so a broken file keeps failing after its route is gone — and when that
-source was shared with sibling items, the siblings failed on a missing import. 262 failures name
-<code>@/components</code> and 308 name a relative path; those are the cascade, not defects.
-And <b>one missing peer dep poisons a whole registry</b>: @magicui reports 241 failures, 234 of which
-are a single undeclared <code>@radix-ui/react-accordion</code>.
-<b>PASS is reliable. FAIL means "did not build in this harness", not "broken".</b></div>
-<h2>Build rate by registry</h2>
-<p class="note">Item count was the wiring criterion. Build rate is the honest one — subject to the caveat above.</p>
-<table><thead><tr><th>Registry</th><th class="n">Items</th><th class="n">Pass</th><th class="n">Fail</th><th class="n">No route</th><th class="n">Rate</th></tr></thead><tbody>${regRows}</tbody></table>
-<h2>Failure taxonomy</h2>
-<p class="note">Causes are computed from the recorded error text, not classified by hand.</p>
-<table><thead><tr><th>Cause</th><th class="n">Count</th></tr></thead><tbody>${taxRows}</tbody></table>
-<h2>Components</h2>
-<div class="tabs"><a class="on" href="index.html">All</a>${status.byRegistry
-  .map((r) => `<a href="r/${esc(r.registry.replace('@', ''))}.html">${esc(r.registry)}</a>`).join('')}</div>
-<div class="grid">${all.slice(0, 600).map(card).join('')}</div>
-${all.length > 600 ? `<p class="note">Showing the first 600. Use the registry filters above for the rest.</p>` : ''}
-</div>`));
-
-mkdirSync(join(SITE, 'r'), { recursive: true });
-for (const r of status.byRegistry) {
-  const items = all.filter((i) => i.registry === r.registry);
-  writeFileSync(join(SITE, 'r', `${r.registry.replace('@', '')}.html`), shell(r.registry, `
-<header><div class="wrap"><h1>${esc(r.registry)}</h1>
-<p class="sub"><a href="../index.html">← all registries</a></p>
-<div class="stats"><div class="stat"><b>${r.total}</b><span>items</span></div>
-<div class="stat"><b style="color:var(--ok)">${r.pass}</b><span>build</span></div>
-<div class="stat"><b style="color:var(--bad)">${r.fail}</b><span>fail</span></div>
-<div class="stat"><b>${(r.buildRate * 100).toFixed(0)}%</b><span>rate</span></div></div></div></header>
-<div class="wrap"><div class="grid">${items.map((i) => card(i).replace('href="item/', 'href="../item/')).join('')}</div></div>`));
+// The median screenshot is under 4 KB, so the whole set fits in the repo and Pages serves it with
+// no build step. Anything whose file did not survive loses its thumbnail rather than 404ing.
+let copied = 0;
+for (const it of allItems) {
+  if (!it.shot) continue;
+  const src = join(SHOTS, it.shot);
+  if (!existsSync(src)) { it.shot = null; continue; }
+  const dst = join(GAL, 'shots', it.shot);
+  mkdirSync(dirname(dst), { recursive: true });
+  copyFileSync(src, dst);
+  copied++;
 }
 
-for (const i of all) {
-  const f = `${i.registry.replace('@', '')}__${i.slug}.html`;
-  writeFileSync(join(SITE, 'item', f), shell(`${i.registry}/${i.item}`, `
-<header><div class="wrap"><h1>${esc(i.item)}</h1>
-<p class="sub"><code>${esc(i.registry)}</code> · <a href="../index.html">← gallery</a>
-${i.registry !== '@jhai' ? ` · <a href="../r/${esc(i.registry.replace('@', ''))}.html">${esc(i.registry)}</a>` : ''}</p>
-<div style="margin-top:12px">
-<span class="pill p-${i.status === 'PASS' ? 'pass' : i.status === 'FAIL' ? 'fail' : 'nr'}">${esc(i.status)}</span>
-<span class="pill p-${i.label.toLowerCase()}">${esc(i.label)}</span>
-<span style="color:var(--mut);font-size:12px;margin-left:8px">${esc(i.license)}</span></div></div></header>
-<div class="wrap">
-<h2>Install</h2><pre>${esc(i.install)}</pre>
-${i.status === 'FAIL' ? `<h2>Why it failed</h2><p class="note">Stage: <code>${esc(i.stage)}</code></p><pre>${esc((i.error || '').slice(0, 1600))}</pre>` : ''}
-${i.thumb ? `<h2>Preview</h2><img src="../${esc(i.thumb)}" style="max-width:100%;border:1px solid var(--line);border-radius:6px">` : ''}
-<h2>Restylability</h2>
-<table><thead><tr><th>Semantic tokens</th><th>Palette utilities</th><th>Hex literals</th><th>Source bytes</th></tr></thead>
-<tbody><tr><td class="n">${i.semantic ?? 0}</td><td class="n">${i.palette ?? 0}</td><td class="n">${i.hex ?? 0}</td><td class="n">${i.bytes ?? 0}</td></tr></tbody></table>
-<p class="note">Palette utilities are the number that matters: each one is a manual edit per client.</p>
-<h2>Files (${(i.files || []).length})</h2><pre>${esc((i.files || []).join('\n') || '—')}</pre>
-<h2>npm dependencies pulled (${(i.deps || []).length})</h2><pre>${esc((i.deps || []).join('\n') || '—')}</pre>
-</div>`));
+const pct = (n, d) => (d ? Math.round((n / d) * 100) : 0);
+const tag = (v) => `<span class="tag t-${v}">${String(v).replace(/_/g, ' ')}</span>`;
+const href = (i) => `${i.registry.replace('@', '')}--${i.slug}.html`;
+
+const t = status.$totals;
+const rows = registries.map((r) => {
+  const c = r.counts;
+  const pal = [...new Set(r.paletteChecks.map((p) => p.verdict).filter(Boolean))];
+  return `<tr>
+    <td><a href="r/${r.registry.replace('@', '')}.html"><code>${esc(r.registry)}</code></a>
+        ${r.primitiveClobbers.length ? ' <span class="tag t-FAIL">clobbers ui/</span>' : ''}</td>
+    <td><span class="tag t-${r.license}">${r.license}</span></td>
+    <td><code>${esc(r.dominantBase)}</code></td>
+    <td class="num">${r.attempted}</td>
+    <td class="num"><strong>${c.USABLE}</strong></td>
+    <td class="num">${pct(c.USABLE, r.attempted)}%</td>
+    <td class="num">${c.NEEDS_PROPS}</td>
+    <td class="num">${c.BUILDS_BLANK + c.RENDER_CRASH}</td>
+    <td class="num">${c.FAIL}</td>
+    <td class="num">${c.UNATTRIBUTED}</td>
+    <td class="num">${c.NO_ROUTE + c.NO_FILES}</td>
+    <td>${pal.length ? esc(pal.join(', ')) : '—'}</td>
+  </tr>`;
+}).join('\n');
+
+const featured = allItems.filter((i) => i.verdict === 'USABLE' && i.shot).slice(0, 60);
+writeFileSync(join(GAL, 'index.html'), page('JHAI registry — build status', `
+<header><div class="wrap">
+  <p class="eyebrow">jhai-registry · build verification · ${DATE}</p>
+  <h1>${t.items.toLocaleString()} catalogue items, installed, compiled and mounted.</h1>
+  <p class="lede">Every item in all ${registries.length} wired registries was installed into a throwaway
+  Next.js 16 project on the shadcn default neutral palette, typechecked, built, and then mounted in a
+  headless browser. <strong>USABLE</strong> means it rendered something visible. Failures are listed with
+  their reason rather than hidden.</p>
+</div></header>
+
+<section><div class="wrap">
+  <div class="stats">
+    <div><div class="n">${t.items.toLocaleString()}</div><div class="k">items attempted</div></div>
+    <div><div class="n">${t.USABLE.toLocaleString()}</div><div class="k">usable · rendered</div></div>
+    <div><div class="n">${pct(t.USABLE, t.items)}%</div><div class="k">usable rate</div></div>
+    <div><div class="n">${(t.FAIL + t.UNATTRIBUTED).toLocaleString()}</div><div class="k">failed or unattributed</div></div>
+    <div><div class="n">${t.NO_ROUTE.toLocaleString()}</div><div class="k">nothing to mount</div></div>
+  </div>
+  <p class="sub">NEEDS PROPS (${t.NEEDS_PROPS.toLocaleString()}) built cleanly and crashed only on the
+  props this harness invented for them; they are not counted as usable because that was not proven.
+  BUILDS BLANK (${t.BUILDS_BLANK}) compiled and drew nothing, which is the failure mode that would
+  otherwise reach a client site unnoticed. NO MOUNT is mostly hooks, CSS and theme items, which are
+  real catalogue entries with nothing for a screenshot to show.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>By registry</h2>
+  <p class="sub">Sorted by usable rate. “Clobbers ui/” marks a registry that overwrote a shared
+  <code>components/ui/*</code> file with a different primitive base.</p>
+  <table><thead><tr>
+    <th>registry</th><th>licence</th><th>base</th><th>items</th><th>usable</th><th>rate</th>
+    <th>needs props</th><th>blank/crash</th><th>fail</th><th>unattr</th><th>no mount</th><th>palette</th>
+  </tr></thead><tbody>${rows}</tbody></table>
+</div></section>
+
+<section><div class="wrap">
+  <h2>A sample of what renders</h2>
+  <p class="sub">First ${featured.length} usable items. Neutral palette, no styling applied by this page.</p>
+  <div class="grid">
+    ${featured.map((i) => `<a class="card" href="i/${href(i)}">
+      <span class="shot"><img loading="lazy" src="shots/${esc(i.shot)}" alt=""></span>
+      <span class="meta"><span class="nm">${esc(i.item)}</span><span class="rg">${esc(i.registry)}</span></span>
+    </a>`).join('\n')}
+  </div>
+</div></section>
+`));
+
+for (const r of registries) {
+  const items = allItems.filter((i) => i.registry === r.registry)
+    .sort((a, b) => statusRank.indexOf(a.verdict) - statusRank.indexOf(b.verdict) || a.item.localeCompare(b.item));
+  const shots = items.filter((i) => i.verdict === 'USABLE' && i.shot);
+  const clobNote = r.primitiveClobbers.length ? `<div class="note"><strong>Primitive clobber.</strong>
+    This registry overwrote a shared <code>components/ui/*</code> file with a different primitive base:
+    ${r.primitiveClobbers.slice(0, 4).map((c) => `<code>${esc(c.file)}</code> ${esc(c.from)} to ${esc(c.to)}`).join(', ')}.
+    Installing it into a project built on the other base changes that project’s primitives underneath it.</div>` : '';
+  writeFileSync(join(GAL, 'r', `${r.registry.replace('@', '')}.html`), page(`${r.registry} — build status`, `
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> · ${DATE}</p>
+  <h1><code style="background:none;color:inherit;font-size:.8em">${esc(r.registry)}</code></h1>
+  <p class="lede">${r.counts.USABLE} of ${r.attempted} items rendered.
+  Licence <strong>${r.license}</strong> — ${esc(r.licenseWhy || '')}${r.repo ? ` (<code>${esc(r.repo)}</code>)` : ''}.
+  Dominant primitive base: <strong>${esc(r.dominantBase)}</strong>.</p>
+</div></header>
+<section><div class="wrap">
+  ${clobNote}
+  <div class="grid">${shots.map((i) => `<a class="card" href="../i/${href(i)}">
+    <span class="shot"><img loading="lazy" src="../shots/${esc(i.shot)}" alt=""></span>
+    <span class="meta"><span class="nm">${esc(i.item)}</span><span class="rg">${esc(i.itemType || '')}</span></span></a>`).join('\n')}</div>
+</div></section>
+<section><div class="wrap">
+  <h2>Every item</h2>
+  <p class="sub">Including what failed and why. The first line of the error is shown; the full text is in
+  <code>docs/build-errors-${DATE}.json</code>.</p>
+  <table><thead><tr><th>item</th><th>verdict</th><th>base</th><th>tokens</th><th>reason</th></tr></thead><tbody>
+  ${items.map((i) => `<tr>
+    <td>${i.shot ? `<a href="../i/${href(i)}">${esc(i.item)}</a>` : esc(i.item)}
+        ${i.curated ? ' <span class="tag t-OWN">curated</span>' : ''}</td>
+    <td>${tag(i.verdict)}</td>
+    <td><code>${esc(i.primitiveBase)}</code></td>
+    <td class="num">${i.semantic}/${i.palette}/${i.hex}${i.retokenRisk === 'HIGH-RETOKEN' ? ' <span class="tag t-NEEDS_PROPS">retoken</span>' : ''}</td>
+    <td>${esc(i.error || '')}</td></tr>`).join('\n')}
+  </tbody></table>
+  <p class="sub">The tokens column is semantic / palette / hex occurrences in the installed source.
+  A high palette or hex count against few semantic tokens means the item resists a client palette.</p>
+</div></section>
+`, 1));
 }
 
-console.log(`BUILD-STATUS.json: ${all.length} items, ${pass.length} pass (${(m.buildRate * 100).toFixed(1)}%)`);
-console.log(`gallery: ${all.length} detail pages, ${status.byRegistry.length} registry pages`);
+let detail = 0;
+for (const i of allItems) {
+  if (i.verdict !== 'USABLE' || !i.shot) continue;
+  writeFileSync(join(GAL, 'i', href(i)), page(`${i.registry}/${i.item}`, `
+<header><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:#9fb3ad">gallery</a> ·
+     <a href="../r/${i.registry.replace('@', '')}.html" style="color:#9fb3ad">${esc(i.registry)}</a></p>
+  <h1>${esc(i.title || i.item)}</h1>
+  <p class="lede">${esc(i.description || '')}</p>
+</div></header>
+<section><div class="wrap">
+  <div class="shotbox"><img src="../shots/${esc(i.shot)}" alt="${esc(i.item)} rendered on the neutral palette"></div>
+  <p class="sub">Rendered on the shadcn default neutral palette with harness-generated props.</p>
+  <h2>Install</h2>
+  <pre>${esc(i.install)}</pre>
+  <table><tbody>
+    <tr><th>licence</th><td><span class="tag t-${i.license}">${i.license}</span></td></tr>
+    <tr><th>primitive base</th><td><code>${esc(i.primitiveBase)}</code></td></tr>
+    <tr><th>type</th><td><code>${esc(i.itemType || '—')}</code></td></tr>
+    <tr><th>files</th><td>${i.files.map((f) => `<code>${esc(f)}</code>`).join('<br>') || '—'}</td></tr>
+    <tr><th>npm deps pulled</th><td>${i.deps.map((d) => `<code>${esc(d)}</code>`).join(' ') || 'none beyond the pre-installed peer set'}</td></tr>
+    <tr><th>registry deps</th><td>${(i.registryDeps || []).map((d) => `<code>${esc(d)}</code>`).join(' ') || '—'}</td></tr>
+    <tr><th>semantic / palette / hex</th><td>${i.semantic} / ${i.palette} / ${i.hex} ${i.retokenRisk === 'HIGH-RETOKEN' ? '<span class="tag t-NEEDS_PROPS">high retoken cost</span>' : ''}</td></tr>
+    <tr><th>writes shared ui/</th><td>${i.writesSharedUi ? 'yes — can overwrite the project’s own primitives' : 'no'}</td></tr>
+  </tbody></table>
+</div></section>
+`, 1));
+  detail++;
+}
+
+console.log(`BUILD-STATUS.json: ${allItems.length} items, ${totals.USABLE} usable across ${registries.length} registries`);
+console.log(`gallery: ${copied} screenshots, ${detail} detail pages, ${registries.length} registry pages`);
+console.log(Object.entries(totals).map(([k, v]) => `${k}=${v}`).join(' '));

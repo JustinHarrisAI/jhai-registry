@@ -12,5 +12,8 @@
     "curation": "node scripts/build-curation-md.mjs",
     "preflight": "npm run validate && node scripts/check-registry-index.mjs && node scripts/check-item-deps.mjs && node scripts/check-no-private-names.mjs && node scripts/build-curation-md.mjs --check",
     "check:names": "node scripts/check-no-private-names.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
   }
 }

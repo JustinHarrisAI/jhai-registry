@@ -1,0 +1,108 @@
+{
+ "$comment": "ASSET = permissive, may be copied into @jhai and re-served. POINTER = installable in client work, not redistributable. Read from each project LICENSE file by scripts/gallery/resolve-licenses.mjs.",
+ "$date": "2026-09-16",
+ "registries": {
+  "@jhai": {
+   "repo": "JustinHarrisAI/jhai-registry",
+   "licenseFile": null,
+   "label": "OWN",
+   "why": "JHAI’s own registry; nothing to redistribute from someone else"
+  },
+  "@tailark-oss": {
+   "repo": "tailark/blocks",
+   "licenseFile": "main/LICENCE.md",
+   "label": "ASSET",
+   "why": "permissive grant read from the LICENSE file (MIT License)"
+  },
+  "@kibo-ui": {
+   "repo": "shadcnblocks/kibo",
+   "licenseFile": null,
+   "label": "POINTER",
+   "why": "repository not resolvable from the site; licence not read — treated as not redistributable until a grant is read"
+  },
+  "@magicui": {
+   "repo": "magicuidesign/magicui",
+   "licenseFile": "main/LICENSE.md",
+   "label": "ASSET",
+   "why": "permissive grant read from the LICENSE file (MIT License)"
+  },
+  "@blocks-so": {
+   "repo": "ephraimduncan/blocks",
+   "licenseFile": "main/LICENSE.md",
+   "label": "ASSET",
+   "why": "permissive grant read from the LICENSE file (MIT License)"
+  },
+  "@fancy": {
+   "repo": "danielpetho/fancy",
+   "licenseFile": "main/LICENSE",
+   "label": "ASSET",
+   "why": "permissive grant read from the LICENSE file (MIT License)"
+  },
+  "@hirael": {
+   "repo": "MohammadShehadeh/hirael",
+   "licenseFile": "main/LICENSE",
+   "label": "ASSET",
+   "why": "permissive grant read from the LICENSE file (MIT License)"
+  },
+  "@bundui": {
+   "repo": "bundui/components",
+   "licenseFile": "main/LICENCE.md",
+   "label": "ASSET",
+   "why": "permissive grant read from the LICENSE file (MIT License)"
+  },
+  "@flx": {
+   "repo": "felipemenezes098/ui-flx",
+   "licenseFile": "main/LICENSE",
+   "label": "POINTER",
+   "why": "no permissive grant found — usable in client work, not redistributable"
+  },
+  "@ilinxa": {
+   "repo": "ilinxa/pro-ui",
+   "licenseFile": "master/LICENSE",
+   "label": "ASSET",
+   "why": "permissive grant read from the LICENSE file (MIT License)"
+  },
+  "@8bitcn": {
+   "repo": "TheOrcDev/8bitcn-ui",
+   "licenseFile": null,
+   "label": "POINTER",
+   "why": "repository found but no LICENSE file present on main or master — treated as not redistributable until a grant is read"
+  },
+  "@cnippet": {
+   "repo": "cnippet-dev/ui-cnippet",
+   "licenseFile": "main/LICENSE",
+   "label": "ASSET",
+   "why": "permissive grant read from the LICENSE file (MIT License)"
+  },
+  "@ns-ui": {
+   "repo": "nikolas-sapa/ns-ui",
+   "licenseFile": "main/LICENSE",
+   "label": "ASSET",
+   "why": "permissive grant read from the LICENSE file (MIT License)"
+  },
+  "@pulld": {
+   "repo": null,
+   "licenseFile": null,
+   "label": "POINTER",
+   "why": "site serves the registry only; no repository or licence published — treated as not redistributable until a grant is read"
+  },
+  "@vllnt-ui": {
+   "repo": null,
+   "licenseFile": null,
+   "label": "POINTER",
+   "why": "site serves the registry only; no repository or licence published — treated as not redistributable until a grant is read"
+  },
+  "@shadcnui-blocks": {
+   "repo": "akash3444/shadcn-ui-blocks",
+   "licenseFile": "main/LICENSE",
+   "label": "ASSET",
+   "why": "permissive grant read from the LICENSE file (MIT License)"
+  },
+  "@nusaiba": {
+   "repo": null,
+   "licenseFile": null,
+   "label": "POINTER",
+   "why": "site serves the registry only; no repository or licence published — treated as not redistributable until a grant is read"
+  }
+ }
+}

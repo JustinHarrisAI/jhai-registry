@@ -898,6 +898,126 @@
         "marketing"
       ],
       "type": "registry:component"
+    },
+    {
+      "name": "chart",
+      "title": "Chart",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "Recharts container that declares --series-1..6 from the project's own chart tokens, so charts follow a client palette instead of baking colours in. Composes Recharts chart types rather than hiding them.",
+      "dependencies": [
+        "recharts"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/wrappers/Chart.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Chart.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": "recharts",
+        "upstreamLicense": "MIT",
+        "adoptedDependency": "recharts",
+        "jhaiVersion": "2.1.0"
+      },
+      "categories": [
+        "data",
+        "chart"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "carousel-rail",
+      "title": "Carousel rail",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "Embla drag rail with controls and progress dots painted from semantic tokens. Embla renders nothing itself, which is why the rail can be retokened without touching the library.",
+      "dependencies": [
+        "embla-carousel-react"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/wrappers/CarouselRail.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/CarouselRail.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": "embla-carousel-react",
+        "upstreamLicense": "MIT",
+        "adoptedDependency": "embla-carousel-react",
+        "jhaiVersion": "2.1.0"
+      },
+      "categories": [
+        "media",
+        "layout"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "reveal",
+      "title": "Reveal",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "The single entrance animation. Reads --ui-dur-med and --ui-ease from the theme so motion is a brand property, and collapses to a near-instant fade under prefers-reduced-motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/wrappers/Reveal.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/Reveal.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": "motion",
+        "upstreamLicense": "MIT",
+        "adoptedDependency": "motion",
+        "jhaiVersion": "2.1.0"
+      },
+      "categories": [
+        "motion"
+      ],
+      "type": "registry:component"
+    },
+    {
+      "name": "contact-form",
+      "title": "Contact form",
+      "author": "Justin Harris <justin@justinharris.ai>",
+      "description": "Per-field validation before the round trip, with one zod schema usable unchanged inside a server action. Submission is the caller's, because where a lead goes is a per-client decision.",
+      "dependencies": [
+        "react-hook-form",
+        "zod",
+        "@hookform/resolvers"
+      ],
+      "registryDependencies": [
+        "@jhai/theme-base"
+      ],
+      "files": [
+        {
+          "path": "registry/wrappers/ContactForm.tsx",
+          "type": "registry:component",
+          "target": "@components/jhai/ContactForm.tsx"
+        }
+      ],
+      "meta": {
+        "upstream": "react-hook-form + zod",
+        "upstreamLicense": "MIT",
+        "adoptedDependency": "react-hook-form, zod",
+        "jhaiVersion": "2.1.0"
+      },
+      "categories": [
+        "form"
+      ],
+      "type": "registry:component"
     }
   ]
 }

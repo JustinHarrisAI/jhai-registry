@@ -13,9 +13,16 @@
     "cli": "shadcn@4.21.0",
     "communityIndex": "https://ui.shadcn.com/r/registries.json",
     "method": "index fetched; a real item fetched and parsed; restylability measured (semantic vs palette utilities vs hex); LICENSE read from source repo; one real install per registry into a throwaway on a non-JHAI palette, typechecked and built",
-    "registries": 17,
+    "registries": 15,
     "approxItems": 4585,
-    "candidatePool": "344 in the community index, 271 healthy and unwired, 263 verified, 262 free (34,969 items). Only @reui is key-gated."
+    "candidatePool": "344 in the community index, 271 healthy and unwired, 263 verified, 262 free (34,969 items). Only @reui is key-gated.",
+    "buildVerified": {
+      "date": "2026-09-15",
+      "method": "every item installed into a throwaway Next 16 project on the shadcn default neutral palette, typechecked, built, and mounted in headless Chromium",
+      "items": 4452,
+      "usable": 3254,
+      "record": "docs/BUILD-STATUS.json"
+    }
   },
   "registries": {
     "@jhai": "https://raw.githubusercontent.com/JustinHarrisAI/jhai-registry/main/r/{name}.json",
@@ -32,8 +39,22 @@
     "@cnippet": "https://ui.cnippet.dev/r/{name}.json",
     "@ns-ui": "https://design.helpmarq.com/r/{name}.json",
     "@pulld": "https://pulld.pages.dev/r/{name}.json",
-    "@vllnt-ui": "https://ui.vllnt.com/r/{name}.json",
-    "@shadcnui-blocks": "https://shadcnui-blocks.com/r/{name}.json",
-    "@nusaiba": "https://nusaiba.dev/r/base-nova/{name}.json"
+    "@shadcnui-blocks": "https://shadcnui-blocks.com/r/{name}.json"
+  },
+  "_unwired": {
+    "date": "2026-09-15",
+    "rule": "A registry is unwired when its measured usable rate is under 25% after the harness defects are fixed, unless it is the only source for a capability nothing else covers. Re-wiring is one line; see docs/BUILD-STATUS.json for the evidence.",
+    "@vllnt-ui": {
+      "url": "https://ui.vllnt.com/r/{name}.json",
+      "why": "Every request to ui.vllnt.com returns HTTP 403, including the site root, with and without a browser User-Agent. It answered when it was wired on 2026-09-14. A namespace that 403s is not a source.",
+      "indexedItems": 313,
+      "usable": null
+    },
+    "@nusaiba": {
+      "url": "https://nusaiba.dev/r/base-nova/{name}.json",
+      "why": "15 usable of 119. 100 items fail on \"Cannot find module '../../sera/sera-motion'\" \u2014 an internal path the registry ships imports of but never ships. Nothing here is unique; @hirael and @cnippet cover the same section shapes at 93% and 86%. Re-wire the day it declares that file.",
+      "indexedItems": 119,
+      "usable": 15
+    }
   }
 }
